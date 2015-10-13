@@ -1,0 +1,64 @@
+// =========================================================
+// === Logo carousel =======================================
+// =========================================================
+.logo-carousel{
+}
+
+.logo-carousel__slide {
+
+
+    line-height: 80px;
+    height: auto;
+    text-align: center;
+    padding: 0 40px;
+}
+.logo-carousel__img {
+    display: inline-block;
+}
+
+.logo-carousel__btn-next, .logo-carousel__btn-prev {
+    background: none;
+    .icons();
+    color: #999;
+    -moz-osx-font-smoothing: grayscale;
+    height: auto;
+    margin-top: -15px;
+    font-size: 30px;
+}
+.logo-carousel__btn-next:before{
+    content: '\e111';
+}
+.logo-carousel__btn-prev:before{
+    content: '\e110';
+}
+
+
+
+@media (min-width: 480px) {
+    .logo-carousel__slide {
+        width: 50%;
+    }
+
+}
+@media (min-width: 768px) {
+    .logo-carousel__slide {
+            width: 33%;
+    }
+
+}
+@media (min-width: 992px) {
+    .logo-carousel__slide {
+            width: 25%;
+    }
+
+}
+@media (min-width: 1200px) {
+    .logo-carousel__slide {
+            width: 20%;
+    }
+
+}
+
+
+// =========================================================
+// =========================================================

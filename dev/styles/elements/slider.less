@@ -1,0 +1,140 @@
+// =========================================================
+// === Image Slidel ========================================
+// =========================================================
+
+.img-slider{
+    margin-bottom: 20px;
+    max-width: 1280px;
+}
+
+.img-slider__slide {
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.img-slider__slide-wrp{
+    position: relative;
+}
+
+.img-slider__img{
+    max-width: 200%;
+}
+
+.img-slider__caption{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+}
+
+.img-slider__caption-sub-header{
+    font-weight: 300;
+    font-size: 20px;
+    color: #555;
+
+}
+
+.img-slider__caption-header{
+    text-shadow: 0 1px 0 rgba(100,100,100,.3);
+    font-size: 24px;
+    color: #fff;
+    margin-top: 10px;
+
+}
+
+.img-slider__caption-p{
+    font-size: 13px;
+    color: #fff;
+    background-color: rgba(100,100,100,.3);
+    background-color: rgba(100,100,100,.3);
+    padding: 6px 10px;
+    height: 50px;
+}
+
+.img-slider__caption-link{
+    padding: 6px;
+    background: @main-color;
+    color: #FFF;
+    font-size: 13px;
+}
+
+.img-slider__pagination{
+
+}
+
+.img-slider__btn-next{
+    display: none;
+}
+
+.img-slider__btn-prev{
+    display: none;
+}
+
+@media (min-width: 400px) {
+    .img-slider__img {
+        max-width: 150%;
+    }
+}
+
+@media (min-width: 500px) {
+    .img-slider__img {
+        max-width: 120%;
+    }
+}
+
+@media (min-width: 640px) {
+    .img-slider__img {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .img-slider__caption{
+        padding: 30px 50px;
+        width: 80%;
+    }
+    .img-slider__btn-next{
+        display: block;
+    }
+    .img-slider__btn-prev{
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .img-slider__caption{
+        padding: 20px 60px;
+        width: 70%;
+    }
+    .img-slider__caption-sub-header{
+        font-size: 26px;
+
+    }
+    .img-slider__caption-header{
+        font-size: 30px;
+        margin-top: 20px;
+
+    }
+    .img-slider__caption-p{
+        font-size: 16px;
+        padding:12px 20px;
+        height: 90px;
+    }
+    .img-slider__caption-link{
+        padding: 6px 8px;
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
+
+// =========================================================
+// =========================================================

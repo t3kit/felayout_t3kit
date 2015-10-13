@@ -1,0 +1,45 @@
+---
+#layout: default.hbs # by default it is default.hbs, but you can specify another one
+title: Quote #title in menu
+number: 3 #position in menu
+menuLevel: 2
+hideInMenu: false #if true, will be hidden in menu
+hideInBreadcrumbs: false #if true, will be hidden in breadcrumbs
+#subpages: false #(only for first-level pages)
+parent: Content Elements #(only for second-level pages)
+#parent2: #(only for third-level pages)
+#parent3: #(only for fourth-level pages)
+#parent4: #(only for fifth-level pages)
+---
+
+{{> breadcrumbs}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {{> subNavigation}}
+        </div>
+        <div class="col-md-9">
+
+                <div class="row">
+                    <div class="col-md-6">
+                    {{ renderContent 'quote'
+                            text="Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals"
+                            name="John Doe"
+                            title="VP of Marketing"
+                            linkText="Royal Trader"
+                        }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ renderContent 'quote'
+                                text="Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals"
+                                name="John Doe"
+                                title="VP of Marketing"
+                                linkText="Royal Trader"
+                        }}
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>

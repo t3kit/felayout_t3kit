@@ -1,0 +1,14 @@
+<div class="elem2 {{class}}">
+    {{#if this.imgLink}}
+        <img class="img-responsive" src="{{imgLink}}" alt="foto">
+    {{/if}}
+    {{#if this.header}}
+        <h3>{{header}}</h3>
+    {{/if}}
+    {{#if this.text}}
+        <p>{{text}}</p>
+    {{/if}}
+    {{#if this.linkName}}
+        <a title="{{linkName}}" href="{{#if this.link}}{{link}}{{else}}#{{/if}}">{{linkName}}</a>
+    {{/if}}
+</div>

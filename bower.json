@@ -1,0 +1,13 @@
+{
+  "name": "felayout",
+  "devDependencies": {
+    "jquery": "2.1.4",
+    "bootstrap": "3.3.5",
+    "isotope": "2.0.0",
+    "flag-icon-css": "0.7.1",
+    "typeahead.js": "0.10.2",
+    "swiper": "3.1.0",
+    "jQuery.dotdotdot": "1.7.4",
+    "spectrum": "1.7.1"
+  }
+}

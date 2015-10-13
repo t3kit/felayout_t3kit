@@ -1,0 +1,72 @@
+// =========================================================
+// === Sub Navigation ======================================
+// =========================================================
+.sub-navigation {
+    background: @sub-navigation-background;
+}
+
+.sub-navigation__wrp {
+
+}
+
+.sub-navigation__link {
+    display: block;
+    padding: 6px 30px;
+    color: @sub-navigation-link-color;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: rgba(120, 120, 120, 0.3);
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    transition: all 0.1s linear;
+    border: 1px solid @sub-navigation-border;
+    margin-bottom: -1px;
+}
+
+.no-touch .sub-navigation__link:hover {
+    color: @sub-navigation-link-hover-color;
+    background: @nav-link-hover-background;
+}
+
+.sub-navigation__link._active {
+        background-color: @sub-navigation-link-hover-bg;
+        border-color: @sub-navigation-link-hover-bg;
+        z-index: 2;
+        position: relative;
+}
+
+.sub-navigation__link._level-2 {
+    padding: 6px 15px;
+    padding-left: 25px;
+    font-size: 13px;
+    border: 1px dotted @sub-navigation-border;
+    margin: 4px 10px;
+
+}
+
+.sub-navigation__link._level-3 {
+    padding: 6px 17px;
+    padding-left: 25px;
+    font-size: 13px;
+    border: 1px dotted @sub-navigation-border;
+    margin: 4px 10px;
+    margin-left: 18px;
+}
+
+.sub-navigation__link._level-4 {
+    padding: 6px 19px;
+    padding-left: 25px;
+    font-size: 13px;
+    border: 1px dotted @sub-navigation-border;
+    margin: 4px 10px;
+    margin-left: 26px;
+}
+
+.sub-navigation__link._curent {
+    border-left: 3px solid @sub-navigation-active-border;
+    color: @sub-navigation-link-active-color;
+    background: @sub-navigation-link-active-bg;
+}
+
+// =========================================================
+// =========================================================

@@ -1,0 +1,130 @@
+<div class="sub-navigation">
+<div class="sub-navigation__wrp">
+{{#withSort pages "data.number"}}
+{{#is ../this.parent data.parent}}
+{{#is data.hideInMenu false}}
+{{#is data.menuLevel 2}}
+<a href="{{basename}}.html" class="sub-navigation__link{{#is ../../../../page.title data.title}} _active{{/is}}{{#is ../../../../page.title data.title}} _curent{{/is}}{{#is data.subpages true}} _sub{{/is}}
+
+{{!-- active state for level 2 menu --}}
+{{#each ../../../../pages }}
+{{#is data.menuLevel 3}}
+{{#is ../../../this.data.title data.parent2}}
+{{#is ../../../../../../../page.title data.title}} _active{{/is}}
+{{/is}}
+{{/is}}
+{{#is data.menuLevel 4}}
+{{#is ../../../this.data.title data.parent2}}
+{{#is ../../../../../../../page.title data.title}} _active{{/is}}
+{{/is}}
+{{/is}}
+{{#is data.menuLevel 5}}
+{{#is ../../../this.data.title data.parent2}}
+{{#is ../../../../../../../page.title data.title}} _active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}
+">{{data.title}}</a>
+
+{{!-- menus level3-4-5 --}}
+{{#is ../../../../page.title data.title}}
+
+
+{{#withSort ../../../../../pages "data.number"}}
+{{#is data.menuLevel 3}}
+{{#is ../../this.data.title data.parent2}}
+{{#is data.hideInMenu false}}
+<a  href="{{basename}}.html" class="sub-navigation__link _level-2{{#is ../../../../../../../../../page.title data.title}} active{{/is}}{{#is data.subpages true}} _sub{{/is}}">{{data.title}} </a>
+{{#withSort ../../../../../../../../../pages "data.number"}}
+{{#is data.menuLevel 4}}
+{{#is ../../this.data.title data.parent3}}
+{{#is data.hideInMenu false}}
+<a href="{{basename}}.html" class="sub-navigation__link _level-3{{#is ../../../../../../../../../../../../../page.title data.title}} _active{{/is}}{{#is data.subpages true}} _sub{{/is}}">{{data.title}} </a>
+{{#withSort ../../../../../../../../../../../../../pages "data.number"}}
+{{#is data.menuLevel 5}}
+{{#is ../../this.data.title data.parent4}}
+{{#is data.hideInMenu false}}
+<a  class="sub-navigation__link _level-4{{#is ../../../../../../../../../../../../../../../../../page.title data.title}} _active{{/is}}" href="{{basename}}.html">{{data.title}} </a>
+{{/is}}
+{{/is}}
+{{/is}}
+{{/withSort}}
+{{/is}}
+{{/is}}
+{{/is}}
+{{/withSort}}
+{{/is}}
+{{/is}}
+{{/is}}
+{{/withSort}}
+
+
+{{else}}
+
+{{#is ../../../../../this.parent2 data.title}}
+
+{{#withSort ../../../../../../pages "data.number"}}
+{{#is data.menuLevel 3}}
+{{#is ../../this.data.title data.parent2}}
+{{#is data.hideInMenu false}}
+<a  href="{{basename}}.html" class="sub-navigation__link _level-2{{#is ../../../../../../../../../../page.title data.title}} _active _curent{{/is}}{{#is data.subpages true}} _sub{{/is}}
+{{#each ../../../../../../../../../../pages }}
+{{#is data.menuLevel 4}}
+{{#is ../../this.data.title data.parent3}}
+{{#is ../../../../../../../../../../../../../page.title data.title}} _active{{/is}}
+{{/is}}
+{{/is}}
+{{#is data.menuLevel 5}}
+{{#is ../../this.data.title data.parent3}}
+{{#is ../../../../../../../../../../../../../page.title data.title}} _active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}
+">{{data.title}} </a>
+{{#withSort ../../../../../../../../../../pages "data.number"}}
+{{#is data.menuLevel 4}}
+{{#is ../../this.data.title data.parent3}}
+{{#is data.hideInMenu false}}
+<a href="{{basename}}.html" class="sub-navigation__link _level-3{{#is ../../../../../../../../../../../../../../page.title data.title}} _active _curent{{/is}}{{#is data.subpages true}} _sub{{/is}}
+{{#each ../../../../../../../../../../../../../../pages }}
+{{#is data.menuLevel 5}}
+{{#is ../../this.data.title data.parent4}}
+{{#is ../../../../../../../../../../../../../../../../../page.title data.title}} _active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}
+">{{data.title}} </a>
+{{#withSort ../../../../../../../../../../../../../../pages "data.number"}}
+{{#is data.menuLevel 5}}
+{{#is ../../this.data.title data.parent4}}
+{{#is data.hideInMenu false}}
+<a  class="sub-navigation__link _level-4{{#is ../../../../../../../../../../../../../../../../../../page.title data.title}} _active _curent{{/is}}" href="{{basename}}.html">{{data.title}} </a>
+{{/is}}
+{{/is}}
+{{/is}}
+{{/withSort}}
+{{/is}}
+{{/is}}
+{{/is}}
+{{/withSort}}
+{{/is}}
+{{/is}}
+{{/is}}
+{{/withSort}}
+
+{{/is}}
+{{/is}}
+
+{{/is}}
+{{/is}}
+{{/is}}
+{{#is ../this.title data.parent}}
+    {{#is data.hideInMenu false}}
+        {{#is data.menuLevel 2}}
+            <a href="{{basename}}.html" class="sub-navigation__link{{#is data.subpages true}} _sub{{/is}}">{{data.title}}</a>
+        {{/is}}
+    {{/is}}
+{{/is}}
+{{/withSort}}
+</div>
+</div>

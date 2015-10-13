@@ -1,0 +1,185 @@
+.slider {
+    margin-bottom: 30px;
+    background-color: #efefef;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -40px;
+}
+
+.carousel-indicators li {
+    background-color: #e4e4e4;
+}
+
+
+.carousel-caption {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    background-color: #181818;
+    padding-right: 36px;
+    padding-left: 36px;
+    text-align: left;
+}
+
+.carousel-caption h2{
+    height: 40px;
+    overflow: hidden;
+    color: #fff;
+    text-transform: uppercase;
+}
+.carousel-caption h3{
+    height: 26px;
+    overflow: hidden;
+    color: @t3-main-color;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+.carousel-caption p{
+    height: 63px;
+    overflow: hidden;
+}
+
+.carousel-control {
+    z-index: 20;
+}
+
+.carousel-control .icon-t3-slider-arrow-left, .carousel-control .icon-t3-slider-arrow-right {
+    position: absolute;
+    top: 20%;
+    z-index: 5;
+    display: inline-block;
+}
+
+.carousel-control .icon-t3-slider-arrow-right {
+    right: 20%;
+}
+
+.carousel-control .icon-t3-slider-arrow-left {
+    left: 20%;
+}
+
+
+.carousel-caption .btn-default{
+    background-color: @t3-main-color;
+    border: none;
+    color: #fff;
+}
+.carousel-caption .btn-default:hover {
+    background-color: @t3-main-color-hover;
+}
+
+.slider .row > div{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+@media (max-width: 460px) {
+    .carousel-caption h1{
+        height: 23px;
+        font-size: 20px;
+    }
+    .carousel-caption h3{
+        font-size: 18px;
+        height: 19px;
+    }
+    .carousel-caption p{
+        font-size: 14px;
+        height: 103px;
+    }
+    .carousel-control .icon-t3-slider-arrow-left, .carousel-control .icon-t3-slider-arrow-right {
+        top: 14%;
+    }
+
+
+}
+
+
+@media (min-width: 768px) {
+
+    .carousel-caption h3{
+        margin-top: 20px;
+    }
+
+    .slider .container{
+        width: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+
+    }
+    .carousel-caption p{
+        height: 43px;
+    }
+
+    .carousel-caption {
+        position: absolute;
+        left: 5%;
+        top: 2%;
+        padding-top: 0;
+        width: 90%;
+        background-color: transparent;
+    }
+
+
+    .carousel-control .icon-t3-slider-arrow-left, .carousel-control .icon-t3-slider-arrow-right {
+        top: 46%;
+    }
+
+    .carousel-control .icon-t3-slider-arrow-right {
+        right: 30%;
+    }
+
+    .carousel-control .icon-t3-slider-arrow-left {
+        left: 30%;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .slider .row > div{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .slider .container{
+        width: 970px;
+    }
+    .carousel-caption {
+        top: 5%;
+        width: 70%;
+    }
+
+    .carousel-caption p{
+        height: auto;
+        max-height: 63px;
+    }
+}
+
+@media (min-width: 1200px){
+    .slider .container {
+        width: 1170px;
+    }
+    .carousel-caption {
+        top: 10%;
+    }
+}
+
+
+
+
+// =================================
+// ====== fix for IE9 ==============
+// =================================
+
+.carousel-control.right {
+filter: none;
+}
+.carousel-control.left {
+filter: none;
+}
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------

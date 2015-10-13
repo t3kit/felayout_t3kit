@@ -1,0 +1,32 @@
+{{#is this.languageMenuType "dropdown"}}
+    <div class="language-menu pxa-language-dropdown {{class}}">
+        <ul class="language-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/#">
+                    <span class=" main-flag-icon flag-icon flag-icon-gb"></span>
+                    <span class="icons icon-t3-dropdown-arrow"></span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="" class="active"><span class="flag-icon flag-icon-gb"></span> English</a></li>
+                    <li><a href=""><span class="flag-icon flag-icon-se"></span> Swedish</a></li>
+                    <li><a href=""><span class="flag-icon flag-icon-dk"></span> Danish</a></li>
+                    <li><a href=""><span class="flag-icon flag-icon-fi"></span> Finnish</a></li>
+                    <li><a href=""><span class="flag-icon flag-icon-de"></span> German</a></li>
+                    <li><a href=""><span class="flag-icon flag-icon-no"></span> Norwegian</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+{{/is}}
+{{#is this.languageMenuType "list"}}
+    <div class="language-menu pxa-language-list {{class}}">
+        <ul class="language-nav">
+            <li><a href="" class="active"><span class="flag-icon flag-icon-gb"></span> gb</a></li>
+            <li><a href=""><span class="flag-icon flag-icon-se"></span> se</a></li>
+            <li><a href=""><span class="flag-icon flag-icon-dk"></span> dk</a></li>
+        </ul>
+    </div>
+{{/is}}
+
+

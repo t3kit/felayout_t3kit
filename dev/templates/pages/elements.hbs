@@ -1,0 +1,25 @@
+---
+#layout: default.hbs #layouts, same as we have in TYPO3; dev/templates/layouts ...
+title: Content Elements #title in menu
+number: 3 #position in menu
+menuLevel: 1
+hideInMenu: false #if true, will be hidden in menu
+shortcut: false #if true, will be hidden in breadcrumbs, same behavior we have in TYPO3
+subpages: true #(only for first-level pages)
+#parent: #(only for second-level pages)
+#parent2: #(only for third-level pages)
+#parent3: #(only for fourth-level pages)
+#parent4: #(only for fifth-level pages)
+---
+
+{{> breadcrumbs}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {{> subNavigation}}
+        </div>
+        <div class="col-md-9">
+        </div>
+    </div>
+</div>

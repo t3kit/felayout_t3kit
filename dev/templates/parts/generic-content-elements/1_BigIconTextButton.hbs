@@ -1,0 +1,14 @@
+<div class="elem1 {{class}}">
+    {{#if this.bigTopIcon}}
+        <span class="icons icon-{{bigTopIcon}}"></span>
+    {{/if}}
+    {{#if this.header}}
+        <h3>{{header}}</h3>
+    {{/if}}
+    {{#if this.text}}
+        <p>{{text}}</p>
+    {{/if}}
+    {{#if this.buttonName}}
+        <a class="btn btn-default" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}"><span>{{buttonName}}</span></a>
+    {{/if}}
+</div>

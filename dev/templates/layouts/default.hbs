@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    {{>head}}
+<body>
+    <!--[if lte IE 9]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Header partials -->
+
+
+    {{ renderContent 'header'
+        showHeaderTop="true"
+        showHeaderTopToggleBtn="true"
+        showHeaderTopContakts="true"
+        showHeaderTopLangMenu="true"
+        showHeaderTopSearch="true"
+        showHeaderTopNav="true"
+
+        showHeaderMiddle="true"
+        showHeaderMiddleLogo="true"
+        showHeaderMiddleSocIcons="true"
+
+        showNavToggleBtn="false"
+        showNavSearchForm="false"
+        navDropdown="true"
+    }}
+
+
+    {{!-- {{>headerMinimal}} --}}
+
+    <!-- pages -->
+    {{>body}}
+
+    <!-- Footer partials -->
+    {{>footer}}
+    {{>scripts}}
+</body>
+</html>

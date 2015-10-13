@@ -1,0 +1,150 @@
+---
+#layout: default.hbs # by default it is default.hbs, but you can specify another one
+title: Home #title in menu
+number: 1 #position in menu
+menuLevel: 1
+hideInMenu: false #if true, will be hidden in menu
+hideInBreadcrumbs: false #if true, will be hidden in breadcrumbs
+subpages: false #(only for first-level pages)
+#parent: #(only for second-level pages)
+#parent2: #(only for third-level pages)
+#parent3: #(only for fourth-level pages)
+#parent4: #(only for fifth-level pages)
+---
+
+<div class="top-content">
+    {{>slider}}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {{ renderContent 'bigIconTextButton'
+                class="bigIcon"
+                bigTopIcon="now_widgets"
+                header="Content element 1"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                buttonName="Read more"
+            }}
+        </div>
+        <div class="col-md-4">
+            {{ renderContent 'bigIconTextButton'
+                class="bigIcon"
+                bigTopIcon="devices"
+                header="Content element 1"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                buttonName="Read more"
+            }}
+        </div>
+        <div class="col-md-4">
+            {{ renderContent 'bigIconTextButton'
+                class="bigIcon"
+                bigTopIcon="equalizer"
+                header="Content element 1"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                buttonName="Read more"
+            }}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {{ renderContent 'imageTextLink'
+                class=""
+                imgLink="images/foto1.jpg"
+                header="Content element 2"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                linkName="Read more"
+            }}
+        </div>
+        <div class="col-md-4">
+            {{ renderContent 'imageTextLink'
+                class=""
+                imgLink="images/foto1.jpg"
+                header="Content element 2"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                linkName="Read more"
+            }}
+        </div>
+        <div class="col-md-4">
+            {{ renderContent 'imageTextLink'
+                class=""
+                imgLink="images/foto1.jpg"
+                header="Content element 2"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                linkName="Read more"
+            }}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {{ renderContent 'iconTextButton'
+                class=""
+                headerLeftIcon="access_time"
+                header="Content element 1"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                buttonName="Read more"
+            }}
+        </div>
+        <div class="col-md-4">
+            {{ renderContent 'iconTextButton'
+                class=""
+                headerLeftIcon="settings"
+                header="Content element 1"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                buttonName="Read more"
+            }}
+        </div>
+        <div class="col-md-4">
+            {{ renderContent 'iconTextButton'
+                class=""
+                headerLeftIcon="school"
+                header="Content element 1"
+                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu."
+                buttonName="Read more"
+            }}
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        {{ renderContent 'quote'
+                text="Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals"
+                name="John Doe"
+                title="VP of Marketing"
+                linkText="Royal Trader"
+            }}
+        </div>
+        <div class="col-md-6">
+            {{ renderContent 'quote'
+                    text="Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals"
+                    name="John Doe"
+                    title="VP of Marketing"
+                    linkText="Royal Trader"
+            }}
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {{>divider}}
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {{>logoCarousel}}
+        </div>
+    </div>
+</div>

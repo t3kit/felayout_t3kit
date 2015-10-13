@@ -1,0 +1,46 @@
+<div class="breadcrumbs">
+    <div class="breadcrumbs__wrp container">
+        <ol class="breadcrumbs__list">
+            <li class="breadcrumbs__list-item"><span class="icons icon-t3-home"></span> <a class="breadcrumbs__list-link" href="index.html">Home</a></li>
+                {{#if parent}}
+                    {{#each pages}}
+                        {{#is data.menuLevel 1}}
+                            {{#is ../../parent data.title }}
+                                {{#is data.shortcut false}}
+                                    <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
+                                {{/is}}
+                            {{/is}}
+                        {{/is}}
+                    {{/each}}
+                {{/if}}
+                {{#if parent2}}
+                    {{#each pages }}
+                        {{#is data.menuLevel 2}}
+                            {{#is ../../parent2 data.title }}
+                                <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
+                            {{/is}}
+                        {{/is}}
+                    {{/each}}
+                {{/if}}
+                {{#if parent3}}
+                    {{#each pages }}
+                        {{#is data.menuLevel 3}}
+                            {{#is ../../parent3 data.title }}
+                                <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
+                            {{/is}}
+                        {{/is}}
+                    {{/each}}
+                {{/if}}
+                {{#if parent4}}
+                    {{#each pages }}
+                        {{#is data.menuLevel 4}}
+                            {{#is ../../parent4 data.title }}
+                                <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
+                            {{/is}}
+                        {{/is}}
+                    {{/each}}
+                {{/if}}
+            <li  class="breadcrumbs__list-item _active">{{title}}</li>
+        </ol>
+    </div>
+</div>

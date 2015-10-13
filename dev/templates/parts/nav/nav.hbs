@@ -1,0 +1,92 @@
+{{#is this.showNavToggleBtn "true"}}
+    <button type="button" class="main-navigation__toggle-btn js__main-navigation__toggle-btn" >
+        <span>toggle menu</span>
+    </button>
+{{/is}}
+<nav class="main-navigation js__main-navigation" role="navigation">
+
+<div class="main-navigation__items-wrp js__navigation__items-wrp">
+
+<ul class="main-navigation__items-list js__main-navigation__items-list">
+
+{{#withSort pages "data.number"}}
+{{#is data.hideInMenu false}}
+{{#is data.menuLevel 1}}
+{{#is data.subpages true}}
+<li class="main-navigation__item js__main-navigation__item {{#is ../../../../this.navDropdown "true"}}_sub {{/is}}{{#is ../../../../page.title data.title}}_active{{/is}}
+{{#each ../../../../pages }}
+{{#is data.menuLevel 2}}
+{{#is ../../../../this.data.title data.parent}}
+{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}
+{{#each ../../../../pages }}
+{{#is data.menuLevel 3}}
+{{#is ../../../../this.data.title data.parent}}
+{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}
+{{#each ../../../../pages }}
+{{#is data.menuLevel 4}}
+{{#is ../../../../this.data.title data.parent}}
+{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}
+{{#each ../../../../pages }}
+{{#is data.menuLevel 5}}
+{{#is ../../../../this.data.title data.parent}}
+{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{/each}}">
+<a  href="{{basename}}.html" class="main-navigation__item-link js__main-navigation__item-link" >{{data.title}}</a>
+<a href="{{basename}}.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a>
+<ul class="main-navigation__sub-item-list">
+{{#withSort ../../../../pages "data.number"}}
+{{#is data.menuLevel 2}}
+{{#is ../../../../this.data.title data.parent}}
+<li class="main-navigation__sub-item {{#is ../../../../../../../page.title  data.title}}_active{{/is}}
+{{#each ../../../../../../../pages }}
+{{#is data.menuLevel 3}}
+{{#is ../../../../this.data.title data.parent2}}
+{{#is ../../../../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{#is data.menuLevel 4}}
+{{#is ../../../../this.data.title data.parent2}}
+{{#is ../../../../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{#is data.menuLevel 5}}
+{{#is ../../../../this.data.title data.parent2}}
+{{#is ../../../../../../../../../../page.title  data.title}}_active{{/is}}
+{{/is}}
+{{/is}}
+{{/each  }}">
+<a class="main-navigation__sub-item-link" href="{{basename}}.html">{{data.title}}</a>
+</li>
+{{/is}}
+{{/is}}
+{{/withSort  }}
+</ul>
+</li>
+{{else}}
+<li class="main-navigation__item js__main-navigation__item {{#is ../../../../page.title data.title}}_active{{/is}}"><a class="main-navigation__item-link" href="{{basename}}.html">{{data.title}}</a></li>
+{{/is}}
+{{/is }}
+{{/is }}
+{{/withSort}}
+
+
+{{#is this.showNavSearchForm "true"}}
+    <div class="main-navigation__search-btn-wrp">
+        <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+    </div>
+    <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
+{{/is}}
+</ul>
+</div>
+</nav>

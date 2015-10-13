@@ -1,0 +1,8 @@
+/* TEAM */
+Team: Pixelant
+Site: http://www.pixelant.se
+Location: Sweden, Ukraine
+
+/* SITE */
+Standards: HTML5, CSS3
+Components: TYPO3, Pixelant Core, TYPOkit, jQuery, Bootstrap

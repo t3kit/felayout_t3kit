@@ -1,0 +1,149 @@
+# ==================================
+# Default, command "grunt"
+# ==================================
+default:
+    #Dev
+    - 'dev' #subtask
+    #Big
+    - 'clean:bigFolder'
+    - 'concurrent:bigProcess'
+    #Localhost
+    - 'localhost' #subtask
+    #Watch
+    - 'focus:big'
+
+# ==================================
+# Alias for Big project
+# ==================================
+big:
+    #Big
+    - 'default'
+
+# ==================================
+# Alias for Medium project
+# ==================================
+medium:
+    #Medium
+    - 'default'
+
+
+# ==================================
+# Small project
+# ==================================
+small:
+    #Defaul
+    - 'clean:tempFolder'
+    - 'concurrent:devProcess'
+    #Small
+    - 'clean:smallFolder'
+    - 'concurrent:smallProcess'
+    #Localhost
+    - 'localhost'
+    #Watch
+    - 'focus:small'
+
+
+# ==================================
+# Static site
+# ==================================
+site:
+    #Dev
+    - 'dev'
+    #Site
+    - 'clean:siteFolder'
+    - 'concurrent:siteProcess'
+    #---------------
+    - 'pushSite'
+    #---------------
+
+
+# ==================================
+# Code linters and validators
+# ==================================
+check:
+    #Dev
+    - 'dev'
+    #JS
+    - 'jshint:gruntConfigFiles'
+    - 'jscs:gruntConfigFiles'
+    - 'jshint:mainJs'
+    - 'jscs:mainJs'
+    #CSS
+    - 'csslint'
+    #HTML
+    - 'htmlhint'
+
+
+# ==================================
+# SUBTASKS  ========================
+# ==================================
+dev:
+    #Dev
+    - 'clean:tempFolder'
+    - 'concurrent:devProcess'
+    # - 'autoprefixer'
+
+localhost:
+    #Localhost
+    - 'connect:localhost'
+    - 'notify:server'
+
+autoprefixer:
+    #Postcss
+    - 'postcss'
+
+pushSite:
+    # Push to remote server with creating new branch
+    - 'buildcontrol:site'
+
+# ==================================
+# ==================================
+
+
+# ==================================
+# Apdate all type of projects (small & big)
+# ==================================
+updateAll:
+    #Dev
+    - 'dev'
+    #Small
+    - 'clean:smallFolder'
+    - 'concurrent:smallProcess'
+    #Big
+    - 'clean:bigFolder'
+    - 'concurrent:bigProcess'
+
+
+
+# customizer:
+#     - 'clean:tempFolder'
+#     - 'copy:customizerBase'
+#     - 'copy:customizerHelper'
+#     - 'copy:customizerComponents'
+#     - 'import:mainLess'
+#     - 'import:bootstrapLess'
+#     - 'less:components'
+#     - 'replace:customizerHead'
+#     - 'replace:customizerScript'
+#     - 'replace:customizerBody'
+#     - 'concurrent:customizer'
+#     - 'connect:localhost'
+#     - 'notify:server'
+#     - 'watch'
+
+
+# publishCustomizerSite:
+#     - 'clean:tempFolder'
+#     - 'copy:customizerBase'
+#     - 'copy:customizerHelper'
+#     - 'copy:customizerComponents'
+#     - 'import:mainLess'
+#     - 'import:bootstrapLess'
+#     - 'less:components'
+#     - 'replace:customizerHead'
+#     - 'replace:customizerScript'
+#     - 'replace:customizerBody'
+#     - 'concurrent:customizer'
+#     - 'connect:localhost'
+#     - 'buildcontrol:customizerSite'
+

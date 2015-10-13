@@ -1,0 +1,12 @@
+<div class="icon-text-btn {{class}}">
+    <h3 class="icon-text-btn__header">
+        <span class="icon-text-btn__icon icons icon-{{headerLeftIcon}}"></span>
+        {{header}}
+    </h3>
+    {{#if this.text}}
+        <p class="icon-text-btn__p">{{text}}</p>
+    {{/if}}
+    {{#if this.buttonName}}
+        <a class="icon-text-btn__link btn btn-default" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}">{{buttonName}}</a>
+    {{/if}}
+</div>
