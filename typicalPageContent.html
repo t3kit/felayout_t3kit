@@ -1,0 +1,1414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Typical page content</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="robots" content="noindex">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="local.css">
+
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+
+    <!-- Scripts -->
+    <script>
+      // touchSupport
+      touchSupport = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+      if (!touchSupport) {
+        document.documentElement.className += " no-touch";
+      } else {
+        document.documentElement.className += " touch";
+      }
+      // IE version
+      var uA = window.navigator.userAgent;
+      var msie = uA.indexOf('MSIE ');
+      var trident = uA.indexOf('Trident/');
+      var ie;
+      function detectIE() {
+        if (msie > 0) {
+          // IE 10 or older => return version number
+          ie = 'ie' + parseInt(uA.substring(msie + 5, uA.indexOf('.', msie)), 10);
+          return ie;
+        }
+        if (trident > 0) {
+          // IE 11 (or newer) => return version number
+          var rv = uA.indexOf('rv:');
+          ie = 'ie' + parseInt(uA.substring(rv + 3, uA.indexOf('.', rv)), 10);
+          return ie;
+        }
+        return ie = 'nonIE';
+      }
+      detectIE();
+      if (ie === 'nonIE') {
+        document.documentElement.className += (' ' + ie);
+      } else {
+        document.documentElement.className += (' ' + (ie + ' ' + 'IE'));
+      };
+    </script>
+  </head>
+  <body>
+
+    <!--[if lte IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong>  browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>  to improve your experience.</p>
+            <![endif]-->
+
+    <!-- Header partials -->
+    <header class="header" role="banner">
+      <div class="header-top-wrp">
+        <div class="header-top">
+          <div class="header-top__main-navigation-toggle-btn">
+            <button type="button" class="main-navigation__toggle-btn js__main-navigation__toggle-btn">
+              <span>toggle menu</span> 
+            </button>
+          </div>
+          <div class="header-top__contact">
+            <div class="header-top__contact-tel">
+              <span class="icons icon-t3-mobile"></span> 
+              <span class="header-top__contact-tel-title">Call us on</span> 
+              <a class="header-top__contact-tel-link" href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a> 
+            </div>
+            <div class="header-top__contact-email">
+              <span class="icons icon-t3-mail"></span> 
+              <span class="header-top__contact-email-title">Email us at</span> 
+              <a class="header-top__contact-email-link" href="#">info@info.se</a> 
+            </div>
+          </div>
+          <div class="header-top__language-menu">
+            <a class="header-top__language-menu-btn js__header-top__language-menu-btn" href="/#"> <span class="main-flag-icon flag-icon flag-icon-gb"></span>  </a> 
+            <div class="header-top__language-menu-box js__header-top__language-menu-box">
+              <a href="" class="header-top__language-menu-box-item active"> <span class="flag-icon flag-icon-gb"></span>  English </a> 
+              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-se"></span>  Swedish </a> 
+              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-dk"></span>  Danish </a> 
+              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-fi"></span>  Finnish </a> 
+              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-de"></span>  German </a> 
+              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-no"></span>  Norwegian </a> 
+              <a class="header-top__language-menu-box-close-btn js__header-top__language-menu-box-close-btn"></a> 
+            </div>
+          </div>
+          <div class="main-navigation__search-btn-wrp _header-top-search-btn">
+            <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span> </a> 
+          </div>
+          <div class="main-navigation__search-box _header-top-search-btn js__main-navigation__search-box">
+            <input placeholder="Search..." type="search">
+          </div>
+          <ul class="nav">
+            <li> <a href="index.html">Home</a>  </li>
+            <li> <a href="siteMap.html"> Sitemap</a>  </li>
+            <li> <a href="login.html">Login</a>  </li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-middle-wrp">
+        <div class="header-middle">
+          <div class="header-middle__logo">
+            <a class="header-middle__logo-link" href="index.html">
+              <img class="header-middle__logo-img img-responsive" src="images/logo.png" alt="logo">
+            </a> 
+          </div>
+          <div class="header-middle__social-icons">
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-facebook"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-twitter"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-linkedin"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-vimeo"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-googleplus"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-pinterest"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-instagram"></span>  </a> 
+            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-youtube"></span>  </a> 
+          </div>
+        </div>
+      </div>
+      <nav class="main-navigation js__main-navigation" role="navigation">
+        <div class="main-navigation__items-wrp js__navigation__items-wrp">
+          <ul class="main-navigation__items-list js__main-navigation__items-list">
+            <li class="main-navigation__item js__main-navigation__item ">
+              <a class="main-navigation__item-link" href="index.html">Home</a> 
+            </li>
+            <li class="main-navigation__item js__main-navigation__item _active">
+              <a class="main-navigation__item-link" href="typicalPageContent.html">Typical page content</a> 
+            </li>
+            <li class="main-navigation__item js__main-navigation__item _sub 
+">
+              <a href="elements.html" class="main-navigation__item-link js__main-navigation__item-link">Content Elements</a> 
+              <a href="elements.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a> 
+              <ul class="main-navigation__sub-item-list">
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="slider.html">Image Slider</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="logoCarousel.html">Logo Carousel</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="quote.html">Quote</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="bigIconTextButton.html">BigIconTextButton</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="iconTextButton.html">IconHeaderTextButton</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="imageTextLink.html">ImageTextLink</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="accordion.html">Accordion</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="tabs.html">Tabs</a> 
+                </li>
+                <li class="main-navigation__sub-item 
+">
+                  <a class="main-navigation__sub-item-link" href="navLevel2.html">Navigation Level 2</a> 
+                </li>
+              </ul>
+            </li>
+            <li class="main-navigation__item js__main-navigation__item ">
+              <a class="main-navigation__item-link" href="ext.html">Extensions</a> 
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="main-navigation__search-box-overlay js__main-navigation__search-box-overlay"></div>
+      <div class="header-top__language-menu-overlay js__header-top__language-menu-overlay"></div>
+    </header>
+
+    <!-- pages -->
+    <div class="breadcrumbs">
+      <div class="breadcrumbs__wrp container">
+        <ol class="breadcrumbs__list">
+          <li class="breadcrumbs__list-item"><span class="icons icon-t3-home"></span> 
+            <a class="breadcrumbs__list-link" href="index.html">Home</a> 
+          </li>
+          <li class="breadcrumbs__list-item _active">Typical page content</li>
+        </ol>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="c7">
+            <h1>TYPO3 Speaks Your Language</h1>
+            <p class="bodytext">TYPO3 supports all languages, characters and encoding out-of-the-box. All frontend, backend and database interactions run Unicode (UTF-8) by default.</p>
+          </div>
+          <div id="c6">
+            <h1>TYPO3 kender ingen grænser</h1>
+            <p class="bodytext">TYPO3 understøtter alle sprog og tegnsæt. Alle frontend-, backend- og database-interaktioner understøtter fuldt ud UTF-8.</p>
+          </div>
+          <div id="c5">
+            <ul>
+              <li><strong>Bulgarian:</strong>  Жълтата дюля беше щастлива, че пухът, който цъфна, замръзна като гьон. </li>
+              <li><strong>Czech:</strong>  Příliš žluťoučký kůň úpěl ďábelské kódy. </li>
+              <li><strong>Dutch:</strong>  Pa's wĳze lynx bezag vroom het fikse aquaduct. </li>
+              <li><strong>English:</strong>  The quick brown fox jumps over the lazy dog. </li>
+              <li><strong>Esperanto:</strong>  Eĥoŝanĝo ĉiuĵaŭde. </li>
+              <li><strong>French:</strong>  Les naïfs ægithales hâtifs pondant à Noël où il gèle sont sûrs d'être déçus et de voir leurs drôles d'œufs abîmés. </li>
+              <li><strong>German: </strong>  Falsches Üben von Xylophonmusik quält jeden größeren Zwerg. (1) </li>
+              <li><strong>German: </strong>  <span lang="da">Im finsteren Jagdschloß am offenen Felsquellwasser patzte der affig-flatterhafte kauzig-höf‌liche Bäcker über seinem versifften kniffligen C-Xylophon.</span>  (2) </li>
+              <li><strong>Greek</strong>  (monotonic): ξεσκεπάζω την ψυχοφθόρα βδελυγμία </li>
+              <li><strong>Greek</strong>  (polytonic): ξεσκεπάζω τὴν ψυχοφθόρα βδελυγμία </li>
+              <li><strong>Hebrew:</strong>  <span dir="rtl">זה כיף סתם לשמוע איך תנצח קרפד עץ טוב בגן.</span>  </li>
+              <li><strong>Hungarian:</strong>  Árvíztűrő tükörfúrógép. </li>
+              <li><strong>Icelandic:</strong>  Sævör grét áðan því úlpan var ónýt. </li>
+              <li><strong>Irish:</strong>  "An ḃfuil do ċroí ag bualaḋ ó ḟaitíos an ġrá a ṁeall lena ṗóg éada ó ṡlí do leasa ṫú?" "D'ḟuascail Íosa Úrṁac na hÓiġe Beannaiṫe pór Éava agus Áḋaiṁ." </li>
+              <li><strong>Jamaican:</strong>  Chruu, a kwik di kwik brong fox a jomp huova di liezi daag de, yu no siit? </li>
+              <li><strong>Japanese</strong>  (Hiragana):
+                <br>いろはにほへど　ちりぬるを
+                <br> わがよたれぞ　つねならむ
+                <br> うゐのおくやま　けふこえて
+                <br> あさきゆめみじ　ゑひもせず (4)</li>
+              <li><strong>Polish:</strong>  Pchnąć w tę łódź jeża lub ośm skrzyń fig. </li>
+              <li><strong>Portuguese:</strong>  O próximo vôo à noite sobre o Atlântico, põe freqüentemente o único médico. (3) </li>
+              <li><strong>Sami (Northern):</strong>  Vuol Ruoŧa geđggiid leat máŋga luosa ja čuovžža. </li>
+              <li><strong>Slovak:</strong>  Starý kôň na hŕbe kníh žuje tíško povädnuté ruže, na stĺpe sa ďateľ učí kvákať novú ódu o živote. </li>
+              <li><strong>Spanish:</strong>  El pingüino Wenceslao hizo kilómetros bajo exhaustiva lluvia y frío, añoraba a su querido cachorro. </li>
+              <li><strong>Swedish:</strong>  Flygande bäckasiner söka strax hwila på mjuka tuvor. </li>
+              <li><strong>Russian:</strong>  Съешь же ещё этих мягких французских булок да выпей чаю. </li>
+              <li><strong>Russian:</strong>  В чащах юга жил-был цитрус? Да, но фальшивый экземпляр! ёъ. </li>
+            </ul>
+          </div>
+          <div id="c4">
+            <ol>
+              <li><strong>Bulgarian:</strong>  Жълтата дюля беше щастлива, че пухът, който цъфна, замръзна като гьон. </li>
+              <li><strong>Czech:</strong>  Příliš žluťoučký kůň úpěl ďábelské kódy. </li>
+              <li><strong>Dutch:</strong>  Pa's wĳze lynx bezag vroom het fikse aquaduct. </li>
+              <li><strong>English:</strong>  The quick brown fox jumps over the lazy dog. </li>
+              <li><strong>Esperanto:</strong>  Eĥoŝanĝo ĉiuĵaŭde. </li>
+              <li><strong>French:</strong>  Les naïfs ægithales hâtifs pondant à Noël où il gèle sont sûrs d'être déçus et de voir leurs drôles d'œufs abîmés. </li>
+              <li><strong>German: </strong>  Falsches Üben von Xylophonmusik quält jeden größeren Zwerg. (1) </li>
+              <li><strong>German: </strong>  <span lang="da">Im finsteren Jagdschloß am offenen Felsquellwasser patzte der affig-flatterhafte kauzig-höf‌liche Bäcker über seinem versifften kniffligen C-Xylophon.</span>  (2) </li>
+              <li><strong>Greek</strong>  (monotonic): ξεσκεπάζω την ψυχοφθόρα βδελυγμία </li>
+              <li><strong>Greek</strong>  (polytonic): ξεσκεπάζω τὴν ψυχοφθόρα βδελυγμία </li>
+              <li><strong>Hebrew:</strong>  <span dir="rtl">זה כיף סתם לשמוע איך תנצח קרפד עץ טוב בגן.</span>  </li>
+              <li><strong>Hungarian:</strong>  Árvíztűrő tükörfúrógép. </li>
+              <li><strong>Icelandic:</strong>  Sævör grét áðan því úlpan var ónýt. </li>
+              <li><strong>Irish:</strong>  "An ḃfuil do ċroí ag bualaḋ ó ḟaitíos an ġrá a ṁeall lena ṗóg éada ó ṡlí do leasa ṫú?" "D'ḟuascail Íosa Úrṁac na hÓiġe Beannaiṫe pór Éava agus Áḋaiṁ." </li>
+              <li><strong>Jamaican:</strong>  Chruu, a kwik di kwik brong fox a jomp huova di liezi daag de, yu no siit? </li>
+              <li><strong>Japanese</strong>  (Hiragana):
+                <br>いろはにほへど　ちりぬるを
+                <br> わがよたれぞ　つねならむ
+                <br> うゐのおくやま　けふこえて
+                <br> あさきゆめみじ　ゑひもせず (4)</li>
+              <li><strong>Polish:</strong>  Pchnąć w tę łódź jeża lub ośm skrzyń fig. </li>
+              <li><strong>Portuguese:</strong>  O próximo vôo à noite sobre o Atlântico, põe freqüentemente o único médico. (3) </li>
+              <li><strong>Sami (Northern):</strong>  Vuol Ruoŧa geđggiid leat máŋga luosa ja čuovžža. </li>
+              <li><strong>Slovak:</strong>  Starý kôň na hŕbe kníh žuje tíško povädnuté ruže, na stĺpe sa ďateľ učí kvákať novú ódu o živote. </li>
+              <li><strong>Spanish:</strong>  El pingüino Wenceslao hizo kilómetros bajo exhaustiva lluvia y frío, añoraba a su querido cachorro. </li>
+              <li><strong>Swedish:</strong>  Flygande bäckasiner söka strax hwila på mjuka tuvor. </li>
+              <li><strong>Russian:</strong>  Съешь же ещё этих мягких французских булок да выпей чаю. </li>
+              <li><strong>Russian:</strong>  В чащах юга жил-был цитрус? Да, но фальшивый экземпляр! ёъ. </li>
+            </ol>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c12">
+            <h1>TYPO3's Built-in Rich Text Editor</h1>
+            <p class="bodytext">TYPO3 contains a sophisticated, built-in rich text editor (RTE). This editor contains all of the features one would expect from an Enterprise CMS, and is highly configurable.</p>
+          </div>
+          <div id="c11">
+            <h2>Examples of Rich Text Content Elements </h2>
+            <p class="bodytext">
+              <b>Continuous text:</b> text, optional in
+              <b>bold</b> or
+              <i>italic</i> or in a combination of
+              <i>
+                <b>bold and italic</b>
+              </i>.
+            </p>
+            <p class="bodytext">
+              <b>Special characters can be used:</b> @ © ® ¢ ¼ ½ ¾ § ± a² m³ Ω π µ γ β α H2O
+            </p>
+            <p class="bodytext">
+              <b>Texts in foreign languages can be mixed on one page.</b>
+              <br>The font has to be installed on the device though:
+            </p>
+            <p class="bodytext">cyrillic: Русская версия
+              <br>chinese: 中文版
+              <br>arabic: الْعَرَبيّة
+            </p>
+            <p class="text-center">Centered text</p>
+            <p class="text-right">Text justified right</p>
+          </div>
+          <div id="c10">
+            <h3>Blockquote</h3>
+            <p class="bodytext">Aenean ante elit, elementum et, varius ut, condimentum ut, sem. Aenean ante neque, imperdiet sed, ultricies vitae, aliquam dictum, arcu. Aenean arcu est, semper vitae, euismod quis, vehicula eu, risus.</p>
+            <blockquote>
+              <p class="bodytext">Aenean ante elit, elementum et, varius ut, condimentum ut, sem. Aenean ante neque, imperdiet sed, ultricies vitae, aliquam dictum, arcu. Aenean arcu est, semper vitae, euismod quis, vehicula eu, risus.</p>
+            </blockquote>
+            <p class="bodytext">Aenean ante elit, elementum et, varius ut, condimentum ut, sem. Aenean ante neque, imperdiet sed, ultricies vitae, aliquam dictum, arcu. Aenean arcu est, semper vitae, euismod quis, vehicula eu, risus.</p>
+          </div>
+          <div id="c9">
+            <h3>Lists</h3>
+            <p class="bodytext"><span style="line-height: 1.428571429;">Bulleted list:</span> </p>
+            <ul>
+              <li>first level</li>
+              <li>first level
+                <ul>
+                  <li>second level</li>
+                  <li>second level
+                    <ul>
+                      <li>third level</li>
+                      <li>third level</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <p class="bodytext"><strong>Ordered list:</strong> </p>
+            <ol>
+              <li>first level</li>
+              <li>first level
+                <ol>
+                  <li>second level</li>
+                  <li>second level
+                    <ol>
+                      <li>third level</li>
+                      <li>third level</li>
+                    </ol>
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+          <div id="c8">
+            <h3>Links</h3>
+            <p class="bodytext">You can insert
+              <a href="index.php?id=3" class="internal-link">internal links</a>  (links to pages within the website),
+              <a href="http://typo3.org" target="_blank" class="external-link-new-window">external links</a>  (links to external sites) or
+              <a href="mailto:test@test.net" class="mail">e-mail links</a>  (links that open the user's email client when clicked).</p>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c462">
+            <h1>File Downloads</h1>
+            <p class="bodytext">Proin faucibus nisl posuere dui fringilla, et lobortis est dictum. Donec erat libero, auctor at ligula in, facilisis rhoncus nulla. Fusce tristique eget elit nec accumsan. Nulla tristique, orci tempor posuere imperdiet, quam ipsum fringilla
+              enim, ac malesuada velit orci eget nisl.</p>
+          </div>
+          <div id="c461">
+            <h2>Download file</h2>
+            <ul class="media-list">
+              <li class="media">
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <a href="fileadmin/example_files/csm_DSC_7735_93a91b896b.jpg" target="_blank">csm DSC 7735 93a91b896b.jpg</a> 
+                  </h4>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="c460">
+            <h2>Download with icon, filesize and description</h2>
+            <ul class="media-list">
+              <li class="media">
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <a href="fileadmin/example_files/file.pdf" target="_blank"> <span class="icons icon-t3-file"></span>  file.pdf </a> 
+                    <small class="text-muted">0 </small> 
+                  </h4>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <a href="fileadmin/example_files/csm_DSC_7741_7908838c09.jpg" target="_blank"> <span class="icons icon-t3-picture"></span>  csm DSC 7741 7908838c09.jpg </a> 
+                    <small class="text-muted">85 K</small> 
+                  </h4>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="c459">
+            <h2>Download with icon, filesize and preview</h2>
+            <ul class="media-list">
+              <li class="media">
+                <a href="fileadmin/example_files/csm_DSC_7731_a7f78b9a5d.jpg" target="_blank" class="pull-left">
+                  <img src="images/foto1.jpg" width="100" height="57" alt="">
+                </a> 
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <a href="fileadmin/example_files/csm_DSC_7731_a7f78b9a5d.jpg" target="_blank"> <span class="icons icon-t3-picture"></span>  csm DSC 7731 a7f78b9a5d.jpg </a> 
+                    <small class="text-muted">12.0 K</small> 
+                  </h4>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <h1>Powerful Form Handling</h1>
+          <p class="bodytext">Setting up a contact or mail form is very easy. The layout of forms is handled centrally, which allows editors to focus on the content of the form.</p>
+          <h2>Contactform</h2>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c33">
+            <h1>Full Control Over All Content Elements</h1>
+            <p class="bodytext">TYPO3 offers editors full control over all content elements; even simple content elements like headers are accompanied by several configuration options. Site administrators may, for example, predefine several different header layouts for editors
+              to utilize across the site. </p>
+          </div>
+          <div id="c32">
+            <h1>Header 1. level</h1>
+          </div>
+          <div id="c31">
+            <h2>Header 2. level</h2>
+          </div>
+          <div id="c30">
+            <h3>Header 3. level</h3>
+          </div>
+          <div id="c29">
+            <h4>Header 4. level</h4>
+          </div>
+          <div id="c28">
+            <h5>Header 5 level</h5>
+          </div>
+          <div id="c27">
+            <h1>
+              <a href="index.php?id=1">Header 1. level (with link)</a> 
+            </h1>
+          </div>
+          <div id="c26">
+            <h2>
+              <a href="index.php?id=1">Header 2 level (with link)</a> 
+            </h2>
+          </div>
+          <div id="c25">
+            <h3>
+              <a href="index.php?id=1">Header 3. level (with link)</a> 
+            </h3>
+          </div>
+          <div id="c24">
+            <h4>
+              <a href="index.php?id=1">Header 4. level (with link)</a> 
+            </h4>
+          </div>
+          <div id="c23">
+            <h5>
+              <a href="index.php?id=1">Header 5. level (with link)</a> 
+            </h5>
+          </div>
+          <div id="c22">
+            <h1 class="text-center">Header 1. level (centered)</h1>
+          </div>
+          <div id="c21">
+            <h2 class="text-center">Header 2. level (centered)</h2>
+          </div>
+          <div id="c20">
+            <h3 class="text-center">Header 3. level (centered)</h3>
+          </div>
+          <div id="c19">
+            <h4 class="text-center">Header 4. level (centered)</h4>
+          </div>
+          <div id="c18">
+            <h5 class="text-center">Header 5. level (centered)</h5>
+          </div>
+          <div id="c17">
+            <h1 class="text-right">Header 1. level (right-justified)</h1>
+          </div>
+          <div id="c16">
+            <h2 class="text-right">Header 2. level (right-justified)</h2>
+          </div>
+          <div id="c15">
+            <h3 class="text-right">Header 3. level (right-justified)</h3>
+          </div>
+          <div id="c14">
+            <h4 class="text-right">Header 4. level (right-justified)</h4>
+          </div>
+          <div id="c13">
+            <h5 class="text-right">Header 5. level (right-justified)</h5>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c33">
+            <h1>Full Control Over All Content Elements</h1>
+            <p class="bodytext">TYPO3 offers editors full control over all content elements; even simple content elements like headers are accompanied by several configuration options. Site administrators may, for example, predefine several different header layouts for editors
+              to utilize across the site. </p>
+          </div>
+          <div id="c32">
+            <h1>Header 1. level</h1>
+          </div>
+          <div id="c31">
+            <h2>Header 2. level</h2>
+          </div>
+          <div id="c30">
+            <h3>Header 3. level</h3>
+          </div>
+          <div id="c29">
+            <h4>Header 4. level</h4>
+          </div>
+          <div id="c28">
+            <h5>Header 5 level</h5>
+          </div>
+          <div id="c27">
+            <h1>
+              <a href="index.php?id=1">Header 1. level (with link)</a> 
+            </h1>
+          </div>
+          <div id="c26">
+            <h2>
+              <a href="index.php?id=1">Header 2 level (with link)</a> 
+            </h2>
+          </div>
+          <div id="c25">
+            <h3>
+              <a href="index.php?id=1">Header 3. level (with link)</a> 
+            </h3>
+          </div>
+          <div id="c24">
+            <h4>
+              <a href="index.php?id=1">Header 4. level (with link)</a> 
+            </h4>
+          </div>
+          <div id="c23">
+            <h5>
+              <a href="index.php?id=1">Header 5. level (with link)</a> 
+            </h5>
+          </div>
+          <div id="c22">
+            <h1 class="text-center">Header 1. level (centered)</h1>
+          </div>
+          <div id="c21">
+            <h2 class="text-center">Header 2. level (centered)</h2>
+          </div>
+          <div id="c20">
+            <h3 class="text-center">Header 3. level (centered)</h3>
+          </div>
+          <div id="c19">
+            <h4 class="text-center">Header 4. level (centered)</h4>
+          </div>
+          <div id="c18">
+            <h5 class="text-center">Header 5. level (centered)</h5>
+          </div>
+          <div id="c17">
+            <h1 class="text-right">Header 1. level (right-justified)</h1>
+          </div>
+          <div id="c16">
+            <h2 class="text-right">Header 2. level (right-justified)</h2>
+          </div>
+          <div id="c15">
+            <h3 class="text-right">Header 3. level (right-justified)</h3>
+          </div>
+          <div id="c14">
+            <h4 class="text-right">Header 4. level (right-justified)</h4>
+          </div>
+          <div id="c13">
+            <h5 class="text-right">Header 5. level (right-justified)</h5>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <h2>Image gallery</h2>
+          <div class="image-center image-above">
+            <div class="image-wrap">
+              <div class="image-center-outer">
+                <div class="image-center-inner">
+                  <div class="row image-group">
+                    <div class="col-sm-4">
+                      <figure class="image">
+                        <a href="images/fotoTemp1.jpg" class="lightbox" data-rel="lightbox">
+                          <img src="images/fotoTemp1.jpg" width="193" height="109" class="" alt="">
+                        </a> 
+                      </figure>
+                    </div>
+                    <div class="col-sm-4">
+                      <figure class="image">
+                        <a href="images/fotoTemp2.jpg" class="lightbox" data-rel="lightbox">
+                          <img src="images/fotoTemp2.jpg" width="194" height="94" class="" alt="">
+                        </a> 
+                      </figure>
+                    </div>
+                    <div class="col-sm-4">
+                      <figure class="image">
+                        <a href="images/fotoTemp3.jpg" class="lightbox" data-rel="lightbox">
+                          <img src="images/fotoTemp3.jpg" width="193" height="129" class="" alt="">
+                        </a> 
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="row image-group">
+                    <div class="col-sm-4">
+                      <figure class="image">
+                        <a href="images/fotoTemp1.jpg" class="lightbox" data-rel="lightbox">
+                          <img src="images/fotoTemp1.jpg" width="193" height="109" class="" alt="">
+                        </a> 
+                      </figure>
+                    </div>
+                    <div class="col-sm-4">
+                      <figure class="image">
+                        <a href="images/fotoTemp2.jpg" class="lightbox" data-rel="lightbox">
+                          <img src="images/fotoTemp2.jpg" width="194" height="110" class="" alt="">
+                        </a> 
+                      </figure>
+                    </div>
+                    <div class="col-sm-4">
+                      <figure class="image">
+                        <a href="images/fotoTemp3.jpg" class="lightbox" data-rel="lightbox">
+                          <img src="images/fotoTemp3.jpg" width="193" height="129" class="" alt="">
+                        </a> 
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c441" class="csc-default">
+            <h1>Multiple Image Layout Options</h1>
+            <p class="lead">TYPO3 provides users with numerous possibilities for laying out images on a page. The back-end interface provides users with easy control over image formats, sizes, widths, groupings, and quality.</p>
+          </div>
+          <div id="c440" class="csc-default">
+            <h2>6 images in 6 columns</h2>
+            <div class="image-left image-below">
+              <div class="image-wrap">
+                <div class="row image-group">
+                  <div class="col-sm-2">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="92" height="52" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-2">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="91" height="52" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-2">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="92" height="45" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-2">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="92" height="62" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-2">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="91" height="52" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-2">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="92" height="52" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="text"></div>
+            </div>
+          </div>
+          <div id="c439" class="csc-default">
+            <h2>6 images in 3 columns</h2>
+            <div class="image-left image-below">
+              <div class="image-wrap">
+                <div class="row image-group">
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="193" height="109" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="194" height="110" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="193" height="94" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+                <div class="row image-group">
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="193" height="129" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="194" height="110" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="193" height="109" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="text"></div>
+            </div>
+          </div>
+          <div id="c438" class="csc-default">
+            <h2>Fixed height for images with different width-height ratio</h2>
+            <div class="image-left image-below csc-textpic-equalheight">
+              <div class="text"></div>
+              <div class="image-wrap">
+                <div class="row image-group">
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="142" height="80" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="143" height="80" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="165" height="80" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+                <div class="row image-group">
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="142" height="80" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="143" height="80" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="165" height="80" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="c437" class="csc-default">
+            <h2>Fixed width for images with different width-height ratio</h2>
+            <div class="image-left image-below">
+              <div class="text"></div>
+              <div class="image-wrap">
+                <div class="row image-group">
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="100" height="57" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="100" height="57" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="100" height="49" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+                <div class="row image-group">
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp1.jpg" width="100" height="67" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp2.jpg" width="100" height="57" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                  <div class="col-sm-4">
+                    <figure class="image">
+                      <div class="alohaeditable action-edit nostyles alohaeditable-inline-block">
+                        <img src="images/fotoTemp3.jpg" width="100" height="57" class="" alt="">
+                      </div>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c436">
+            <h1>No HTML Required</h1>
+            <p class="bodytext">With TYPO3, controlling the behavior of images is simple. Editors with no knowledge of HTML can easily manage&nbsp;links, popups, captions, alignment,&nbsp;and more.</p>
+          </div>
+          <div id="c435">
+            <h2>Image Click-enlarge Functionality</h2>
+            <div class="image-intext-left image-intext">
+              <div class="image-wrap">
+                <figure class="image">
+                  <a href="images/foto1.jpg" class="lightbox">
+                    <img src="images/foto1.jpg" width="300" height="169" alt="">
+                  </a> 
+                </figure>
+              </div>
+              <div class="text">
+                <p class="bodytext">Check the "click-enlarge" checkbox in the back-end to allow users to click to show the full-size image.
+                </p>
+                <p class="bodytext">&nbsp;</p>
+                <p class="bodytext">&nbsp;</p>
+              </div>
+            </div>
+          </div>
+          <div id="c434">
+            <h2>Images Linked to Internal and External Pages</h2>
+            <div class="image-intext-left image-intext">
+              <div class="image-wrap">
+                <figure class="image">
+                  <a href="http://typo3.org" target="_blank">
+                    <img src="images/foto1.jpg" width="300" height="145" alt="">
+                  </a> 
+                  <figcaption class="caption">Image</figcaption>
+                </figure>
+              </div>
+              <div class="text">
+                <p class="bodytext">Each image can be linked using the link field in the back-end. Multiple links can be added by separating each link with a comma. Values entered into the link field can be&nbsp;page id, a URL, or an&nbsp;e-mail address.</p>
+              </div>
+            </div>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c70">
+            <h1>Multiple Layouts for Standard Content Types</h1>
+            <p class="bodytext">Ordered and unordered lists are available in TYPO3&nbsp;as a standard content element.&nbsp;Users are able to create multiple&nbsp;predefined list layouts, which help to ensure site-wide visual consistency.</p>
+          </div>
+          <div id="c69" class="csc-space-before-10">
+            <h2>Unordered List</h2>
+            <ul class="list">
+              <li class="odd">Morbi in sem quis dui placerat ornare
+              </li>
+              <li class="even">Praesent dapibus, neque id cursus faucibus
+              </li>
+              <li class="odd">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non</li>
+            </ul>
+          </div>
+          <div id="c68">
+            <h2>Ordered List</h2>
+            <ol class="list">
+              <li class="odd">Morbi in sem quis dui placerat ornare
+              </li>
+              <li class="even">Praesent dapibus, neque id cursus faucibus
+              </li>
+              <li class="odd">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non</li>
+            </ol>
+          </div>
+          <div id="c67">
+            <h2>Unstyled List</h2>
+            <ul class="list list-unstyled">
+              <li class="odd">Morbi in sem quis dui placerat ornare
+              </li>
+              <li class="even">Praesent dapibus, neque id cursus faucibus
+              </li>
+              <li class="odd">Phasellus ultrices nulla quis nibh. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non</li>
+            </ul>
+          </div>
+          <div id="c66">
+            <h2>Inline List</h2>
+            <ul class="list list-inline">
+              <li class="odd">Morbi in sem quis
+              </li>
+              <li class="even">Praesent dapibus
+              </li>
+              <li class="odd">Phasellus ultrices</li>
+            </ul>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c59">
+            <h1>Tables</h1>
+            <p class="bodytext">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque cursus tempor tellus vitae accumsan. Nulla aliquam tristique velit, at bibendum eros sagittis ut. Maecenas tincidunt neque ac augue convallis luctus. Quisque nulla arcu,
+              euismod et neque fermentum, sollicitudin vestibulum dolor. In eget leo tincidunt, volutpat urna eu, suscipit odio. Quisque placerat porttitor iaculis. Cras non adipiscing ligula. Aenean egestas nisi eget nisi ultricies, non feugiat lectus
+              blandit. Pellentesque non quam arcu.</p>
+          </div>
+          <div id="c58">
+            <h2>Basic example</h2>
+            <table class="table table-striped">
+              <caption>Caption</caption>
+              <thead>
+                <tr>
+                  <th scope="col" id="col58-0">&nbsp;</th>
+                  <th scope="col" id="col58-1">Area A</th>
+                  <th scope="col" id="col58-2">Area B</th>
+                  <th scope="col" id="col58-3">Area C</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td headers="col58-0">2007</td>
+                  <td headers="col58-1">50.000</td>
+                  <td headers="col58-2">35.000</td>
+                  <td headers="col58-3">62.400</td>
+                </tr>
+                <tr>
+                  <td headers="col58-0">2008</td>
+                  <td headers="col58-1">52.500</td>
+                  <td headers="col58-2">39.700</td>
+                  <td headers="col58-3">61.500</td>
+                </tr>
+                <tr>
+                  <td headers="col58-0">2009</td>
+                  <td headers="col58-1">54.000</td>
+                  <td headers="col58-2">41.000</td>
+                  <td headers="col58-3">62.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="c57">
+            <h2>Striped rows</h2>
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>Area A</td>
+                  <td>Area B</td>
+                  <td>Area C</td>
+                </tr>
+                <tr>
+                  <td>2007</td>
+                  <td>50.000</td>
+                  <td>35.000</td>
+                  <td>62.400</td>
+                </tr>
+                <tr>
+                  <td>2008</td>
+                  <td>52.500</td>
+                  <td>39.700</td>
+                  <td>61.500</td>
+                </tr>
+                <tr>
+                  <td>2009</td>
+                  <td>54.000</td>
+                  <td>41.000</td>
+                  <td>62.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="c56">
+            <h2>Bordered table</h2>
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>Area A</td>
+                  <td>Area B</td>
+                  <td>Area C</td>
+                </tr>
+                <tr>
+                  <td>2007</td>
+                  <td>50.000</td>
+                  <td>35.000</td>
+                  <td>62.400</td>
+                </tr>
+                <tr>
+                  <td>2008</td>
+                  <td>52.500</td>
+                  <td>39.700</td>
+                  <td>61.500</td>
+                </tr>
+                <tr>
+                  <td>2009</td>
+                  <td>54.000</td>
+                  <td>41.000</td>
+                  <td>62.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="c55">
+            <h2>Hover rows</h2>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col" id="col55-0">&nbsp;</th>
+                  <th scope="col" id="col55-1">Area A</th>
+                  <th scope="col" id="col55-2">Area B</th>
+                  <th scope="col" id="col55-3">Area C</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td headers="col55-0">2007</td>
+                  <td headers="col55-1">50.000</td>
+                  <td headers="col55-2">35.000</td>
+                  <td headers="col55-3">62.400</td>
+                </tr>
+                <tr>
+                  <td headers="col55-0">2008</td>
+                  <td headers="col55-1">52.500</td>
+                  <td headers="col55-2">39.700</td>
+                  <td headers="col55-3">61.500</td>
+                </tr>
+                <tr>
+                  <td headers="col55-0">2009</td>
+                  <td headers="col55-1">54.000</td>
+                  <td headers="col55-2">41.000</td>
+                  <td headers="col55-3">62.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="c54">
+            <h2>Condensed table</h2>
+            <table class="table table-condensed">
+              <tbody>
+                <tr>
+                  <th scope="row" id="row54-0">&nbsp;</th>
+                  <td headers="row54-0">Area A</td>
+                  <td headers="row54-0">Area B</td>
+                  <td headers="row54-0">Area C</td>
+                </tr>
+                <tr>
+                  <th scope="row" id="row54-1">2007</th>
+                  <td headers="row54-1">50.000</td>
+                  <td headers="row54-1">35.000</td>
+                  <td headers="row54-1">62.400</td>
+                </tr>
+                <tr>
+                  <th scope="row" id="row54-2">2008</th>
+                  <td headers="row54-2">52.500</td>
+                  <td headers="row54-2">39.700</td>
+                  <td headers="row54-2">61.500</td>
+                </tr>
+                <tr>
+                  <th scope="row" id="row54-3">2009</th>
+                  <td headers="row54-3">54.000</td>
+                  <td headers="row54-3">41.000</td>
+                  <td headers="row54-3">62.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+          <div id="c433">
+            <h1>Easily Position Text and Images</h1>
+            <p class="bodytext">TYPO3 makes working with text and images a snap. TYPO3's text with image content element gives editors precise control over captions, alternative text attributes, image size and quality, and layout. TYPO3's core tools for manipulating images
+              can automatically optimize image files uploaded by back-end editors to reduce file size and reduce the time required to load a page.</p>
+          </div>
+          <div id="c432">
+            <h2>Position: In text, left</h2>
+            <div class="image-intext-left image-intext">
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="300" height="169" alt="">
+                </figure>
+              </div>
+              <div class="text">
+                <p class="bodytext">Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c431">
+            <h2>Position: In text, right</h2>
+            <div class="image-intext-right image-intext">
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="300" height="169" alt="">
+                </figure>
+              </div>
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c430">
+            <div class="image-header-2 image-beside-left image-beside">
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="300" height="145" alt="">
+                </figure>
+              </div>
+              <div class="text">
+                <h2>Position: Beside text, left</h2>
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c429">
+            <div class="image-header-2 image-beside-right image-beside">
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="300" height="200" alt="">
+                </figure>
+              </div>
+              <div class="text">
+                <h2>Position: Beside text, right</h2>
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c428">
+            <h2>Position: Above, left</h2>
+            <div class="image-left image-below">
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="500" height="282" alt="">
+                </figure>
+              </div>
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c427">
+            <h2>Position: Above, center</h2>
+            <div class="image-center image-above">
+              <div class="image-wrap">
+                <div class="image-center-outer">
+                  <div class="image-center-inner">
+                    <figure class="image">
+                      <img src="images/foto1.jpg" width="500" height="282" alt="">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c426">
+            <h2>Position: Above, right</h2>
+            <div class="image-right image-above">
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="500" height="242" alt="">
+                </figure>
+              </div>
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+            </div>
+          </div>
+          <div id="c425">
+            <h2>Position: Below, left</h2>
+            <div class="image-left image-below">
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="500" height="242" alt="">
+                </figure>
+              </div>
+            </div>
+          </div>
+          <div id="c424">
+            <h2>Position: Below, center</h2>
+            <div class="image-center image-below">
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+              <div class="image-wrap">
+                <div class="image-center-outer">
+                  <div class="image-center-inner">
+                    <figure class="image">
+                      <img src="images/foto1.jpg" width="500" height="334" alt="">
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="c423">
+            <h2>Position: Below, right</h2>
+            <div class="image-right image-below">
+              <div class="text">
+                <p class="bodytext"> Nam aliquam, lorem nec dapibus feugiat, ipsum quam laoreet arcu, sed ullamcorper augue augue vitae magna.
+                </p>
+                <p class="bodytext">Hambiam est lectus, interdum id, accumsan a, blandit quis, mauris placerat sit amet, nibh. Lacus lectus est mattis vel, pharetra sit amet. Nam laoreet, erat ac laoreet euismod, sapien felis pretium libero, semper euismod mauris metus quis
+                  tortor. </p>
+              </div>
+              <div class="image-wrap">
+                <figure class="image">
+                  <img src="images/foto1.jpg" width="500" height="282" alt="">
+                </figure>
+              </div>
+            </div>
+          </div>
+          <div class="divider">
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer partials -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer__container container">
+        <div class="row">
+          <div class="col-md-6 footer__about">
+            <h4>About Pixelant AB</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis no strud exercitation ullamco laboris nisi ut.</p>
+            <a href="">Read more about us</a> 
+          </div>
+          <div class="col-md-6 footer__contact">
+            <h4>Contact us</h4>
+            <div class="row">
+              <div class=" col-xs-4 col-md-4 ">
+                <p>Pixelant AB
+                  <br>Regementsgatan 8
+                  <br>211 42 Malmö,
+                  <br>Sweden</p>
+              </div>
+              <div class="col-xs-2 col-md-2 ">
+                <div class="footer__map">
+                  <a class="footer__map-icon icons icon-t3-map" href="#"></a> 
+                </div>
+              </div>
+              <div class="col-xs-12 col-md-6">
+                <ul class="nav contact-links">
+                  <li>
+                    <p><span class="icons icon-t3-mobile"></span> <span>CALL US ON</span> 
+                      <a href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a> 
+                    </p>
+                  </li>
+                  <li>
+                    <p><span class="icons icon-t3-mail"></span> <span>EMAIL US AT</span> 
+                      <a href="#">info@info.se</a> 
+                    </p>
+                  </li>
+                </ul>
+                <div class="social">
+                  <ul class="nav nav-pills">
+                    <li> <a href="#"> <span class="icons icon-t3-facebook"></span>  </a>  </li>
+                    <li> <a href="#"> <span class="icons icon-t3-twitter"></span>  </a>  </li>
+                    <li> <a href="#"> <span class="icons icon-t3-linkedin"></span>  </a>  </li>
+                    <li> <a href="#"> <span class="icons icon-t3-vimeo"></span>  </a>  </li>
+                    <li> <a href="#"> <span class="icons icon-t3-googleplus"></span>  </a>  </li>
+                    <li> <a href="#"> <span class="icons icon-t3-pinterest"></span>  </a>  </li>
+                    <li> <a href="#"> <span class="icons icon-t3-instagram"></span>  </a>  </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row ">
+          <div class="col-md-6 footer__quick-links">
+            <h4>Quick links</h4>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="nav">
+                  <li> <a href="contact.html">Contact</a>  </li>
+                  <li> <a href="news.html">News</a>  </li>
+                  <li> <a href="about.html">About</a>  </li>
+                  <li> <a href="siteMap.html">Site Map</a>  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="nav">
+                  <li> <a href="isotope.html">Isotope</a>  </li>
+                  <li> <a href="login.html">Login</a>  </li>
+                  <li> <a href="tabs.html">Tabs</a>  </li>
+                  <li> <a href="forms.html">Forms</a>  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 footer__subscribe">
+            <h4>Subscribe to newsletter </h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7 footer__bottom-copyright">
+              <p>All rights reserved PIXELANT AB © 2014</p>
+            </div>
+            <div class="col-md-5 footer__bottom-nav">
+              <ul class=" nav">
+                <li> <a href="legalRights.html">Legal Rights</a>  </li>
+                <li> <a href="termsOfUse.html">Terms of Use</a>  </li>
+                <li> <a href="cookies.html">Cookies</a>  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="jquery.js"></script>
+    <script src="bootstrap.js"></script>
+    <script src="components.js"></script>
+    <script src="header.js"></script>
+    <script src="main.js"></script>
+    <script src="local.js"></script>
+
+    <!-- ====
+    === -->
+  </body>
+</html>
