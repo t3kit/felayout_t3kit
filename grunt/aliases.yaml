@@ -95,6 +95,7 @@ autoprefixer:
 pushSite:
     # Push to remote server with creating new branch
     - 'buildcontrol:site'
+    - 'notify:site'
 
 # ==================================
 # ==================================

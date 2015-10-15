@@ -21,7 +21,6 @@ module.exports = {
         src: [
             'copyToRoot/{,*/}*.*',
             '!copyToRoot/robots.txt',
-            'flags/{,*/}*.*',
             'fonts/{,*/}*.*'
         ]
     },
@@ -32,6 +31,7 @@ module.exports = {
         dest: '<%= small %>',
         src: [
             '*.js',
+            'flags/{,*/}*.*',
             '!local.js'
         ]
     },
@@ -52,8 +52,7 @@ module.exports = {
         src: [
             'copyToRoot/{,*/}*.*',
             '!copyToRoot/robots.txt',
-            'fonts/{,*/}*.*',
-            'flags/{,*/}*.*'
+            'fonts/{,*/}*.*'
         ]
     },
     bigCssJs: {
@@ -65,6 +64,7 @@ module.exports = {
             '*.js',
             '!local.js',
             '*.css',
+            'flags/{,*/}*.*',
             '!local.css'
         ]
     },

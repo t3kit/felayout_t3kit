@@ -68,10 +68,6 @@ module.exports = {
         tasks: 'newer:copy:toRoot'
     },
 
-
-
-
-
     small: {
         files: ['<%= dev %>/copyToRoot/{,*/}*.*', '<%= dev %>/fonts/{,*/}*.*', '<%= dev %>/images/{,*/}*.*'],
         tasks: ['newer:copy:small', 'newer:imagemin:small']
@@ -93,8 +89,6 @@ module.exports = {
         files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less'],
         tasks: ['newer:copy:bigCssJs']
     },
-
-
 
     livereload: {
         options: {

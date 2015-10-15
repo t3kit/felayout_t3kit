@@ -6,12 +6,7 @@ module.exports = {
     },
     site: {
         options: {
-            message: 'Branch \'site\' successfully updated'
+            message: 'Static site successfully updated'
         }
-    },
-    // big: {
-    //     options: {
-    //         message: 'Branch \'big\' successfully updated'
-    //     }
-    // }
+    }
 };
