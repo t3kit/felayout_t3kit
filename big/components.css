@@ -229,7 +229,7 @@
   background-image: url(flags/1x1/us.svg);
 }
 /**
- * Swiper 3.1.0
+ * Swiper 3.1.7
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * 
  * http://www.idangero.us/swiper/
@@ -240,7 +240,7 @@
  * 
  * Licensed under MIT
  * 
- * Released on: July 14, 2015
+ * Released on: October 10, 2015
  */
 .swiper-container {
   margin: 0 auto;
@@ -269,10 +269,6 @@
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
   -o-transition-property: -o-transform;
@@ -306,10 +302,6 @@
   margin: 0 auto;
 }
 .swiper-slide {
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
   -webkit-flex-shrink: 0;
   -ms-flex: 0 0 auto;
   flex-shrink: 0;
@@ -576,6 +568,7 @@ button.swiper-pagination-bullet {
   backface-visibility: hidden;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 .swiper-container-cube.swiper-container-rtl .swiper-slide {
   -webkit-transform-origin: 100% 0;
@@ -590,6 +583,16 @@ button.swiper-pagination-bullet {
   pointer-events: auto;
   visibility: visible;
 }
+.swiper-container-cube .swiper-slide-shadow-top,
+.swiper-container-cube .swiper-slide-shadow-bottom,
+.swiper-container-cube .swiper-slide-shadow-left,
+.swiper-container-cube .swiper-slide-shadow-right {
+  z-index: 0;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
 .swiper-container-cube .swiper-cube-shadow {
   position: absolute;
   left: 0;
@@ -600,8 +603,6 @@ button.swiper-pagination-bullet {
   opacity: 0.6;
   -webkit-filter: blur(50px);
   filter: blur(50px);
-}
-.swiper-container-cube.swiper-container-vertical .swiper-cube-shadow {
   z-index: 0;
 }
 /* Scrollbar */

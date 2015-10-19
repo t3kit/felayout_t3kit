@@ -16,11 +16,11 @@ module.exports = {
         tasks: ['less:components']
     },
     lessHeader: {
-        files: ['<%= dev %>/styles/header.less'],
+        files: ['<%= dev %>/styles/header.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
         tasks: ['less:header']
     },
     lessHeaderMin: {
-        files: ['<%= dev %>/styles/headerMin.less'],
+        files: ['<%= dev %>/styles/headerMin.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
         tasks: ['less:headerMin']
     },
     lessLocal: {

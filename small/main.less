@@ -1057,7 +1057,7 @@
 
 // Custom Variables
 // Primary and accent color variables
-@main-color:                    #66bd29;   //lighten(@main-color, 15%); or  darken(@main-color, 15%);
+@main-color:                    #288FB4;   //lighten(@main-color, 15%); or  darken(@main-color, 15%);
 @accent-color:                  #42476d;
 
 @grey-color:                    #999;
@@ -1127,8 +1127,8 @@
 
 
 // Footer
-@footer-background:             #323232;
-@footer-color:                  #acacac;
+@footer-background:             #1D556F; //#323232;
+@footer-color:                  #ddd; //#acacac;
 @footer-link-color:             @footer-color;
 @footer-link-hover-color:       @main-link-hover-color;
 
@@ -1866,17 +1866,23 @@
         text-align: center;
     }
 
+
 // =================================
-// === Social Icons ================
+// === Footer Social ===============
 // =================================
-.social .nav-pills {
+.footer__social {
+    text-align: center;
+    margin-top: 70px;
+}
+.footer__social .nav-pills {
     list-style: none;
     padding: 0;
+    padding: 20px 0;
 }
-.social .nav-pills > li{
+.footer__social .nav-pills > li{
     display: inline-block;
 }
-.social .nav-pills  a {
+.footer__social .nav-pills  a {
     color: #c6c6c6;
     background: transparent;
     padding: 2px ;
@@ -1885,8 +1891,8 @@
     transition: all .2s ease;
 }
 
-// ---------------------------------------------------------
-// ---------------------------------------------------------
+
+
 
 
 // =================================
@@ -1894,7 +1900,7 @@
 // =================================
 
 .footer__bottom {
-    margin-top: 30px;
+    // margin-top: 30px;
     text-align: center;
     background: @footer-background;
     padding-bottom: 10px;
@@ -2253,15 +2259,28 @@
 // === Logo carousel =======================================
 // =========================================================
 .logo-carousel{
+    // height: 80px;
 }
 
 .logo-carousel__slide {
 
 
-    line-height: 80px;
-    height: auto;
-    text-align: center;
+    // line-height: 80px;
+    // text-align: center;
+
+
     padding: 0 40px;
+   text-align: center;
+    height: auto;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }
 .logo-carousel__img {
     display: inline-block;

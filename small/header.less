@@ -1073,7 +1073,7 @@
 
 // Custom Variables
 // Primary and accent color variables
-@main-color:                    #66bd29;   //lighten(@main-color, 15%); or  darken(@main-color, 15%);
+@main-color:                    #288FB4;   //lighten(@main-color, 15%); or  darken(@main-color, 15%);
 @accent-color:                  #42476d;
 
 @grey-color:                    #999;
@@ -1143,8 +1143,8 @@
 
 
 // Footer
-@footer-background:             #323232;
-@footer-color:                  #acacac;
+@footer-background:             #1D556F; //#323232;
+@footer-color:                  #ddd; //#acacac;
 @footer-link-color:             @footer-color;
 @footer-link-hover-color:       @main-link-hover-color;
 
@@ -1551,7 +1551,7 @@
     margin: 0 auto;
     background: @header-middle-bg-color;
     width: 100%;
-    height: @header-middle-height;
+    // height: @header-middle-height;
 
 }
 .header-middle{
@@ -1568,6 +1568,7 @@
     // margin-top: 40px;
     display: block;
     padding: 10px 0;
+    padding-top: 26px;
     // height: @header-middle-height;
 
 }
@@ -1597,6 +1598,8 @@
     // top: 30px;
     // left: 0;
     // line-height: @header-middle-height;
+        width: 120px;
+        display: inline-block;
 }
 .header-middle__logo-img{
     display: inline-block;
@@ -1611,14 +1614,15 @@
     }
     .header-middle__logo-link{
         position: relative;
-        top: 20px;
-        left: 10px;
+        top: 8px;
+        left: 40px;
     }
     .header-middle__social-icons {
         float: right;
         width: 60%;
         text-align: right;
         margin-top: 24px;
+        padding-top: 0;
     }
     .header-middle__social-icon .icons{
         font-size: 32px;

@@ -46,7 +46,7 @@
   line-height: 30px;
 }
 .header-info__contact-tel-link {
-  color: #aae482;
+  color: #7ac6e1;
   padding-left: 2px;
 }
 .header-info__contact-email {
@@ -55,7 +55,7 @@
   line-height: 30px;
 }
 .header-info__contact-email-link {
-  color: #aae482;
+  color: #7ac6e1;
   padding-left: 2px;
 }
 .header-info__social-icons {
@@ -270,11 +270,11 @@
 }
 ._active > .main-navigation-min__item-link,
 ._active > .main-navigation-min__sub-item-link {
-  color: #66bd29;
+  color: #288fb4;
 }
 .no-touch ._active > .main-navigation-min__item-link:hover,
 .no-touch ._active > .main-navigation-min__sub-item-link:hover {
-  color: #66bd29;
+  color: #288fb4;
 }
 .main-navigation-min__items-wrp {
   padding: 0 24px;
@@ -365,7 +365,7 @@
   padding: 5px 0 15px;
   min-width: 200px;
   text-align: left;
-  border-top: 3px solid #66bd29;
+  border-top: 3px solid #288fb4;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.1);
 }
 .main-navigation-min__item:last-child .main-navigation-min__sub-item-list {
