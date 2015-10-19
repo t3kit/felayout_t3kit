@@ -49,31 +49,4 @@ module.exports = {
             'imagemin:big'
         ]
     },
-    // big: {
-    //     tasks: [
-    //         'copy:big',
-    //         'copy:faviconsMetaTagsBig',
-    //         'imagemin:big'
-    //     ]
-    // },
-    // site: {
-    //     tasks: [
-    //         'copy:site',
-    //         // 'replace'
-    //     ]
-    // },
-    // customizer: {
-    //     tasks: [
-    //         'copy:fonts',
-    //         'copy:images',
-    //         'copy:flags',
-    //         'copy:toRoot',
-    //         'assemble:customizer',
-    //         'import:main',
-    //         'import:jquery',
-    //         'import:bootstrap',
-    //         'import:components',
-    //         'import:local'
-    //     ],
-    // },
 };

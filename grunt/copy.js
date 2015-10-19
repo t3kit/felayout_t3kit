@@ -121,44 +121,4 @@ module.exports = {
             'us.svg'
         ]
     },
-    // customizerBase: {
-    //     expand: true,
-    //     dot: true,
-    //     cwd: '<%= dev %>',
-    //     dest: '<%= temp %>',
-    //     src: [
-    //         'templates/parts/**',
-    //         'templates/layouts/{,*/}*.*',
-    //         'styles/customVariables.less'
-    //     ]
-    // },
-    // customizerHelper: {
-    //     expand: true,
-    //     dot: true,
-    //     cwd: 'grunt/helpers',
-    //     dest: '<%= temp %>/templates/parts',
-    //     src: [
-    //         'customizer/{,*/}*.*'
-    //     ]
-    // },
-    // customizerComponents: {
-    //     expand: true,
-    //     dot: true,
-    //     cwd: '<%= dev %>',
-    //     dest: '<%= temp %>',
-    //     src: [
-    //         'bower_components/**'
-    //     ]
-    // }
-    // customizerComponents: {
-    //     expand: true,
-    //     dot: true,
-    //     cwd: '<%= dev %>',
-    //     dest: '<%= temp %>',
-    //     src: [
-    //         'bower_components/less/dist/less.min.js',
-    //         'bower_components/spectrum/spectrum.css',
-    //         'bower_components/spectrum/spectrum.js'
-    //     ]
-    // }
 };

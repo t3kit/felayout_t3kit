@@ -81,7 +81,7 @@ dev:
     #Dev
     - 'clean:tempFolder'
     - 'concurrent:devProcess'
-    # - 'autoprefixer'
+    - 'autoprefixer'
 
 localhost:
     #Localhost
@@ -113,38 +113,3 @@ updateAll:
     #Big
     - 'clean:bigFolder'
     - 'concurrent:bigProcess'
-
-
-
-# customizer:
-#     - 'clean:tempFolder'
-#     - 'copy:customizerBase'
-#     - 'copy:customizerHelper'
-#     - 'copy:customizerComponents'
-#     - 'import:mainLess'
-#     - 'import:bootstrapLess'
-#     - 'less:components'
-#     - 'replace:customizerHead'
-#     - 'replace:customizerScript'
-#     - 'replace:customizerBody'
-#     - 'concurrent:customizer'
-#     - 'connect:localhost'
-#     - 'notify:server'
-#     - 'watch'
-
-
-# publishCustomizerSite:
-#     - 'clean:tempFolder'
-#     - 'copy:customizerBase'
-#     - 'copy:customizerHelper'
-#     - 'copy:customizerComponents'
-#     - 'import:mainLess'
-#     - 'import:bootstrapLess'
-#     - 'less:components'
-#     - 'replace:customizerHead'
-#     - 'replace:customizerScript'
-#     - 'replace:customizerBody'
-#     - 'concurrent:customizer'
-#     - 'connect:localhost'
-#     - 'buildcontrol:customizerSite'
-
