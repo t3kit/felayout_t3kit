@@ -12,13 +12,4 @@ module.exports = {
             '<%= temp %>': ['<%= dev %>/templates/pages/**/*.hbs']
         },
     },
-    customizer: {
-        options: {
-            layoutdir: '<%= temp %>/templates/layouts',
-            partials: ['<%= temp %>/templates/parts/**/*.hbs']
-        },
-        files: {
-            '<%= temp %>': ['<%= dev %>/templates/pages/**/*.hbs']
-        },
-    }
 };

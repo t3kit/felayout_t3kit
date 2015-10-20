@@ -40,7 +40,9 @@
                         {{/is}}
                     {{/each}}
                 {{/if}}
-            <li  class="breadcrumbs__list-item _active">{{title}}</li>
+            {{#is data.shortcut false}}
+                <li  class="breadcrumbs__list-item _active">{{title}}</li>
+            {{/is}}
         </ol>
     </div>
 </div>
