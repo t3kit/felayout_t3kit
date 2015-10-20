@@ -66,7 +66,14 @@
 {{/is}}
 {{/is}}
 {{/each  }}">
+
+{{#is data.externalLink true}}
+<a class="main-navigation__sub-item-link" href="{{data.link}}">{{data.title}}</a>
+{{/is}}
+{{#is data.externalLink false}}
 <a class="main-navigation__sub-item-link" href="{{basename}}.html">{{data.title}}</a>
+{{/is}}
+
 </li>
 {{/is}}
 {{/is}}
@@ -74,7 +81,16 @@
 </ul>
 </li>
 {{else}}
-<li class="main-navigation__item js__main-navigation__item {{#is ../../../../page.title data.title}}_active{{/is}}"><a class="main-navigation__item-link" href="{{basename}}.html">{{data.title}}</a></li>
+<li class="main-navigation__item js__main-navigation__item {{#is ../../../../page.title data.title}}_active{{/is}}">
+
+{{#is data.externalLink true}}
+<a class="main-navigation__item-link" href="{{data.link}}">{{data.title}}</a>
+{{/is}}
+{{#is data.externalLink false}}
+<a class="main-navigation__item-link" href="{{basename}}.html">{{data.title}}</a>
+{{/is}}
+</li>
+
 {{/is}}
 {{/is }}
 {{/is }}
