@@ -118,6 +118,8 @@ module.exports = {
             'se.svg',
             'ch.svg',
             'gb.svg',
+            'ua.svg',
+            'ro.svg',
             'us.svg'
         ]
     },
