@@ -1,2 +1,2 @@
 // header
-@import 'main/header/header.js';
+@import 'header/header.js';

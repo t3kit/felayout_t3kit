@@ -24,7 +24,7 @@ module.exports = {
         tasks: ['less:headerMin']
     },
     lessLocal: {
-        files: ['<%= dev %>/styles/local.less'],
+        files: ['<%= dev %>/styles/local.less', '<%= dev %>/styles/local/{,*/}*.less'],
         tasks: ['less:local']
     },
     jsMain: {

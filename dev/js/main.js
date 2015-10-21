@@ -3,8 +3,8 @@
 // @import 'main/header/headerMin.js';
 
 // elements
-@import 'main/elements/slider.js';
-@import 'main/elements/carousel.js';
+@import 'main/contentElements/slider.js';
+@import 'main/contentElements/carousel.js';
 
 
 @import 'main/general.js';
