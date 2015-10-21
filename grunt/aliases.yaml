@@ -7,6 +7,8 @@ default:
     #Big
     - 'clean:bigFolder'
     - 'concurrent:bigProcess'
+    #Postcss
+    - 'postcss:big'
     #Localhost
     - 'localhost' #subtask
     #Watch
@@ -52,6 +54,8 @@ site:
     #Site
     - 'clean:siteFolder'
     - 'concurrent:siteProcess'
+    #Postcss
+    - 'postcss:site'
     #---------------
     - 'pushSite'
     #---------------
@@ -81,16 +85,11 @@ dev:
     #Dev
     - 'clean:tempFolder'
     - 'concurrent:devProcess'
-    - 'autoprefixer'
 
 localhost:
     #Localhost
     - 'connect:localhost'
     - 'notify:server'
-
-autoprefixer:
-    #Postcss
-    - 'postcss'
 
 pushSite:
     # Push to remote server with creating new branch
