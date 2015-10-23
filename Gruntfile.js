@@ -14,6 +14,7 @@ module.exports = function(grunt) {
             remoteBranch: remoteBranch
         },
         jitGrunt: {
+            jitGrunt: true,
             staticMappings: {
                 replace: 'grunt-text-replace',
                 buildcontrol: 'grunt-build-control'

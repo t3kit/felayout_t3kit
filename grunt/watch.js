@@ -4,7 +4,7 @@ module.exports = {
         tasks: ['assemble:allTemplates']
     },
     less: {
-        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/header.less', '!<%= dev %>/styles/headerMin.less'],
+        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/header.less', '!<%= dev %>/styles/headerMin.less', '!<%= dev %>/styles/header/{,*/}*.less'],
         tasks: ['less:main']
     },
     lessBootstrap: {
@@ -16,13 +16,13 @@ module.exports = {
         tasks: ['less:components']
     },
     lessHeader: {
-        files: ['<%= dev %>/styles/header.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
-        tasks: ['less:header']
+        files: ['<%= dev %>/styles/header.less', '<%= dev %>/styles/headerMin.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
+        tasks: ['less:header','less:headerMin']
     },
-    lessHeaderMin: {
-        files: ['<%= dev %>/styles/headerMin.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
-        tasks: ['less:headerMin']
-    },
+    // lessHeaderMin: {
+    //     files: ['<%= dev %>/styles/headerMin.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
+    //     tasks: ['less:headerMin']
+    // },
     lessLocal: {
         files: ['<%= dev %>/styles/local.less', '<%= dev %>/styles/local/{,*/}*.less'],
         tasks: ['less:local']
