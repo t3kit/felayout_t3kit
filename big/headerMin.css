@@ -22,7 +22,7 @@
   height: 30px;
   width: 100%;
   z-index: 1300;
-  background: #42476d;
+  background: red;
   font-size: 11px;
   max-width: 1600px;
   margin: 0 auto;
@@ -129,7 +129,7 @@
   right: 0;
   left: auto;
   top: 0;
-  background-color: #42476d;
+  background-color: red;
   z-index: 4000;
   text-align: right;
   padding-right: 30px;
@@ -148,7 +148,7 @@
   margin-top: -1px;
   right: 10px;
   margin-left: -11px;
-  background: #999999;
+  background: rgba(85, 85, 85, 0.5);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -259,13 +259,13 @@
   clear: both;
 }
 .main-navigation-min a {
-  color: #000000;
+  color: #555555;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(120, 120, 120, 0.3);
 }
 .no-touch .main-navigation-min a:hover {
-  color: #000000;
+  color: #555555;
   transition: color 0.1s linear;
 }
 ._active > .main-navigation-min__item-link,
@@ -340,7 +340,7 @@
   transition: background 0.1s linear;
 }
 .no-touch .main-navigation-min__item:hover {
-  background: #eeeeee;
+  background: #e6e6e6;
 }
 .main-navigation-min__item-link {
   display: block;
@@ -373,7 +373,7 @@
   left: auto;
 }
 .no-touch .main-navigation-min__sub-item:hover {
-  background: #eeeeee;
+  background: #e6e6e6;
 }
 .main-navigation-min__sub-item-link {
   padding: 10px 10px 10px 20px;
@@ -462,7 +462,7 @@
   padding-left: 3px;
   position: relative;
   font-size: 14px;
-  color: #999999;
+  color: rgba(85, 85, 85, 0.5);
 }
 .touch .main-navigation-min__item._sub .main-navigation-min__item-link-mobile {
   font-family: 'icons';
@@ -479,7 +479,7 @@
   position: relative;
   top: 0;
   font-size: 22px;
-  color: #999999;
+  color: rgba(85, 85, 85, 0.5);
   display: inherit;
   height: 100%;
   -webkit-align-items: center;
@@ -588,7 +588,7 @@
 }
 .main-navigation-min__search-btn:before {
   border-radius: 50%;
-  border: 2px solid #999999;
+  border: 2px solid rgba(85, 85, 85, 0.5);
   width: 14px;
   height: 14px;
   top: 50%;
@@ -597,7 +597,7 @@
   margin-left: -10px;
 }
 .main-navigation-min__search-btn:after {
-  background: #999999;
+  background: rgba(85, 85, 85, 0.5);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
   height: 2px;
@@ -614,7 +614,7 @@
   .main-navigation-min__search-btn:before {
     width: 18px;
     height: 18px;
-    border: 3px solid #999999;
+    border: 3px solid rgba(85, 85, 85, 0.5);
     top: 50%;
     left: 50%;
     margin-top: -12px;
@@ -655,7 +655,7 @@
   margin-top: -1px;
   left: 50%;
   margin-left: -11px;
-  background: #999999;
+  background: rgba(85, 85, 85, 0.5);
   opacity: 0;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);

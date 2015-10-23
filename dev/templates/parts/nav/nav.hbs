@@ -1,4 +1,4 @@
-{{#is this.showNavToggleBtn "true"}}
+{{#is this.showHeaderTop "false"}}
     <button type="button" class="main-navigation__toggle-btn js__main-navigation__toggle-btn" >
         <span>toggle menu</span>
     </button>
@@ -103,12 +103,13 @@
 {{/is }}
 {{/withSort}}
 
-
-{{#is this.showNavSearchForm "true"}}
-    <div class="main-navigation__search-btn-wrp">
-        <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
-    </div>
-    <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
+{{#is this.showHeaderTop "false"}}
+    {{#is this.showHeaderSearch "true"}}
+        <div class="main-navigation__search-btn-wrp">
+            <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+        </div>
+        <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
+    {{/is}}
 {{/is}}
 </ul>
 </div>

@@ -11,7 +11,7 @@
     z-index: 5000;
     width: 100%;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: @header-top-height;
     border-bottom: 1px solid @header-border-color;
 }
 
@@ -24,6 +24,7 @@
     font-size: 12px;
     width: 100%;
     box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
+    height: @header-top-height;
 }
 
 @media (min-width: 992px) {
@@ -54,7 +55,7 @@
 }
 
 .header-top__contact-tel-link {
-    color: lighten(@link-color, 25%);
+    color: lighten(@main-link-color, 25%);
     padding-left: 2px;
 }
 
@@ -66,7 +67,7 @@
 }
 
 .header-top__contact-email-link {
-    color: lighten(@link-color, 25%);
+    color: lighten(@main-link-color, 25%);
     padding-left: 2px;
 
 }
@@ -93,7 +94,7 @@
 }
 
 .no-touch .header-top > .nav > li > a:hover {
-    color: lighten(@header-top-color, 15%);
+    color: @main-link-hover-color;
     background: transparent;
 }
 
@@ -218,7 +219,8 @@
 }
 
 .no-touch .header-top__language-menu-btn:hover{
-    color: lighten(@header-top-color, 15%);
+    // color: lighten(@header-top-color, 15%);
+    color: fade(@header-top-color, 50%);
 }
 
 .header-top__language-menu-box-close-btn {
@@ -232,7 +234,7 @@
 }
 
 .header-top__language-menu-box-item{
-    color: @header-top-color;
+    color: fadein(@header-top-color, 90%);
     font-size: 12px;
     padding: 8px 14px;
     display: block;
@@ -240,7 +242,7 @@
 
 }
 .no-touch .header-top__language-menu-box-item:hover{
-    color: lighten(@header-top-color, 15%);
+    color: @main-link-hover-color;
 }
 
 
@@ -276,7 +278,8 @@
     margin: 0 auto;
     background: @header-middle-bg-color;
     width: 100%;
-    // height: @header-middle-height;
+    height: @header-middle-height;
+    overflow: hidden;
 
 }
 .header-middle{
@@ -284,6 +287,7 @@
     max-width: 1280px;
     .clearfix();
     padding: 10px 0;
+    height: 100%;
 }
 
 .header-middle__social-icons {
@@ -292,15 +296,21 @@
     text-align: center;
     // margin-top: 40px;
     display: block;
-    padding: 10px 0;
-    padding-top: 26px;
+    // padding: 10px 0;
+    // padding-top: 26px;
     // height: @header-middle-height;
 
 }
 .header-middle__social-icon {
     display: inline-block;
     padding: 0 4px;
-    color: @header-info-color;
+    color: @social-icons-bg-color;
+    padding-top: 12px;
+
+    // line-height: @header-middle-height;
+}
+.no-touch .header-middle__social-icon:hover {
+    color: @social-icons-hover-color;
 }
 .header-middle__social-icon .icons{
     font-size: 24px;
@@ -323,11 +333,11 @@
     // top: 30px;
     // left: 0;
     // line-height: @header-middle-height;
-        width: 120px;
+        width: @logo-width;
         display: inline-block;
 }
 .header-middle__logo-img{
-    display: inline-block;
+    // display: inline-block;
     // padding-left: 20px;
 }
 
@@ -339,19 +349,26 @@
     }
     .header-middle__logo-link{
         position: relative;
-        top: 8px;
-        left: 40px;
+        top: @logo-top;
+        left: @logo-left;
     }
     .header-middle__social-icons {
         float: right;
         width: 60%;
         text-align: right;
-        margin-top: 24px;
+        // margin-top: 24px;
+        // padding-top: 0;
+        padding-right: 10px;
+        height: 100%;
+    }
+    .header-middle__social-icon {
+        line-height: @header-middle-height;
         padding-top: 0;
     }
     .header-middle__social-icon .icons{
         font-size: 32px;
     }
+
 }
 
 
@@ -426,7 +443,7 @@
 
 .main-navigation {
     position: fixed;
-    top: 49px;
+    top: @header-top-height - 1px;
     left: 0;
     right: 0;
     width: 100%;
@@ -438,7 +455,7 @@
 
 .mobile-menu-opened .main-navigation {
     position: absolute;
-    top: 49px;
+    top: @header-top-height - 1px;
     left: 0;
     right: 0;
     -webkit-overflow-scrolling: touch;
@@ -591,13 +608,14 @@
     padding: 10px 14px;
     padding-left: 60px;
     display: block;
-    color: lighten(@nav-link-hover-color, 31%);
+    // color: lighten(@nav-link-hover-color, 20%);
+    color: fade(@nav-link-hover-color, 60%);
 
 }
 
 .no-touch .main-navigation__sub-item-link:hover {
     background: @nav-link-hover-background;
-    color: lighten(@nav-link-hover-color, 31%);
+    color: fade(@nav-link-hover-color, 60%);
 }
 
 ._active > .main-navigation__sub-item-link {
@@ -1035,7 +1053,7 @@
 .main-navigation__toggle-btn {
     position: fixed;
     width: 100%;
-    top: 0;
+    top: (@header-top-height - 49) / 2;
     left: 0;
     overflow: hidden;
     margin: 0;
@@ -1057,7 +1075,7 @@
 .header-top__main-navigation-toggle-btn .main-navigation__toggle-btn {
     position: relative;
     width: 70px;
-    top: auto;
+    top: (@header-top-height - 49) / 2;
     left: auto;
     z-index: 500;
 
@@ -1101,7 +1119,7 @@
 }
 
 .main-navigation__toggle-btn {
-    background-color: #fff;
+    background-color: @header-top-bg-color;
 }
 
 .main-navigation__toggle-btn span {
@@ -1125,7 +1143,7 @@
 }
 
 .mobile-menu-opened .main-navigation__toggle-btn {
-    background-color: #f3f3f3;
+    background-color: @header-top-bg-color;
 }
 
 .mobile-menu-opened .main-navigation__toggle-btn span {

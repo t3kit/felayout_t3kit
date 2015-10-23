@@ -25,14 +25,18 @@
 
 .no-touch .sub-navigation__link:hover {
     color: @sub-navigation-link-hover-color;
-    background: @nav-link-hover-background;
+    background: @sub-navigation-link-hover-bg;
 }
 
 .sub-navigation__link._active {
         background-color: @sub-navigation-link-hover-bg;
-        border-color: @sub-navigation-link-hover-bg;
+        border-color: @border-color;
         z-index: 2;
         position: relative;
+}
+.no-touch .sub-navigation__link._active:hover {
+        background-color: @sub-navigation-link-hover-bg;
+        // border-color: @sub-navigation-link-hover-bg;
 }
 
 .sub-navigation__link._level-2 {

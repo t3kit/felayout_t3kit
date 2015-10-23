@@ -1084,12 +1084,15 @@
 // BODY
 @main-body-bg:                  #fff;
 @main-text-color:               #000;
+@border-color:                  #eee;
+
+
 @main-link-color:               @main-color;
 @main-link-hover-color:         lighten(@main-link-color, 15%);
 
 
 // HEADER
-@header-info-color:             @grey-color;
+@header-info-color:             lighten(@main-text-color, 15%);
 @header-info-background:        @accent-color;
 @header-info-height:            30px;
 
@@ -1100,10 +1103,10 @@
 
 @header-top-height:             50px;
 @header-top-bg-color:           @main-body-bg;
-@header-top-color:              @grey-color;
+@header-top-color:              lighten(@main-text-color, 55%);
 @header-middle-height:          120px;
 @header-middle-bg-color:        @main-body-bg;
-@header-border-color:           #eee;
+@header-border-color:           @border-color;
 
 
 // Navigation
@@ -1114,7 +1117,7 @@
 @nav-link-hover-color:          @nav-link-color;
 @nav-link-active-color:         @main-color;
 @nav-link-active-hover-color:   @nav-link-active-color;
-@nav-link-hover-background:     @light-grey-color;
+@nav-link-hover-background:     darken(@main-body-bg, 10%);
 
 @nav-link-arrow-color:          @grey-color;
 
@@ -1122,6 +1125,10 @@
 
 @nav-search-btn-color:          @grey-color;
 
+
+// Social icons
+@social-icons-bg-color:         lighten(@main-text-color, 55%);
+@social-icons-hover-color:      lighten(@main-color, 15%);
 
 // Breadcrumbs
 @breadcrumbs-background:        @body-bg;
@@ -1191,8 +1198,8 @@
 
 @btn-font-weight:               normal;
 @btn-default-color:             @text-color;
-@btn-default-bg:                #fff;
-@btn-default-border:            #ddd;
+@btn-default-bg:                darken(@main-body-bg, 15%);
+@btn-default-border:            lighten(@main-body-bg, 10%);
 @btn-border-radius-base:        none;
 
 

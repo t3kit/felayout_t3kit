@@ -4,13 +4,13 @@
     {{#is this.showHeaderTop "true"}}
 
         <div class="header-top">
-            {{#is this.showHeaderTopToggleBtn "true"}}
+            {{!-- {{#is this.showHeaderTopToggleBtn "true"}} --}}
                 <div class="header-top__main-navigation-toggle-btn">
                     <button type="button" class="main-navigation__toggle-btn js__main-navigation__toggle-btn" >
                         <span>toggle menu</span>
                     </button>
                 </div>
-            {{/is}}
+            {{!-- {{/is}} --}}
             {{#is this.showHeaderTopContakts "true"}}
                 <div class="header-top__contact">
                     <div class="header-top__contact-tel">
@@ -43,7 +43,7 @@
                 </div>
             {{/is}}
 
-            {{#is this.showHeaderTopSearch "true"}}
+            {{#is this.showHeaderTop "true"}}
                 <div class="main-navigation__search-btn-wrp _header-top-search-btn">
                     <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
                 </div>
