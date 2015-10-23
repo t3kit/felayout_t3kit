@@ -103,13 +103,11 @@
 {{/is }}
 {{/withSort}}
 
-{{#is this.showHeaderTop "false"}}
-    {{#is this.showHeaderSearch "true"}}
-        <div class="main-navigation__search-btn-wrp">
-            <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
-        </div>
-        <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
-    {{/is}}
+{{#is this.showMainNavSearch "true"}}
+    <div class="main-navigation__search-btn-wrp">
+        <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+    </div>
+    <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
 {{/is}}
 </ul>
 </div>
