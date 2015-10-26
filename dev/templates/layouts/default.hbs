@@ -7,10 +7,21 @@
     <![endif]-->
 
     <!-- Header partials -->
-    {{ renderContent 'header'
+
+
+    {{!-- ================================================ --}}
+    {{!-- Two different of header. --}}
+    {{!-- To enable or disable chosen header you need to comment or uncomment appropriate header partial. Also there is possibility to to manipulate with elements in every header, just need to switch variables from false to true or vice versa. --}}
+
+
+    {{!-- Important! --}}
+    {{!-- Also need to add appropriate dependencies for every header element. You can find these dependencies in layout partials (head.hbs, scripts.hbs) --}}
+
+
+{{!--     {{ renderContent 'header'
         showHeaderTop="true"
         showHeaderTopToggleBtn="true"
-        showHeaderTopContakts="true"
+        showHeaderTopContacts="true"
         showHeaderTopLangMenu="true"
         showTopHeaderSearch="true"
         showHeaderTopNav="true"
@@ -21,10 +32,21 @@
 
         showMainNavSearch="false"
         navDropdown="true"
+    }} --}}
+
+    {{ renderContent 'headerMinimal'
+        showHeaderTop="true"
+        showHeaderTopContacts="true"
+        showHeaderTopLangMenu="true"
+        showHeaderTopNav="true"
+        showHeaderTopSocIcons="true"
+
+        showLogo="false"
+        showSearch="false"
+        navDropdown="true"
     }}
 
-    {{!-- {{>headerMinimal}} --}}
-
+    {{!-- ================================================ --}}
 
     <!-- pages -->
     {{>body}}

@@ -6,10 +6,14 @@
 // =========================================================
 // HEADER
 .header-wrp {
+    height: @nav-height + 1px;
+}
+.header-wrp._show-header-top{
     position: relative;
-    height: @header-info-height + @nav-height + 1px;
+    height: @header-top-height + @nav-height + 1px;
 }
 .header{
+    background: @nav-background-color;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,43 +23,48 @@
     transform: translateY(0);
     transition: -webkit-transform 0.3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
     transition: transform .3s cubic-bezier(0.6, -0.28, 0.74, 0.05);
+    box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
 }
 
-.header._hide-info{
-    -webkit-transform: translateY(-@header-info-height);
-    transform: translateY(-@header-info-height);
+._show-header-top .header._hide-info{
+    -webkit-transform: translateY(-@header-top-height);
+    transform: translateY(-@header-top-height);
 }
 
 
 // =========================================================
 // Header info
+.header-top-wrp{
+    border-bottom: 1px solid @border-color;
+    background: @header-top-bg-color;
+}
 .header-info{
     position: relative;
-    height: @header-info-height;
+    height: @header-top-height;
     width: 100%;
     z-index: 1300;
-    background: @header-info-background;
+    // background: @header-top-bg-color;
     .clearfix();
     font-size: 11px;
-    max-width: 1600px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
 .header-info__contact{
     float: left;
     display: none;
-    color: @header-info-color;
+    color: @header-top-color;
 }
 .header-info__contact-tel {
     display: inline-block;
     padding: 0 10px;
-    line-height: @header-info-height;
+    line-height: @header-top-height;
 }
 .header-info__contact-tel-title {
 
 }
 .header-info__contact-tel-link {
-    color: lighten(@link-color, 25%);
+    color: lighten(@main-link-color, 25%);
     padding-left: 2px;
 }
 .header-info__contact-email {
@@ -68,7 +77,7 @@
 
 }
 .header-info__contact-email-link {
-    color: lighten(@link-color, 25%);
+    color: lighten(@main-link-color, 25%);
     padding-left: 2px;
 
 }
@@ -81,11 +90,11 @@
 .header-info__social-icon {
     display: inline-block;
     padding: 0 4px;
-    color: @header-info-color;
+    color: @header-top-color;
 }
 .header-info__social-icon .icons{
     font-size: 18px;
-    line-height: @header-info-height;
+    line-height: @header-top-height;
 }
 
 .header-info .nav {
@@ -100,11 +109,11 @@
 }
 .header-info > .nav > li > a {
     padding: 0 14px;
-    line-height: @header-info-height;
-    color: @header-info-color;
+    line-height: @header-top-height;
+    color: @header-top-color;
 }
 .no-touch .header-info > .nav > li > a:hover {
-    color: lighten(@header-info-color, 15%);
+    color: @main-link-hover-color;
     background: transparent;
 }
 
@@ -147,7 +156,7 @@
     right: 0;
     left: auto;
     top: 0;
-    background-color: @header-info-background;
+    background-color: @header-top-bg-color;
     z-index: 4000;
     text-align: right;
     padding-right: 30px;
@@ -211,14 +220,14 @@
 
 .header-info__language-menu-btn{
     display: inline-block;
-    line-height: @header-info-height;
-    color: @header-info-color;
+    line-height: @header-top-height;
+    color: @header-top-color;
     font-size: 14px;
     padding: 0 20px;
 }
 
 .no-touch .header-info__language-menu-btn:hover{
-    color: lighten(@header-info-color, 15%);
+    color: fade(@header-top-color, 50%);
 }
 
 .header-info__language-menu-box-close-btn {
@@ -226,13 +235,13 @@
     right: 0;
     top: 0;
     width: 50px;
-    height: 50px;
+    height: @header-top-height;
     position: absolute;
     cursor: pointer;
 }
 
 .header-info__language-menu-box-item{
-    color: @header-info-color;
+    color: fadein(@header-top-color, 90%);
     font-size: 12px;
     padding: 8px 14px;
     display: block;
@@ -240,7 +249,7 @@
 
 }
 .no-touch .header-info__language-menu-box-item:hover{
-    color: lighten(@header-info-color, 15%);
+    color: @main-link-hover-color
 }
 
 
@@ -251,10 +260,10 @@
     .header-info__language-menu-box-item{
         display: inline-block;
         padding: 0 14px;
-        line-height: @header-info-height;
+        line-height: @header-top-height;
     }
     .header-info__language-menu-box-close-btn {
-        height: @header-info-height;
+        height: @header-top-height;
     }
 }
 @media (min-width: 992px) {
@@ -275,16 +284,15 @@
 // Navigation
 .main-navigation-min {
     position: relative;
-    border-top: 1px solid #eee;
     z-index: 1100;
-    box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
+    // box-shadow: 0 2px 2px -1px rgba(0,0,0,.3);
     top: 0;
     left: 0;
     width: 100%;
     -webkit-backface-visibility: hidden;
     background: @nav-background-color;
     .clearfix();
-    max-width: 1600px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
@@ -314,11 +322,42 @@
     width: 85%;
     float: left;
 }
+._no-search .main-navigation-min__items-wrp {
+    width: 100%;
+}
 
+// @media (min-width: 768px) {
+//     .main-navigation-min__items-wrp {
+//         // width: 90%;
+//     }
+// }
 @media (min-width: 768px) {
     .main-navigation-min__items-wrp {
         padding: 0 48px;
+        width: 75%;
+    }
+    ._no-search .main-navigation-min__items-wrp {
+        width: 85%;
+    }
+    ._no-logo .main-navigation-min__items-wrp {
         width: 90%;
+    }
+    ._no-logo._no-search .main-navigation-min__items-wrp {
+        width: 100%;
+    }
+}
+@media (min-width: 992px) {
+    .main-navigation-min__items-wrp {
+        width: 80%;
+    }
+    ._no-search .main-navigation-min__items-wrp {
+        width: 90%;
+    }
+    ._no-logo .main-navigation-min__items-wrp {
+        width: 90%;
+    }
+    ._no-logo._no-search .main-navigation-min__items-wrp {
+        width: 100%;
     }
 }
 
@@ -532,12 +571,6 @@
 }
 
 
-@media (min-width: 768px) {
-    .main-navigation-min__items-wrp {
-        width: 77%;
-    }
-}
-
 
 @media (min-width: 992px) {
     .main-navigation-min__item{
@@ -563,28 +596,30 @@
 .main-navigation-min__logo{
     display: none;
 }
-.main-navigation-min__logo-img{
-    display: inline-block;
-}
+
 
 @media (min-width: 768px) {
     .main-navigation-min__logo{
         float: left;
-        width: 13%;
-        padding-left: 20px;
+        width: 15%;
         z-index: 1330;
         background-color: @nav-background-color;
         position: relative;
         display: block;
-        line-height: @nav-height;
+    }
+    .header-middle__logo-link{
+        display: inline-block;
+        width: @logo-width;
+        position: relative;
+        top: @logo-top;
+        left: @logo-left;
     }
 
 }
 @media (min-width: 992px) {
     .main-navigation-min__logo{
-        padding-left: 26px;
+        width: 10%;
     }
-
 }
 
 

@@ -1,11 +1,12 @@
-<nav class="main-navigation-min js__main-navigation-min"  role="navigation">
+<nav class="main-navigation-min js__main-navigation-min{{#is this.showSearch "false"}} _no-search{{/is}}{{#is this.showLogo "false"}} _no-logo{{/is}}" role="navigation">
 
+{{#is this.showLogo "true"}}
 <div class="main-navigation-min__logo">
     <a class="header-middle__logo-link" href="index.html">
-        <img class="main-navigation-min__logo-img img-responsive" src="images/logo.png" alt="logo">
+        <img class="main-navigation-min__logo-img img-responsive" src="images/t3kit.png" alt="logo">
     </a>
 </div>
-
+{{/is}}
 
 <div class="main-navigation-min__items-wrp js__main-navigation-min__items-wrp">
 
@@ -15,7 +16,7 @@
 {{#is data.hideInMenu false}}
 {{#is data.menuLevel 1}}
 {{#is data.subpages true}}
-<li class="main-navigation-min__item js__main-navigation-min__item {{#is ../../../../this.dropdown "true"}}_sub {{/is}}{{#is ../../../../page.title data.title}}_active{{/is}}
+<li class="main-navigation-min__item js__main-navigation-min__item {{#is ../../../../this.navDropdown "true"}}_sub {{/is}}{{#is ../../../../page.title data.title}}_active{{/is}}
 {{#each ../../../../pages }}
 {{#is data.menuLevel 2}}
 {{#is ../../../../this.data.title data.parent}}
@@ -88,10 +89,12 @@
 <div class="main-navigation-min-button-prev js__main-navigation-min-button-prev"></div>
 </div>
 
-<div class="main-navigation-min__search-btn-wrp">
-    <a class="main-navigation-min__search-btn js__main-navigation-min__search-btn" href="">Search<span></span></a>
-</div>
-<div class="main-navigation-min__search-box js__main-navigation-min__search-box" ><input placeholder="Search..." type="search"></div>
+{{#is this.showSearch "true"}}
+    <div class="main-navigation-min__search-btn-wrp">
+        <a class="main-navigation-min__search-btn js__main-navigation-min__search-btn" href="">Search<span></span></a>
+    </div>
+    <div class="main-navigation-min__search-box js__main-navigation-min__search-box" ><input placeholder="Search..." type="search"></div>
+{{/is }}
 
 
 </nav>
