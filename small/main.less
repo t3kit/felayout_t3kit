@@ -1056,88 +1056,83 @@
 
 
 // Custom Variables
-// Primary and accent color variables
-@main-color:                    #288FB4;   //lighten(@main-color, 15%); or  darken(@main-color, 15%);
-@accent-color:                  #42476d;
-
-@grey-color:                    #999;
-@light-grey-color:              #eee;
-@deep-grey-color:               #555;
-
+// Primary color
+@main-color:                    #288FB4; //#288FB4
 
 // BODY
 @main-body-bg:                  #fff;
-@main-text-color:               #000;
+@main-text-color:               #555;
 @border-color:                  #eee;
 
 
 @main-link-color:               @main-color;
-@main-link-hover-color:         lighten(@main-link-color, 15%);
+@main-link-hover-color:         lighten(@main-color, 15%);
+
 
 
 // HEADER
-@header-info-color:             lighten(@main-text-color, 15%);
-@header-info-background:        @accent-color;
-@header-info-height:            30px;
-
-
-@header-info-color:             @grey-color;
-@header-info-background:        @accent-color;
-@header-info-height:            30px;
-
 @header-top-height:             50px;
 @header-top-bg-color:           @main-body-bg;
-@header-top-color:              lighten(@main-text-color, 55%);
+@header-top-color:              fade(@main-text-color, 50%);
+
 @header-middle-height:          120px;
 @header-middle-bg-color:        @main-body-bg;
 @header-border-color:           @border-color;
 
+// Logo
+@logo-top:                      24px;
+@logo-left:                     40px;
+@logo-width:                    120px;
+
 
 // Navigation
 @nav-height:                    64px;
-// @nav-border-color:              @light-grey-color;
-// @nav-border-color:              green;
 @nav-link-color:                @main-text-color;
 @nav-link-hover-color:          @nav-link-color;
 @nav-link-active-color:         @main-color;
 @nav-link-active-hover-color:   @nav-link-active-color;
 @nav-link-hover-background:     darken(@main-body-bg, 10%);
 
-@nav-link-arrow-color:          @grey-color;
+@nav-link-arrow-color:          fade(@main-text-color, 50%);
 
 @nav-background-color:          @main-body-bg;
 
-@nav-search-btn-color:          @grey-color;
+@nav-search-btn-color:          fade(@main-text-color, 50%);
 
 
 // Social icons
-@social-icons-bg-color:         lighten(@main-text-color, 55%);
+@social-icons-bg-color:         fade(@main-text-color, 50%);
 @social-icons-hover-color:      lighten(@main-color, 15%);
 
 // Breadcrumbs
-@breadcrumbs-background:        @body-bg;
-@breadcrumbs-link-color:        @deep-grey-color;
+@breadcrumbs-background:        @main-body-bg;
+@breadcrumbs-link-color:        @main-text-color;
 @breadcrumbs-link-active-color: @main-color;
-@breadcrumbs-link-hover-color:  lighten(@deep-grey-color, 15%);
+@breadcrumbs-link-hover-color:  lighten(@main-text-color, 15%);
 
 
 // Sub navigation
 @sub-navigation-background:         @main-body-bg;
-@sub-navigation-border:             @light-grey-color;
+@sub-navigation-border:             @border-color;
 @sub-navigation-active-border:      @main-color;
-@sub-navigation-link-color:         @nav-link-color;
+@sub-navigation-link-color:         @main-text-color;
 @sub-navigation-link-hover-color:   @sub-navigation-link-color;
-@sub-navigation-link-hover-bg:      @light-grey-color;
+@sub-navigation-link-hover-bg:      darken(@main-body-bg, 15%);
+
 @sub-navigation-link-active-color:  @sub-navigation-link-color;
 @sub-navigation-link-active-bg:     @sub-navigation-link-hover-bg;
 
 
 
-// Footer
-@footer-background:             #1D556F; //#323232;
-@footer-color:                  #ddd; //#acacac;
+
+// FOOTER
+@footer-background:             #1D556F; //#1D556F;
+@footer-color:                  #eee; //#eee;
 @footer-link-color:             @footer-color;
 @footer-link-hover-color:       @main-link-hover-color;
+
+
+
 
 
 // =========================================================
@@ -1204,63 +1199,25 @@
 @panel-border-radius:         @border-radius-base;
 
 @panel-default-text:            @main-text-color;
-@panel-default-border:          @light-grey-color;
-@panel-default-heading-bg:      @light-grey-color;
+// @panel-default-border:          @light-grey-color;
+// @panel-default-heading-bg:      @light-grey-color;
 
 
 //== Tabs
-@nav-tabs-border-color:                     @light-grey-color;
+// @nav-tabs-border-color:                     @light-grey-color;
 
-@nav-tabs-link-hover-border-color:          @light-grey-color;
+// @nav-tabs-link-hover-border-color:          @light-grey-color;
 
 @nav-tabs-active-link-hover-bg:             @main-body-bg;
 @nav-tabs-active-link-hover-color:          @main-text-color;
-@nav-tabs-active-link-hover-border-color:   @light-grey-color;
+// @nav-tabs-active-link-hover-border-color:   @light-grey-color;
 
 
 //== Pills
-@nav-pills-active-link-hover-bg:            @light-grey-color;
+// @nav-pills-active-link-hover-bg:            @light-grey-color;
 @nav-pills-active-link-hover-color:         @main-text-color;
 
 
-
-// TEMP
-
-// Main Color
-// @t3-main-color:             #66bd29;//#66bd29
-// @t3-main-color-hover:       #91cf65;//#91cf65
-
-// Footer
-// @footer-bg-color:           #323232;//#323232
-// @footer-color:              #acacac;//#acacac
-
-
-
-
-
-
-
-
-
-// @main-color:                    #66bd29;
-
-// @main-body-bg:                  #fff;
-// @main-text-color:               #000;
-
-// @header-top-height:             50px;
-// @header-top-color:              @grey-color;
-// @header-border-color:           #eee;
-
-
-// @nav-height:                    64px;
-// @nav-link-color:                @main-text-color;
-// @nav-link-hover-background:     @light-grey-color;
-
-
-// @footer-background:             #323232;
-// @footer-color:                  #acacac;
-// @footer-link-color:             @footer-color;
-// @footer-link-hover-color:       @main-color;
 
 
 // ICONS
@@ -2020,6 +1977,7 @@
 
 
 // typicalContentElements
+// Special menus
 .ce-menu {
     list-style: none;
     padding-left: 14px;
@@ -2029,19 +1987,12 @@
     padding-left: 25px;
 }
 
-.divider hr {
-    border-color: #e3e3e3;
+// Divider
+.ce-div {
+    border-top: 1px solid @border-color;
 }
 
-.icon-t3-mandatory {
-    position: relative;
-    line-height: 1;
-    color: #999;
-    display: inline-block;
-    top: 3px;
-    padding-left: 5px;
-}
-
+// @import "main/typicalContentElements/mailForm.less";
 
 
 
@@ -2395,7 +2346,7 @@
 // === Breadcrumbs =========================================
 // =========================================================
 .breadcrumbs {
-    border-bottom: 1px solid @light-grey-color;
+    border-bottom: 1px solid @border-color;
     margin-bottom: 30px;
     background: @breadcrumbs-background;
 }
@@ -2465,14 +2416,18 @@
 
 .no-touch .sub-navigation__link:hover {
     color: @sub-navigation-link-hover-color;
-    background: @nav-link-hover-background;
+    background: @sub-navigation-link-hover-bg;
 }
 
 .sub-navigation__link._active {
         background-color: @sub-navigation-link-hover-bg;
-        border-color: @sub-navigation-link-hover-bg;
+        border-color: @border-color;
         z-index: 2;
         position: relative;
+}
+.no-touch .sub-navigation__link._active:hover {
+        background-color: @sub-navigation-link-hover-bg;
+        // border-color: @sub-navigation-link-hover-bg;
 }
 
 .sub-navigation__link._level-2 {

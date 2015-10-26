@@ -1072,88 +1072,83 @@
 
 
 // Custom Variables
-// Primary and accent color variables
-@main-color:                    #288FB4;   //lighten(@main-color, 15%); or  darken(@main-color, 15%);
-@accent-color:                  #42476d;
-
-@grey-color:                    #999;
-@light-grey-color:              #eee;
-@deep-grey-color:               #555;
-
+// Primary color
+@main-color:                    #288FB4; //#288FB4
 
 // BODY
 @main-body-bg:                  #fff;
-@main-text-color:               #000;
+@main-text-color:               #555;
 @border-color:                  #eee;
 
 
 @main-link-color:               @main-color;
-@main-link-hover-color:         lighten(@main-link-color, 15%);
+@main-link-hover-color:         lighten(@main-color, 15%);
+
 
 
 // HEADER
-@header-info-color:             lighten(@main-text-color, 15%);
-@header-info-background:        @accent-color;
-@header-info-height:            30px;
-
-
-@header-info-color:             @grey-color;
-@header-info-background:        @accent-color;
-@header-info-height:            30px;
-
 @header-top-height:             50px;
 @header-top-bg-color:           @main-body-bg;
-@header-top-color:              lighten(@main-text-color, 55%);
+@header-top-color:              fade(@main-text-color, 50%);
+
 @header-middle-height:          120px;
 @header-middle-bg-color:        @main-body-bg;
 @header-border-color:           @border-color;
 
+// Logo
+@logo-top:                      24px;
+@logo-left:                     40px;
+@logo-width:                    120px;
+
 
 // Navigation
 @nav-height:                    64px;
-// @nav-border-color:              @light-grey-color;
-// @nav-border-color:              green;
 @nav-link-color:                @main-text-color;
 @nav-link-hover-color:          @nav-link-color;
 @nav-link-active-color:         @main-color;
 @nav-link-active-hover-color:   @nav-link-active-color;
 @nav-link-hover-background:     darken(@main-body-bg, 10%);
 
-@nav-link-arrow-color:          @grey-color;
+@nav-link-arrow-color:          fade(@main-text-color, 50%);
 
 @nav-background-color:          @main-body-bg;
 
-@nav-search-btn-color:          @grey-color;
+@nav-search-btn-color:          fade(@main-text-color, 50%);
 
 
 // Social icons
-@social-icons-bg-color:         lighten(@main-text-color, 55%);
+@social-icons-bg-color:         fade(@main-text-color, 50%);
 @social-icons-hover-color:      lighten(@main-color, 15%);
 
 // Breadcrumbs
-@breadcrumbs-background:        @body-bg;
-@breadcrumbs-link-color:        @deep-grey-color;
+@breadcrumbs-background:        @main-body-bg;
+@breadcrumbs-link-color:        @main-text-color;
 @breadcrumbs-link-active-color: @main-color;
-@breadcrumbs-link-hover-color:  lighten(@deep-grey-color, 15%);
+@breadcrumbs-link-hover-color:  lighten(@main-text-color, 15%);
 
 
 // Sub navigation
 @sub-navigation-background:         @main-body-bg;
-@sub-navigation-border:             @light-grey-color;
+@sub-navigation-border:             @border-color;
 @sub-navigation-active-border:      @main-color;
-@sub-navigation-link-color:         @nav-link-color;
+@sub-navigation-link-color:         @main-text-color;
 @sub-navigation-link-hover-color:   @sub-navigation-link-color;
-@sub-navigation-link-hover-bg:      @light-grey-color;
+@sub-navigation-link-hover-bg:      darken(@main-body-bg, 15%);
+
 @sub-navigation-link-active-color:  @sub-navigation-link-color;
 @sub-navigation-link-active-bg:     @sub-navigation-link-hover-bg;
 
 
 
-// Footer
-@footer-background:             #1D556F; //#323232;
-@footer-color:                  #ddd; //#acacac;
+
+// FOOTER
+@footer-background:             #1D556F; //#1D556F;
+@footer-color:                  #eee; //#eee;
 @footer-link-color:             @footer-color;
 @footer-link-hover-color:       @main-link-hover-color;
+
+
+
 
 
 // =========================================================
@@ -1220,63 +1215,25 @@
 @panel-border-radius:         @border-radius-base;
 
 @panel-default-text:            @main-text-color;
-@panel-default-border:          @light-grey-color;
-@panel-default-heading-bg:      @light-grey-color;
+// @panel-default-border:          @light-grey-color;
+// @panel-default-heading-bg:      @light-grey-color;
 
 
 //== Tabs
-@nav-tabs-border-color:                     @light-grey-color;
+// @nav-tabs-border-color:                     @light-grey-color;
 
-@nav-tabs-link-hover-border-color:          @light-grey-color;
+// @nav-tabs-link-hover-border-color:          @light-grey-color;
 
 @nav-tabs-active-link-hover-bg:             @main-body-bg;
 @nav-tabs-active-link-hover-color:          @main-text-color;
-@nav-tabs-active-link-hover-border-color:   @light-grey-color;
+// @nav-tabs-active-link-hover-border-color:   @light-grey-color;
 
 
 //== Pills
-@nav-pills-active-link-hover-bg:            @light-grey-color;
+// @nav-pills-active-link-hover-bg:            @light-grey-color;
 @nav-pills-active-link-hover-color:         @main-text-color;
 
 
-
-// TEMP
-
-// Main Color
-// @t3-main-color:             #66bd29;//#66bd29
-// @t3-main-color-hover:       #91cf65;//#91cf65
-
-// Footer
-// @footer-bg-color:           #323232;//#323232
-// @footer-color:              #acacac;//#acacac
-
-
-
-
-
-
-
-
-
-// @main-color:                    #66bd29;
-
-// @main-body-bg:                  #fff;
-// @main-text-color:               #000;
-
-// @header-top-height:             50px;
-// @header-top-color:              @grey-color;
-// @header-border-color:           #eee;
-
-
-// @nav-height:                    64px;
-// @nav-link-color:                @main-text-color;
-// @nav-link-hover-background:     @light-grey-color;
-
-
-// @footer-background:             #323232;
-// @footer-color:                  #acacac;
-// @footer-link-color:             @footer-color;
-// @footer-link-hover-color:       @main-color;
 
 
 // HEADER
@@ -1293,7 +1250,7 @@
     z-index: 5000;
     width: 100%;
     margin: 0 auto;
-    padding-bottom: 50px;
+    padding-bottom: @header-top-height;
     border-bottom: 1px solid @header-border-color;
 }
 
@@ -1306,6 +1263,7 @@
     font-size: 12px;
     width: 100%;
     box-shadow: 0 2px 2px -1px rgba(0,0,0,.1);
+    height: @header-top-height;
 }
 
 @media (min-width: 992px) {
@@ -1328,7 +1286,7 @@
 .header-top__contact-tel {
     display: inline-block;
     padding: 0 10px;
-    line-height: @header-info-height;
+    line-height: @header-top-height;
 }
 
 .header-top__contact-tel-title {
@@ -1336,7 +1294,7 @@
 }
 
 .header-top__contact-tel-link {
-    color: lighten(@link-color, 25%);
+    color: lighten(@main-link-color, 25%);
     padding-left: 2px;
 }
 
@@ -1348,7 +1306,7 @@
 }
 
 .header-top__contact-email-link {
-    color: lighten(@link-color, 25%);
+    color: lighten(@main-link-color, 25%);
     padding-left: 2px;
 
 }
@@ -1375,7 +1333,7 @@
 }
 
 .no-touch .header-top > .nav > li > a:hover {
-    color: lighten(@header-top-color, 15%);
+    color: @main-link-hover-color;
     background: transparent;
 }
 
@@ -1500,7 +1458,8 @@
 }
 
 .no-touch .header-top__language-menu-btn:hover{
-    color: lighten(@header-top-color, 15%);
+    // color: lighten(@header-top-color, 15%);
+    color: fade(@header-top-color, 50%);
 }
 
 .header-top__language-menu-box-close-btn {
@@ -1514,7 +1473,7 @@
 }
 
 .header-top__language-menu-box-item{
-    color: @header-top-color;
+    color: fadein(@header-top-color, 90%);
     font-size: 12px;
     padding: 8px 14px;
     display: block;
@@ -1522,7 +1481,7 @@
 
 }
 .no-touch .header-top__language-menu-box-item:hover{
-    color: lighten(@header-top-color, 15%);
+    color: @main-link-hover-color;
 }
 
 
@@ -1558,7 +1517,8 @@
     margin: 0 auto;
     background: @header-middle-bg-color;
     width: 100%;
-    // height: @header-middle-height;
+    height: @header-middle-height;
+    overflow: hidden;
 
 }
 .header-middle{
@@ -1566,6 +1526,7 @@
     max-width: 1280px;
     .clearfix();
     padding: 10px 0;
+    height: 100%;
 }
 
 .header-middle__social-icons {
@@ -1574,8 +1535,8 @@
     text-align: center;
     // margin-top: 40px;
     display: block;
-    padding: 10px 0;
-    padding-top: 26px;
+    // padding: 10px 0;
+    // padding-top: 26px;
     // height: @header-middle-height;
 
 }
@@ -1583,6 +1544,9 @@
     display: inline-block;
     padding: 0 4px;
     color: @social-icons-bg-color;
+    padding-top: 12px;
+
+    // line-height: @header-middle-height;
 }
 .no-touch .header-middle__social-icon:hover {
     color: @social-icons-hover-color;
@@ -1608,11 +1572,11 @@
     // top: 30px;
     // left: 0;
     // line-height: @header-middle-height;
-        width: 120px;
+        width: @logo-width;
         display: inline-block;
 }
 .header-middle__logo-img{
-    display: inline-block;
+    // display: inline-block;
     // padding-left: 20px;
 }
 
@@ -1624,20 +1588,26 @@
     }
     .header-middle__logo-link{
         position: relative;
-        top: 8px;
-        left: 40px;
+        top: @logo-top;
+        left: @logo-left;
     }
     .header-middle__social-icons {
         float: right;
         width: 60%;
         text-align: right;
-        margin-top: 24px;
-        padding-top: 0;
+        // margin-top: 24px;
+        // padding-top: 0;
         padding-right: 10px;
+        height: 100%;
+    }
+    .header-middle__social-icon {
+        line-height: @header-middle-height;
+        padding-top: 0;
     }
     .header-middle__social-icon .icons{
         font-size: 32px;
     }
+
 }
 
 
@@ -1712,7 +1682,7 @@
 
 .main-navigation {
     position: fixed;
-    top: 49px;
+    top: @header-top-height - 1px;
     left: 0;
     right: 0;
     width: 100%;
@@ -1724,7 +1694,7 @@
 
 .mobile-menu-opened .main-navigation {
     position: absolute;
-    top: 49px;
+    top: @header-top-height - 1px;
     left: 0;
     right: 0;
     -webkit-overflow-scrolling: touch;
@@ -1877,13 +1847,14 @@
     padding: 10px 14px;
     padding-left: 60px;
     display: block;
-    color: lighten(@nav-link-hover-color, 31%);
+    // color: lighten(@nav-link-hover-color, 20%);
+    color: fade(@nav-link-hover-color, 60%);
 
 }
 
 .no-touch .main-navigation__sub-item-link:hover {
     background: @nav-link-hover-background;
-    color: lighten(@nav-link-hover-color, 31%);
+    color: fade(@nav-link-hover-color, 60%);
 }
 
 ._active > .main-navigation__sub-item-link {
@@ -2321,7 +2292,7 @@
 .main-navigation__toggle-btn {
     position: fixed;
     width: 100%;
-    top: 0;
+    top: (@header-top-height - 49) / 2;
     left: 0;
     overflow: hidden;
     margin: 0;
@@ -2343,7 +2314,7 @@
 .header-top__main-navigation-toggle-btn .main-navigation__toggle-btn {
     position: relative;
     width: 70px;
-    top: auto;
+    top: (@header-top-height - 49) / 2;
     left: auto;
     z-index: 500;
 
