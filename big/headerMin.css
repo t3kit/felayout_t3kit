@@ -438,7 +438,7 @@
 }
 .main-navigation-min-button-next.swiper-button-disabled,
 .main-navigation-min-button-prev.swiper-button-disabled {
-  color: #eee;
+  color: rgba(85, 85, 85, 0.5);
 }
 .main-navigation-min-button-next {
   right: -1px;
