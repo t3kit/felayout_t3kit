@@ -4,6 +4,19 @@
 default:
     #Dev
     - 'dev' #subtask
+    #Postcss
+    # - 'postcss:big'
+    #Localhost
+    - 'localhost' #subtask
+    #Watch
+    - 'focus:default'
+
+# ==================================
+# Alias for Big project
+# ==================================
+big:
+    #Dev
+    - 'dev' #subtask
     #Big
     - 'clean:bigFolder'
     - 'concurrent:bigProcess'
@@ -15,27 +28,19 @@ default:
     - 'focus:big'
 
 # ==================================
-# Alias for Big project
-# ==================================
-big:
-    #Big
-    - 'default'
-
-# ==================================
 # Alias for Medium project
 # ==================================
 medium:
     #Medium
-    - 'default'
+    - 'big'
 
 
 # ==================================
 # Small project
 # ==================================
 small:
-    #Defaul
-    - 'clean:tempFolder'
-    - 'concurrent:devProcess'
+    #Dev
+    - 'dev' #subtask
     #Small
     - 'clean:smallFolder'
     - 'concurrent:smallProcess'
