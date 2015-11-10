@@ -1,83 +1,15 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{title}}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="robots" content="noindex">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
+    {{>headMeta}}
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="/manifest.json">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="apple-mobile-web-app-title" content="t3kit">
-<meta name="application-name" content="t3kit">
-<meta name="msapplication-TileColor" content="#2b5797">
-<meta name="msapplication-TileImage" content="/mstile-144x144.png">
-<meta name="theme-color" content="#ffffff">
-
-    <!-- Page styles -->
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="header.css">
-    {{!-- <link rel="stylesheet" href="headerMin.css"> --}}
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="local.css">
+    {{>headFavicons}}
 
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    {{>headFonts}}
+
+    <!-- Page styles -->
+    {{>headStyles}}
 
     <!-- Scripts -->
-    <script>
-        // touchSupport
-        touchSupport = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-        if (!touchSupport) {
-            document.documentElement.className += " no-touch";
-        }
-        else{
-            document.documentElement.className += " touch";
-        }
-        // IE version
-        var uA = window.navigator.userAgent;
-        var msie = uA.indexOf('MSIE ');
-        var trident = uA.indexOf('Trident/');
-        var ie;
-        function detectIE () {
-            if (msie > 0) {
-                // IE 10 or older => return version number
-                ie = 'ie' + parseInt(uA.substring(msie + 5, uA.indexOf('.', msie)), 10);
-                return ie;
-            }
-            if (trident > 0) {
-                // IE 11 (or newer) => return version number
-                var rv = uA.indexOf('rv:');
-                ie = 'ie' + parseInt(uA.substring(rv + 3, uA.indexOf('.', rv)), 10);
-                return ie;
-            }
-        return ie = 'nonIE';
-        }
-        detectIE();
-        if (ie === 'nonIE') {
-            document.documentElement.className += (' ' + ie);
-        } else{
-            document.documentElement.className += (' ' + (ie + ' ' + 'IE'));
-        };
-    </script>
+    {{>headScripts}}
 </head>
