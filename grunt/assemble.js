@@ -1,6 +1,5 @@
 module.exports = {
     options: {
-        postprocess: require('pretty'),
         flatten: true,
         layout: 'default.hbs',
         layoutdir: '<%= dev %>/templates/layouts',
