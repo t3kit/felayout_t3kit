@@ -1,17 +1,11 @@
 ---
-#layout: default.hbs # by default it is default.hbs, but you can specify another one
+#layout: default.hbs #by default it is default.hbs, but you can specify another one
 title: Mail Form #title in menu
-number: 2 #position in menu
-menuLevel: 3
+position: 2 #position in menu
 hideInMenu: false #if true, will be hidden in menu
 hideInBreadcrumbs: false #if true, will be hidden in breadcrumbs
-#subpages: false #(only for first-level pages)
-parent: Content #(only for second-level pages)
-parent2: Form Elements #(only for third-level pages)
-#parent3: #(only for fourth-level pages)
-#parent4: #(only for fifth-level pages)
-externalLink: false #(only for when page is link to external site)
-#link: http://www.pixelant.se #(external link)
+#subpages: true #only for first-level pages
+externalLink: false #just add link (http://link.com) instead of "false" to use this page like a link to external page.
 ---
 
 {{> breadcrumbs}}

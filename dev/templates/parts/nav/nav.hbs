@@ -3,112 +3,76 @@
         <span>toggle menu</span>
     </button>
 {{/is}}
+
 <nav class="main-navigation js__main-navigation" role="navigation">
+    <div class="main-navigation__items-wrp js__navigation__items-wrp">
+        <ul class="main-navigation__items-list js__main-navigation__items-list">
 
-<div class="main-navigation__items-wrp js__navigation__items-wrp">
+            {{!add navigation data}}
+            {{!grunt/helpers/helper-addNavData.js) }}
+            {{addNavData}}
 
-<ul class="main-navigation__items-list js__main-navigation__items-list">
+            {{!display main menu}}
+            {{!grunt/helpers/helper-mainMenu_firstLevel.js) }}
+            {{~#mainMenu_firstLevel pages~}}
 
-{{#withSort pages "data.number"}}
-{{#is data.hideInMenu false}}
-{{#is data.menuLevel 1}}
-{{#is data.subpages true}}
-<li class="main-navigation__item js__main-navigation__item {{#is ../../../../this.navDropdown "true"}}_sub {{/is}}{{#is ../../../../page.title data.title}}_active{{/is}}
-{{#each ../../../../pages }}
-{{#is data.menuLevel 2}}
-{{#is ../../../../this.data.title data.parent}}
-{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{/each}}
-{{#each ../../../../pages }}
-{{#is data.menuLevel 3}}
-{{#is ../../../../this.data.title data.parent}}
-{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{/each}}
-{{#each ../../../../pages }}
-{{#is data.menuLevel 4}}
-{{#is ../../../../this.data.title data.parent}}
-{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{/each}}
-{{#each ../../../../pages }}
-{{#is data.menuLevel 5}}
-{{#is ../../../../this.data.title data.parent}}
-{{#is ../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{/each}}">
+                {{!if subpages exists}}
+                {{~#if subpages~}}
+                    <li class="main-navigation__item js__main-navigation__item {{#if ../../this.navDropdown }}_sub {{/if}} {{#if this.isCurrentPage}} _active{{/if}}
+                    {{!add "active" class if some of children also active}}
+                    {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
+                    {{~#ifChildrensActive_addClass ../../pages ~}}
+                        _active
+                    {{~/ifChildrensActive_addClass~}}">
 
-{{#is data.externalLink true}}
-<a  href="{{data.link}}" class="main-navigation__item-link js__main-navigation__item-link" >{{data.title}}</a>
-{{/is}}
-{{#is data.externalLink false}}
-<a  href="{{basename}}.html" class="main-navigation__item-link js__main-navigation__item-link" >{{data.title}}</a>
-{{/is}}
+                        {{~#is data.externalLink false~}}
+                            <a  href="{{basename}}.html" class="main-navigation__item-link js__main-navigation__item-link" >{{data.title}}</a>
+                        {{~else~}}
+                            <a  href="{{data.externalLink}}" class="main-navigation__item-link js__main-navigation__item-link" >{{data.title}}</a>
+                        {{~/is~}}
+                        <a href="{{basename}}.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a>
 
-<a href="{{basename}}.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a>
-<ul class="main-navigation__sub-item-list">
-{{#withSort ../../../../pages "data.number"}}
-{{#is data.menuLevel 2}}
-{{#is ../../../../this.data.title data.parent}}
-<li class="main-navigation__sub-item {{#is ../../../../../../../page.title  data.title}}_active{{/is}}
-{{#each ../../../../../../../pages }}
-{{#is data.menuLevel 3}}
-{{#is ../../../../this.data.title data.parent2}}
-{{#is ../../../../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{#is data.menuLevel 4}}
-{{#is ../../../../this.data.title data.parent2}}
-{{#is ../../../../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{#is data.menuLevel 5}}
-{{#is ../../../../this.data.title data.parent2}}
-{{#is ../../../../../../../../../../page.title  data.title}}_active{{/is}}
-{{/is}}
-{{/is}}
-{{/each  }}">
+                        <ul class="main-navigation__sub-item-list">
 
-{{#is data.externalLink true}}
-<a class="main-navigation__sub-item-link" href="{{data.link}}">{{data.title}}</a>
-{{/is}}
-{{#is data.externalLink false}}
-<a class="main-navigation__sub-item-link" href="{{basename}}.html">{{data.title}}</a>
-{{/is}}
+                            {{!build sub menu level 2}}
+                            {{!grunt/helpers/helper-submenu.js}}
+                            {{~#subMenu ../../pages 2~}}
+                                <li class="main-navigation__sub-item {{#if this.isCurrentPage}} _active{{/if}}
+                                {{!add "active" class if some of children also active}}
+                                {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
+                                {{~#ifChildrensActive_addClass ../../../pages ~}}
+                                    _active
+                                {{~/ifChildrensActive_addClass~}}">
+                                    {{~#is data.externalLink false~}}
+                                        <a class="main-navigation__sub-item-link" href="{{basename}}.html">{{data.title}}</a>
+                                    {{~else~}}
+                                        <a class="main-navigation__sub-item-link" href="{{data.externalLink}}">{{data.title}}</a>
+                                    {{~/is~}}
+                                </li>
+                            {{~/subMenu~}}
 
-</li>
-{{/is}}
-{{/is}}
-{{/withSort  }}
-</ul>
-</li>
-{{else}}
-<li class="main-navigation__item js__main-navigation__item {{#is ../../../../page.title data.title}}_active{{/is}}">
+                        </ul>
+                    </li>
 
-{{#is data.externalLink true}}
-<a class="main-navigation__item-link" href="{{data.link}}">{{data.title}}</a>
-{{/is}}
-{{#is data.externalLink false}}
-<a class="main-navigation__item-link" href="{{basename}}.html">{{data.title}}</a>
-{{/is}}
-</li>
+                {{!if no subpages}}
+                {{~else~}}
+                    <li class="main-navigation__item js__main-navigation__item {{#if this.isCurrentPage}}_active{{/if}}">
+                        {{~#is data.externalLink false~}}
+                            <a class="main-navigation__item-link" href="{{basename}}.html">{{data.title}}</a>
+                        {{~else~}}
+                            <a class="main-navigation__item-link" href="{{data.externalLink}}">{{data.title}}</a>
+                        {{~/is~}}
+                    </li>
+                {{~/if~}}
 
-{{/is}}
-{{/is }}
-{{/is }}
-{{/withSort}}
+            {{~/mainMenu_firstLevel~}}
 
-{{#is this.showMainNavSearch "true"}}
-    <div class="main-navigation__search-btn-wrp">
-        <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+            {{#is this.showMainNavSearch "true"}}
+                <div class="main-navigation__search-btn-wrp">
+                    <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+                </div>
+                <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
+            {{/is}}
+        </ul>
     </div>
-    <div class="main-navigation__search-box js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
-{{/is}}
-</ul>
-</div>
 </nav>

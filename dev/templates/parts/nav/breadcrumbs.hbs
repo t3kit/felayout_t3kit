@@ -2,45 +2,54 @@
     <div class="breadcrumbs__wrp container">
         <ol class="breadcrumbs__list">
             <li class="breadcrumbs__list-item"><span class="icons icon-t3-home"></span> <a class="breadcrumbs__list-link" href="index.html">Home</a></li>
-                {{#if parent}}
-                    {{#each pages}}
-                        {{#is data.menuLevel 1}}
-                            {{#is ../../parent data.title }}
-                                {{#is data.shortcut false}}
-                                    <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
-                                {{/is}}
-                            {{/is}}
-                        {{/is}}
-                    {{/each}}
-                {{/if}}
-                {{#if parent2}}
-                    {{#each pages }}
-                        {{#is data.menuLevel 2}}
-                            {{#is ../../parent2 data.title }}
+
+            {{#forEach pages }}
+
+                {{#if ../page.parent1}}
+                    {{#is menuLevel 1}}
+                        {{#is ../../../page.parent1 basename}}
+                            {{#is data.hideInBreadcrumbs false}}
                                 <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
                             {{/is}}
                         {{/is}}
-                    {{/each}}
+                    {{/is}}
                 {{/if}}
-                {{#if parent3}}
-                    {{#each pages }}
-                        {{#is data.menuLevel 3}}
-                            {{#is ../../parent3 data.title }}
+
+                {{#if ../page.parent2}}
+                    {{#is menuLevel 2}}
+                        {{#is ../../../page.parent2 basename}}
+                            {{#is data.hideInBreadcrumbs false}}
                                 <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
                             {{/is}}
                         {{/is}}
-                    {{/each}}
+                    {{/is}}
                 {{/if}}
-                {{#if parent4}}
-                    {{#each pages }}
-                        {{#is data.menuLevel 4}}
-                            {{#is ../../parent4 data.title }}
+
+                {{#if ../page.parent3}}
+                    {{#is menuLevel 3}}
+                        {{#is ../../../page.parent3 basename}}
+                            {{#is data.hideInBreadcrumbs false}}
                                 <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
                             {{/is}}
                         {{/is}}
-                    {{/each}}
+                    {{/is}}
                 {{/if}}
-                <li  class="breadcrumbs__list-item _active">{{title}}</li>
+
+                {{#if ../page.parent4}}
+                    {{#is menuLevel 4}}
+                        {{#is ../../../page.parent4 basename}}
+                            {{#is data.hideInBreadcrumbs false}}
+                                <li class="breadcrumbs__list-item"><a class="breadcrumbs__list-link" href="{{basename}}.html">{{capitalizeFirst data.title}}</a></li>
+                            {{/is}}
+                        {{/is}}
+                    {{/is}}
+                {{/if}}
+
+            {{/forEach}}
+
+            {{#is page.data.hideInBreadcrumbs false}}
+            <li  class="breadcrumbs__list-item _active">{{title}}</li>
+            {{/is}}
         </ol>
     </div>
 </div>
