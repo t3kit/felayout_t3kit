@@ -1,11 +1,11 @@
 module.exports = {
     default: {
-        exclude: ['big', 'bigCssJs', 'small', 'smallJs', 'smallLess']
+        exclude: ['bigFiles', 'bigCssJs', 'smallFiles', 'smallJs', 'smallLess']
     },
     small: {
-        exclude: ['big', 'bigCssJs']
+        exclude: ['bigFiles', 'bigCssJs']
     },
     big: {
-        exclude: ['small', 'smallJs', 'smallLess']
+        exclude: ['smallFiles', 'smallJs', 'smallLess']
     },
 };

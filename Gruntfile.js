@@ -16,7 +16,6 @@ module.exports = function(grunt) {
         jitGrunt: {
             jitGrunt: true,
             staticMappings: {
-                replace: 'grunt-text-replace',
                 buildcontrol: 'grunt-build-control'
             }
         }

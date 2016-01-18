@@ -1,73 +1,6 @@
 module.exports = {
-    site: {
-        expand: true,
-        dot: true,
-        cwd: '<%= temp %>',
-        dest: '<%= site %>',
-        src: [
-            '*.js',
-            '*.css',
-            '*.html',
-            '*.{ico,png,txt,xml,svg}',
-            'flags/{,*/}*.*',
-            'fonts/{,*/}*.*'
-        ]
-    },
-    small: {
-        expand: true,
-        dot: true,
-        cwd: '<%= dev %>',
-        dest: '<%= small %>',
-        src: [
-            'copyToRoot/{,*/}*.*',
-            '!copyToRoot/robots.txt',
-            'fonts/{,*/}*.*'
-        ]
-    },
-    smallJs: {
-        expand: true,
-        dot: true,
-        cwd: '<%= temp %>',
-        dest: '<%= small %>',
-        src: [
-            '*.js',
-            'flags/{,*/}*.*',
-            '!local.js'
-        ]
-    },
-    smallCss: {
-        expand: true,
-        dot: true,
-        cwd: '<%= temp %>',
-        dest: '<%= small %>',
-        src: [
-            'components.css',
-        ]
-    },
-    big: {
-        expand: true,
-        dot: true,
-        cwd: '<%= dev %>',
-        dest: '<%= big %>',
-        src: [
-            'copyToRoot/{,*/}*.*',
-            '!copyToRoot/robots.txt',
-            'fonts/{,*/}*.*'
-        ]
-    },
-    bigCssJs: {
-        expand: true,
-        dot: true,
-        cwd: '<%= temp %>',
-        dest: '<%= big %>',
-        src: [
-            '*.js',
-            '!local.js',
-            '*.css',
-            'flags/{,*/}*.*',
-            '!local.css'
-        ]
-    },
+
+    // copy tasks for Main development process
     fonts: {
         expand: true,
         dot: true,
@@ -84,15 +17,6 @@ module.exports = {
         dest: '<%= temp %>',
         src: [
             'images/{,*/}*.*'
-        ]
-    },
-    toRoot: {
-        expand: true,
-        dot: true,
-        cwd: '<%= dev %>/copyToRoot',
-        dest: '<%= temp %>',
-        src: [
-            '{,*/}*.*'
         ]
     },
     flags: {
@@ -123,4 +47,89 @@ module.exports = {
             'us.svg'
         ]
     },
+    toRoot: {
+        expand: true,
+        dot: true,
+        cwd: '<%= dev %>/copyToRoot',
+        dest: '<%= temp %>',
+        src: [
+            '{,*/}*.*'
+        ]
+    },
+
+    // copy tasks for static site
+    siteFiles: {
+        expand: true,
+        dot: true,
+        cwd: '<%= temp %>',
+        dest: '<%= site %>',
+        src: [
+            '*.js',
+            '*.css',
+            '*.html',
+            '*.{ico,png,txt,xml,svg}',
+            'flags/{,*/}*.*',
+            'fonts/{,*/}*.*'
+        ]
+    },
+
+    // copy tasks for small project
+    smallFiles: {
+        expand: true,
+        dot: true,
+        cwd: '<%= dev %>',
+        dest: '<%= small %>',
+        src: [
+            'copyToRoot/{,*/}*.*',
+            '!copyToRoot/robots.txt',
+            'fonts/{,*/}*.*'
+        ]
+    },
+    smallJs: {
+        expand: true,
+        dot: true,
+        cwd: '<%= temp %>',
+        dest: '<%= small %>',
+        src: [
+            '*.js',
+            'flags/{,*/}*.*',
+            '!local.js'
+        ]
+    },
+    smallCss: {
+        expand: true,
+        dot: true,
+        cwd: '<%= temp %>',
+        dest: '<%= small %>',
+        src: [
+            'components.css',
+        ]
+    },
+
+    // copy tasks for BIG project
+    bigFiles: {
+        expand: true,
+        dot: true,
+        cwd: '<%= dev %>',
+        dest: '<%= big %>',
+        src: [
+            'copyToRoot/{,*/}*.*',
+            '!copyToRoot/robots.txt',
+            'fonts/{,*/}*.*'
+        ]
+    },
+    bigCssJs: {
+        expand: true,
+        dot: true,
+        cwd: '<%= temp %>',
+        dest: '<%= big %>',
+        src: [
+            '*.js',
+            '!local.js',
+            '*.css',
+            'flags/{,*/}*.*',
+            '!local.css'
+        ]
+    },
+
 };

@@ -12,7 +12,8 @@ module.exports = {
         files: [{
             dot: true,
             src: [
-                '<%= small %>/*'
+                '<%= small %>/*',
+                '!<%= small %>/.git*'
             ]
         }]
     },
@@ -20,7 +21,8 @@ module.exports = {
         files: [{
             dot: true,
             src: [
-                '<%= big %>/*'
+                '<%= big %>/*',
+                '!<%= big %>/.git*'
             ]
         }]
     },

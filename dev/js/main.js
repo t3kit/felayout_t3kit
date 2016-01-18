@@ -1,6 +1,6 @@
+
 // header
-// @import 'main/header/header.js';
-// @import 'main/header/headerMin.js';
+@import 'main/header/header.js';
 
 // elements
 @import 'main/contentElements/slider.js';

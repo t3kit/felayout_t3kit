@@ -1,12 +1,12 @@
 module.exports = {
+
+    // watch process - handlebars templates
     html: {
         files: ['<%= dev %>/templates/**/*.hbs'],
         tasks: ['assemble:allTemplates']
     },
-    less: {
-        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/header.less', '!<%= dev %>/styles/headerMin.less', '!<%= dev %>/styles/header/{,*/}*.less'],
-        tasks: ['less:main']
-    },
+
+    // watch process - less compilation
     lessBootstrap: {
         files: ['<%= dev %>/styles/bootstrap.less', '<%= dev %>/styles/customVariables.less'],
         tasks: ['less:bootstrap']
@@ -15,46 +15,38 @@ module.exports = {
         files: ['<%= dev %>/styles/components.less'],
         tasks: ['less:components']
     },
-    lessHeader: {
-        files: ['<%= dev %>/styles/header.less', '<%= dev %>/styles/headerMin.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
-        tasks: ['less:header','less:headerMin']
+    less: {
+        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/local/{,*/}*.less'],
+        tasks: ['less:main']
     },
-    // lessHeaderMin: {
-    //     files: ['<%= dev %>/styles/headerMin.less', '<%= dev %>/styles/header/{,*/}*.less', '<%= dev %>/styles/customVariables.less'],
-    //     tasks: ['less:headerMin']
-    // },
     lessLocal: {
         files: ['<%= dev %>/styles/local.less', '<%= dev %>/styles/local/{,*/}*.less'],
         tasks: ['less:local']
     },
-    jsMain: {
-        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '!<%= dev %>/js/components.js', '!<%= dev %>/js/bootstrap.js', '!<%= dev %>/js/jquery.js', '!<%= dev %>/js/header.js', '!<%= dev %>/js/headerMin.js'],
-        tasks: ['import:main', 'jshint:mainJs', 'jscs:mainJs']
-    },
-    jsLocal: {
-        files: ['<%= dev %>/js/local.js','<%= dev %>/js/local/{,*/}*.js'],
-        tasks: 'import:local'
-    },
-    jsComponents: {
-        files: ['<%= dev %>/js/components.js'],
-        tasks: 'import:components'
+
+    // watch process - js import
+    jsJquery: {
+        files: ['<%= dev %>/js/jquery.js'],
+        tasks: 'import:jquery'
     },
     jsBootstrap: {
         files: ['<%= dev %>/js/bootstrap.js'],
         tasks: 'import:bootstrap'
     },
-    jsJquery: {
-        files: ['<%= dev %>/js/jquery.js'],
-        tasks: 'import:jquery'
+    jsComponents: {
+        files: ['<%= dev %>/js/components.js'],
+        tasks: 'import:components'
     },
-    jsHeader: {
-        files: ['<%= dev %>/js/main/header/header.js', '<%= dev %>/js/header.js'],
-        tasks: ['import:header', 'jshint:mainJs', 'jscs:mainJs']
+    jsMain: {
+        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '!<%= dev %>/js/components.js', '!<%= dev %>/js/bootstrap.js', '!<%= dev %>/js/jquery.js'],
+        tasks: ['import:main']
     },
-    jsHeaderMin: {
-        files: ['<%= dev %>/js/main/header/headerMin.js', '<%= dev %>/js/headerMin.js'],
-        tasks: ['import:headerMin', 'jshint:mainJs', 'jscs:mainJs']
+    jsLocal: {
+        files: ['<%= dev %>/js/local.js','<%= dev %>/js/local/{,*/}*.js'],
+        tasks: 'import:local'
     },
+
+    // watch process - copy sys files
     copyFonts: {
         files: '<%= dev %>/fonts/{,*/}*.*',
         tasks: 'newer:copy:fonts'
@@ -68,25 +60,27 @@ module.exports = {
         tasks: 'newer:copy:toRoot'
     },
 
-    small: {
+    // watch process - special tasks for SMALL project (local development)
+    smallFiles: {
         files: ['<%= dev %>/copyToRoot/{,*/}*.*', '<%= dev %>/fonts/{,*/}*.*', '<%= dev %>/images/{,*/}*.*'],
-        tasks: ['newer:copy:small', 'newer:imagemin:small']
+        tasks: ['newer:copy:smallFiles', 'newer:imagemin:small']
     },
     smallJs: {
         files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js'],
         tasks: ['newer:copy:smallJs']
     },
     smallLess: {
-        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less'],
-        tasks: ['import:mainLess', 'import:bootstrapLess', 'import:headerLess', 'import:headerMinLess', 'newer:copy:smallCss']
+        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/local/{,*/}*.less'],
+        tasks: ['import:mainLess', 'import:bootstrapLess', 'newer:copy:smallCss']
     },
 
-    big: {
+    // watch process - special tasks for BIG project (local development)
+    bigFiles: {
         files: ['<%= dev %>/copyToRoot/{,*/}*.*', '<%= dev %>/fonts/{,*/}*.*', '<%= dev %>/images/{,*/}*.*'],
-        tasks: ['newer:copy:big', 'newer:imagemin:big']
+        tasks: ['newer:copy:bigFiles', 'newer:imagemin:big']
     },
     bigCssJs: {
-        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less'],
+        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/local/{,*/}*.less'],
         tasks: ['newer:copy:bigCssJs']
     },
 

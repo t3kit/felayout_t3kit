@@ -1,46 +1,39 @@
 # ==================================
-# Default, command "grunt"
+# Default, command "grunt". Local development.
 # ==================================
 default:
     #Dev
-    - 'dev' #subtask
+    - 'dev' #task helper
     #Postcss
-    # - 'postcss:big'
+    - 'postcss:main'
     #Localhost
-    - 'localhost' #subtask
+    - 'localhost' #task helper
     #Watch
     - 'focus:default'
 
 # ==================================
-# Alias for Big project
+# Alias for Big project. Local development.
 # ==================================
 big:
     #Dev
-    - 'dev' #subtask
+    - 'dev' #task helper
+    #Postcss
+    - 'postcss:main'
     #Big
     - 'clean:bigFolder'
     - 'concurrent:bigProcess'
-    #Postcss
-    - 'postcss:big'
     #Localhost
-    - 'localhost' #subtask
+    - 'localhost' #task helper
     #Watch
     - 'focus:big'
 
-# ==================================
-# Alias for Medium project
-# ==================================
-medium:
-    #Medium
-    - 'big'
-
 
 # ==================================
-# Small project
+# Small project. Local development.
 # ==================================
 small:
     #Dev
-    - 'dev' #subtask
+    - 'dev' #task helper
     #Small
     - 'clean:smallFolder'
     - 'concurrent:smallProcess'
@@ -51,20 +44,47 @@ small:
 
 
 # ==================================
-# Static site
+# Push static site
 # ==================================
-site:
+pushSite:
     #Dev
     - 'dev'
+    #Postcss
+    - 'postcss:main'
     #Site
     - 'clean:siteFolder'
     - 'concurrent:siteProcess'
-    #Postcss
-    - 'postcss:site'
     #---------------
-    - 'pushSite'
+    - 'pushSite' #task helper
     #---------------
 
+# ==================================
+# Push files for BIG project
+# ==================================
+pushBig:
+    #Dev
+    - 'dev' #task helper
+    #Postcss
+    - 'postcss:main'
+    #Big
+    - 'clean:bigFolder'
+    - 'concurrent:bigProcess'
+    #---------------
+    - 'pushBig' #task helper
+    #---------------
+
+# ==================================
+# Push files for Small project
+# ==================================
+pushSmall:
+    #Dev
+    - 'dev' #task helper
+    #Small
+    - 'clean:smallFolder'
+    - 'concurrent:smallProcess'
+    #---------------
+    - 'pushSmall' #task helper
+    #---------------
 
 # ==================================
 # Code linters and validators
@@ -84,7 +104,7 @@ check:
 
 
 # ==================================
-# SUBTASKS  ========================
+# Task helpers  ====================
 # ==================================
 dev:
     #Dev
@@ -97,23 +117,19 @@ localhost:
     - 'notify:server'
 
 pushSite:
-    # Push to remote server with creating new branch
+    # Push to remote server with creating new branch [site]
     - 'buildcontrol:site'
     - 'notify:site'
 
-# ==================================
-# ==================================
+pushBig:
+    # Push to remote server with creating new branch [big]
+    - 'buildcontrol:big'
+    - 'notify:big'
 
+pushSmall:
+    # Push to remote server with creating new branch [small]
+    - 'buildcontrol:small'
+    - 'notify:small'
 
 # ==================================
-# Apdate all type of projects (small & big)
 # ==================================
-updateAll:
-    #Dev
-    - 'dev'
-    #Small
-    - 'clean:smallFolder'
-    - 'concurrent:smallProcess'
-    #Big
-    - 'clean:bigFolder'
-    - 'concurrent:bigProcess'

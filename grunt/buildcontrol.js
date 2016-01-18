@@ -11,4 +11,16 @@ module.exports = {
             branch: '<%= remoteBranch %>'
         }
     },
+    big: {
+        options: {
+            dir: '<%= big %>',
+            branch: 'big'
+        }
+    },
+    small: {
+        options: {
+            dir: '<%= small %>',
+            branch: 'small'
+        }
+    }
 };

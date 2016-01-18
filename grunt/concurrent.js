@@ -1,7 +1,9 @@
 module.exports = {
     options: {
-        limit: 20
+        limit: 15
     },
+
+    // Copy files and compile templates. Default task.
     devProcess: {
         tasks: [
             'copy:fonts',
@@ -9,21 +11,18 @@ module.exports = {
             'copy:flags',
             'copy:toRoot',
             'assemble:allTemplates',
-            'less:header',
-            'less:headerMin',
-            'less:main',
             'less:bootstrap',
             'less:components',
+            'less:main',
             'less:local',
-            'import:header',
-            'import:headerMin',
-            'import:main',
             'import:jquery',
             'import:bootstrap',
             'import:components',
+            'import:main',
             'import:local'
         ],
     },
+
     siteProcess: {
         tasks: [
             'copy:site',
@@ -32,19 +31,17 @@ module.exports = {
     },
     smallProcess: {
         tasks: [
-            'copy:small',
+            'copy:smallFiles',
             'copy:smallJs',
             'copy:smallCss',
-            'import:mainLess',
             'import:bootstrapLess',
-            'import:headerLess',
-            'import:headerMinLess',
+            'import:mainLess',
             'imagemin:small'
         ],
     },
     bigProcess: {
         tasks: [
-            'copy:big',
+            'copy:bigFiles',
             'copy:bigCssJs',
             'imagemin:big'
         ]
