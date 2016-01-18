@@ -1,5 +1,7 @@
 node_modules
 site
+small
+big
 .tmp
 temp
 .sass-cache
