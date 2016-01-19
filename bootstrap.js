@@ -1,7 +1,7 @@
 // BOOTSTRAP
 //==========================================================
 /* ========================================================================
- * Bootstrap: transition.js v3.3.5
+ * Bootstrap: transition.js v3.3.6
  * http://getbootstrap.com/javascript/#transitions
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -61,7 +61,7 @@
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: alert.js v3.3.5
+ * Bootstrap: alert.js v3.3.6
  * http://getbootstrap.com/javascript/#alerts
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -80,7 +80,7 @@
     $(el).on('click', dismiss, this.close)
   }
 
-  Alert.VERSION = '3.3.5'
+  Alert.VERSION = '3.3.6'
 
   Alert.TRANSITION_DURATION = 150
 
@@ -156,7 +156,7 @@
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: button.js v3.3.5
+ * Bootstrap: button.js v3.3.6
  * http://getbootstrap.com/javascript/#buttons
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -176,7 +176,7 @@
     this.isLoading = false
   }
 
-  Button.VERSION  = '3.3.5'
+  Button.VERSION  = '3.3.6'
 
   Button.DEFAULTS = {
     loadingText: 'loading...'
@@ -278,7 +278,7 @@
 
 // @import '../bower_components/bootstrap/js/carousel.js';
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.5
+ * Bootstrap: collapse.js v3.3.6
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -308,7 +308,7 @@
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.5'
+  Collapse.VERSION  = '3.3.6'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -495,7 +495,7 @@
 // @import '../bower_components/bootstrap/js/popover.js';
 // @import '../bower_components/bootstrap/js/scrollspy.js';
 /* ========================================================================
- * Bootstrap: tab.js v3.3.5
+ * Bootstrap: tab.js v3.3.6
  * http://getbootstrap.com/javascript/#tabs
  * ========================================================================
  * Copyright 2011-2015 Twitter, Inc.
@@ -515,7 +515,7 @@
     // jscs:enable requireDollarBeforejQueryAssignment
   }
 
-  Tab.VERSION = '3.3.5'
+  Tab.VERSION = '3.3.6'
 
   Tab.TRANSITION_DURATION = 150
 

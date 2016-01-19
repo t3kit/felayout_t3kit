@@ -1,569 +1,572 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="robots" content="noindex">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-    <!-- Page styles -->
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="components.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="local.css">
-
-    <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
-
-    <!-- Scripts -->
-    <script>
-      // touchSupport
-      touchSupport = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
-      if (!touchSupport) {
-        document.documentElement.className += " no-touch";
-      } else {
-        document.documentElement.className += " touch";
-      }
-      // IE version
-      var uA = window.navigator.userAgent;
-      var msie = uA.indexOf('MSIE ');
-      var trident = uA.indexOf('Trident/');
-      var ie;
-      function detectIE() {
-        if (msie > 0) {
-          // IE 10 or older => return version number
-          ie = 'ie' + parseInt(uA.substring(msie + 5, uA.indexOf('.', msie)), 10);
-          return ie;
-        }
-        if (trident > 0) {
-          // IE 11 (or newer) => return version number
-          var rv = uA.indexOf('rv:');
-          ie = 'ie' + parseInt(uA.substring(rv + 3, uA.indexOf('.', rv)), 10);
-          return ie;
-        }
-        return ie = 'nonIE';
-      }
-      detectIE();
-      if (ie === 'nonIE') {
-        document.documentElement.className += (' ' + ie);
-      } else {
-        document.documentElement.className += (' ' + (ie + ' ' + 'IE'));
-      };
-    </script>
-  </head>
-  <body>
-
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="robots" content="noindex">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no">
+    
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="apple-mobile-web-app-title" content="t3kit">
+        <meta name="application-name" content="t3kit">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+    
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    
+        <!-- Page styles -->
+        <link rel="stylesheet" href="bootstrap.css">
+        <link rel="stylesheet" href="components.css">
+        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="local.css">
+    
+        <!-- Scripts -->
+        <script>
+            // touchSupport
+            touchSupport = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
+            if (!touchSupport) {
+                document.documentElement.className += " no-touch";
+            }
+            else{
+                document.documentElement.className += " touch";
+            }
+            // IE version
+            var uA = window.navigator.userAgent;
+            var msie = uA.indexOf('MSIE ');
+            var trident = uA.indexOf('Trident/');
+            var ie;
+            function detectIE () {
+                if (msie > 0) {
+                    // IE 10 or older => return version number
+                    ie = 'ie' + parseInt(uA.substring(msie + 5, uA.indexOf('.', msie)), 10);
+                    return ie;
+                }
+                if (trident > 0) {
+                    // IE 11 (or newer) => return version number
+                    var rv = uA.indexOf('rv:');
+                    ie = 'ie' + parseInt(uA.substring(rv + 3, uA.indexOf('.', rv)), 10);
+                    return ie;
+                }
+            return ie = 'nonIE';
+            }
+            detectIE();
+            if (ie === 'nonIE') {
+                document.documentElement.className += (' ' + ie);
+            } else{
+                document.documentElement.className += (' ' + (ie + ' ' + 'IE'));
+            };
+        </script>
+    </head>
+<body>
     <!--[if lte IE 9]>
-      <p class="browsehappy">You are using an <strong>outdated</strong>  browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>  to improve your experience.</p>
-            <![endif]-->
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-    <!-- Header partials -->
+    <!-- Header -->
     <header class="header" role="banner">
-      <div class="header-top-wrp">
+
+<div class="header-top-wrp">
+
         <div class="header-top">
-          <div class="header-top__main-navigation-toggle-btn">
-            <button type="button" class="main-navigation__toggle-btn js__main-navigation__toggle-btn">
-              <span>toggle menu</span> 
-            </button>
-          </div>
-          <div class="header-top__contact">
-            <div class="header-top__contact-tel">
-              <span class="icons icon-t3-mobile"></span> 
-              <span class="header-top__contact-tel-title">Call us on</span> 
-              <a class="header-top__contact-tel-link" href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a> 
-            </div>
-            <div class="header-top__contact-email">
-              <span class="icons icon-t3-mail"></span> 
-              <span class="header-top__contact-email-title">Email us at</span> 
-              <a class="header-top__contact-email-link" href="#">info@info.se</a> 
-            </div>
-          </div>
-          <div class="header-top__language-menu">
-            <a class="header-top__language-menu-btn js__header-top__language-menu-btn" href="/#"> <span class="main-flag-icon flag-icon flag-icon-gb"></span>  </a> 
-            <div class="header-top__language-menu-box js__header-top__language-menu-box">
-              <a href="" class="header-top__language-menu-box-item active"> <span class="flag-icon flag-icon-gb"></span>  English </a> 
-              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-se"></span>  Swedish </a> 
-              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-dk"></span>  Danish </a> 
-              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-fi"></span>  Finnish </a> 
-              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-de"></span>  German </a> 
-              <a class="header-top__language-menu-box-item" href=""> <span class="flag-icon flag-icon-no"></span>  Norwegian </a> 
-              <a class="header-top__language-menu-box-close-btn js__header-top__language-menu-box-close-btn"></a> 
-            </div>
-          </div>
-          <div class="main-navigation__search-btn-wrp _header-top-search-btn">
-            <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span> </a> 
-          </div>
-          <div class="main-navigation__search-box _header-top-search-btn js__main-navigation__search-box">
-            <input placeholder="Search..." type="search">
-          </div>
-          <ul class="nav">
-            <li> <a href="index.html">Home</a>  </li>
-            <li> <a href="siteMap.html"> Sitemap</a>  </li>
-            <li> <a href="login.html">Login</a>  </li>
-          </ul>
+                <div class="header-top__main-navigation-toggle-btn">
+                    <button type="button" class="main-navigation__toggle-btn js__main-navigation__toggle-btn" >
+                        <span>toggle menu</span>
+                    </button>
+                </div>
+                <div class="header-top__contact">
+                    <div class="header-top__contact-tel">
+                        <span class="icons icon-t3-mobile"></span>
+                        <span class="header-top__contact-tel-title">Call us on</span>
+                        <a class="header-top__contact-tel-link" href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a>
+                    </div>
+                    <div class="header-top__contact-email">
+                        <span class="icons icon-t3-mail"></span>
+                        <span class="header-top__contact-email-title">Email us at</span>
+                        <a class="header-top__contact-email-link" href="#">info@info.se</a>
+                    </div>
+                </div>
+
+                <div class="header-top__language-menu">
+                    <a class="header-top__language-menu-btn js__header-top__language-menu-btn" href="/#">
+                        <span class="main-flag-icon flag-icon flag-icon-gb"></span>
+                    </a>
+                    <div class="header-top__language-menu-box js__header-top__language-menu-box">
+                        <a href="" class="header-top__language-menu-box-item active"><span class="flag-icon flag-icon-gb"></span> English</a>
+                        <a class="header-top__language-menu-box-item" href=""><span class="flag-icon flag-icon-de"></span> Deutsch</a>
+                        <a class="header-top__language-menu-box-item" href=""><span class="flag-icon flag-icon-ro"></span> Română</a>
+                        <a class="header-top__language-menu-box-item" href=""><span class="flag-icon flag-icon-se"></span> Svenska</a>
+                        <a class="header-top__language-menu-box-item" href=""><span class="flag-icon flag-icon-ua"></span> Українська</a>
+                        <a class="header-top__language-menu-box-close-btn js__header-top__language-menu-box-close-btn"></a>
+                    </div>
+                </div>
+
+                <div class="main-navigation__search-btn-wrp _header-top-search-btn">
+                    <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+                </div>
+                <div class="main-navigation__search-box _header-top-search-btn js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
+
+                <ul class="nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="siteMap.html"> Sitemap</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
         </div>
-      </div>
-      <div class="header-middle-wrp">
-        <div class="header-middle">
-          <div class="header-middle__logo">
+
+
+</div>
+
+
+<div class="header-middle-wrp">
+    <div class="header-middle">
+        <div class="header-middle__logo">
             <a class="header-middle__logo-link" href="index.html">
-              <img class="header-middle__logo-img img-responsive" src="images/t3kit.png" alt="logo">
-            </a> 
-          </div>
-          <div class="header-middle__social-icons">
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-facebook"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-twitter"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-linkedin"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-vimeo"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-googleplus"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-pinterest"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-instagram"></span>  </a> 
-            <a class="header-middle__social-icon" href="#"> <span class="icons icon-t3-youtube"></span>  </a> 
-          </div>
+                <img class="header-middle__logo-img img-responsive" src="images/t3kit.png" alt="logo">
+            </a>
         </div>
-      </div>
-      <nav class="main-navigation js__main-navigation" role="navigation">
-        <div class="main-navigation__items-wrp js__navigation__items-wrp">
-          <ul class="main-navigation__items-list js__main-navigation__items-list">
-            <li class="main-navigation__item js__main-navigation__item _active">
-              <a class="main-navigation__item-link" href="index.html">Home</a> 
-            </li>
-            <li class="main-navigation__item js__main-navigation__item _sub 
-">
-              <a href="content.html" class="main-navigation__item-link js__main-navigation__item-link">Content</a> 
-              <a href="content.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a> 
-              <ul class="main-navigation__sub-item-list">
-                <li class="main-navigation__sub-item 
-">
-                  <a class="main-navigation__sub-item-link" href="typicalPageContent.html">Typical Page Content</a> 
-                </li>
-                <li class="main-navigation__sub-item 
-">
-                  <a class="main-navigation__sub-item-link" href="specialElements.html">Special Elements</a> 
-                </li>
-                <li class="main-navigation__sub-item 
-">
-                  <a class="main-navigation__sub-item-link" href="formElements.html">Form Elements</a> 
-                </li>
-                <li class="main-navigation__sub-item 
-">
-                  <a class="main-navigation__sub-item-link" href="plugins.html">Plugins</a> 
-                </li>
-                <li class="main-navigation__sub-item 
-">
-                  <a class="main-navigation__sub-item-link" href="contentElements.html">Content Elements</a> 
-                </li>
-              </ul>
-            </li>
-            <li class="main-navigation__item js__main-navigation__item _sub 
-">
-              <a href="" class="main-navigation__item-link js__main-navigation__item-link">Community</a> 
-              <a href="community.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a> 
-              <ul class="main-navigation__sub-item-list">
-                <li class="main-navigation__sub-item 
-">
-                  <a class="main-navigation__sub-item-link" href="https://github.com/t3kit">t3kit on Github</a> 
-                </li>
-              </ul>
-            </li>
-            <li class="main-navigation__item js__main-navigation__item ">
-              <a class="main-navigation__item-link" href="documentation.html">Documentation</a> 
-            </li>
-            <li class="main-navigation__item js__main-navigation__item ">
-              <a class="main-navigation__item-link" href="http://demo.t3kit.se">Demo</a> 
-            </li>
-            <li class="main-navigation__item js__main-navigation__item ">
-              <a class="main-navigation__item-link" href="http://t3kit.github.io/theme_t3kit_customizer">Customizer</a> 
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <div class="main-navigation__search-box-overlay js__main-navigation__search-box-overlay"></div>
-      <div class="header-top__language-menu-overlay js__header-top__language-menu-overlay"></div>
-    </header>
+
+            <div class="header-middle__social-icons">
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-facebook"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-twitter"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-linkedin"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-vimeo"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-googleplus"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-pinterest"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-instagram"></span></a>
+                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-youtube"></span></a>
+            </div>
+    </div>
+</div>
+
+
+<nav class="main-navigation js__main-navigation" role="navigation">
+    <div class="main-navigation__items-wrp js__navigation__items-wrp">
+        <ul class="main-navigation__items-list js__main-navigation__items-list">
+
+            
+
+<li class="main-navigation__item js__main-navigation__item _active"><a class="main-navigation__item-link" href="index.html">Home</a></li><li class="main-navigation__item js__main-navigation__item _sub  
+"><a  href="content.html" class="main-navigation__item-link js__main-navigation__item-link" >Content</a><a href="content.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a>
+
+                        <ul class="main-navigation__sub-item-list">
+
+<li class="main-navigation__sub-item 
+"><a class="main-navigation__sub-item-link" href="typicalPageContent.html">Typical Page Content</a></li><li class="main-navigation__sub-item 
+"><a class="main-navigation__sub-item-link" href="specialElements.html">Special Elements</a></li><li class="main-navigation__sub-item 
+"><a class="main-navigation__sub-item-link" href="formElements.html">Form Elements</a></li><li class="main-navigation__sub-item 
+"><a class="main-navigation__sub-item-link" href="plugins.html">Plugins</a></li><li class="main-navigation__sub-item 
+"><a class="main-navigation__sub-item-link" href="contentElements.html">Content Elements</a></li></ul>
+                    </li>
+
+<li class="main-navigation__item js__main-navigation__item _sub  
+"><a  href="community.html" class="main-navigation__item-link js__main-navigation__item-link" >Community</a><a href="community.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a>
+
+                        <ul class="main-navigation__sub-item-list">
+
+<li class="main-navigation__sub-item 
+"><a class="main-navigation__sub-item-link" href="https://github.com/t3kit">t3kit on Github</a></li></ul>
+                    </li>
+
+<li class="main-navigation__item js__main-navigation__item "><a class="main-navigation__item-link" href="documentation.html">Documentation</a></li><li class="main-navigation__item js__main-navigation__item "><a class="main-navigation__item-link" href="http://demo.t3kit.se">Demo</a></li><li class="main-navigation__item js__main-navigation__item "><a class="main-navigation__item-link" href="http://t3kit.github.io/theme_t3kit_customizer">Customizer</a></li>        </ul>
+    </div>
+</nav>
+
+<div class="main-navigation__search-box-overlay js__main-navigation__search-box-overlay"></div>
+<div class="header-top__language-menu-overlay js__header-top__language-menu-overlay"></div>
+
+
+</header>
+
+
+
+
+
+
+
+
+
+
 
     <!-- pages -->
-    <div class="top-content">
-      <div class="img-slider swiper-container js__img-slider">
-        <div class="swiper-wrapper img-slider__wrp">
-          <div class="swiper-slide img-slider__slide">
-            <div class="img-slider__slide-wrp">
-              <img data-src="images/temp-carousel-1.jpg" class="swiper-lazy img-responsive img-slider__img">
-              <div class="swiper-lazy-preloader"></div>
-              <div class="img-slider__caption">
-                <h3 class="img-slider__caption-sub-header">Lorem ipsum</h3>
-                <h1 class="img-slider__caption-header">Dolor sit amet</h1>
-                <p class="img-slider__caption-p js__img-slider__caption-p">Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.
-                  Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.</p>
-                <a class="img-slider__caption-link" href="#">Call to action</a> 
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide img-slider__slide">
-            <div class="img-slider__slide-wrp">
-              <img data-src="images/temp-carousel-2.jpg" class="swiper-lazy img-responsive img-slider__img">
-              <div class="swiper-lazy-preloader"></div>
-              <div class="img-slider__caption">
-                <h3 class="img-slider__caption-sub-header">Lorem ipsum</h3>
-                <h2 class="img-slider__caption-header">Dolor sit amet</h2>
-                <p class="img-slider__caption-p js__img-slider__caption-p">Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.</p>
-                <a class="img-slider__caption-link" href="#">Call to action</a> 
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide img-slider__slide">
-            <div class="img-slider__slide-wrp">
-              <img data-src="images/temp-carousel-3.jpg" class="swiper-lazy img-responsive img-slider__img">
-              <div class="swiper-lazy-preloader"></div>
-              <div class="img-slider__caption">
-                <h3 class="img-slider__caption-sub-header">Lorem ipsum</h3>
-                <h2 class="img-slider__caption-header">Dolor sit amet</h2>
-                <p class="img-slider__caption-p js__img-slider__caption-p">Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.</p>
-                <a class="img-slider__caption-link" href="#">Call to action</a> 
-              </div>
-            </div>
-          </div>
-        </div>
+    
 
+<div class="top-content">
+    <div class="img-slider swiper-container js__img-slider">
+        <div class="swiper-wrapper img-slider__wrp">
+            <div class="swiper-slide img-slider__slide">
+                <div class="img-slider__slide-wrp">
+                    <img data-src="images/temp-carousel-1.jpg" class="swiper-lazy img-responsive img-slider__img">
+                    <div class="swiper-lazy-preloader"></div>
+                    <div class="img-slider__caption">
+                        <h3 class="img-slider__caption-sub-header">Lorem ipsum</h3>
+                        <h1 class="img-slider__caption-header">Dolor sit amet</h1>
+                        <p class="img-slider__caption-p js__img-slider__caption-p">Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.</p>
+                        <a class="img-slider__caption-link" href="#">Call to action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide img-slider__slide">
+                <div class="img-slider__slide-wrp">
+                    <img data-src="images/temp-carousel-2.jpg" class="swiper-lazy img-responsive img-slider__img">
+                    <div class="swiper-lazy-preloader"></div>
+                    <div class="img-slider__caption">
+                        <h3 class="img-slider__caption-sub-header">Lorem ipsum</h3>
+                        <h2 class="img-slider__caption-header">Dolor sit amet</h2>
+                        <p class="img-slider__caption-p js__img-slider__caption-p">Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.</p>
+                        <a class="img-slider__caption-link" href="#">Call to action</a>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide img-slider__slide">
+                <div class="img-slider__slide-wrp">
+                    <img data-src="images/temp-carousel-3.jpg" class="swiper-lazy img-responsive img-slider__img">
+                    <div class="swiper-lazy-preloader"></div>
+                    <div class="img-slider__caption">
+                        <h3 class="img-slider__caption-sub-header">Lorem ipsum</h3>
+                        <h2 class="img-slider__caption-header">Dolor sit amet</h2>
+                        <p class="img-slider__caption-p js__img-slider__caption-p">Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum. Vivamus luctus urna sed urna ultricies ac doltempor dui sagittis. In condimentum.</p>
+                        <a class="img-slider__caption-link" href="#">Call to action</a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
         <!-- Add Pagination -->
         <div class="js__img-slider__pagination img-slider__pagination swiper-pagination swiper-pagination-white img-slider__pagination"></div>
-
         <!-- Navigation -->
         <div class="js__img-slider__btn-next img-slider__btn-next swiper-button-next swiper-button-white"></div>
         <div class="js__img-slider__btn-prev img-slider__btn-prev swiper-button-prev swiper-button-white"></div>
-      </div>
     </div>
-    <div class="container">
-      <div class="row">
+</div>
+
+<div class="container">
+    <div class="row">
         <div class="col-md-4">
-          <div class="big-icon-text-btn bigIcon">
-            <span class="big-icon-text-btn__icon icons icon-now_widgets"></span> 
-            <h3 class="big-icon-text-btn__header">Content element 1</h3>
-            <p class="big-icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="big-icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="big-icon-text-btn bigIcon">
+        <span class="big-icon-text-btn__icon icons icon-now_widgets"></span>
+        <h3 class="big-icon-text-btn__header">Content element 1</h3>
+        <p class="big-icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="big-icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
         <div class="col-md-4">
-          <div class="big-icon-text-btn bigIcon">
-            <span class="big-icon-text-btn__icon icons icon-devices"></span> 
-            <h3 class="big-icon-text-btn__header">Content element 1</h3>
-            <p class="big-icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="big-icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="big-icon-text-btn bigIcon">
+        <span class="big-icon-text-btn__icon icons icon-devices"></span>
+        <h3 class="big-icon-text-btn__header">Content element 1</h3>
+        <p class="big-icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="big-icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
         <div class="col-md-4">
-          <div class="big-icon-text-btn bigIcon">
-            <span class="big-icon-text-btn__icon icons icon-equalizer"></span> 
-            <h3 class="big-icon-text-btn__header">Content element 1</h3>
-            <p class="big-icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="big-icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="big-icon-text-btn bigIcon">
+        <span class="big-icon-text-btn__icon icons icon-equalizer"></span>
+        <h3 class="big-icon-text-btn__header">Content element 1</h3>
+        <p class="big-icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="big-icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
-      </div>
     </div>
-    <div class="container">
-      <div class="row">
+</div>
+
+<div class="container">
+    <div class="row">
         <div class="col-md-4">
-          <div class="img-text-link ">
-            <img class="img-text-link__img img-responsive" src="images/foto1.jpg" alt="foto">
-            <h3 class="img-text-link__header">Content element 2</h3>
-            <p class="img-text-link__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="img-text-link__link" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="img-text-link ">
+        <img class="img-text-link__img img-responsive" src="images/foto1.jpg" alt="foto">
+        <h3 class="img-text-link__header">Content element 2</h3>
+        <p class="img-text-link__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="img-text-link__link" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
         <div class="col-md-4">
-          <div class="img-text-link ">
-            <img class="img-text-link__img img-responsive" src="images/foto1.jpg" alt="foto">
-            <h3 class="img-text-link__header">Content element 2</h3>
-            <p class="img-text-link__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="img-text-link__link" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="img-text-link ">
+        <img class="img-text-link__img img-responsive" src="images/foto1.jpg" alt="foto">
+        <h3 class="img-text-link__header">Content element 2</h3>
+        <p class="img-text-link__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="img-text-link__link" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
         <div class="col-md-4">
-          <div class="img-text-link ">
-            <img class="img-text-link__img img-responsive" src="images/foto1.jpg" alt="foto">
-            <h3 class="img-text-link__header">Content element 2</h3>
-            <p class="img-text-link__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="img-text-link__link" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="img-text-link ">
+        <img class="img-text-link__img img-responsive" src="images/foto1.jpg" alt="foto">
+        <h3 class="img-text-link__header">Content element 2</h3>
+        <p class="img-text-link__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="img-text-link__link" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
-      </div>
     </div>
-    <div class="container">
-      <div class="row">
+</div>
+
+<div class="container">
+    <div class="row">
         <div class="col-md-4">
-          <div class="icon-text-btn ">
-            <h3 class="icon-text-btn__header">
-              <span class="icon-text-btn__icon icons icon-access_time"></span>  Content element 1
-            </h3>
-            <p class="icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="icon-text-btn ">
+    <h3 class="icon-text-btn__header">
+        <span class="icon-text-btn__icon icons icon-access_time"></span>
+        Content element 1
+    </h3>
+        <p class="icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
         <div class="col-md-4">
-          <div class="icon-text-btn ">
-            <h3 class="icon-text-btn__header">
-              <span class="icon-text-btn__icon icons icon-settings"></span>  Content element 1
-            </h3>
-            <p class="icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="icon-text-btn ">
+    <h3 class="icon-text-btn__header">
+        <span class="icon-text-btn__icon icons icon-settings"></span>
+        Content element 1
+    </h3>
+        <p class="icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
         <div class="col-md-4">
-          <div class="icon-text-btn ">
-            <h3 class="icon-text-btn__header">
-              <span class="icon-text-btn__icon icons icon-school"></span>  Content element 1
-            </h3>
-            <p class="icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent
-              taciti sociosqu.</p>
-            <a class="icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a> 
-          </div>
+            <div class="icon-text-btn ">
+    <h3 class="icon-text-btn__header">
+        <span class="icon-text-btn__icon icons icon-school"></span>
+        Content element 1
+    </h3>
+        <p class="icon-text-btn__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitfhghfhor. Ut in nulla enim. Phasellus class aptent taciti sociosqu.</p>
+        <a class="icon-text-btn__link btn btn-default" title="Read more" href="#">Read more</a>
+</div>
+
         </div>
-      </div>
     </div>
-    <div class="container">
-      <div class="row">
+</div>
+
+<div class="container">
+    <div class="row">
         <div class="col-md-6">
-          <blockquote class="quote">
-            <div class="quote__body">
-              <p class="quote__body-p">Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals</p>
-              <span class="quote__body-icon icons icon-t3-quoteMark"></span> 
-            </div>
-            <footer class="quote__footer">
-              <span class="quote__footer-name">John Doe,</span> 
-              <cite class="quote__footer-title" title="VP of Marketing">VP of Marketing,
-                <a class="quote__footer-link" href="">Royal Trader</a> 
-              </cite>
-            </footer>
-          </blockquote>
+        <blockquote class="quote">
+    <div class="quote__body">
+        <p class="quote__body-p">Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals</p>
+        <span class="quote__body-icon icons icon-t3-quoteMark"></span>
+    </div>
+    <footer class="quote__footer">
+        <span class="quote__footer-name">John Doe,</span>
+            <cite class="quote__footer-title" title="VP of Marketing">VP of Marketing,
+            <a class="quote__footer-link" href="">Royal Trader</a></cite>
+    </footer>
+</blockquote>
+
         </div>
         <div class="col-md-6">
-          <blockquote class="quote">
-            <div class="quote__body">
-              <p class="quote__body-p">Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals</p>
-              <span class="quote__body-icon icons icon-t3-quoteMark"></span> 
-            </div>
-            <footer class="quote__footer">
-              <span class="quote__footer-name">John Doe,</span> 
-              <cite class="quote__footer-title" title="VP of Marketing">VP of Marketing,
-                <a class="quote__footer-link" href="">Royal Trader</a> 
-              </cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
+            <blockquote class="quote">
+    <div class="quote__body">
+        <p class="quote__body-p">Top service. It’s nice to come back. Thank you for the support, efficient and fast. You are true professionals</p>
+        <span class="quote__body-icon icons icon-t3-quoteMark"></span>
     </div>
-    <div class="container">
-      <div class="row">
+    <footer class="quote__footer">
+        <span class="quote__footer-name">John Doe,</span>
+            <cite class="quote__footer-title" title="VP of Marketing">VP of Marketing,
+            <a class="quote__footer-link" href="">Royal Trader</a></cite>
+    </footer>
+</blockquote>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
         <div class="col-md-12">
-          <hr class="ce-div">
+            
+            <hr class="ce-div">
         </div>
-      </div>
     </div>
-    <div class="container">
-      <div class="row">
+</div>
+<div class="container">
+    <div class="row">
         <div class="col-md-12">
-          <div class="logo-carousel swiper-container js__logo-carousel">
-            <div class="swiper-wrapper logo-carousel__wrp">
-              <div class="swiper-slide logo-carousel__slide">
-                <a class="logo-carousel__link" href="">
-                  <img data-src="images/node.png" class="swiper-lazy img-responsive logo-carousel__img">
-                  <div class="swiper-lazy-preloader"></div>
-                </a> 
-              </div>
-              <div class="swiper-slide logo-carousel__slide">
-                <a class="logo-carousel__link" href="">
-                  <img data-src="images/typo3-logo.png" class="swiper-lazy img-responsive logo-carousel__img">
-                  <div class="swiper-lazy-preloader"></div>
-                </a> 
-              </div>
-              <div class="swiper-slide logo-carousel__slide">
-                <a class="logo-carousel__link" href="">
-                  <img data-src="images/t3kit.png" class="swiper-lazy img-responsive logo-carousel__img">
-                  <div class="swiper-lazy-preloader"></div>
-                </a> 
-              </div>
-              <div class="swiper-slide logo-carousel__slide">
-                <a class="logo-carousel__link" href="">
-                  <img data-src="images/php.png" class="swiper-lazy img-responsive logo-carousel__img">
-                  <div class="swiper-lazy-preloader"></div>
-                </a> 
-              </div>
-              <div class="swiper-slide logo-carousel__slide">
-                <a class="logo-carousel__link" href="">
-                  <img data-src="images/typo3-logo.png" class="swiper-lazy img-responsive logo-carousel__img">
-                  <div class="swiper-lazy-preloader"></div>
-                </a> 
-              </div>
+            <div class="logo-carousel swiper-container js__logo-carousel">
+                <div class="swiper-wrapper logo-carousel__wrp">
+                    <div class="swiper-slide logo-carousel__slide">
+                        <a class="logo-carousel__link" href="">
+                            <img data-src="images/node.png" class="swiper-lazy img-responsive logo-carousel__img">
+                            <div class="swiper-lazy-preloader"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide logo-carousel__slide">
+                        <a class="logo-carousel__link" href="">
+                            <img data-src="images/typo3-logo.png" class="swiper-lazy img-responsive logo-carousel__img">
+                            <div class="swiper-lazy-preloader"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide logo-carousel__slide">
+                        <a class="logo-carousel__link" href="">
+                            <img data-src="images/t3kit.png" class="swiper-lazy img-responsive logo-carousel__img">
+                            <div class="swiper-lazy-preloader"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide logo-carousel__slide">
+                        <a class="logo-carousel__link" href="">
+                            <img data-src="images/php.png" class="swiper-lazy img-responsive logo-carousel__img">
+                            <div class="swiper-lazy-preloader"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide logo-carousel__slide">
+                        <a class="logo-carousel__link" href="">
+                            <img data-src="images/typo3-logo.png" class="swiper-lazy img-responsive logo-carousel__img">
+                            <div class="swiper-lazy-preloader"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="js__logo-carousel__btn-next logo-carousel__btn-next swiper-button-next"></div>
+                <div class="js__logo-carousel__btn-prev logo-carousel__btn-prev swiper-button-prev"></div>
             </div>
-            <div class="js__logo-carousel__btn-next logo-carousel__btn-next swiper-button-next"></div>
-            <div class="js__logo-carousel__btn-prev logo-carousel__btn-prev swiper-button-prev"></div>
-          </div>
+            
+            
         </div>
-      </div>
     </div>
+</div>
+
 
     <!-- Footer partials -->
     <footer class="footer" role="contentinfo">
-      <div class="footer__container container">
-        <div class="row">
-          <div class="col-md-6 footer__about">
-            <h4>About t3kit</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis no strud exercitation ullamco laboris nisi ut.</p>
-            <a href="">Read more about us</a> 
-          </div>
-          <div class="col-md-6 footer__contact">
-            <h4>Contact us</h4>
+        <div class="footer__container container">
             <div class="row">
-              <div class=" col-xs-4 col-md-4 ">
-                <p>t3kit
-                  <br>Regementsgatan 8
-                  <br>211 42 Malmö,
-                  <br>Sweden</p>
-              </div>
-              <div class="col-xs-2 col-md-2 ">
-                <div class="footer__map">
-                  <a class="footer__map-icon icons icon-t3-map" href="#"></a> 
+                <div class="col-md-6 footer__about">
+                    <h4>About t3kit</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis no strud exercitation ullamco laboris nisi ut.</p>
+                    <a href="">Read more about us</a>
                 </div>
-              </div>
-              <div class="col-xs-12 col-md-6">
-                <ul class="nav contact-links">
-                  <li>
-                    <p><span class="icons icon-t3-mobile"></span> <span>CALL US ON</span> 
-                      <a href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a> 
-                    </p>
-                  </li>
-                  <li>
-                    <p><span class="icons icon-t3-mail"></span> <span>EMAIL US AT</span> 
-                      <a href="#">info@info.se</a> 
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row ">
-          <div class="col-md-6 footer__quick-links">
-            <h4>Quick links</h4>
-            <div class="row">
-              <div class="col-md-6">
-                <ul class="ce-menu ce-menu-1">
-                  <li> <a href="">Typical page content</a>  </li>
-                  <li> <a href="">Special Elements</a>  </li>
-                  <li> <a href="">Form Elements</a>  </li>
-                  <li> <a href="">Plugins</a>  </li>
-                  <li> <a href="">Content Elements</a>  </li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <ul class="ce-menu ce-menu-1">
-                  <li> <a href="">Typical page content</a>  </li>
-                  <li> <a href="">Special Elements</a>  </li>
-                  <li> <a href="">Form Elements</a>  </li>
-                  <li> <a href="">Plugins</a>  </li>
-                  <li> <a href="">Content Elements</a>  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 footer__subscribe">
-            <div id="c87">
-              <div id="c88">
-                <h4>Subscribe to newsletter</h4>
-                <div class="ce-textpic ce-right ce-intext">
-                  <div class="ce-bodytext">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. </p>
-                  </div>
+                <div class="col-md-6 footer__contact">
+                    <h4>Contact us</h4>
+                    <div class="row">
+                        <div class=" col-xs-4 col-md-4 ">
+                            <p>t3kit <br>Regementsgatan 8 <br>211 42 Malmö, <br>Sweden</p>
+                        </div>
+                        <div class="col-xs-2 col-md-2 ">
+                            <div class="footer__map">
+                                <a class="footer__map-icon icons icon-t3-map" href="#"></a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <ul class="nav contact-links" >
+                                <li>
+                                <p><span class="icons icon-t3-mobile"></span><span>CALL US ON</span> <a href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a></p>
+                                </li>
+                                <li><p><span class="icons icon-t3-mail"></span><span>EMAIL US AT</span> <a href="#">info@info.se</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="footer__social">
         <div class="container">
-          <div class="row ">
-            <div class="col-md-12">
-              <div class="footer__social-icons">
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-facebook"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-twitter"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-linkedin"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-vimeo"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-googleplus"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-pinterest"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-instagram"></span>  </a> 
-                <a class="footer__social-icon" href="#"> <span class="icons icon-t3-youtube"></span>  </a> 
-              </div>
+            <div class="row ">
+                <div class="col-md-6 footer__quick-links">
+                    <h4>Quick links</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="ce-menu ce-menu-1">
+                                <li><a href="">Typical page content</a></li>
+                                <li><a href="">Special Elements</a></li>
+                                <li><a href="">Form Elements</a></li>
+                                <li><a href="">Plugins</a></li>
+                                <li><a href="">Content Elements</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="ce-menu ce-menu-1">
+                                <li><a href="">Typical page content</a></li>
+                                <li><a href="">Special Elements</a></li>
+                                <li><a href="">Form Elements</a></li>
+                                <li><a href="">Plugins</a></li>
+                                <li><a href="">Content Elements</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+    
+                    <div class="col-md-6 footer__subscribe">
+                    <div id="c87">
+                        <div id="c88">
+                            <h4>Subscribe to newsletter</h4>
+                            <div class="ce-textpic ce-right ce-intext">
+                                <div class="ce-bodytext">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+    
             </div>
-          </div>
         </div>
-      </div>
-      <div class="footer__bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-7 footer__bottom-copyright">
-              <p>All rights reserved © 2015</p>
+        <div class="footer__social">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-12">
+                        <div class="footer__social-icons">
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-facebook"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-twitter"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-linkedin"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-vimeo"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-googleplus"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-pinterest"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-instagram"></span></a>
+                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-youtube"></span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-5 footer__bottom-nav">
-              <ul class="ce-menu ce-menu-1">
-                <li> <a href="">Legal Rights</a>  </li>
-                <li> <a href="">Terms of Use</a>  </li>
-                <li> <a href="">Cookies</a>  </li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 footer__bottom-copyright">
+                        <p>All rights reserved © 2015</p>
+                    </div>
+                    <div class="col-md-5 footer__bottom-nav">
+                        <ul class="ce-menu ce-menu-1">
+                            <li><a href="">Legal Rights</a></li>
+                            <li><a href="">Terms of Use</a></li>
+                            <li><a href="">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-
     <!-- Scripts -->
     <script src="jquery.js"></script>
     <script src="bootstrap.js"></script>
     <script src="components.js"></script>
-    <script src="header.js"></script>
     <script src="main.js"></script>
     <script src="local.js"></script>
-
-    <!-- ====
-    === -->
-  </body>
+    <!-- ======= -->
+</body>
 </html>
