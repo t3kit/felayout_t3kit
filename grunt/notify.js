@@ -12,12 +12,12 @@ module.exports = {
     },
     big: {
         options: {
-            message: '[BIG] branch successfully updated'
+            message: 'BIG branch successfully updated'
         }
     },
     small: {
         options: {
-            message: '[SMALL] branch successfully updated'
+            message: 'SMALL branch successfully updated'
         }
     }
 };
