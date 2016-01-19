@@ -17,6 +17,10 @@ module.exports = {
     },
     less: {
         files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/local/{,*/}*.less'],
+        tasks: ['less:main', 'postcss']
+    },
+    lessWithoutAutoPrefixer: {
+        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/local/{,*/}*.less'],
         tasks: ['less:main']
     },
     lessLocal: {

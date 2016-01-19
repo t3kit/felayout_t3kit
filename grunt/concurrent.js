@@ -1,6 +1,6 @@
 module.exports = {
     options: {
-        limit: 15
+        limit: 17
     },
 
     // Copy files and compile templates. Default task.
@@ -22,13 +22,15 @@ module.exports = {
             'import:local'
         ],
     },
-
+    // Copy files and minify images. Static site task.
     siteProcess: {
         tasks: [
-            'copy:site',
+            'copy:siteFiles',
             'imagemin:site'
         ],
     },
+
+    // Copy files. Small project task.
     smallProcess: {
         tasks: [
             'copy:smallFiles',
@@ -39,6 +41,8 @@ module.exports = {
             'imagemin:small'
         ],
     },
+
+    // Copy files and minify images. BIG project task.
     bigProcess: {
         tasks: [
             'copy:bigFiles',

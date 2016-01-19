@@ -6,6 +6,6 @@ module.exports = {
         options: {
             import: false
         },
-        src: ['<%= temp %>/main.css', '<%= temp %>/header.css', '<%= temp %>/headerMin.css']
+        src: ['<%= temp %>/main.css']
     }
 };

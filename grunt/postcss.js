@@ -1,23 +1,11 @@
 module.exports = {
     options: {
-        map: true,
+        // map: true,
         processors: [
-            require('autoprefixer')({ browsers: ['last 2 version'] })
+            require('autoprefixer')({ browsers: ['last 2 versions'] })
         ]
     },
-    main: {
-        dist: {
-            src: ['<%= temp %>/main.css']
-        }
-    },
-    big: {
-        dist: {
-            src: ['<%= big %>/main.css', '<%= big %>/header.css', '<%= big %>/headerMin.css']
-        }
-    },
-    site: {
-        dist: {
-            src: ['<%= site %>/main.css', '<%= site %>/header.css', '<%= site %>/headerMin.css']
-        }
+    dist: {
+        src: ['<%= temp %>/main.css']
     }
 };

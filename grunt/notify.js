@@ -1,7 +1,8 @@
 module.exports = {
     server: {
         options: {
-            message: 'Server is ready! \nhttp://localhost:<%= connect.options.port %>'
+            title: 'Server is ready',
+            message: 'http://localhost:<%= connect.options.port %>'
         }
     },
     site: {

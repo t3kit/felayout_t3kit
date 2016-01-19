@@ -4,8 +4,8 @@
 default:
     #Dev
     - 'dev' #task helper
-    #Postcss
-    - 'postcss:main'
+    #Postcss autoprefixer
+    - 'postcss'
     #Localhost
     - 'localhost' #task helper
     #Watch
@@ -17,8 +17,8 @@ default:
 big:
     #Dev
     - 'dev' #task helper
-    #Postcss
-    - 'postcss:main'
+    #Postcss autoprefixer
+    - 'postcss'
     #Big
     - 'clean:bigFolder'
     - 'concurrent:bigProcess'
@@ -49,13 +49,13 @@ small:
 pushSite:
     #Dev
     - 'dev'
-    #Postcss
-    - 'postcss:main'
+    #Postcss autoprefixer
+    - 'postcss'
     #Site
     - 'clean:siteFolder'
     - 'concurrent:siteProcess'
     #---------------
-    - 'pushSite' #task helper
+    - 'pushSiteBranch' #task helper
     #---------------
 
 # ==================================
@@ -64,13 +64,13 @@ pushSite:
 pushBig:
     #Dev
     - 'dev' #task helper
-    #Postcss
-    - 'postcss:main'
+    #Postcss autoprefixer
+    - 'postcss'
     #Big
     - 'clean:bigFolder'
     - 'concurrent:bigProcess'
     #---------------
-    - 'pushBig' #task helper
+    - 'pushBigBranch' #task helper
     #---------------
 
 # ==================================
@@ -83,7 +83,7 @@ pushSmall:
     - 'clean:smallFolder'
     - 'concurrent:smallProcess'
     #---------------
-    - 'pushSmall' #task helper
+    - 'pushSmallBranch' #task helper
     #---------------
 
 # ==================================
@@ -116,17 +116,17 @@ localhost:
     - 'connect:localhost'
     - 'notify:server'
 
-pushSite:
+pushSiteBranch:
     # Push to remote server with creating new branch [site]
     - 'buildcontrol:site'
     - 'notify:site'
 
-pushBig:
+pushBigBranch:
     # Push to remote server with creating new branch [big]
     - 'buildcontrol:big'
     - 'notify:big'
 
-pushSmall:
+pushSmallBranch:
     # Push to remote server with creating new branch [small]
     - 'buildcontrol:small'
     - 'notify:small'
