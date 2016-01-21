@@ -18,6 +18,8 @@ module.exports = {
     main: {
         options: {
             sourceMap: true,
+            sourceMapFilename: '<%= temp %>/main.css.map',
+            sourceMapURL: 'main.css.map'
         },
         files: {
             '<%= temp %>/main.css': '<%= dev %>/styles/main.less'

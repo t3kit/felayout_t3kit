@@ -1,6 +1,9 @@
 module.exports = {
     options: {
-        // map: true,
+        map: {
+            inline: false,
+            annotation: '<%= temp %>'
+        },
         processors: [
             require('autoprefixer')({ browsers: ['last 2 versions'] })
         ]
