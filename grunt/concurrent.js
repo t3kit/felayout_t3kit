@@ -38,7 +38,8 @@ module.exports = {
             'copy:smallCss',
             'import:bootstrapLess',
             'import:mainLess',
-            'imagemin:small'
+            'imagemin:small',
+            'copy:gitIgnoreSmall'
         ],
     },
 
@@ -47,7 +48,8 @@ module.exports = {
         tasks: [
             'copy:bigFiles',
             'copy:bigCssJs',
-            'imagemin:big'
+            'imagemin:big',
+            'copy:gitIgnoreBig'
         ]
     },
 };

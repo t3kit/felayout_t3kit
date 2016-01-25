@@ -131,5 +131,22 @@ module.exports = {
             '!local.css'
         ]
     },
-
+    gitIgnoreBig: {
+        expand: true,
+        dot: true,
+        cwd: '.',
+        dest: '<%= big %>',
+        src: [
+            '.gitignore'
+        ]
+    },
+    gitIgnoreSmall: {
+        expand: true,
+        dot: true,
+        cwd: '.',
+        dest: '<%= small %>',
+        src: [
+            '.gitignore'
+        ]
+    }
 };
