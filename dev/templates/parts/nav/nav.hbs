@@ -18,7 +18,7 @@
 
                 {{!if subpages exists}}
                 {{~#if subpages~}}
-                    <li class="main-navigation__item js__main-navigation__item {{#if ../../this.navDropdown }}_sub {{/if}} {{#if this.isCurrentPage}} _active{{/if}}
+                    <li class="main-navigation__item js__main-navigation__item {{#is ../../this.navDropdown 'true' }}_sub {{/is}} {{#if this.isCurrentPage}} _active{{/if}}
                     {{!add "active" class if some of children also active}}
                     {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
                     {{~#ifChildrensActive_addClass ../../pages ~}}
