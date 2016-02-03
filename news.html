@@ -124,10 +124,12 @@
                     </div>
                 </div>
 
-                <div class="main-navigation__search-btn-wrp _header-top-search-btn">
-                    <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
-                </div>
-                <div class="main-navigation__search-box _header-top-search-btn js__main-navigation__search-box" ><input placeholder="Search..." type="search"></div>
+                <form action="/solr.html" accept-charset="utf-8">
+                    <div class="main-navigation__search-btn-wrp _header-top-search-btn">
+                        <a class="main-navigation__search-btn js__main-navigation__search-btn" href="">Search<span></span></a>
+                    </div>
+                    <div class="main-navigation__search-box _header-top-search-btn js__main-navigation__search-box" ><input data-search="searchSuggest" placeholder="Search..." type="search"></div>
+                </form>
 
                 <ul class="nav">
                     <li><a href="index.html">Home</a></li>
@@ -199,15 +201,6 @@ _active"><a class="main-navigation__sub-item-link" href="plugins.html">Plugins</
 
 
 </header>
-
-
-
-
-
-
-
-
-
 
 
     <!-- pages -->
@@ -381,6 +374,11 @@ _active"><a class="main-navigation__sub-item-link" href="plugins.html">Plugins</
 
 
 
+
+
+
+
+
             <li  class="breadcrumbs__list-item _active">News</li>
         </ol>
     </div>
@@ -481,6 +479,13 @@ _active"><a class="main-navigation__sub-item-link" href="plugins.html">Plugins</
                                             <a  href="newsDetail.html" class="sub-navigation__link _sub-level-3 
             ">
                                                 News Details
+                                            </a>
+                                            <ul class="sub-navigation__item-list _sub-list-level-4">
+            </ul>
+                                        </li><li class="sub-navigation__item">
+                                            <a  href="solr.html" class="sub-navigation__link _sub-level-3 
+            ">
+                                                Solr
                                             </a>
                                             <ul class="sub-navigation__item-list _sub-list-level-4">
             </ul>
@@ -770,7 +775,7 @@ _active"><a class="main-navigation__sub-item-link" href="plugins.html">Plugins</
                     </div>
                 </div>
     
-                    <div class="col-md-6 footer__subscribe">
+                <div class="col-md-6 footer__subscribe">
                     <div id="c87">
                         <div id="c88">
                             <h4>Subscribe to newsletter</h4>
@@ -780,9 +785,30 @@ _active"><a class="main-navigation__sub-item-link" href="plugins.html">Plugins</
                                 </div>
                             </div>
                         </div>
+                        <div id="c86">
+                            <div class="tx-pxa-newsletter-subscription">
+                                <form class="form" id="86" action="/" method="post">
+                                    <input type="hidden" name="tx_pxanewslettersubscription_subscription[ceuid]" value="86">
+                                    <div class="row control-group form-group">
+                                        <div class="col-sm-6">
+                                            <div class="input-append input-group">
+                                                <input placeholder="Name" class="form-control" id="name" type="text" name="tx_pxanewslettersubscription_subscription[name]">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="input-append input-group">
+                                                <input placeholder="E-mail" class="form-control" id="email" type="text" name="tx_pxanewslettersubscription_subscription[email]">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="subscribe form-actions pull-right">
+                                        <input class="btn btn-default" type="button" value="Subscribe" name="tx_pxanewslettersubscription_subscription[submitType]">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    </div>
-    
+                </div>
             </div>
         </div>
         <div class="footer__social">

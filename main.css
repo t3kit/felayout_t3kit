@@ -834,6 +834,7 @@
 ._header-top-search-btn.main-navigation__search-box {
   right: 0;
   box-shadow: inset 0 1px 0 #E2E3DF, 0 2px 3px -1px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid #eee;
   top: 50px;
   position: absolute;
   opacity: 0;
@@ -1656,6 +1657,15 @@
 .fix-label {
   padding-left: 20px;
 }
+.footer__subscribe .alert {
+  width: 70%;
+}
+.footer__subscribe .form-control {
+  margin: 5px auto;
+}
+.footer__subscribe .input-group {
+  width: 100%;
+}
 /**************************************/
 /* Default styles for news extension */
 /**************************************/
@@ -2007,6 +2017,41 @@
   color: #4e4e4e;
   background: #ddd;
   padding: 4px 10px;
+}
+div.awesomplete {
+  width: 100%;
+  height: 100%;
+  font-size: 13px;
+}
+div.awesomplete > ul {
+  min-width: 200px;
+  border: 1px solid #eee;
+  border-radius: 0;
+  background: #fff;
+  margin: .4em 0 0;
+  box-shadow: 0.05em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.3);
+}
+.main-navigation__search-box .awesomplete > ul {
+  left: 5%;
+}
+.main-navigation__search-box._header-top-search-btn .awesomplete > ul {
+  left: 5%;
+}
+div.awesomplete > ul:before {
+  border-color: #cfcfcf;
+}
+div.awesomplete > ul > li {
+  padding: 0.5em .6em;
+}
+div.awesomplete > ul > li[aria-selected="true"],
+div.awesomplete > ul > li[aria-selected="true"]:hover {
+  background: #288FB4;
+  color: white;
+}
+div.awesomplete > ul > li:hover {
+  background: #e6e6e6;
+  color: inherit;
 }
 .ce-menu {
   list-style: none;
@@ -2364,6 +2409,10 @@
   border-left: 3px solid #288FB4;
   color: #555;
   background: #d9d9d9;
+}
+.one-column-align-center.col1 {
+  float: none;
+  margin: 0 auto;
 }
 .browsehappy {
   position: absolute;
