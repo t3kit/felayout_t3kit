@@ -11,3 +11,11 @@
 //==============================================================================
 @import '../bower_components/jQuery.dotdotdot/src/js/jquery.dotdotdot.js';
 //==============================================================================
+
+
+
+// Ultra lightweight, usable, beautiful autocomplete with zero dependencies.
+// http://leaverou.github.io/awesomplete/
+//==============================================================================
+@import '../bower_components/awesomplete/awesomplete.js';
+//==============================================================================

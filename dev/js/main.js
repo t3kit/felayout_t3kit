@@ -6,5 +6,6 @@
 @import 'main/contentElements/slider.js';
 @import 'main/contentElements/carousel.js';
 
+@import 'main/suggest.js';
 
 @import 'main/general.js';

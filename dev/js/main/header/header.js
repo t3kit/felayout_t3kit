@@ -32,7 +32,6 @@ jQuery(function($) {
 
     $(window).on('orientationchange',function() {
         cleanup();
-        console.log('dfdsfs');
     });
 
     var mobileMenuAnimationComplete = true;
