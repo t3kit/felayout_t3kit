@@ -22,7 +22,7 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
                         <div class="tx-solr-search-form">
                             <form id="tx-solr-search-form-pi-results" action="/solr.html" method="get" accept-charset="utf-8" class="form-inline">
                                 <div class="form-group">
-                                    <div class="awesomplete"><input type="text" class="tx-solr-q form-control" name="q" value="" data-search="searchSuggest" autocomplete="off" aria-autocomplete="list"><ul hidden=""></ul><span class="visually-hidden" role="status" aria-live="assertive" aria-relevant="additions"></span></div>
+                                    <input type="text" class="tx-solr-q form-control" name="q" value="" data-search="searchSuggest" autocomplete="off" aria-autocomplete="list">
                                     <input type="hidden" name="id" value="71">
                                     <input type="hidden" name="L" value="0">
                                     <input type="submit" class="tx-solr-submit form-control" value="Search">
@@ -30,7 +30,7 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
                             </form>
                         </div>
                         <p>Searched for "<span class="tx-solr-search-word">content</span>". Found 28 results in 13 milliseconds. Displaying results 1 to 10 of 28.</p>
-                        <form class="form-inline" action="/content/plugins/solr/?q=content" method="post">
+                        <form class="form-inline"  >
                             <div class="form-group">
                                 <label for="tx_solr[resultsPerPage]">Results per page:</label>
                                 <select class="form-control" onchange="this.form.submit()" name="tx_solr[resultsPerPage]">
@@ -40,12 +40,12 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
                                 </select>
                             </div>
                         </form>
-            <div class="btn-group btn-group-justifiedNEJ" role="group" aria-label="...">
+            <div class="search-result-pagination btn-group btn-group-justifiedNEJ" role="group" aria-label="...">
                 <a href="" class="btn btn-default disabled" title="First">«</a>
                 <a href="" class="btn btn-default disabled" title="Previous">‹</a>
-            	<a href="/content/plugins/solr/?q=content" class="btn btn-default disabled">1</a><a href="/content/plugins/solr/?q=content&amp;tx_solr%5Bpage%5D=1" class="btn btn-default">2</a><a href="/content/plugins/solr/?q=content&amp;tx_solr%5Bpage%5D=2" class="btn btn-default">3</a>
-            	<a href="/content/plugins/solr/?q=content&amp;tx_solr%5Bpage%5D=1" class="btn btn-default" title="Next">›</a>
-            	<a href="/content/plugins/solr/?q=content&amp;tx_solr%5Bpage%5D=2" class="btn btn-default" title="Last">»</a>
+            	<a href="" class="btn btn-default disabled">1</a><a href="" class="btn btn-default">2</a><a href="" class="btn btn-default">3</a>
+            	<a href="" class="btn btn-default" title="Next">›</a>
+            	<a href="" class="btn btn-default" title="Last">»</a>
             </div>
                         <ol start="1" class="results-list">
                             <li class="results-entry">
