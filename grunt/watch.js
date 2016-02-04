@@ -1,5 +1,27 @@
-module.exports = {
+// file sets for Grunt Watch process
 
+// css/less
+var lessBootstrapFiles = ['<%= dev %>/styles/bootstrap.less', '<%= dev %>/styles/customVariables.less'];
+var cssComponentsFiles = ['<%= dev %>/styles/components.less'];
+var mainLessFiles = ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/local/{,*/}*.less'];
+var lessLocalFiles = ['<%= dev %>/styles/local.less', '<%= dev %>/styles/local/{,*/}*.less'];
+
+// js
+var jsJqueryFiles = ['<%= dev %>/js/jquery.js'];
+var jsBootstrapFiles = ['<%= dev %>/js/bootstrap.js'];
+var jsComponentsFiles = ['<%= dev %>/js/components.js'];
+var jsMainFiles = ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '!<%= dev %>/js/components.js', '!<%= dev %>/js/bootstrap.js', '!<%= dev %>/js/jquery.js'];
+var jsLocalFiles = ['<%= dev %>/js/local.js','<%= dev %>/js/local/{,*/}*.js'];
+
+// other files
+var fontsFiles = '<%= dev %>/fonts/{,*/}*.*';
+var imagesFiles = '<%= dev %>/images/{,*/}*.*';
+var copyToRootFiles = '<%= dev %>/copyToRoot/{,*/}*.*';
+
+module.exports = {
+    // ============================================================
+    // DEFAULT
+    // ============================================================
     // watch process - handlebars templates
     html: {
         files: ['<%= dev %>/templates/**/*.hbs'],
@@ -8,85 +30,160 @@ module.exports = {
 
     // watch process - less compilation
     lessBootstrap: {
-        files: ['<%= dev %>/styles/bootstrap.less', '<%= dev %>/styles/customVariables.less'],
+        files: lessBootstrapFiles,
         tasks: ['less:bootstrap']
     },
     lessComponents: {
-        files: ['<%= dev %>/styles/components.less'],
+        files: cssComponentsFiles,
         tasks: ['less:components']
     },
     less: {
-        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/local/{,*/}*.less'],
+        files: mainLessFiles,
         tasks: ['less:main', 'postcss']
     },
-    lessWithoutAutoPrefixer: {
-        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/bootstrap.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/components.less', '!<%= dev %>/styles/local/{,*/}*.less'],
-        tasks: ['less:main']
-    },
     lessLocal: {
-        files: ['<%= dev %>/styles/local.less', '<%= dev %>/styles/local/{,*/}*.less'],
+        files: lessLocalFiles,
         tasks: ['less:local']
     },
 
     // watch process - js import
     jsJquery: {
-        files: ['<%= dev %>/js/jquery.js'],
+        files: jsJqueryFiles,
         tasks: 'import:jquery'
     },
     jsBootstrap: {
-        files: ['<%= dev %>/js/bootstrap.js'],
+        files: jsBootstrapFiles,
         tasks: 'import:bootstrap'
     },
     jsComponents: {
-        files: ['<%= dev %>/js/components.js'],
+        files: jsComponentsFiles,
         tasks: 'import:components'
     },
     jsMain: {
-        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '!<%= dev %>/js/components.js', '!<%= dev %>/js/bootstrap.js', '!<%= dev %>/js/jquery.js'],
+        files: jsMainFiles,
         tasks: ['import:main']
     },
     jsLocal: {
-        files: ['<%= dev %>/js/local.js','<%= dev %>/js/local/{,*/}*.js'],
+        files: jsLocalFiles,
         tasks: 'import:local'
     },
 
     // watch process - copy sys files
     copyFonts: {
-        files: '<%= dev %>/fonts/{,*/}*.*',
+        files: fontsFiles,
         tasks: 'newer:copy:fonts'
     },
     copyImages: {
-        files: '<%= dev %>/images/{,*/}*.*',
+        files: imagesFiles,
         tasks: 'newer:copy:images'
     },
     copyToRoot: {
-        files: '<%= dev %>/copyToRoot/{,*/}*.*',
+        files: copyToRootFiles,
         tasks: 'newer:copy:toRoot'
     },
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^END^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    // watch process - special tasks for SMALL project (local development)
-    smallFiles: {
-        files: ['<%= dev %>/copyToRoot/{,*/}*.*', '<%= dev %>/fonts/{,*/}*.*', '<%= dev %>/images/{,*/}*.*'],
-        tasks: ['newer:copy:smallFiles', 'newer:imagemin:small']
+    // ============================================================
+    // SMALL PROJECT
+    // Special tasks for SMALL project (local development)
+    // ============================================================
+    //Small watch process - less compilation
+    smallLessBootstrap: {
+        files: lessBootstrapFiles,
+        tasks: ['less:bootstrap', 'import:bootstrapLess']
     },
-    smallJs: {
-        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js'],
-        tasks: ['newer:copy:smallJs']
+    smallLessComponents: {
+        files: cssComponentsFiles,
+        tasks: ['less:components', 'newer:copy:smallCss']
     },
     smallLess: {
-        files: ['<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/local/{,*/}*.less'],
-        tasks: ['import:mainLess', 'import:bootstrapLess', 'newer:copy:smallCss']
+        files: mainLessFiles,
+        tasks: ['less:main', 'import:mainLess']
     },
 
-    // watch process - special tasks for BIG project (local development)
-    bigFiles: {
-        files: ['<%= dev %>/copyToRoot/{,*/}*.*', '<%= dev %>/fonts/{,*/}*.*', '<%= dev %>/images/{,*/}*.*'],
-        tasks: ['newer:copy:bigFiles', 'newer:imagemin:big']
+    //Small watch process - copy files for Small project
+    smallCopyFonts: {
+        files: fontsFiles,
+        tasks: ['newer:copy:fonts', 'newer:copy:smallFiles']
     },
-    bigCssJs: {
-        files: ['<%= dev %>/js/**/*.js', '!<%= dev %>/js/local.js','!<%= dev %>/js/local/{,*/}*.js', '<%= dev %>/styles/**/*.less', '!<%= dev %>/styles/local.less', '!<%= dev %>/styles/local/{,*/}*.less'],
-        tasks: ['newer:copy:bigCssJs']
+    smallCopyImages: {
+        files: imagesFiles,
+        tasks: ['newer:copy:images', 'newer:imagemin:small']
     },
+    smallCopyToRoot: {
+        files: copyToRootFiles,
+        tasks: ['newer:copy:toRoot', 'newer:copy:smallFiles']
+    },
+
+    //Small watch process - js import
+    smallJsJquery: {
+        files: jsJqueryFiles,
+        tasks: ['import:jquery', 'newer:copy:smallJs']
+    },
+    smallJsBootstrap: {
+        files: jsBootstrapFiles,
+        tasks: ['import:bootstrap', 'newer:copy:smallJs']
+    },
+    smallJsComponents: {
+        files: jsComponentsFiles,
+        tasks: ['import:components', 'newer:copy:smallJs']
+    },
+    smallJsMain: {
+        files: jsMainFiles,
+        tasks: ['import:main', 'newer:copy:smallJs']
+    },
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^END^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    // ============================================================
+    // BIG PROJECT
+    // Special tasks for BIG project (local development)
+    // ============================================================
+    //BIG watch process - less compilation
+    bigLessBootstrap: {
+        files: lessBootstrapFiles,
+        tasks: ['less:bootstrap', 'newer:copy:bigCssJs']
+    },
+    bigLessComponents: {
+        files: cssComponentsFiles,
+        tasks: ['less:components', 'newer:copy:bigCssJs']
+    },
+    bigLess: {
+        files: mainLessFiles,
+        tasks: ['less:main', 'postcss', 'newer:copy:bigCssJs']
+    },
+
+    // BIG watch process - js import
+    bigJsJquery: {
+        files: jsJqueryFiles,
+        tasks: ['import:jquery', 'newer:copy:bigCssJs']
+    },
+    bigJsBootstrap: {
+        files: jsBootstrapFiles,
+        tasks: ['import:bootstrap', 'newer:copy:bigCssJs']
+    },
+    bigJsComponents: {
+        files: jsComponentsFiles,
+        tasks: ['import:components', 'newer:copy:bigCssJs']
+    },
+    bigJsMain: {
+        files: jsMainFiles,
+        tasks: ['import:main', 'newer:copy:bigCssJs']
+    },
+
+    //BIG watch process - copy files for Small project
+    bigCopyFonts: {
+        files: fontsFiles,
+        tasks: ['newer:copy:fonts', 'newer:copy:bigFiles']
+    },
+    bigCopyImages: {
+        files: imagesFiles,
+        tasks: ['newer:copy:images', 'newer:imagemin:big']
+    },
+    bigCopyToRoot: {
+        files: copyToRootFiles,
+        tasks: ['newer:copy:toRoot', 'newer:copy:bigFiles']
+    },
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^END^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     livereload: {
         options: {

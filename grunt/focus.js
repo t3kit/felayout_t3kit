@@ -1,11 +1,11 @@
 module.exports = {
     default: {
-        exclude: ['bigFiles', 'bigCssJs', 'smallFiles', 'smallJs', 'smallLess', 'lessWithoutAutoPrefixer']
+        include: ['html', 'lessBootstrap', 'lessComponents', 'less', 'lessLocal', 'jsJquery', 'jsBootstrap', 'jsComponents', 'jsMain', 'jsLocal', 'copyFonts', 'copyImages', 'copyToRoot', 'livereload']
     },
     small: {
-        exclude: ['bigFiles', 'bigCssJs', 'less']
+        include: ['html', 'lessLocal', 'jsLocal', 'smallLessBootstrap', 'smallLessComponents', 'smallLess', 'smallCopyFonts', 'smallCopyImages', 'smallCopyToRoot', 'smallJsJquery', 'smallJsBootstrap', 'smallJsComponents', 'smallJsMain', 'livereload']
     },
     big: {
-        exclude: ['smallFiles', 'smallJs', 'smallLess', 'lessWithoutAutoPrefixer']
+        include: ['html', 'lessLocal', 'jsLocal', 'bigLessBootstrap', 'bigLessComponents', 'bigLess', 'bigJsJquery', 'bigJsBootstrap', 'bigJsComponents', 'bigJsMain', 'bigCopyFonts', 'bigCopyImages', 'bigCopyToRoot', 'livereload']
     },
 };
