@@ -8,6 +8,7 @@
     "swiper": "3.3.0",
     "jQuery.dotdotdot": "1.7.4",
     "spectrum": "1.7.1",
-    "awesomplete": "https://github.com/LeaVerou/awesomplete.git#8cd36cc49"
+    "awesomplete": "https://github.com/LeaVerou/awesomplete.git#8cd36cc49",
+    "photoswipe": "4.1.1"
   }
 }
