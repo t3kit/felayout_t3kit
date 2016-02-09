@@ -1,11 +1,22 @@
 module.exports.register = function(Handlebars)  {
     Handlebars.registerHelper('addNavData', function() {
 
+        var devDir = /dev/i;
+
         // add data to page colection
         var collection = this.pages;
         for (var i in collection) {
-            var collectionMenuLevels = collection[i].src.match(/\//ig).length - 2;
-            var collectionParentsArr = collection[i].src.split('/');
+            var pageSrc = collection[i].src;
+            var devIndex = devDir.exec(pageSrc).index;
+            var collectionMenuLevels;
+            var collectionParentsArr;
+            if (devIndex > 0) {
+                collectionMenuLevels = pageSrc.substr(devIndex).match(/\//ig).length - 2;
+                collectionParentsArr = pageSrc.substr(devIndex).split('/');
+            } else {
+                collectionMenuLevels = pageSrc.match(/\//ig).length - 2;
+                collectionParentsArr = pageSrc.split('/');
+            }
             collection[i].menuLevel = collectionMenuLevels;
             if (collectionMenuLevels === 2) {
                 collection[i].parent1 = collectionParentsArr[collectionMenuLevels + 1];
@@ -36,8 +47,17 @@ module.exports.register = function(Handlebars)  {
         });
 
         // add data to each page
-        var menuLevels = this.page.src.match(/\//ig).length - 2;
-        var parentsArr = this.page.src.split('/');
+        var thisPageSrc = this.page.src;
+        var thisDevIndex = devDir.exec(thisPageSrc).index;
+        var menuLevels;
+        var parentsArr;
+        if (thisDevIndex > 0) {
+            menuLevels = thisPageSrc.substr(thisDevIndex).match(/\//ig).length - 2;
+            parentsArr = thisPageSrc.substr(thisDevIndex).split('/');
+        } else {
+            menuLevels = thisPageSrc.match(/\//ig).length - 2;
+            parentsArr = thisPageSrc.split('/');
+        }
         this.page.menuLevel = menuLevels;
         if (menuLevels === 2) {
             this.page.parent1 = parentsArr[menuLevels + 1];
