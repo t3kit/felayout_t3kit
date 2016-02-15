@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Front-End layout for t3kit project.",
   "license": "MIT",
-  "repository": "",
+  "repository": "t3kit/felayout_t3kit",
   "devDependencies": {
     "autoprefixer": "6.3.1",
     "grunt": "0.4.5",
