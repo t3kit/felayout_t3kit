@@ -1,12 +1,45 @@
-jQuery(function($) {
-    $('.js__logo-carousel').swiper({
-        nextButton: '.js__logo-carousel__btn-next',
-        prevButton: '.js__logo-carousel__btn-prev',
-        preloadImages: false,
-        lazyLoading: true,
-        watchSlidesVisibility: true,
-        lazyLoadingInPrevNext: true,
-        slidesPerView: 'auto',
-        autoplay: 2500
+(function($) {
+    'use strict';
+
+    // document load event
+    $(document).ready(function() {
+
+        // initialize swiper when document ready
+        $('.js__logo-carousel').swiper({
+            nextButton: '.js__logo-carousel__btn-next',
+            prevButton: '.js__logo-carousel__btn-prev',
+            slidesPerView: 5,
+            preloadImages: false,
+            lazyLoading: true,
+            watchSlidesVisibility: true,
+            lazyLoadingInPrevNext: true,
+            spaceBetween: 20,
+            autoplay: 2500,
+
+            // Responsive breakpoints
+            breakpoints: {
+
+                // when window width is <= 480px
+                480: {
+                    slidesPerView: 1
+                },
+
+                // when window width is <= 600px
+                600: {
+                    slidesPerView: 2
+                },
+
+                // when window width is <= 768px
+                768: {
+                    slidesPerView: 3
+                },
+
+                // when window width is <= 992px
+                992: {
+                    slidesPerView: 4
+                }
+            }
+        });
     });
-});
+
+})(jQuery);
