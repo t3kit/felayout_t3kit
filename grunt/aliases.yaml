@@ -1,5 +1,6 @@
 # ==================================
 # Default, command "grunt". Local development.
+# Start static server with livereload on localhost:9004
 # ==================================
 default:
     #Dev
@@ -12,35 +13,40 @@ default:
     - 'focus:default'
 
 # ==================================
-# Alias for Big project. Local development.
+# Local development.
+# Start static server with livereload on localhost:9004
+# Provide all Front-End service files plus CSS styling for CMS needs, and copy it to CSS folder
 # ==================================
-big:
++css:
     #Dev
     - 'dev' #task helper
     #Postcss autoprefixer
     - 'postcss'
-    #Big
-    - 'clean:bigFolder'
-    - 'concurrent:bigProcess'
+    #Css
+    - 'clean:cssFolder'
+    - 'concurrent:cssProcess'
     #Localhost
     - 'localhost' #task helper
     #Watch
-    - 'focus:big'
+    - 'focus:css'
 
 
 # ==================================
-# Small project. Local development.
+# Local development.
+# Start static server with livereload on localhost:9004
+# Provide all Front-End service files plus LESS styling for CMS needs, and copy it to LESS folder
+# in case that name "less" for this task will have conflict with real less compiler we renamed it to "lss"
 # ==================================
-small:
++less:
     #Dev
     - 'dev' #task helper
-    #Small
-    - 'clean:smallFolder'
-    - 'concurrent:smallProcess'
+    #Less
+    - 'clean:lessFolder'
+    - 'concurrent:lessProcess'
     #Localhost
-    - 'localhost'
+    - 'localhost' #task helper
     #Watch
-    - 'focus:small'
+    - 'focus:less'
 
 
 # ==================================
@@ -58,32 +64,33 @@ pushSite:
     - 'pushSiteBranch' #task helper
     #---------------
 
+
 # ==================================
-# Push files for BIG project
+# Provide all Front-End service files plus CSS styling for CMS needs, copy it to separate branch "css" and push it to remote git server.
 # ==================================
-pushBig:
+pushCss:
     #Dev
     - 'dev' #task helper
     #Postcss autoprefixer
     - 'postcss'
-    #Big
-    - 'clean:bigFolder'
-    - 'concurrent:bigProcess'
+    #Css
+    - 'clean:cssFolder'
+    - 'concurrent:cssProcess'
     #---------------
-    - 'pushBigBranch' #task helper
+    - 'pushCssBranch' #task helper
     #---------------
 
 # ==================================
-# Push files for Small project
+# Provide all Front-End service files plus LESS styling for CMS needs, copy it to separate branch "less" and push it to remote git server.
 # ==================================
-pushSmall:
+pushLess:
     #Dev
     - 'dev' #task helper
-    #Small
-    - 'clean:smallFolder'
-    - 'concurrent:smallProcess'
+    #Less
+    - 'clean:lessFolder'
+    - 'concurrent:lessProcess'
     #---------------
-    - 'pushSmallBranch' #task helper
+    - 'pushLessBranch' #task helper
     #---------------
 
 # ==================================
@@ -121,15 +128,15 @@ pushSiteBranch:
     - 'buildcontrol:site'
     - 'notify:site'
 
-pushBigBranch:
-    # Push to remote server with creating new branch [big]
-    - 'buildcontrol:big'
-    - 'notify:big'
+pushCssBranch:
+    # Push to remote server with creating new branch [css]
+    - 'buildcontrol:css'
+    - 'notify:css'
 
-pushSmallBranch:
-    # Push to remote server with creating new branch [small]
-    - 'buildcontrol:small'
-    - 'notify:small'
+pushLessBranch:
+    # Push to remote server with creating new branch [less]
+    - 'buildcontrol:lss'
+    - 'notify:lss'
 
 # ==================================
 # ==================================

@@ -22,13 +22,13 @@ module.exports = {
     // ============================================================
     // DEFAULT
     // ============================================================
-    // watch process - handlebars templates
+    // DEFAULT watch process - handlebars templates
     html: {
         files: ['<%= dev %>/templates/**/*.hbs'],
         tasks: ['assemble:allTemplates']
     },
 
-    // watch process - less compilation
+    // DEFAULT watch process - less compilation
     lessBootstrap: {
         files: lessBootstrapFiles,
         tasks: ['less:bootstrap']
@@ -46,7 +46,7 @@ module.exports = {
         tasks: ['less:local']
     },
 
-    // watch process - js import
+    // DEFAULT watch process - js import
     jsJquery: {
         files: jsJqueryFiles,
         tasks: 'import:jquery'
@@ -68,7 +68,7 @@ module.exports = {
         tasks: 'import:local'
     },
 
-    // watch process - copy sys files
+    // DEFAULT watch process - copy sys files
     copyFonts: {
         files: fontsFiles,
         tasks: 'newer:copy:fonts'
@@ -79,109 +79,109 @@ module.exports = {
     },
     copyToRoot: {
         files: copyToRootFiles,
-        tasks: 'newer:copy:toRoot'
+        tasks: 'newer:copy:copyToRootFolder'
     },
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^END^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // ============================================================
-    // SMALL PROJECT
-    // Special tasks for SMALL project (local development)
+    // felayout LESS - (task prefix = lss)
+    // Provide all Front-End service files plus LESS styling for CMS needs, and copy it to less folder
     // ============================================================
-    //Small watch process - less compilation
-    smallLessBootstrap: {
+    // Watch process - less compilation
+    lssLessBootstrap: {
         files: lessBootstrapFiles,
         tasks: ['less:bootstrap', 'import:bootstrapLess']
     },
-    smallLessComponents: {
+    lssLessComponents: {
         files: cssComponentsFiles,
-        tasks: ['less:components', 'newer:copy:smallCss']
+        tasks: ['less:components', 'newer:copy:filesToLessFolder']
     },
-    smallLess: {
+    lssLess: {
         files: mainLessFiles,
         tasks: ['less:main', 'import:mainLess']
     },
 
-    //Small watch process - copy files for Small project
-    smallCopyFonts: {
+    // Watch process copy sys files
+    lssCopyFonts: {
         files: fontsFiles,
-        tasks: ['newer:copy:fonts', 'newer:copy:smallFiles']
+        tasks: ['newer:copy:fonts', 'newer:copy:filesToLessFolder']
     },
-    smallCopyImages: {
+    lssCopyImages: {
         files: imagesFiles,
-        tasks: ['newer:copy:images', 'newer:imagemin:small']
+        tasks: ['newer:copy:images', 'newer:imagemin:toLessFolder']
     },
-    smallCopyToRoot: {
+    lssCopyToRoot: {
         files: copyToRootFiles,
-        tasks: ['newer:copy:toRoot', 'newer:copy:smallFiles']
+        tasks: ['newer:copy:copyToRootFolder', 'newer:copy:copyToRootToLessFolder']
     },
 
-    //Small watch process - js import
-    smallJsJquery: {
+    // Watch process - js import
+    lssJsJquery: {
         files: jsJqueryFiles,
-        tasks: ['import:jquery', 'newer:copy:smallJs']
+        tasks: ['import:jquery', 'newer:copy:filesToLessFolder']
     },
-    smallJsBootstrap: {
+    lssJsBootstrap: {
         files: jsBootstrapFiles,
-        tasks: ['import:bootstrap', 'newer:copy:smallJs']
+        tasks: ['import:bootstrap', 'newer:copy:filesToLessFolder']
     },
-    smallJsComponents: {
+    lssJsComponents: {
         files: jsComponentsFiles,
-        tasks: ['import:components', 'newer:copy:smallJs']
+        tasks: ['import:components', 'newer:copy:filesToLessFolder']
     },
-    smallJsMain: {
+    lssJsMain: {
         files: jsMainFiles,
-        tasks: ['import:main', 'newer:copy:smallJs']
+        tasks: ['import:main', 'newer:copy:filesToLessFolder']
     },
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^END^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // ============================================================
-    // BIG PROJECT
-    // Special tasks for BIG project (local development)
+    // felayout CSS - (task prefix = css)
+    // Provide all Front-End service files plus CSS styling for CMS needs, and copy it to css folder
     // ============================================================
-    //BIG watch process - less compilation
-    bigLessBootstrap: {
+    // Watch process - less compilation
+    cssLessBootstrap: {
         files: lessBootstrapFiles,
-        tasks: ['less:bootstrap', 'newer:copy:bigCssJs']
+        tasks: ['less:bootstrap', 'newer:copy:filesToCssFolder']
     },
-    bigLessComponents: {
+    cssLessComponents: {
         files: cssComponentsFiles,
-        tasks: ['less:components', 'newer:copy:bigCssJs']
+        tasks: ['less:components', 'newer:copy:filesToCssFolder']
     },
-    bigLess: {
+    cssLess: {
         files: mainLessFiles,
-        tasks: ['less:main', 'postcss', 'newer:copy:bigCssJs']
+        tasks: ['less:main', 'postcss', 'newer:copy:filesToCssFolder']
     },
 
-    // BIG watch process - js import
-    bigJsJquery: {
+    // Watch process - js import
+    cssJsJquery: {
         files: jsJqueryFiles,
-        tasks: ['import:jquery', 'newer:copy:bigCssJs']
+        tasks: ['import:jquery', 'newer:copy:filesToCssFolder']
     },
-    bigJsBootstrap: {
+    cssJsBootstrap: {
         files: jsBootstrapFiles,
-        tasks: ['import:bootstrap', 'newer:copy:bigCssJs']
+        tasks: ['import:bootstrap', 'newer:copy:filesToCssFolder']
     },
-    bigJsComponents: {
+    cssJsComponents: {
         files: jsComponentsFiles,
-        tasks: ['import:components', 'newer:copy:bigCssJs']
+        tasks: ['import:components', 'newer:copy:filesToCssFolder']
     },
-    bigJsMain: {
+    cssJsMain: {
         files: jsMainFiles,
-        tasks: ['import:main', 'newer:copy:bigCssJs']
+        tasks: ['import:main', 'newer:copy:filesToCssFolder']
     },
 
-    //BIG watch process - copy files for Small project
-    bigCopyFonts: {
+    // Watch process - copy files
+    cssCopyFonts: {
         files: fontsFiles,
-        tasks: ['newer:copy:fonts', 'newer:copy:bigFiles']
+        tasks: ['newer:copy:fonts', 'newer:copy:filesToCssFolder']
     },
-    bigCopyImages: {
+    cssCopyImages: {
         files: imagesFiles,
-        tasks: ['newer:copy:images', 'newer:imagemin:big']
+        tasks: ['newer:copy:images', 'newer:imagemin:toCssFolder']
     },
-    bigCopyToRoot: {
+    cssCopyToRoot: {
         files: copyToRootFiles,
-        tasks: ['newer:copy:toRoot', 'newer:copy:bigFiles']
+        tasks: ['newer:copy:copyToRootFolder', 'newer:copy:copyToRootToCssFolder']
     },
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^END^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

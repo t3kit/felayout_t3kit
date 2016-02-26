@@ -10,14 +10,14 @@ module.exports = {
             message: 'Static site successfully updated'
         }
     },
-    big: {
+    css: {
         options: {
-            message: 'BIG branch successfully updated'
+            message: 'CSS branch successfully updated'
         }
     },
-    small: {
+    less: {
         options: {
-            message: 'SMALL branch successfully updated'
+            message: 'LESS branch successfully updated'
         }
     }
 };

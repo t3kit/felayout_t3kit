@@ -2,10 +2,10 @@ module.exports = {
     default: {
         include: ['html', 'lessBootstrap', 'lessComponents', 'less', 'lessLocal', 'jsJquery', 'jsBootstrap', 'jsComponents', 'jsMain', 'jsLocal', 'copyFonts', 'copyImages', 'copyToRoot', 'livereload']
     },
-    small: {
-        include: ['html', 'lessLocal', 'jsLocal', 'smallLessBootstrap', 'smallLessComponents', 'smallLess', 'smallCopyFonts', 'smallCopyImages', 'smallCopyToRoot', 'smallJsJquery', 'smallJsBootstrap', 'smallJsComponents', 'smallJsMain', 'livereload']
+    less: {
+        include: ['html', 'lessLocal', 'jsLocal', 'lssLessBootstrap', 'lssLessComponents', 'lssLess', 'lssCopyFonts', 'lssCopyImages', 'lssCopyToRoot', 'lssJsJquery', 'lssJsBootstrap', 'lssJsComponents', 'lssJsMain', 'livereload']
     },
-    big: {
-        include: ['html', 'lessLocal', 'jsLocal', 'bigLessBootstrap', 'bigLessComponents', 'bigLess', 'bigJsJquery', 'bigJsBootstrap', 'bigJsComponents', 'bigJsMain', 'bigCopyFonts', 'bigCopyImages', 'bigCopyToRoot', 'livereload']
+    css: {
+        include: ['html', 'lessLocal', 'jsLocal', 'cssLessBootstrap', 'cssLessComponents', 'cssLess', 'cssJsJquery', 'cssJsBootstrap', 'cssJsComponents', 'cssJsMain', 'cssCopyFonts', 'cssCopyImages', 'cssCopyToRoot', 'livereload']
     },
 };

@@ -47,18 +47,10 @@ module.exports = {
             'us.svg'
         ]
     },
-    toRoot: {
-        expand: true,
-        dot: true,
-        cwd: '<%= dev %>/copyToRoot',
-        dest: '<%= temp %>',
-        src: [
-            '{,*/}*.*'
-        ]
-    },
+
 
     // copy tasks for static site
-    siteFiles: {
+    filesToSiteFolder: {
         expand: true,
         dot: true,
         cwd: '<%= temp %>',
@@ -73,80 +65,81 @@ module.exports = {
         ]
     },
 
-    // copy tasks for small project
-    smallFiles: {
-        expand: true,
-        dot: true,
-        cwd: '<%= dev %>',
-        dest: '<%= small %>',
-        src: [
-            'copyToRoot/{,*/}*.*',
-            '!copyToRoot/robots.txt',
-            'fonts/{,*/}*.*'
-        ]
-    },
-    smallJs: {
+    filesToLessFolder: {
         expand: true,
         dot: true,
         cwd: '<%= temp %>',
-        dest: '<%= small %>',
+        dest: '<%= lessFolder %>',
         src: [
             '*.js',
-            'flags/{,*/}*.*',
-            '!local.js'
-        ]
-    },
-    smallCss: {
-        expand: true,
-        dot: true,
-        cwd: '<%= temp %>',
-        dest: '<%= small %>',
-        src: [
             'components.css',
+            'local.css',
+            'flags/{,*/}*.*',
+            'fonts/{,*/}*.*'
         ]
     },
 
-    // copy tasks for BIG project
-    bigFiles: {
-        expand: true,
-        dot: true,
-        cwd: '<%= dev %>',
-        dest: '<%= big %>',
-        src: [
-            'copyToRoot/{,*/}*.*',
-            '!copyToRoot/robots.txt',
-            'fonts/{,*/}*.*'
-        ]
-    },
-    bigCssJs: {
+    filesToCssFolder: {
         expand: true,
         dot: true,
         cwd: '<%= temp %>',
-        dest: '<%= big %>',
+        dest: '<%= cssFolder %>',
         src: [
             '*.js',
-            '!local.js',
             '*.css',
             'flags/{,*/}*.*',
-            '!local.css'
+            'fonts/{,*/}*.*'
         ]
     },
-    gitIgnoreBig: {
+
+    // Copy .gitignore files into service folders
+    gitignoreToCssFolder: {
         expand: true,
         dot: true,
         cwd: '.',
-        dest: '<%= big %>',
+        dest: '<%= cssFolder %>',
         src: [
             '.gitignore'
         ]
     },
-    gitIgnoreSmall: {
+    gitignoreToLessFolder: {
         expand: true,
         dot: true,
         cwd: '.',
-        dest: '<%= small %>',
+        dest: '<%= lessFolder %>',
         src: [
             '.gitignore'
         ]
-    }
+    },
+
+    // Copy folder copyToRoot into service folders
+    copyToRootFolder: {
+        expand: true,
+        dot: true,
+        cwd: '<%= dev %>/copyToRoot',
+        dest: '<%= temp %>',
+        src: [
+            '{,*/}*.*'
+        ]
+    },
+    copyToRootToCssFolder: {
+        expand: true,
+        dot: true,
+        cwd: '<%= dev %>',
+        dest: '<%= cssFolder %>',
+        src: [
+            'copyToRoot/{,*/}*.*',
+            '!copyToRoot/robots.txt',
+        ]
+    },
+    copyToRootToLessFolder: {
+        expand: true,
+        dot: true,
+        cwd: '<%= dev %>',
+        dest: '<%= lessFolder %>',
+        src: [
+            'copyToRoot/{,*/}*.*',
+            '!copyToRoot/robots.txt',
+        ]
+    },
 };

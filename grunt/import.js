@@ -22,10 +22,10 @@ module.exports = {
 
     bootstrapLess: {
         src: '<%= dev %>/styles/bootstrap.less',
-        dest: '<%= small %>/bootstrap.less',
+        dest: '<%= lessFolder %>/bootstrap.less',
     },
     mainLess: {
         src: '<%= dev %>/styles/main.less',
-        dest: '<%= small %>/main.less',
+        dest: '<%= lessFolder %>/main.less',
     }
 };

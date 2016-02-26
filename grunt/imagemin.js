@@ -1,5 +1,5 @@
 module.exports = {
-    site: {
+    toSiteFolder: {
         files: [{
             expand: true,
             cwd: '<%= temp %>',
@@ -7,20 +7,20 @@ module.exports = {
             dest: '<%= site %>'
         }]
     },
-    small: {
+    toLessFolder: {
         files: [{
             expand: true,
             cwd: '<%= temp %>',
             src: ['images/{,*/}*.{png,jpg,jpeg,gif,svg}'],
-            dest: '<%= small %>'
+            dest: '<%= lessFolder %>'
         }]
     },
-    big: {
+    toCssFolder: {
         files: [{
             expand: true,
             cwd: '<%= temp %>',
             src: ['images/{,*/}*.{png,jpg,jpeg,gif,svg}'],
-            dest: '<%= big %>'
+            dest: '<%= cssFolder %>'
         }]
     }
 };

@@ -5,8 +5,8 @@ module.exports = function(grunt) {
     require('load-grunt-config')(grunt, {
         data: {
             site: 'site',
-            small: 'small',
-            big: 'big',
+            cssFolder: 'css',
+            lessFolder: 'less',
             dev: 'dev',
             temp: 'temp',
             bc: 'dev/bower_components',

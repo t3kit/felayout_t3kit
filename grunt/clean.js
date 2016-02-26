@@ -8,21 +8,21 @@ module.exports = {
             ]
         }]
     },
-    smallFolder: {
+    lessFolder: {
         files: [{
             dot: true,
             src: [
-                '<%= small %>/*',
-                '!<%= small %>/.git*'
+                '<%= lessFolder %>/*',
+                '!<%= lessFolder %>/.git*'
             ]
         }]
     },
-    bigFolder: {
+    cssFolder: {
         files: [{
             dot: true,
             src: [
-                '<%= big %>/*',
-                '!<%= big %>/.git*'
+                '<%= cssFolder %>/*',
+                '!<%= cssFolder %>/.git*'
             ]
         }]
     },

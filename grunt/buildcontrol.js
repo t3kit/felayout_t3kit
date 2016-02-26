@@ -11,16 +11,16 @@ module.exports = {
             branch: '<%= remoteBranch %>'
         }
     },
-    big: {
+    css: {
         options: {
-            dir: '<%= big %>',
-            branch: 'big'
+            dir: '<%= cssFolder %>',
+            branch: 'css'
         }
     },
-    small: {
+    less: {
         options: {
-            dir: '<%= small %>',
-            branch: 'small'
+            dir: '<%= lessFolder %>',
+            branch: 'less'
         }
     }
 };

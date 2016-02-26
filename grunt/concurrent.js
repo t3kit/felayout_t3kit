@@ -9,7 +9,7 @@ module.exports = {
             'copy:fonts',
             'copy:images',
             'copy:flags',
-            'copy:toRoot',
+            'copy:copyToRootFolder',
             'assemble:allTemplates',
             'less:bootstrap',
             'less:components',
@@ -25,31 +25,30 @@ module.exports = {
     // Copy files and minify images. Static site task.
     siteProcess: {
         tasks: [
-            'copy:siteFiles',
-            'imagemin:site'
+            'copy:filesToSiteFolder',
+            'imagemin:toSiteFolder'
         ],
     },
 
-    // Copy files. Small project task.
-    smallProcess: {
+    // Run grunt tasks concurrently. Copy main files plus less styling
+    lessProcess: {
         tasks: [
-            'copy:smallFiles',
-            'copy:smallJs',
-            'copy:smallCss',
+            'copy:filesToLessFolder',
+            'copy:copyToRootToLessFolder',
             'import:bootstrapLess',
             'import:mainLess',
-            'imagemin:small',
-            'copy:gitIgnoreSmall'
+            'imagemin:toLessFolder',
+            'copy:gitignoreToLessFolder'
         ],
     },
 
-    // Copy files and minify images. BIG project task.
-    bigProcess: {
+    // Run grunt tasks concurrently. Copy main files plus css styling
+    cssProcess: {
         tasks: [
-            'copy:bigFiles',
-            'copy:bigCssJs',
-            'imagemin:big',
-            'copy:gitIgnoreBig'
+            'copy:filesToCssFolder',
+            'copy:copyToRootToCssFolder',
+            'imagemin:toCssFolder',
+            'copy:gitignoreToCssFolder'
         ]
     },
 };
