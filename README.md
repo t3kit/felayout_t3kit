@@ -3,6 +3,8 @@
 
 Front-End layout for [t3kit](https://github.com/t3kit/t3kit) project
 
+### [CHANGELOG](https://github.com/t3kit/felayout_t3kit/blob/master/CHANGELOG.md)
+
 ### Required dependencies:
 
 - [Git](https://git-scm.com/)
