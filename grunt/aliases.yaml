@@ -135,8 +135,8 @@ pushCssBranch:
 
 pushLessBranch:
     # Push to remote server with creating new branch [less]
-    - 'buildcontrol:lss'
-    - 'notify:lss'
+    - 'buildcontrol:less'
+    - 'notify:less'
 
 # ==================================
 # ==================================
