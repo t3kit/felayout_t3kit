@@ -5,6 +5,7 @@
     $(document).ready(function() {
 
         // initialize swiper when document ready
+        // http://idangero.us/swiper/api/
         $('.js__img-slider').swiper({
             nextButton: '.js__img-slider__btn-next',
             prevButton: '.js__img-slider__btn-prev',
@@ -14,10 +15,7 @@
             lazyLoading: true,
             watchSlidesVisibility: true,
             lazyLoadingInPrevNext: true,
-            speed: 800,
-            onLazyImageReady: function() {
-                $('.js__img-slider__caption-p').dotdotdot();
-            }
+            speed: 600
         });
     });
 
