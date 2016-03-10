@@ -3914,12 +3914,17 @@
 // // =========================================================
 //
 .img-slider{
-    // margin-bottom: 20px;
     max-width: 1280px;
+    height: 300px;
 }
 
-.img-slider__img{
-    max-width: 200%;
+// .img-slider__slide {
+// }
+.img-slider__slide-bg{
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .img-slider__caption{
@@ -3937,7 +3942,7 @@
 }
 .img-slider__caption-header{
     text-shadow: 0 1px 0 rgba(100,100,100,.3);
-    font-size: 24px;
+    font-size: 20px;
     color: #fff;
     margin-top: 10px;
 
@@ -3948,13 +3953,12 @@
     background-color: rgba(100,100,100,.3);
     background-color: rgba(100,100,100,.3);
     padding: 6px 10px;
-    height: 50px;
 }
 .img-slider__caption-link{
     padding: 6px;
     background: @main-color;
     color: #FFF;
-    font-size: 13px;
+    font-size: 14px;
 }
 .no-touch .img-slider__caption-link:hover{
     color: #FFF;
@@ -3972,24 +3976,6 @@
     display: none;
 }
 
-@media (min-width: 400px) {
-    .img-slider__img {
-        max-width: 150%;
-    }
-}
-
-@media (min-width: 500px) {
-    .img-slider__img {
-        max-width: 120%;
-    }
-}
-
-@media (min-width: 640px) {
-    .img-slider__img {
-        max-width: 100%;
-    }
-}
-
 @media (min-width: 768px) {
     .img-slider__caption{
         padding: 30px 50px;
@@ -4001,6 +3987,12 @@
     .img-slider__btn-prev{
         display: block;
     }
+    .img-slider{
+        height: 400px;
+    }
+    .img-slider__caption-p{
+        font-size: 16px;
+    }
 }
 
 @media (min-width: 992px) {
@@ -4010,7 +4002,6 @@
     }
     .img-slider__caption-sub-header{
         font-size: 26px;
-
     }
     .img-slider__caption-header{
         font-size: 30px;
@@ -4018,7 +4009,6 @@
 
     }
     .img-slider__caption-p{
-        font-size: 16px;
         padding:12px 20px;
         height: auto;
     }
@@ -4026,12 +4016,8 @@
         padding: 6px 8px;
         display: inline-block;
         margin-top: 10px;
-        font-size: 14px;
     }
 }
-
-// // =========================================================
-// // =========================================================
 
 // // =========================================================
 // // === Logo carousel =======================================
