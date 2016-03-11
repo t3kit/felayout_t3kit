@@ -634,9 +634,14 @@
         top: 0;
         border-top: 1px solid @header-border-color;
         border-bottom: 2px solid @header-border-color;
+        -webkit-transform: translate3d(0px,0px,0px);
+        transform: translate3d(0px,0px,0px);
+        -webkit-overflow-scrolling: touch;
     }
     .main-navigation-fixed .main-navigation{
         position: fixed;
+        -webkit-transform: translate3d(0px,0px,0px);
+        transform: translate3d(0px,0px,0px);
     }
     .main-navigation-fixed .header {
         padding-bottom: @nav-height;
@@ -722,6 +727,7 @@
         position: absolute;
         height: 100%;
         width: 38px;
+        border: none;
     }
 
     .touch .main-navigation__item._sub._open-tablet-dropdown .main-navigation__sub-item-list{
@@ -786,7 +792,7 @@
 .main-navigation__search-btn-wrp {
     display: none;
     float: right;
-    width: 60px; //dfsdgsdgsdgsgsdgsdgsdgdgdsg
+    width: 60px;
     background: @nav-background-color;
     z-index: 1300;
     position: relative;

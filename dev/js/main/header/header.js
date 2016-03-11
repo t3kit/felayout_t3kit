@@ -13,8 +13,21 @@ jQuery(function($) {
 
     // Cleanup function to clean unneeded classes
     var cleanup = function cleanup() {
-        $mainNavigationItemsList.removeClass('_open-mobile-dropdown');
-        $mainNavigationItemsList.removeClass('open');
+        if ($mainNavigationItemsList.hasClass('_open-mobile-dropdown')) {
+            $mainNavigationItemsList.removeClass('_open-mobile-dropdown');
+        }
+        if ($mainNavigationItemsList.hasClass('_open-tablet-dropdown')) {
+            $mainNavigationItemsList.removeClass('_open-tablet-dropdown');
+        }
+        if ($html.hasClass('mobile-menu-opened')) {
+            $html.removeClass('mobile-menu-opened');
+        }
+        if ($(window).width() < 992 && !$html.hasClass('mobile-menu-opened')) {
+            $('.js__navigation__items-wrp').hide();
+        } else {
+            $('.js__navigation__items-wrp').show();
+
+        }
     };
 
     // Add click event to dropdown link on mobile devices.
