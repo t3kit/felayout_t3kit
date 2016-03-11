@@ -187,7 +187,7 @@
 
 .news-related {
     width: 50%;
-    padding: 15px;
+    padding: 6px;
     border: 1px solid #eee;
     display: table-cell;
 }
@@ -273,7 +273,13 @@
     background: @main-color;
     color: #fff;
 }
-
+.news-tags a.active {
+    background: @main-color;
+    color: #fff;
+}
+.news-tags a.active:before, .news-tags a.active:before {
+    border-color: transparent @main-color transparent transparent;
+}
 .news-tags a:hover:before, .news-tags a:active:before {
         border-color: transparent @main-color transparent transparent;
 }
@@ -341,10 +347,11 @@
     margin-top: 20px;
 }
 
-.news-article-footer span{
+.news-article-footer p > span{
     display: inline-block;
     // margin: 4px 0;
     margin-right: 2px;
+    margin-top: 4px;
 }
 
 .news-article-footer .news-list-date{
@@ -414,4 +421,11 @@
 // news small fixes
 .news-single .twitter {
     padding-top: 6px;
+}
+
+
+
+// fix social links on news-single page
+.news-single .article > .facebook{
+    overflow: hidden;
 }
