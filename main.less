@@ -2354,9 +2354,14 @@
         top: 0;
         border-top: 1px solid @header-border-color;
         border-bottom: 2px solid @header-border-color;
+        -webkit-transform: translate3d(0px,0px,0px);
+        transform: translate3d(0px,0px,0px);
+        -webkit-overflow-scrolling: touch;
     }
     .main-navigation-fixed .main-navigation{
         position: fixed;
+        -webkit-transform: translate3d(0px,0px,0px);
+        transform: translate3d(0px,0px,0px);
     }
     .main-navigation-fixed .header {
         padding-bottom: @nav-height;
@@ -2442,6 +2447,7 @@
         position: absolute;
         height: 100%;
         width: 38px;
+        border: none;
     }
 
     .touch .main-navigation__item._sub._open-tablet-dropdown .main-navigation__sub-item-list{
@@ -2506,7 +2512,7 @@
 .main-navigation__search-btn-wrp {
     display: none;
     float: right;
-    width: 60px; //dfsdgsdgsdgsgsdgsdgsdgdgdsg
+    width: 60px;
     background: @nav-background-color;
     z-index: 1300;
     position: relative;
@@ -3325,7 +3331,7 @@
 
 .news-related {
     width: 50%;
-    padding: 15px;
+    padding: 6px;
     border: 1px solid #eee;
     display: table-cell;
 }
@@ -3411,7 +3417,13 @@
     background: @main-color;
     color: #fff;
 }
-
+.news-tags a.active {
+    background: @main-color;
+    color: #fff;
+}
+.news-tags a.active:before, .news-tags a.active:before {
+    border-color: transparent @main-color transparent transparent;
+}
 .news-tags a:hover:before, .news-tags a:active:before {
         border-color: transparent @main-color transparent transparent;
 }
@@ -3479,10 +3491,11 @@
     margin-top: 20px;
 }
 
-.news-article-footer span{
+.news-article-footer p > span{
     display: inline-block;
     // margin: 4px 0;
     margin-right: 2px;
+    margin-top: 4px;
 }
 
 .news-article-footer .news-list-date{
@@ -3552,6 +3565,13 @@
 // news small fixes
 .news-single .twitter {
     padding-top: 6px;
+}
+
+
+
+// fix social links on news-single page
+.news-single .article > .facebook{
+    overflow: hidden;
 }
 
 // ext Search
@@ -4308,7 +4328,7 @@
 
 
 // ==================================================================
-// ======== Helper classes for Fluid Styled Content extension  ====
+// ======== Additional styling for Fluid Styled Content extension  ====
 // ==================================================================
 .ce-gallery img {
     display: block;
@@ -4325,7 +4345,11 @@
         float: none;
         margin: 40px 0 0 0 ;
     }
+}
 
+.ce-gallery figcaption {
+    color: fade(@main-text-color, 50%);
+    font-size: 13px;
 }
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
