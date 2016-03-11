@@ -21,7 +21,7 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 </div>
                 <!-- ###LOGIN_FORM### -->
-                <form class="form-horizontal" action="content/form-elements/login-form/" target="_top" method="post" onsubmit="; return true;">
+                <form class="form-horizontal" action="" target="_top" onsubmit="; return true;">
                     <fieldset>
                         <legend>Login</legend>
                         <div class="form-group">
@@ -57,7 +57,7 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 </div>
                 <!-- ###FORGOT_FORM### -->
-                <form class="form-horizontal" action="content/form-elements/login-form/?tx_felogin_pi1%5Bforgot%5D=1" method="post">
+                <form class="form-horizontal" action="" >
                     <div class="felogin-hidden">
                         <input type="hidden" name="tx_felogin_pi1[forgot_hash]" value="bb3a244e6e0d7a93c9c7c0c502a63933">
                     </div>
@@ -83,11 +83,7 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
             </div>
 
             <div class="tx-felogin-pi1">
-                <h3 class="felogin-logout-header">Current status</h3>
-                <div class="alert alert-success">This is your current status:
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                </div>
-                <form class="form-horizontal" action="content/form-elements/login-form/" target="_top" method="post">
+                <form class="form-horizontal" action="" target="_top">
                     <fieldset>
                         <legend>Logout</legend>
                         <div class="form-group">
@@ -104,6 +100,37 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
                     </fieldset>
                 </form>
             </div>
+
+
+
+            <div class="tx-felogin-pi1">
+                <h3 class="felogin-change-header">Change your password</h3>
+                <div class="alert alert-info">Please enter your new password twice. Password needs a minimum length of 6 chars.<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>
+
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Change your password</legend>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="tx_felogin_pi1-newpassword1">Enter new password</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="password" name="tx_felogin_pi1[password1]" id="tx_felogin_pi1-newpassword1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="tx_felogin_pi1-newpassword2">Repeat new password</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="password" name="tx_felogin_pi1[password2]" id="tx_felogin_pi1-newpassword2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-5">
+                                <input class="btn btn-default" type="submit" name="tx_felogin_pi1[changepasswordsubmit]" value="Change your password">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
 
         </div>
     </div>
