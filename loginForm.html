@@ -87,7 +87,7 @@
     <![endif]-->
 
     <!-- Header -->
-    <header class="header" role="banner">
+    <header class="header">
 
 <div class="header-top-wrp">
 
@@ -150,21 +150,23 @@
             </a>
         </div>
 
-            <div class="header-middle__social-icons">
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-facebook"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-twitter"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-linkedin"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-vimeo"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-googleplus"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-pinterest"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-instagram"></span></a>
-                <a class="header-middle__social-icon" href="#"><span class="icons icon-t3-youtube"></span></a>
+            <div class="header-middle__social-icon">
+                <div class="social-icons">
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-facebook"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-twitter"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-linkedin"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-vimeo"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-googleplus"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-pinterest"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-instagram"></span></a>
+                    <a class="social-icons__item" href="#"><span class="icons icon-t3-youtube"></span></a>
+                </div>
             </div>
     </div>
 </div>
 
 
-<nav class="main-navigation js__main-navigation" role="navigation">
+<nav class="main-navigation js__main-navigation">
     <div class="main-navigation__items-wrp js__navigation__items-wrp">
         <ul class="main-navigation__items-list js__main-navigation__items-list">
 
@@ -582,7 +584,7 @@ _active"><a class="main-navigation__sub-item-link" href="formElements.html">Form
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 </div>
                 <!-- ###LOGIN_FORM### -->
-                <form class="form-horizontal" action="content/form-elements/login-form/" target="_top" method="post" onsubmit="; return true;">
+                <form class="form-horizontal" action="" target="_top" onsubmit="; return true;">
                     <fieldset>
                         <legend>Login</legend>
                         <div class="form-group">
@@ -618,7 +620,7 @@ _active"><a class="main-navigation__sub-item-link" href="formElements.html">Form
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                 </div>
                 <!-- ###FORGOT_FORM### -->
-                <form class="form-horizontal" action="content/form-elements/login-form/?tx_felogin_pi1%5Bforgot%5D=1" method="post">
+                <form class="form-horizontal" action="" >
                     <div class="felogin-hidden">
                         <input type="hidden" name="tx_felogin_pi1[forgot_hash]" value="bb3a244e6e0d7a93c9c7c0c502a63933">
                     </div>
@@ -644,11 +646,7 @@ _active"><a class="main-navigation__sub-item-link" href="formElements.html">Form
             </div>
 
             <div class="tx-felogin-pi1">
-                <h3 class="felogin-logout-header">Current status</h3>
-                <div class="alert alert-success">This is your current status:
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                </div>
-                <form class="form-horizontal" action="content/form-elements/login-form/" target="_top" method="post">
+                <form class="form-horizontal" action="" target="_top">
                     <fieldset>
                         <legend>Logout</legend>
                         <div class="form-group">
@@ -666,14 +664,45 @@ _active"><a class="main-navigation__sub-item-link" href="formElements.html">Form
                 </form>
             </div>
 
+
+
+            <div class="tx-felogin-pi1">
+                <h3 class="felogin-change-header">Change your password</h3>
+                <div class="alert alert-info">Please enter your new password twice. Password needs a minimum length of 6 chars.<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button></div>
+
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>Change your password</legend>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="tx_felogin_pi1-newpassword1">Enter new password</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="password" name="tx_felogin_pi1[password1]" id="tx_felogin_pi1-newpassword1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="tx_felogin_pi1-newpassword2">Repeat new password</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="password" name="tx_felogin_pi1[password2]" id="tx_felogin_pi1-newpassword2">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-5">
+                                <input class="btn btn-default" type="submit" name="tx_felogin_pi1[changepasswordsubmit]" value="Change your password">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+
         </div>
     </div>
 </div>
 
 
     <!-- Footer partials -->
-    <footer class="footer" role="contentinfo">
-        <div class="footer__container container">
+    <footer class="footer">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6 footer__about">
                     <h4>About t3kit</h4>
@@ -766,20 +795,18 @@ _active"><a class="main-navigation__sub-item-link" href="formElements.html">Form
                 </div>
             </div>
         </div>
-        <div class="footer__social">
-            <div class="container">
-                <div class="row ">
-                    <div class="col-md-12">
-                        <div class="footer__social-icons">
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-facebook"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-twitter"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-linkedin"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-vimeo"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-googleplus"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-pinterest"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-instagram"></span></a>
-                            <a class="footer__social-icon" href="#"><span class="icons icon-t3-youtube"></span></a>
-                        </div>
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="social-icons">
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-facebook"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-twitter"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-linkedin"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-vimeo"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-googleplus"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-pinterest"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-instagram"></span></a>
+                        <a class="social-icons__item" href="#"><span class="icons icon-t3-youtube"></span></a>
                     </div>
                 </div>
             </div>
