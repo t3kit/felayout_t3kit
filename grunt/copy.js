@@ -48,7 +48,6 @@ module.exports = {
         ]
     },
 
-
     // copy tasks for static site
     filesToSiteFolder: {
         expand: true,
