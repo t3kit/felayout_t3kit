@@ -17,3 +17,11 @@
 //==============================================================================
 @import '../bower_components/awesomplete/awesomplete.js';
 //==============================================================================
+
+
+// Simplelightbox
+// Touch-friendly image lightbox for mobile and desktop with jQuery
+// https://github.com/andreknieriem/simplelightbox
+//==============================================================================
+@import '../bower_components/simplelightbox/dist/simple-lightbox.js';
+//==============================================================================
