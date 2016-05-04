@@ -1533,7 +1533,6 @@
 .footer {
   background: #1D556F;
   border-top: 15px solid #3293c0;
-  margin-top: 30px;
 }
 .footer p {
   color: #eee;
@@ -2329,7 +2328,6 @@ div.awesomplete > ul > li:hover {
 }
 .img-slider__slide-bg {
   height: 100%;
-  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -2684,7 +2682,8 @@ div.awesomplete > ul > li:hover {
 }
 .col-bg-img {
   background-size: cover;
-  background-position: 50%;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 .margin-top-5 {
   margin-top: 2.5px;
