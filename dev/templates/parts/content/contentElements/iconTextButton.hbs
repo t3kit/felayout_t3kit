@@ -7,6 +7,6 @@
         <p class="icon-text-btn__p">{{text}}</p>
     {{/if}}
     {{#if this.buttonName}}
-        <a class="icon-text-btn__link btn btn-default" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}">{{buttonName}}</a>
+        <a class="icon-text-btn__link {{#if this.btnAsLink}}{{else}}btn btn-default {{/if}}" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}">{{buttonName}}</a>
     {{/if}}
 </div>
