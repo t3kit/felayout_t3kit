@@ -25,3 +25,11 @@
 //==============================================================================
 @import '../bower_components/simplelightbox/dist/simple-lightbox.js';
 //==============================================================================
+
+
+// Parallax
+// parallax scrolling effects
+// http://markdalgleish.com/projects/stellar.js
+//==============================================================================
+@import '../bower_components/jquery.stellar/jquery.stellar.js';
+//==============================================================================
