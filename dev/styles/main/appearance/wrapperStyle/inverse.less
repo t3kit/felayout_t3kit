@@ -1,0 +1,54 @@
+.inverse a {
+    color: tint(@main-color, 90%);
+    text-decoration: underline;
+
+    &:active,
+    &.active {
+      &:focus,
+      &.focus {
+        color: tint(@main-text-color, 100%);
+        border-color: tint(@main-color, 70%);
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &.focus {
+    color: tint(@main-text-color, 100%);
+    border-color: tint(@main-color, 70%);
+    }
+}
+
+.inverse p {
+    color: tint(@main-text-color, 90%);
+
+}
+.inverse  {
+    h1,h2,h3,h4,h5 {
+        color: tint(@main-text-color, 100%);
+        -webkit-font-smoothing: antialiased;
+    }
+
+}
+
+.inverse  .icons{
+    // color: tint(@main-color, 90%);
+}
+
+.inverse  .btn{
+    color: @main-text-color;
+    text-decoration: none;
+    &:active,
+    &.active {
+      &:focus,
+      &.focus {
+          color: @main-text-color;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &.focus {
+        color: @main-text-color;
+    }
+}
