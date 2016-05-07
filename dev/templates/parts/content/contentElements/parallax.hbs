@@ -1,0 +1,5 @@
+<div class="parallax {{#if this.hideInMobile}} hidden-xs{{/if}}" data-stellar-background-ratio="0.5" style="background-image: url({{imgSrc}}); height: {{#if this.height}}{{height}}{{else}} auto{{/if}}; background-color: {{#if this.bgColor}}{{bgColor}}{{else}} #1D556F;{{/if}}">
+    {{#if this.elements}}
+        {{{elements}}}
+    {{/if}}
+</div>
