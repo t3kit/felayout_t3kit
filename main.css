@@ -2214,9 +2214,6 @@ div.awesomplete > ul > li:hover {
   list-style: none;
   padding-left: 25px;
 }
-.ce-div {
-  border-top: 1px solid #eee;
-}
 .sl-overlay {
   background: #333;
   opacity: 0.8;
@@ -2242,6 +2239,45 @@ div.awesomplete > ul > li:hover {
   .sl-wrapper .sl-navigation button {
     display: none;
   }
+}
+.ce-div {
+  border-top: 1px solid #eeeeee;
+}
+.divider {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  margin: 20px 0;
+}
+.divider__wrp {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+}
+.divider__icon {
+  color: #dddddd;
+  font-size: 26px;
+}
+.divider__wrp:before,
+.divider__wrp:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 700px;
+  height: 1px;
+  background: #eeeeee;
+}
+.divider__wrp:before {
+  left: 100%;
+  top: 50%;
+  margin-top: -1px;
+  margin-left: 1.8em;
+}
+.divider__wrp:after {
+  right: 100%;
+  bottom: 50%;
+  margin-bottom: -1px;
+  margin-right: 1.8em;
 }
 .big-icon-text-btn {
   margin: 40px 0;
@@ -2513,6 +2549,59 @@ div.awesomplete > ul > li:hover {
     padding-top: 0;
     padding: 0 4px;
   }
+}
+.parallax {
+  background-attachment: fixed;
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.gray-background {
+  background: #eeeeee;
+}
+.inverse a {
+  color: #eaf4f8;
+  text-decoration: underline;
+}
+.inverse a:active:focus,
+.inverse a.active:focus,
+.inverse a:active.focus,
+.inverse a.active.focus {
+  color: #ffffff;
+  border-color: #bfdde9;
+}
+.inverse a:hover,
+.inverse a:focus,
+.inverse a.focus {
+  color: #ffffff;
+  border-color: #bfdde9;
+}
+.inverse p {
+  color: #eeeeee;
+}
+.inverse h1,
+.inverse h2,
+.inverse h3,
+.inverse h4,
+.inverse h5 {
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+.inverse .btn {
+  color: #555;
+  text-decoration: none;
+}
+.inverse .btn:active:focus,
+.inverse .btn.active:focus,
+.inverse .btn:active.focus,
+.inverse .btn.active.focus {
+  color: #555;
+}
+.inverse .btn:hover,
+.inverse .btn:focus,
+.inverse .btn.focus {
+  color: #555;
 }
 .breadcrumbs {
   border-bottom: 1px solid #eee;
