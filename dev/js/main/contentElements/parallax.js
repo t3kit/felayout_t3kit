@@ -3,12 +3,19 @@
 
     // document load event
     $(document).ready(function() {
-
         // Parallax
-        // http://markdalgleish.com/projects/stellar.js
-        $.stellar({
-            horizontalScrolling: false,
-            verticalOffset: 40
+        // https://github.com/nk-o/jarallax
+        $('.parallax-img').jarallax({
+            type: 'scroll', //scroll, scale, opacity, scroll-opacity, scale-opacit
+            speed: 0.5,
+            noAndroid: false,
+            noIos: true
+        });
+        $('.parallax-video').jarallax({
+            type: 'scroll', //scroll, scale, opacity, scroll-opacity, scale-opacit
+            speed: 0.5,
+            noAndroid: true,
+            noIos: true
         });
     });
 

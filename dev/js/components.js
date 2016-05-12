@@ -28,8 +28,9 @@
 
 
 // Parallax
-// parallax scrolling effects
-// http://markdalgleish.com/projects/stellar.js
+// JavaScript parallax scrolling
+// https://github.com/nk-o/jarallax
 //==============================================================================
-@import '../bower_components/jquery.stellar/jquery.stellar.js';
+@import '../bower_components/jarallax/jarallax/jarallax.js';
+@import '../bower_components/jarallax/jarallax/jarallax-video.js';
 //==============================================================================

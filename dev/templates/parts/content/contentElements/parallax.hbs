@@ -1,4 +1,4 @@
-<div class="parallax {{#if this.hideInMobile}} hidden-xs{{/if}}" data-stellar-background-ratio="0.5" style="background-image: url({{imgSrc}}); height: {{#if this.height}}{{height}}{{else}} auto{{/if}}; background-color: {{#if this.bgColor}}{{bgColor}}{{else}} #1D556F;{{/if}}">
+<div class="parallax {{#if this.videoLink}} parallax-video {{else}} parallax-img {{/if}} {{#if this.hideInMobile}} hidden-xs{{/if}}" {{#if this.videoLink}} data-jarallax-video={{videoLink}} {{/if}} style="background-image: url({{imgSrc}}); height: {{#if this.height}}{{height}}{{else}} auto{{/if}};">
     {{#if this.elements}}
         {{{elements}}}
     {{/if}}
