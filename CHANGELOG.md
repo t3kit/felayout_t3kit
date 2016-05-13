@@ -1,3 +1,6 @@
+#### v1.1.1 `May 13, 2016`
+- **[FIX]** fix parallax + bg video parallax ([bf4e520](https://github.com/t3kit/felayout_t3kit/commit/bf4e520))
+
 #### v1.1.0 `May 10, 2016`
 - **[DOC]** update README file ([7a0bf98](https://github.com/t3kit/felayout_t3kit/commit/7a0bf98))
 - **[REFACTOR]** add parallax as a partial ([f9e09fd](https://github.com/t3kit/felayout_t3kit/commit/f9e09fd))
