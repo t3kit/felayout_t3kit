@@ -4588,667 +4588,1249 @@ $.fn.simpleLightbox = function( options )
 
 
 // Parallax
-// parallax scrolling effects
-// http://markdalgleish.com/projects/stellar.js
+// JavaScript parallax scrolling
+// https://github.com/nk-o/jarallax
 //==============================================================================
 /*!
- * Stellar.js v0.6.2
- * http://markdalgleish.com/projects/stellar.js
- * 
- * Copyright 2013, Mark Dalgleish
- * This content is released under the MIT license
- * http://markdalgleish.mit-license.org
+ * Name    : Just Another Parallax [Jarallax]
+ * Version : 1.6.0
+ * Author  : _nK http://nkdev.info
+ * GitHub  : https://github.com/nk-o/jarallax
  */
+(function (window) {
+    'use strict';
+
+    // Adapted from https://gist.github.com/paulirish/1579671
+    if(!Date.now) {
+        Date.now = function () { return new Date().getTime(); };
+    }
+    if(!window.requestAnimationFrame) {
+        (function () {
+
+            var vendors = ['webkit', 'moz'];
+            for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+                var vp = vendors[i];
+                window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
+                window.cancelAnimationFrame = window[vp+'CancelAnimationFrame']
+                                           || window[vp+'CancelRequestAnimationFrame'];
+            }
+            if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) // iOS6 is buggy
+                || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+                var lastTime = 0;
+                window.requestAnimationFrame = function (callback) {
+                    var now = Date.now();
+                    var nextTime = Math.max(lastTime + 16, now);
+                    return setTimeout(function () { callback(lastTime = nextTime); },
+                                      nextTime - now);
+                };
+                window.cancelAnimationFrame = clearTimeout;
+            }
+        }());
+    }
+
+    var supportTransform = (function () {
+        if (!window.getComputedStyle) {
+            return false;
+        }
+
+        var el = document.createElement('p'),
+            has3d,
+            transforms = {
+                'webkitTransform':'-webkit-transform',
+                'OTransform':'-o-transform',
+                'msTransform':'-ms-transform',
+                'MozTransform':'-moz-transform',
+                'transform':'transform'
+            };
+
+        // Add it to the body to get the computed style.
+        (document.body || document.documentElement).insertBefore(el, null);
+
+        for (var t in transforms) {
+            if (typeof el.style[t] !== 'undefined') {
+                el.style[t] = "translate3d(1px,1px,1px)";
+                has3d = window.getComputedStyle(el).getPropertyValue(transforms[t]);
+            }
+        }
+
+        (document.body || document.documentElement).removeChild(el);
+
+        return typeof has3d !== 'undefined' && has3d.length > 0 && has3d !== "none";
+    }());
+
+    var isAndroid = navigator.userAgent.toLowerCase().indexOf('android') > -1;
+    var isIOs = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    var isOperaOld = !!window.opera;
+    var isEdge = /Edge\/\d+/.test(navigator.userAgent);
+    var isIE11 = /Trident.*rv[ :]*11\./.test(navigator.userAgent);
+    var isIE10 = !!Function('/*@cc_on return document.documentMode===10@*/')();
+    var isIElt10 = document.all && !window.atob;
+
+    var wndW;
+    var wndH;
+    function updateWndVars () {
+        wndW = window.innerWidth || document.documentElement.clientWidth;
+        wndH = window.innerHeight || document.documentElement.clientHeight;
+    }
+    updateWndVars();
+
+    // list with all jarallax instances
+    // need to render all in one scroll/resize event
+    var jarallaxList = [];
+
+    // Jarallax instance
+    var Jarallax = (function () {
+        var instanceID = 0;
+
+        function Jarallax_inner (item, userOptions) {
+            var _this = this,
+                dataOptions;
+
+            _this.$item      = item;
+
+            _this.defaults   = {
+                type              : 'scroll', // type of parallax: scroll, scale, opacity, scale-opacity, scroll-opacity
+                speed             : 0.5, // supported value from -1 to 2
+                imgSrc            : null,
+                imgWidth          : null,
+                imgHeight         : null,
+                enableTransform   : true,
+                zIndex            : -100,
+                noAdnroid         : false,
+                noIos             : true,
+
+                // events
+                onScroll          : null, // function(calculations) {}
+                onInit            : null, // function() {}
+                onDestroy         : null, // function() {}
+                onCoverImage      : null  // function() {}
+            };
+            dataOptions      = JSON.parse(_this.$item.getAttribute('data-jarallax') || '{}');
+            _this.options    = _this.extend({}, _this.defaults, dataOptions, userOptions);
+
+            // stop init if android or ios
+            if(isAndroid && _this.options.noAdnroid || isIOs && _this.options.noIos) {
+                return;
+            }
+
+            // fix speed option [-1.0, 2.0]
+            _this.options.speed = Math.min(2, Math.max(-1, parseFloat(_this.options.speed)));
+
+            _this.instanceID = instanceID++;
+
+            _this.image      = {
+                src        : _this.options.imgSrc || null,
+                $container : null,
+                $item      : null,
+                width      : _this.options.imgWidth || null,
+                height     : _this.options.imgHeight || null,
+                // fix for some devices
+                // use <img> instead of background image - more smoothly
+                useImgTag  : isIOs || isAndroid || isOperaOld || isIE11 || isIE10 || isEdge
+            };
+
+            if(_this.initImg()) {
+                _this.init();
+            }
+        }
+
+        return Jarallax_inner;
+    }());
+
+    // add styles to element
+    Jarallax.prototype.css = function (el, styles) {
+        if(typeof styles === 'string') {
+            return el.style[styles];
+        }
+
+        // add transform prop with vendor prefixes
+        if(styles.transform) {
+            styles.WebkitTransform = styles.MozTransform = styles.transform;
+        }
+
+        for(var k in styles) {
+            el.style[k] = styles[k];
+        }
+        return el;
+    };
+    // Extend like jQuery.extend
+    Jarallax.prototype.extend = function (out) {
+        out = out || {};
+        for (var i = 1; i < arguments.length; i++) {
+            if (!arguments[i]) {
+                continue;
+            }
+            for (var key in arguments[i]) {
+                if (arguments[i].hasOwnProperty(key)) {
+                    out[key] = arguments[i][key];
+                }
+            }
+        }
+        return out;
+    };
+
+    // Jarallax functions
+    Jarallax.prototype.initImg = function () {
+        var _this = this;
+
+        // get image src
+        if(_this.image.src === null) {
+            _this.image.src = _this.css(_this.$item, 'background-image').replace(/^url\(['"]?/g,'').replace(/['"]?\)$/g,'');
+        }
+        if(!_this.image.src || _this.image.src === 'none') {
+            return false;
+        }
+        return true;
+    };
+
+    Jarallax.prototype.init = function () {
+        var _this = this,
+            containerStyles = {
+                position         : 'absolute',
+                top              : 0,
+                left             : 0,
+                width            : '100%',
+                height           : '100%',
+                overflow         : 'hidden',
+                pointerEvents    : 'none'
+            },
+            imageStyles = {
+                position         : 'fixed'
+            };
+
+        // container for parallax image
+        _this.image.$container = document.createElement('div');
+        _this.css(_this.image.$container, containerStyles);
+        _this.css(_this.image.$container, {
+            visibility : 'hidden',
+            'z-index'  : _this.options.zIndex
+        });
+        _this.image.$container.setAttribute('id', 'jarallax-container-' + _this.instanceID);
+        _this.$item.appendChild(_this.image.$container);
+
+        // use img tag
+        if(_this.image.useImgTag && supportTransform && _this.options.enableTransform) {
+            _this.image.$item = document.createElement('img');
+            _this.image.$item.setAttribute('src', _this.image.src);
+            imageStyles = _this.extend({
+                'max-width' : 'none'
+            }, containerStyles, imageStyles);
+        }
+
+        // use div with background image
+        else {
+            _this.image.$item = document.createElement('div');
+            imageStyles = _this.extend({
+                'background-position' : '50% 50%',
+                'background-size'     : '100% auto',
+                'background-repeat'   : 'no-repeat no-repeat',
+                'background-image'    : 'url("' + _this.image.src + '")'
+            }, containerStyles, imageStyles);
+        }
+
+        // fix for IE9 and less
+        if(isIElt10) {
+            imageStyles.backgroundAttachment = 'fixed';
+        }
+
+        // check if one of parents have transform style (without this check, scroll transform will be inverted)
+        _this.parentWithTransform = 0;
+        var $itemParents = _this.$item;
+        while ($itemParents !== null && $itemParents !== document && _this.parentWithTransform === 0) {
+            if(_this.css($itemParents, '-webkit-transform') || _this.css($itemParents, '-moz-transform') || _this.css($itemParents, 'transform')) {
+                _this.parentWithTransform = 1;
+
+                // add transform on parallax container if there is parent with transform
+                _this.css(_this.image.$container, {
+                    transform: 'translateX(0) translateY(0)'
+                });
+            }
+            $itemParents = $itemParents.parentNode;
+        }
+
+        // parallax image
+        _this.css(_this.image.$item, imageStyles);
+        _this.image.$container.appendChild(_this.image.$item);
+
+        // cover image if width and height is ready
+        function initAfterReady () {
+            _this.coverImage();
+            _this.clipContainer();
+            _this.onScroll(true);
+
+            // save default user styles
+            _this.$item.setAttribute('data-jarallax-original-styles', _this.$item.getAttribute('style'));
+
+            // call onInit event
+            if(_this.options.onInit) {
+                _this.options.onInit.call(_this);
+            }
+
+            // timeout to fix IE blinking
+            setTimeout(function () {
+                if(_this.$item) {
+                    // remove default user background
+                    _this.css(_this.$item, {
+                        'background-image'      : 'none',
+                        'background-attachment' : 'scroll',
+                        'background-size'       : 'auto'
+                    });
+                }
+            }, 0);
+        }
+
+        if(_this.image.width && _this.image.height) {
+            // init if width and height already exists
+            initAfterReady();
+        } else {
+            // load image and get width and height
+            _this.getImageSize(_this.image.src, function (width, height) {
+                _this.image.width  = width;
+                _this.image.height = height;
+                initAfterReady();
+            });
+        }
+
+        jarallaxList.push(_this);
+    };
+
+    Jarallax.prototype.destroy = function () {
+        var _this = this;
+
+        // remove from instances list
+        for(var k = 0, len = jarallaxList.length; k < len; k++) {
+            if(jarallaxList[k].instanceID === _this.instanceID) {
+                jarallaxList.splice(k, 1);
+                break;
+            }
+        }
+
+        // return styles on container as before jarallax init
+        _this.$item.setAttribute('style', _this.$item.getAttribute('data-jarallax-original-styles'));
+        _this.$item.removeAttribute('data-jarallax-original-styles');
+
+        // remove additional dom elements
+        if(_this.$clipStyles) {
+            _this.$clipStyles.parentNode.removeChild(_this.$clipStyles);
+        }
+        _this.image.$container.parentNode.removeChild(_this.image.$container);
+
+        // call onDestroy event
+        if(_this.options.onDestroy) {
+            _this.options.onDestroy.call(_this);
+        }
+
+        // delete jarallax from item
+        delete _this.$item.jarallax;
+
+        // delete all variables
+        for(var n in _this) {
+            delete _this[n];
+        }
+    };
+
+    Jarallax.prototype.getImageSize = function (src, callback) {
+        if(!src || !callback) {
+            return;
+        }
+
+        var tempImg = new Image();
+        tempImg.onload = function () {
+            callback(tempImg.width, tempImg.height);
+        };
+        tempImg.src = src;
+    };
+
+    // it will remove some image overlapping
+    // overlapping occur due to an image position fixed inside absolute possition element (webkit based browsers works without any fix)
+    Jarallax.prototype.clipContainer = function () {
+        // clip is not working properly on real IE9 and less
+        if(isIElt10) {
+            return;
+        }
+
+        var _this  = this,
+            rect   = _this.image.$container.getBoundingClientRect(),
+            width  = rect.width,
+            height = rect.height;
+
+        if(!_this.$clipStyles) {
+            _this.$clipStyles = document.createElement('style');
+            _this.$clipStyles.setAttribute('type', 'text/css');
+            _this.$clipStyles.setAttribute('id', '#jarallax-clip-' + _this.instanceID);
+            var head = document.head || document.getElementsByTagName('head')[0];
+            head.appendChild(_this.$clipStyles);
+        }
+
+        var styles = [
+            '#jarallax-container-' + _this.instanceID + ' {',
+            '   clip: rect(0 ' + width + 'px ' + height + 'px 0);',
+            '   clip: rect(0, ' + width + 'px, ' + height + 'px, 0);',
+            '}'
+        ].join('\n');
+
+        // add clip styles inline (this method need for support IE8 and less browsers)
+        if (_this.$clipStyles.styleSheet){
+            _this.$clipStyles.styleSheet.cssText = styles;
+        } else {
+            _this.$clipStyles.innerHTML = styles;
+        }
+    };
+
+    Jarallax.prototype.coverImage = function () {
+        var _this = this;
+
+        if(!_this.image.width || !_this.image.height) {
+            return;
+        }
+
+        var rect       = _this.image.$container.getBoundingClientRect(),
+            contW      = rect.width,
+            contH      = rect.height,
+            contL      = rect.left,
+            imgW       = _this.image.width,
+            imgH       = _this.image.height,
+            speed      = _this.options.speed,
+            isScroll   = _this.options.type === 'scroll' || _this.options.type === 'scroll-opacity',
+            scrollDist = 0,
+            resultW    = 0,
+            resultH    = contH,
+            resultML   = 0,
+            resultMT   = 0;
+
+        // scroll parallax
+        if(isScroll) {
+            // scroll distance
+            scrollDist = speed * (contH + wndH) / 2;
+            if(speed < 0 || speed > 1) {
+                scrollDist = speed * Math.max(contH, wndH) / 2;
+            }
+
+            // size for scroll parallax
+            if(speed < 0 || speed > 1) {
+                resultH = Math.max(contH, wndH) + Math.abs(scrollDist) * 2;
+            } else {
+                resultH += Math.abs(wndH - contH) * (1 - speed);
+            }
+        }
+
+        // calculate width relative to height and image size
+        resultW = resultH * imgW / imgH;
+        if(resultW < contW) {
+            resultW = contW;
+            resultH = resultW * imgH / imgW;
+        }
+
+        // when disabled transformations, height should be >= window height
+        _this.bgPosVerticalCenter = 0;
+        if(isScroll && resultH < wndH && (!supportTransform || !_this.options.enableTransform)) {
+            _this.bgPosVerticalCenter = (wndH - resultH) / 2;
+            resultH = wndH;
+        }
+
+        // center parallax image
+        if(isScroll) {
+            resultML = contL + (contW - resultW) / 2;
+            resultMT = (wndH - resultH) / 2;
+        } else {
+            resultML = (contW - resultW) / 2;
+            resultMT = (contH - resultH) / 2;
+        }
+
+        // fix if parents with transform style
+        if(_this.parentWithTransform) {
+            resultML -= contL;
+        }
+
+        // store scroll distance
+        _this.parallaxScrollDistance = scrollDist;
+
+        // apply result to item
+        _this.css(_this.image.$item, {
+            width: resultW + 'px',
+            height: resultH + 'px',
+            marginLeft: resultML + 'px',
+            marginTop: resultMT + 'px'
+        });
+
+        // call onCoverImage event
+        if(_this.options.onCoverImage) {
+            _this.options.onCoverImage.call(_this);
+        }
+    };
+
+    Jarallax.prototype.isVisible = function () {
+        return this.isElementInViewport || false;
+    };
+
+    Jarallax.prototype.onScroll = function (force) {
+        var _this = this;
+
+        if(!_this.image.width || !_this.image.height) {
+            return;
+        }
+
+        var rect   = _this.$item.getBoundingClientRect(),
+            contT  = rect.top,
+            contH  = rect.height,
+            styles = {
+                position           : 'absolute',
+                visibility         : 'visible',
+                backgroundPosition : '50% 50%'
+            };
+
+        _this.isElementInViewport =
+            rect.bottom >= 0 &&
+            rect.right >= 0 &&
+            contT <= wndH &&
+            rect.left <= wndW;
+
+        // Check if totally above or totally below viewport
+        var check = force ? false : !_this.isElementInViewport;
+        if (check) {
+            return;
+        }
+
+        // calculate parallax helping variables
+        var beforeTop = Math.max(0, contT),
+            beforeTopEnd = Math.max(0, contH + contT),
+            afterTop = Math.max(0, -contT),
+            beforeBottom = Math.max(0, contT + contH - wndH),
+            beforeBottomEnd = Math.max(0, contH - (contT + contH - wndH)),
+            afterBottom = Math.max(0, -contT + wndH - contH),
+            fromViewportCenter = 1 - 2 * (wndH - contT) / (wndH + contH);
+
+        // calculate on how percent of section is visible
+        var visiblePercent = 1;
+        if(contH < wndH) {
+            visiblePercent = 1 - (afterTop || beforeBottom) / contH;
+        } else {
+            if(beforeTopEnd <= wndH) {
+                visiblePercent = beforeTopEnd / wndH;
+            } else if (beforeBottomEnd <= wndH) {
+                visiblePercent = beforeBottomEnd / wndH;
+            }
+        }
+
+        // opacity
+        if(_this.options.type === 'opacity' || _this.options.type === 'scale-opacity' || _this.options.type === 'scroll-opacity') {
+            styles.transform = 'translate3d(0, 0, 0)';
+            styles.opacity = visiblePercent;
+        }
+
+        // scale
+        if(_this.options.type === 'scale' || _this.options.type === 'scale-opacity') {
+            var scale = 1;
+            if(_this.options.speed < 0) {
+                scale -= _this.options.speed * visiblePercent;
+            } else {
+                scale += _this.options.speed * (1 - visiblePercent);
+            }
+            styles.transform = 'scale(' + scale + ') translate3d(0, 0, 0)';
+        }
+
+        // scroll
+        if(_this.options.type === 'scroll' || _this.options.type === 'scroll-opacity') {
+            var positionY = _this.parallaxScrollDistance * fromViewportCenter;
+
+            if(supportTransform && _this.options.enableTransform) {
+                // fix if parents with transform style
+                if(_this.parentWithTransform) {
+                    positionY -= contT;
+                }
+
+                styles.transform = 'translate3d(0, ' + positionY + 'px, 0)';
+            } else {
+                // vertical centering
+                if(_this.bgPosVerticalCenter) {
+                    positionY += _this.bgPosVerticalCenter;
+                }
+                styles.backgroundPosition = '50% ' + positionY + 'px';
+            }
+
+            // fixed position is not work properly for IE9 and less
+            // solution - use absolute position and emulate fixed by using container offset
+            styles.position = isIElt10 ? 'absolute' : 'fixed';
+        }
+
+        _this.css(_this.image.$item, styles);
+
+        // call onScroll event
+        if(_this.options.onScroll) {
+            _this.options.onScroll.call(_this, {
+                section: rect,
+
+                beforeTop: beforeTop,
+                beforeTopEnd: beforeTopEnd,
+                afterTop: afterTop,
+                beforeBottom: beforeBottom,
+                beforeBottomEnd: beforeBottomEnd,
+                afterBottom: afterBottom,
+
+                visiblePercent: visiblePercent,
+                fromViewportCenter: fromViewportCenter
+            });
+        }
+    };
+
+
+    // init events
+    function addEventListener (el, eventName, handler) {
+        if (el.addEventListener) {
+            el.addEventListener(eventName, handler);
+        } else {
+            el.attachEvent('on' + eventName, function (){
+                handler.call(el);
+            });
+        }
+    }
+
+    function update (e) {
+        window.requestAnimationFrame(function () {
+            if(e.type !== 'scroll') {
+                updateWndVars();
+            }
+            for(var k = 0, len = jarallaxList.length; k < len; k++) {
+                // cover image and clip needed only when parallax container was changed
+                if(e.type !== 'scroll') {
+                    jarallaxList[k].coverImage();
+                    jarallaxList[k].clipContainer();
+                }
+                jarallaxList[k].onScroll();
+            }
+        });
+    }
+    addEventListener(window, 'scroll', update);
+    addEventListener(window, 'resize', update);
+    addEventListener(window, 'orientationchange', update);
+    addEventListener(window, 'load', update);
+
+
+    // global definition
+    var plugin = function (items) {
+        // check for dom element
+        // thanks: http://stackoverflow.com/questions/384286/javascript-isdom-how-do-you-check-if-a-javascript-object-is-a-dom-object
+        if(typeof HTMLElement === "object" ? items instanceof HTMLElement : items && typeof items === "object" && items !== null && items.nodeType === 1 && typeof items.nodeName==="string") {
+            items = [items];
+        }
+
+        var options = arguments[1],
+            args = Array.prototype.slice.call(arguments, 2),
+            len = items.length,
+            k = 0,
+            ret;
+
+        for (k; k < len; k++) {
+            if (typeof options === 'object' || typeof options === 'undefined') {
+                if(!items[k].jarallax) {
+                    items[k].jarallax = new Jarallax(items[k], options);
+                }
+            }
+            else if(items[k].jarallax) {
+                ret = items[k].jarallax[options].apply(items[k].jarallax, args);
+            }
+            if (typeof ret !== 'undefined') {
+                return ret;
+            }
+        }
+
+        return items;
+    };
+    plugin.constructor = Jarallax;
+
+    // no conflict
+    var oldPlugin = window.jarallax;
+    window.jarallax = plugin;
+    window.jarallax.noConflict = function () {
+        window.jarallax = oldPlugin;
+        return this;
+    };
+
+    // jQuery support
+    if(typeof jQuery !== 'undefined') {
+        var jQueryPlugin = function () {
+            var args = arguments || [];
+            Array.prototype.unshift.call(args, this);
+            var res = plugin.apply(window, args);
+            return typeof res !== 'object' ? res : this;
+        };
+        jQueryPlugin.constructor = Jarallax;
+
+        // no conflict
+        var oldJqPlugin = jQuery.fn.jarallax;
+        jQuery.fn.jarallax = jQueryPlugin;
+        jQuery.fn.jarallax.noConflict = function () {
+            jQuery.fn.jarallax = oldJqPlugin;
+            return this;
+        };
+    }
+
+    // data-jarallax initialization
+    addEventListener(window, 'DOMContentLoaded', function () {
+        plugin(document.querySelectorAll('[data-jarallax]'));
+    });
+}(window));
+
+/*!
+ * Name    : Video Worker (wrapper for Youtube and Vimeo)
+ * Version : 1.1.0
+ * Author  : _nK http://nkdev.info
+ * GitHub  : https://github.com/nk-o/jarallax
+ */
+(function (window) {
+    'use strict';
+
+    // Extend like jQuery.extend
+    function extend (out) {
+        out = out || {};
+        for (var i = 1; i < arguments.length; i++) {
+            if (!arguments[i]) {
+                continue;
+            }
+            for (var key in arguments[i]) {
+                if (arguments[i].hasOwnProperty(key)) {
+                    out[key] = arguments[i][key];
+                }
+            }
+        }
+        return out;
+    }
+
+    // Deffered
+    // thanks http://stackoverflow.com/questions/18096715/implement-deferred-object-without-using-jquery
+    function Deferred () {
+        this._done = [];
+        this._fail = [];
+    }
+    Deferred.prototype = {
+        execute: function (list, args) {
+            var i = list.length;
+            args = Array.prototype.slice.call(args);
+            while(i--) {
+                list[i].apply(null, args);
+            }
+        },
+        resolve: function () {
+            this.execute(this._done, arguments);
+        },
+        reject: function () {
+            this.execute(this._fail, arguments);
+        },
+        done: function (callback) {
+            this._done.push(callback);
+        },
+        fail: function (callback) {
+            this._fail.push(callback);
+        }
+    };
+
+    var VideoWorker = (function () {
+        var ID = 0;
+
+        function VideoWorker_inner (url, options) {
+            var _this = this;
+
+            _this.url = url;
+
+            _this.options_default = {
+                autoplay: 1,
+                loop: 1,
+                mute: 1,
+                controls: 0
+            };
+
+            _this.options = extend({}, _this.options_default, options);
+
+            // check URL
+            _this.videoID = _this.parseURL(url);
+
+            // init
+            if(_this.videoID) {
+                _this.ID = ID++;
+                _this.loadAPI();
+                _this.init();
+            }
+        }
+
+        return VideoWorker_inner;
+    }());
+
+    VideoWorker.prototype.parseURL = function (url) {
+        // parse youtube ID
+        function getYoutubeID (ytUrl) {
+            var regExp = /.*(?:youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=)([^#\&\?]*).*/;
+            var match = ytUrl.match(regExp);
+            return match && match[1].length === 11 ? match[1] : false;
+        }
+
+        // parse vimeo ID
+        function getVimeoID (vmUrl) {
+            var regExp = /https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
+            var match = vmUrl.match(regExp);
+            return match && match[3] ? match[3] : false;
+        }
+
+        var Youtube = getYoutubeID(url);
+        var Vimeo = getVimeoID(url);
+
+        if(Youtube) {
+            this.type = 'youtube';
+            return Youtube;
+        } else if (Vimeo) {
+            this.type = 'vimeo';
+            return Vimeo;
+        }
+
+        return false;
+    };
+
+    VideoWorker.prototype.isValid = function () {
+        return !!this.videoID;
+    };
+
+    // events
+    VideoWorker.prototype.on = function (name, callback) {
+        this.userEventsList = this.userEventsList || [];
+
+        // add new callback in events list
+        (this.userEventsList[name] || (this.userEventsList[name] = [])).push(callback);
+    };
+    VideoWorker.prototype.off = function (name, callback) {
+        if(!this.userEventsList || !this.userEventsList[name]) {
+            return;
+        }
+
+        if(!callback) {
+            delete this.userEventsList[name];
+        } else {
+            for(var k = 0; k < this.userEventsList[name].length; k++) {
+                if(this.userEventsList[name][k] === callback) {
+                    this.userEventsList[name][k] = false;
+                }
+            }
+        }
+    };
+    VideoWorker.prototype.fire = function (name) {
+        var args = [].slice.call(arguments, 1);
+        if(this.userEventsList && typeof this.userEventsList[name] !== 'undefined') {
+            for(var k in this.userEventsList[name]) {
+                // call with all arguments
+                if(this.userEventsList[name][k]) {
+                    this.userEventsList[name][k].apply(this, args);
+                }
+            }
+        }
+    };
+
+    VideoWorker.prototype.play = function () {
+        if(!this.player) {
+            return;
+        }
+
+        if(this.type === 'youtube' && this.player.playVideo) {
+            this.player.playVideo();
+        }
+
+        if(this.type === 'vimeo') {
+            this.player.api('play');
+        }
+    };
+
+    VideoWorker.prototype.pause = function () {
+        if(!this.player) {
+            return;
+        }
+
+        if(this.type === 'youtube' && this.player.pauseVideo) {
+            this.player.pauseVideo();
+        }
+
+        if(this.type === 'vimeo') {
+            this.player.api('pause');
+        }
+    };
+
+    VideoWorker.prototype.getImageURL = function (callback) {
+        var _this = this;
+
+        if(_this.videoImage) {
+            callback(_this.videoImage);
+            return;
+        }
+
+        if(_this.type === 'youtube') {
+            _this.videoImage = 'https://img.youtube.com/vi/' + _this.videoID + '/maxresdefault.jpg';
+            callback(_this.videoImage);
+        }
+
+        if(_this.type === 'vimeo') {
+            var request = new XMLHttpRequest();
+            request.open('GET', 'https://vimeo.com/api/v2/video/' + _this.videoID + '.json', true);
+            request.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    if (this.status >= 200 && this.status < 400) {
+                        // Success!
+                        var response = JSON.parse(this.responseText);
+                        _this.videoImage = response[0].thumbnail_large;
+                        callback(_this.videoImage);
+                    } else {
+                        // Error :(
+                    }
+                }
+            };
+            request.send();
+            request = null;
+        }
+    };
+
+    VideoWorker.prototype.getIframe = function (callback) {
+        var _this = this;
+
+        // return generated iframe
+        if(_this.$iframe) {
+            callback(_this.$iframe);
+            return;
+        }
+
+        // generate new iframe
+        _this.onAPIready(function () {
+            var hiddenDiv;
+            if(!_this.$iframe) {
+                hiddenDiv = document.createElement('div');
+                hiddenDiv.style.display = 'none';
+            }
+
+            // Youtube
+            if(_this.type === 'youtube') {
+                _this.playerOptions = {};
+                _this.playerOptions.videoId = _this.videoID;
+                _this.playerOptions.width = window.innerWidth || document.documentElement.clientWidth;
+                _this.playerOptions.playerVars = {
+                    autohide: 1,
+                    rel: 0,
+                    autoplay: 0
+                };
+
+                // hide controls
+                if(!_this.options.controls) {
+                    _this.playerOptions.playerVars.iv_load_policy = 3;
+                    _this.playerOptions.playerVars.modestbranding = 1;
+                    _this.playerOptions.playerVars.controls = 0;
+                    _this.playerOptions.playerVars.showinfo = 0;
+                    _this.playerOptions.playerVars.disablekb = 1;
+                }
+
+                // events
+                var ytStarted;
+                _this.playerOptions.events = {
+                    onReady: function (e) {
+                        // mute
+                        if(_this.options.mute) {
+                            e.target.mute();
+                        }
+                        // autoplay
+                        if(_this.options.autoplay) {
+                            _this.play();
+                        }
+                        _this.fire('ready', e);
+                    },
+                    onStateChange: function (e) {
+                        // loop
+                        if(_this.options.loop && e.data === YT.PlayerState.ENDED) {
+                            e.target.playVideo();
+                        }
+                        if(!ytStarted && e.data === YT.PlayerState.PLAYING) {
+                            ytStarted = 1;
+                            _this.fire('started', e);
+                        }
+                    }
+                };
+
+                var firstInit = !_this.$iframe;
+                if(firstInit) {
+                    var div = document.createElement('div');
+                    div.setAttribute('id', _this.playerID);
+                    hiddenDiv.appendChild(div);
+                    document.body.appendChild(hiddenDiv);
+                }
+                _this.player = _this.player || new window.YT.Player(_this.playerID, _this.playerOptions);
+                if(firstInit) {
+                    _this.$iframe = document.getElementById(_this.playerID);
+                }
+            }
+
+            // Vimeo
+            if(_this.type === 'vimeo') {
+                _this.playerOptions = '';
+
+                _this.playerOptions += 'player_id=' + _this.playerID;
+                _this.playerOptions += '&autopause=0';
+
+                // hide controls
+                if(!_this.options.controls) {
+                    _this.playerOptions += '&badge=0&byline=0&portrait=0&title=0';
+                }
+
+                // autoplay
+                _this.playerOptions += '&autoplay=0';
+
+                // loop
+                _this.playerOptions += '&loop=' + (_this.options.loop ? 1 : 0);
+
+                if(!_this.$iframe) {
+                    _this.$iframe = document.createElement('iframe');
+                    _this.$iframe.setAttribute('id', _this.playerID);
+                    _this.$iframe.setAttribute('src', 'https://player.vimeo.com/video/' + _this.videoID + '?' + _this.playerOptions);
+                    _this.$iframe.setAttribute('frameborder', '0');
+                    hiddenDiv.appendChild(_this.$iframe);
+                    document.body.appendChild(hiddenDiv);
+                }
+
+                _this.player = _this.player || $f(_this.$iframe);
+
+                _this.player.addEvent('ready', function (eventReady) {
+                    // mute
+                    _this.player.api('setVolume', _this.options.mute ? 0 : 100);
+
+                    // autoplay
+                    if(_this.options.autoplay) {
+                        _this.play();
+                    }
+
+                    var vmStarted;
+                    _this.player.addEvent('playProgress', function (eventPlay) {
+                        if(!vmStarted) {
+                            _this.fire('started', eventPlay);
+                        }
+                        vmStarted = 1;
+                    });
+
+                    _this.fire('ready', eventReady);
+                });
+            }
+
+            callback(_this.$iframe);
+        });
+    };
+
+    VideoWorker.prototype.init = function () {
+        var _this = this;
+
+        _this.playerID = 'VideoWorker-' + _this.ID;
+    };
+
+    var YoutubeAPIadded = 0;
+    var VimeoAPIadded = 0;
+    VideoWorker.prototype.loadAPI = function () {
+        var _this = this;
+
+        if(YoutubeAPIadded && VimeoAPIadded) {
+            return;
+        }
+
+        var src = '';
+
+        // load Youtube API
+        if(_this.type === 'youtube' && !YoutubeAPIadded) {
+            YoutubeAPIadded = 1;
+            src = '//www.youtube.com/iframe_api';
+        }
+
+        // load Vimeo API
+        if(_this.type === 'vimeo' && !VimeoAPIadded) {
+            VimeoAPIadded = 1;
+            src = '//f.vimeocdn.com/js/froogaloop2.min.js';
+        }
+
+        if (window.location.origin === 'file://') {
+            src = 'http:' + src;
+        }
+
+        // add script in head section
+        var tag = document.createElement('script');
+        var head = document.getElementsByTagName('head')[0];
+        tag.src = src;
+
+        head.appendChild(tag);
+
+        head = null;
+        tag = null;
+    };
+
+    var loadingYoutubePlayer = 0;
+    var loadingVimeoPlayer = 0;
+    var loadingYoutubeDeffer = new Deferred();
+    var loadingVimeoDeffer = new Deferred();
+    VideoWorker.prototype.onAPIready = function (callback) {
+        var _this = this;
+
+        // Youtube
+        if(_this.type === 'youtube') {
+            // Listen for Gobal YT player callback
+            if ((typeof YT === 'undefined' || YT.loaded === 0) && !loadingYoutubePlayer) {
+                // Prevents Ready Event from being called twice
+                loadingYoutubePlayer = 1;
+
+                // Creates deferred so, other players know when to wait.
+                window.onYouTubeIframeAPIReady = function () {
+                    window.onYouTubeIframeAPIReady = null;
+                    loadingYoutubeDeffer.resolve('done');
+                    callback();
+                };
+            } else if (typeof YT === 'object' && YT.loaded === 1)  {
+                callback();
+            } else {
+                loadingYoutubeDeffer.done(function () {
+                    callback();
+                });
+            }
+        }
+
+        // Vimeo
+        if(_this.type === 'vimeo') {
+            if(typeof $f === 'undefined' && !loadingVimeoPlayer) {
+                loadingVimeoPlayer = 1;
+                var frooga_interval = setInterval(function () {
+                    if(typeof $f !== 'undefined') {
+                        clearInterval(frooga_interval);
+                        loadingVimeoDeffer.resolve('done');
+                        callback();
+                    }
+                }, 20);
+            } else if(typeof $f !== 'undefined') {
+                callback();
+            } else {
+                loadingVimeoDeffer.done(function () {
+                    callback();
+                });
+            }
+        }
+    };
+
+    window.VideoWorker = VideoWorker;
+}(window));
+
+
+
+/*!
+ * Name    : Video Background Extension for Jarallax
+ * Version : 1.0.0
+ * Author  : _nK http://nkdev.info
+ * GitHub  : https://github.com/nk-o/jarallax
+ */
+(function () {
+    'use strict';
+
+    if(typeof jarallax === 'undefined') {
+        return;
+    }
+
+    var Jarallax = jarallax.constructor;
+
+    // append video after init Jarallax
+    var def_init = Jarallax.prototype.init;
+    Jarallax.prototype.init = function () {
+        var _this = this;
+
+        def_init.apply(_this);
+
+        if(_this.video) {
+            _this.video.getIframe(function (iframe) {
+                _this.css(iframe, {
+                    position: 'fixed',
+                    top: '0px', left: '0px', right: '0px', bottom: '0px',
+                    width: '100%',
+                    height: '100%',
+                    visibility: 'visible',
+                    zIndex: -1
+                });
+                _this.$video = iframe;
+                _this.image.$container.appendChild(iframe);
+            });
+        }
+    };
+
+    // append video after init Jarallax
+    var def_coverImage = Jarallax.prototype.coverImage;
+    Jarallax.prototype.coverImage = function () {
+        var _this = this;
+
+        def_coverImage.apply(_this);
+
+        // add video height over than need to hide controls
+        if(_this.video && _this.image.$item.nodeName === 'IFRAME') {
+            _this.css(_this.image.$item, {
+                height: _this.image.$item.getBoundingClientRect().height + 400 + 'px',
+                top: '-200px'
+            });
+        }
+    };
+
+    // init video parallax
+    var def_initImg = Jarallax.prototype.initImg;
+    Jarallax.prototype.initImg = function () {
+        var _this = this;
+
+        if(!_this.options.videoSrc) {
+            _this.options.videoSrc = _this.$item.getAttribute('data-jarallax-video') || false;
+        }
+
+        if(_this.options.videoSrc) {
+            var video = new VideoWorker(_this.options.videoSrc);
+
+            if(video.isValid()) {
+                _this.image.useImgTag = true;
+
+                video.on('ready', function () {
+                    var oldOnScroll = _this.onScroll;
+                    _this.onScroll = function () {
+                        oldOnScroll.apply(_this);
+                        if(_this.isVisible()) {
+                            video.play();
+                        } else {
+                            video.pause();
+                        }
+                    };
+                });
+
+                video.on('started', function () {
+                    _this.image.$default_item = _this.image.$item;
+                    _this.image.$item = _this.$video;
+
+                    // set video width and height
+                    _this.image.width  = _this.imgWidth = 1280;
+                    _this.image.height = _this.imgHeight = 720;
+                    _this.coverImage();
+                    _this.clipContainer();
+                    _this.onScroll();
+
+                    // hide image
+                    if(_this.image.$default_item) {
+                        _this.image.$default_item.style.display = 'none';
+                    }
+                });
+
+                _this.video = video;
+
+                video.getImageURL(function (url) {
+                    _this.image.src = url;
+                    _this.init();
+                });
+            }
+
+            return false;
+        }
+
+        return def_initImg.apply(_this);
+    };
+
+    // Destroy video parallax
+    var def_destroy = Jarallax.prototype.destroy;
+    Jarallax.prototype.destroy = function () {
+        var _this = this;
+
+        def_destroy.apply(_this);
+    };
+}());
 
-;(function($, window, document, undefined) {
-
-	var pluginName = 'stellar',
-		defaults = {
-			scrollProperty: 'scroll',
-			positionProperty: 'position',
-			horizontalScrolling: true,
-			verticalScrolling: true,
-			horizontalOffset: 0,
-			verticalOffset: 0,
-			responsive: false,
-			parallaxBackgrounds: true,
-			parallaxElements: true,
-			hideDistantElements: true,
-			hideElement: function($elem) { $elem.hide(); },
-			showElement: function($elem) { $elem.show(); }
-		},
-
-		scrollProperty = {
-			scroll: {
-				getLeft: function($elem) { return $elem.scrollLeft(); },
-				setLeft: function($elem, val) { $elem.scrollLeft(val); },
-
-				getTop: function($elem) { return $elem.scrollTop();	},
-				setTop: function($elem, val) { $elem.scrollTop(val); }
-			},
-			position: {
-				getLeft: function($elem) { return parseInt($elem.css('left'), 10) * -1; },
-				getTop: function($elem) { return parseInt($elem.css('top'), 10) * -1; }
-			},
-			margin: {
-				getLeft: function($elem) { return parseInt($elem.css('margin-left'), 10) * -1; },
-				getTop: function($elem) { return parseInt($elem.css('margin-top'), 10) * -1; }
-			},
-			transform: {
-				getLeft: function($elem) {
-					var computedTransform = getComputedStyle($elem[0])[prefixedTransform];
-					return (computedTransform !== 'none' ? parseInt(computedTransform.match(/(-?[0-9]+)/g)[4], 10) * -1 : 0);
-				},
-				getTop: function($elem) {
-					var computedTransform = getComputedStyle($elem[0])[prefixedTransform];
-					return (computedTransform !== 'none' ? parseInt(computedTransform.match(/(-?[0-9]+)/g)[5], 10) * -1 : 0);
-				}
-			}
-		},
-
-		positionProperty = {
-			position: {
-				setLeft: function($elem, left) { $elem.css('left', left); },
-				setTop: function($elem, top) { $elem.css('top', top); }
-			},
-			transform: {
-				setPosition: function($elem, left, startingLeft, top, startingTop) {
-					$elem[0].style[prefixedTransform] = 'translate3d(' + (left - startingLeft) + 'px, ' + (top - startingTop) + 'px, 0)';
-				}
-			}
-		},
-
-		// Returns a function which adds a vendor prefix to any CSS property name
-		vendorPrefix = (function() {
-			var prefixes = /^(Moz|Webkit|Khtml|O|ms|Icab)(?=[A-Z])/,
-				style = $('script')[0].style,
-				prefix = '',
-				prop;
-
-			for (prop in style) {
-				if (prefixes.test(prop)) {
-					prefix = prop.match(prefixes)[0];
-					break;
-				}
-			}
-
-			if ('WebkitOpacity' in style) { prefix = 'Webkit'; }
-			if ('KhtmlOpacity' in style) { prefix = 'Khtml'; }
-
-			return function(property) {
-				return prefix + (prefix.length > 0 ? property.charAt(0).toUpperCase() + property.slice(1) : property);
-			};
-		}()),
-
-		prefixedTransform = vendorPrefix('transform'),
-
-		supportsBackgroundPositionXY = $('<div />', { style: 'background:#fff' }).css('background-position-x') !== undefined,
-
-		setBackgroundPosition = (supportsBackgroundPositionXY ?
-			function($elem, x, y) {
-				$elem.css({
-					'background-position-x': x,
-					'background-position-y': y
-				});
-			} :
-			function($elem, x, y) {
-				$elem.css('background-position', x + ' ' + y);
-			}
-		),
-
-		getBackgroundPosition = (supportsBackgroundPositionXY ?
-			function($elem) {
-				return [
-					$elem.css('background-position-x'),
-					$elem.css('background-position-y')
-				];
-			} :
-			function($elem) {
-				return $elem.css('background-position').split(' ');
-			}
-		),
-
-		requestAnimFrame = (
-			window.requestAnimationFrame       ||
-			window.webkitRequestAnimationFrame ||
-			window.mozRequestAnimationFrame    ||
-			window.oRequestAnimationFrame      ||
-			window.msRequestAnimationFrame     ||
-			function(callback) {
-				setTimeout(callback, 1000 / 60);
-			}
-		);
-
-	function Plugin(element, options) {
-		this.element = element;
-		this.options = $.extend({}, defaults, options);
-
-		this._defaults = defaults;
-		this._name = pluginName;
-
-		this.init();
-	}
-
-	Plugin.prototype = {
-		init: function() {
-			this.options.name = pluginName + '_' + Math.floor(Math.random() * 1e9);
-
-			this._defineElements();
-			this._defineGetters();
-			this._defineSetters();
-			this._handleWindowLoadAndResize();
-			this._detectViewport();
-
-			this.refresh({ firstLoad: true });
-
-			if (this.options.scrollProperty === 'scroll') {
-				this._handleScrollEvent();
-			} else {
-				this._startAnimationLoop();
-			}
-		},
-		_defineElements: function() {
-			if (this.element === document.body) this.element = window;
-			this.$scrollElement = $(this.element);
-			this.$element = (this.element === window ? $('body') : this.$scrollElement);
-			this.$viewportElement = (this.options.viewportElement !== undefined ? $(this.options.viewportElement) : (this.$scrollElement[0] === window || this.options.scrollProperty === 'scroll' ? this.$scrollElement : this.$scrollElement.parent()) );
-		},
-		_defineGetters: function() {
-			var self = this,
-				scrollPropertyAdapter = scrollProperty[self.options.scrollProperty];
-
-			this._getScrollLeft = function() {
-				return scrollPropertyAdapter.getLeft(self.$scrollElement);
-			};
-
-			this._getScrollTop = function() {
-				return scrollPropertyAdapter.getTop(self.$scrollElement);
-			};
-		},
-		_defineSetters: function() {
-			var self = this,
-				scrollPropertyAdapter = scrollProperty[self.options.scrollProperty],
-				positionPropertyAdapter = positionProperty[self.options.positionProperty],
-				setScrollLeft = scrollPropertyAdapter.setLeft,
-				setScrollTop = scrollPropertyAdapter.setTop;
-
-			this._setScrollLeft = (typeof setScrollLeft === 'function' ? function(val) {
-				setScrollLeft(self.$scrollElement, val);
-			} : $.noop);
-
-			this._setScrollTop = (typeof setScrollTop === 'function' ? function(val) {
-				setScrollTop(self.$scrollElement, val);
-			} : $.noop);
-
-			this._setPosition = positionPropertyAdapter.setPosition ||
-				function($elem, left, startingLeft, top, startingTop) {
-					if (self.options.horizontalScrolling) {
-						positionPropertyAdapter.setLeft($elem, left, startingLeft);
-					}
-
-					if (self.options.verticalScrolling) {
-						positionPropertyAdapter.setTop($elem, top, startingTop);
-					}
-				};
-		},
-		_handleWindowLoadAndResize: function() {
-			var self = this,
-				$window = $(window);
-
-			if (self.options.responsive) {
-				$window.bind('load.' + this.name, function() {
-					self.refresh();
-				});
-			}
-
-			$window.bind('resize.' + this.name, function() {
-				self._detectViewport();
-
-				if (self.options.responsive) {
-					self.refresh();
-				}
-			});
-		},
-		refresh: function(options) {
-			var self = this,
-				oldLeft = self._getScrollLeft(),
-				oldTop = self._getScrollTop();
-
-			if (!options || !options.firstLoad) {
-				this._reset();
-			}
-
-			this._setScrollLeft(0);
-			this._setScrollTop(0);
-
-			this._setOffsets();
-			this._findParticles();
-			this._findBackgrounds();
-
-			// Fix for WebKit background rendering bug
-			if (options && options.firstLoad && /WebKit/.test(navigator.userAgent)) {
-				$(window).load(function() {
-					var oldLeft = self._getScrollLeft(),
-						oldTop = self._getScrollTop();
-
-					self._setScrollLeft(oldLeft + 1);
-					self._setScrollTop(oldTop + 1);
-
-					self._setScrollLeft(oldLeft);
-					self._setScrollTop(oldTop);
-				});
-			}
-
-			this._setScrollLeft(oldLeft);
-			this._setScrollTop(oldTop);
-		},
-		_detectViewport: function() {
-			var viewportOffsets = this.$viewportElement.offset(),
-				hasOffsets = viewportOffsets !== null && viewportOffsets !== undefined;
-
-			this.viewportWidth = this.$viewportElement.width();
-			this.viewportHeight = this.$viewportElement.height();
-
-			this.viewportOffsetTop = (hasOffsets ? viewportOffsets.top : 0);
-			this.viewportOffsetLeft = (hasOffsets ? viewportOffsets.left : 0);
-		},
-		_findParticles: function() {
-			var self = this,
-				scrollLeft = this._getScrollLeft(),
-				scrollTop = this._getScrollTop();
-
-			if (this.particles !== undefined) {
-				for (var i = this.particles.length - 1; i >= 0; i--) {
-					this.particles[i].$element.data('stellar-elementIsActive', undefined);
-				}
-			}
-
-			this.particles = [];
-
-			if (!this.options.parallaxElements) return;
-
-			this.$element.find('[data-stellar-ratio]').each(function(i) {
-				var $this = $(this),
-					horizontalOffset,
-					verticalOffset,
-					positionLeft,
-					positionTop,
-					marginLeft,
-					marginTop,
-					$offsetParent,
-					offsetLeft,
-					offsetTop,
-					parentOffsetLeft = 0,
-					parentOffsetTop = 0,
-					tempParentOffsetLeft = 0,
-					tempParentOffsetTop = 0;
-
-				// Ensure this element isn't already part of another scrolling element
-				if (!$this.data('stellar-elementIsActive')) {
-					$this.data('stellar-elementIsActive', this);
-				} else if ($this.data('stellar-elementIsActive') !== this) {
-					return;
-				}
-
-				self.options.showElement($this);
-
-				// Save/restore the original top and left CSS values in case we refresh the particles or destroy the instance
-				if (!$this.data('stellar-startingLeft')) {
-					$this.data('stellar-startingLeft', $this.css('left'));
-					$this.data('stellar-startingTop', $this.css('top'));
-				} else {
-					$this.css('left', $this.data('stellar-startingLeft'));
-					$this.css('top', $this.data('stellar-startingTop'));
-				}
-
-				positionLeft = $this.position().left;
-				positionTop = $this.position().top;
-
-				// Catch-all for margin top/left properties (these evaluate to 'auto' in IE7 and IE8)
-				marginLeft = ($this.css('margin-left') === 'auto') ? 0 : parseInt($this.css('margin-left'), 10);
-				marginTop = ($this.css('margin-top') === 'auto') ? 0 : parseInt($this.css('margin-top'), 10);
-
-				offsetLeft = $this.offset().left - marginLeft;
-				offsetTop = $this.offset().top - marginTop;
-
-				// Calculate the offset parent
-				$this.parents().each(function() {
-					var $this = $(this);
-
-					if ($this.data('stellar-offset-parent') === true) {
-						parentOffsetLeft = tempParentOffsetLeft;
-						parentOffsetTop = tempParentOffsetTop;
-						$offsetParent = $this;
-
-						return false;
-					} else {
-						tempParentOffsetLeft += $this.position().left;
-						tempParentOffsetTop += $this.position().top;
-					}
-				});
-
-				// Detect the offsets
-				horizontalOffset = ($this.data('stellar-horizontal-offset') !== undefined ? $this.data('stellar-horizontal-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-horizontal-offset') !== undefined ? $offsetParent.data('stellar-horizontal-offset') : self.horizontalOffset));
-				verticalOffset = ($this.data('stellar-vertical-offset') !== undefined ? $this.data('stellar-vertical-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-vertical-offset') !== undefined ? $offsetParent.data('stellar-vertical-offset') : self.verticalOffset));
-
-				// Add our object to the particles collection
-				self.particles.push({
-					$element: $this,
-					$offsetParent: $offsetParent,
-					isFixed: $this.css('position') === 'fixed',
-					horizontalOffset: horizontalOffset,
-					verticalOffset: verticalOffset,
-					startingPositionLeft: positionLeft,
-					startingPositionTop: positionTop,
-					startingOffsetLeft: offsetLeft,
-					startingOffsetTop: offsetTop,
-					parentOffsetLeft: parentOffsetLeft,
-					parentOffsetTop: parentOffsetTop,
-					stellarRatio: ($this.data('stellar-ratio') !== undefined ? $this.data('stellar-ratio') : 1),
-					width: $this.outerWidth(true),
-					height: $this.outerHeight(true),
-					isHidden: false
-				});
-			});
-		},
-		_findBackgrounds: function() {
-			var self = this,
-				scrollLeft = this._getScrollLeft(),
-				scrollTop = this._getScrollTop(),
-				$backgroundElements;
-
-			this.backgrounds = [];
-
-			if (!this.options.parallaxBackgrounds) return;
-
-			$backgroundElements = this.$element.find('[data-stellar-background-ratio]');
-
-			if (this.$element.data('stellar-background-ratio')) {
-                $backgroundElements = $backgroundElements.add(this.$element);
-			}
-
-			$backgroundElements.each(function() {
-				var $this = $(this),
-					backgroundPosition = getBackgroundPosition($this),
-					horizontalOffset,
-					verticalOffset,
-					positionLeft,
-					positionTop,
-					marginLeft,
-					marginTop,
-					offsetLeft,
-					offsetTop,
-					$offsetParent,
-					parentOffsetLeft = 0,
-					parentOffsetTop = 0,
-					tempParentOffsetLeft = 0,
-					tempParentOffsetTop = 0;
-
-				// Ensure this element isn't already part of another scrolling element
-				if (!$this.data('stellar-backgroundIsActive')) {
-					$this.data('stellar-backgroundIsActive', this);
-				} else if ($this.data('stellar-backgroundIsActive') !== this) {
-					return;
-				}
-
-				// Save/restore the original top and left CSS values in case we destroy the instance
-				if (!$this.data('stellar-backgroundStartingLeft')) {
-					$this.data('stellar-backgroundStartingLeft', backgroundPosition[0]);
-					$this.data('stellar-backgroundStartingTop', backgroundPosition[1]);
-				} else {
-					setBackgroundPosition($this, $this.data('stellar-backgroundStartingLeft'), $this.data('stellar-backgroundStartingTop'));
-				}
-
-				// Catch-all for margin top/left properties (these evaluate to 'auto' in IE7 and IE8)
-				marginLeft = ($this.css('margin-left') === 'auto') ? 0 : parseInt($this.css('margin-left'), 10);
-				marginTop = ($this.css('margin-top') === 'auto') ? 0 : parseInt($this.css('margin-top'), 10);
-
-				offsetLeft = $this.offset().left - marginLeft - scrollLeft;
-				offsetTop = $this.offset().top - marginTop - scrollTop;
-				
-				// Calculate the offset parent
-				$this.parents().each(function() {
-					var $this = $(this);
-
-					if ($this.data('stellar-offset-parent') === true) {
-						parentOffsetLeft = tempParentOffsetLeft;
-						parentOffsetTop = tempParentOffsetTop;
-						$offsetParent = $this;
-
-						return false;
-					} else {
-						tempParentOffsetLeft += $this.position().left;
-						tempParentOffsetTop += $this.position().top;
-					}
-				});
-
-				// Detect the offsets
-				horizontalOffset = ($this.data('stellar-horizontal-offset') !== undefined ? $this.data('stellar-horizontal-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-horizontal-offset') !== undefined ? $offsetParent.data('stellar-horizontal-offset') : self.horizontalOffset));
-				verticalOffset = ($this.data('stellar-vertical-offset') !== undefined ? $this.data('stellar-vertical-offset') : ($offsetParent !== undefined && $offsetParent.data('stellar-vertical-offset') !== undefined ? $offsetParent.data('stellar-vertical-offset') : self.verticalOffset));
-
-				self.backgrounds.push({
-					$element: $this,
-					$offsetParent: $offsetParent,
-					isFixed: $this.css('background-attachment') === 'fixed',
-					horizontalOffset: horizontalOffset,
-					verticalOffset: verticalOffset,
-					startingValueLeft: backgroundPosition[0],
-					startingValueTop: backgroundPosition[1],
-					startingBackgroundPositionLeft: (isNaN(parseInt(backgroundPosition[0], 10)) ? 0 : parseInt(backgroundPosition[0], 10)),
-					startingBackgroundPositionTop: (isNaN(parseInt(backgroundPosition[1], 10)) ? 0 : parseInt(backgroundPosition[1], 10)),
-					startingPositionLeft: $this.position().left,
-					startingPositionTop: $this.position().top,
-					startingOffsetLeft: offsetLeft,
-					startingOffsetTop: offsetTop,
-					parentOffsetLeft: parentOffsetLeft,
-					parentOffsetTop: parentOffsetTop,
-					stellarRatio: ($this.data('stellar-background-ratio') === undefined ? 1 : $this.data('stellar-background-ratio'))
-				});
-			});
-		},
-		_reset: function() {
-			var particle,
-				startingPositionLeft,
-				startingPositionTop,
-				background,
-				i;
-
-			for (i = this.particles.length - 1; i >= 0; i--) {
-				particle = this.particles[i];
-				startingPositionLeft = particle.$element.data('stellar-startingLeft');
-				startingPositionTop = particle.$element.data('stellar-startingTop');
-
-				this._setPosition(particle.$element, startingPositionLeft, startingPositionLeft, startingPositionTop, startingPositionTop);
-
-				this.options.showElement(particle.$element);
-
-				particle.$element.data('stellar-startingLeft', null).data('stellar-elementIsActive', null).data('stellar-backgroundIsActive', null);
-			}
-
-			for (i = this.backgrounds.length - 1; i >= 0; i--) {
-				background = this.backgrounds[i];
-
-				background.$element.data('stellar-backgroundStartingLeft', null).data('stellar-backgroundStartingTop', null);
-
-				setBackgroundPosition(background.$element, background.startingValueLeft, background.startingValueTop);
-			}
-		},
-		destroy: function() {
-			this._reset();
-
-			this.$scrollElement.unbind('resize.' + this.name).unbind('scroll.' + this.name);
-			this._animationLoop = $.noop;
-
-			$(window).unbind('load.' + this.name).unbind('resize.' + this.name);
-		},
-		_setOffsets: function() {
-			var self = this,
-				$window = $(window);
-
-			$window.unbind('resize.horizontal-' + this.name).unbind('resize.vertical-' + this.name);
-
-			if (typeof this.options.horizontalOffset === 'function') {
-				this.horizontalOffset = this.options.horizontalOffset();
-				$window.bind('resize.horizontal-' + this.name, function() {
-					self.horizontalOffset = self.options.horizontalOffset();
-				});
-			} else {
-				this.horizontalOffset = this.options.horizontalOffset;
-			}
-
-			if (typeof this.options.verticalOffset === 'function') {
-				this.verticalOffset = this.options.verticalOffset();
-				$window.bind('resize.vertical-' + this.name, function() {
-					self.verticalOffset = self.options.verticalOffset();
-				});
-			} else {
-				this.verticalOffset = this.options.verticalOffset;
-			}
-		},
-		_repositionElements: function() {
-			var scrollLeft = this._getScrollLeft(),
-				scrollTop = this._getScrollTop(),
-				horizontalOffset,
-				verticalOffset,
-				particle,
-				fixedRatioOffset,
-				background,
-				bgLeft,
-				bgTop,
-				isVisibleVertical = true,
-				isVisibleHorizontal = true,
-				newPositionLeft,
-				newPositionTop,
-				newOffsetLeft,
-				newOffsetTop,
-				i;
-
-			// First check that the scroll position or container size has changed
-			if (this.currentScrollLeft === scrollLeft && this.currentScrollTop === scrollTop && this.currentWidth === this.viewportWidth && this.currentHeight === this.viewportHeight) {
-				return;
-			} else {
-				this.currentScrollLeft = scrollLeft;
-				this.currentScrollTop = scrollTop;
-				this.currentWidth = this.viewportWidth;
-				this.currentHeight = this.viewportHeight;
-			}
-
-			// Reposition elements
-			for (i = this.particles.length - 1; i >= 0; i--) {
-				particle = this.particles[i];
-
-				fixedRatioOffset = (particle.isFixed ? 1 : 0);
-
-				// Calculate position, then calculate what the particle's new offset will be (for visibility check)
-				if (this.options.horizontalScrolling) {
-					newPositionLeft = (scrollLeft + particle.horizontalOffset + this.viewportOffsetLeft + particle.startingPositionLeft - particle.startingOffsetLeft + particle.parentOffsetLeft) * -(particle.stellarRatio + fixedRatioOffset - 1) + particle.startingPositionLeft;
-					newOffsetLeft = newPositionLeft - particle.startingPositionLeft + particle.startingOffsetLeft;
-				} else {
-					newPositionLeft = particle.startingPositionLeft;
-					newOffsetLeft = particle.startingOffsetLeft;
-				}
-
-				if (this.options.verticalScrolling) {
-					newPositionTop = (scrollTop + particle.verticalOffset + this.viewportOffsetTop + particle.startingPositionTop - particle.startingOffsetTop + particle.parentOffsetTop) * -(particle.stellarRatio + fixedRatioOffset - 1) + particle.startingPositionTop;
-					newOffsetTop = newPositionTop - particle.startingPositionTop + particle.startingOffsetTop;
-				} else {
-					newPositionTop = particle.startingPositionTop;
-					newOffsetTop = particle.startingOffsetTop;
-				}
-
-				// Check visibility
-				if (this.options.hideDistantElements) {
-					isVisibleHorizontal = !this.options.horizontalScrolling || newOffsetLeft + particle.width > (particle.isFixed ? 0 : scrollLeft) && newOffsetLeft < (particle.isFixed ? 0 : scrollLeft) + this.viewportWidth + this.viewportOffsetLeft;
-					isVisibleVertical = !this.options.verticalScrolling || newOffsetTop + particle.height > (particle.isFixed ? 0 : scrollTop) && newOffsetTop < (particle.isFixed ? 0 : scrollTop) + this.viewportHeight + this.viewportOffsetTop;
-				}
-
-				if (isVisibleHorizontal && isVisibleVertical) {
-					if (particle.isHidden) {
-						this.options.showElement(particle.$element);
-						particle.isHidden = false;
-					}
-
-					this._setPosition(particle.$element, newPositionLeft, particle.startingPositionLeft, newPositionTop, particle.startingPositionTop);
-				} else {
-					if (!particle.isHidden) {
-						this.options.hideElement(particle.$element);
-						particle.isHidden = true;
-					}
-				}
-			}
-
-			// Reposition backgrounds
-			for (i = this.backgrounds.length - 1; i >= 0; i--) {
-				background = this.backgrounds[i];
-
-				fixedRatioOffset = (background.isFixed ? 0 : 1);
-				bgLeft = (this.options.horizontalScrolling ? (scrollLeft + background.horizontalOffset - this.viewportOffsetLeft - background.startingOffsetLeft + background.parentOffsetLeft - background.startingBackgroundPositionLeft) * (fixedRatioOffset - background.stellarRatio) + 'px' : background.startingValueLeft);
-				bgTop = (this.options.verticalScrolling ? (scrollTop + background.verticalOffset - this.viewportOffsetTop - background.startingOffsetTop + background.parentOffsetTop - background.startingBackgroundPositionTop) * (fixedRatioOffset - background.stellarRatio) + 'px' : background.startingValueTop);
-
-				setBackgroundPosition(background.$element, bgLeft, bgTop);
-			}
-		},
-		_handleScrollEvent: function() {
-			var self = this,
-				ticking = false;
-
-			var update = function() {
-				self._repositionElements();
-				ticking = false;
-			};
-
-			var requestTick = function() {
-				if (!ticking) {
-					requestAnimFrame(update);
-					ticking = true;
-				}
-			};
-			
-			this.$scrollElement.bind('scroll.' + this.name, requestTick);
-			requestTick();
-		},
-		_startAnimationLoop: function() {
-			var self = this;
-
-			this._animationLoop = function() {
-				requestAnimFrame(self._animationLoop);
-				self._repositionElements();
-			};
-			this._animationLoop();
-		}
-	};
-
-	$.fn[pluginName] = function (options) {
-		var args = arguments;
-		if (options === undefined || typeof options === 'object') {
-			return this.each(function () {
-				if (!$.data(this, 'plugin_' + pluginName)) {
-					$.data(this, 'plugin_' + pluginName, new Plugin(this, options));
-				}
-			});
-		} else if (typeof options === 'string' && options[0] !== '_' && options !== 'init') {
-			return this.each(function () {
-				var instance = $.data(this, 'plugin_' + pluginName);
-				if (instance instanceof Plugin && typeof instance[options] === 'function') {
-					instance[options].apply(instance, Array.prototype.slice.call(args, 1));
-				}
-				if (options === 'destroy') {
-					$.data(this, 'plugin_' + pluginName, null);
-				}
-			});
-		}
-	};
-
-	$[pluginName] = function(options) {
-		var $window = $(window);
-		return $window.stellar.apply($window, Array.prototype.slice.call(arguments, 0));
-	};
-
-	// Expose the scroll and position property function hashes so they can be extended
-	$[pluginName].scrollProperty = scrollProperty;
-	$[pluginName].positionProperty = positionProperty;
-
-	// Expose the plugin class so it can be modified
-	window.Stellar = Plugin;
-}(jQuery, this, document));
 //==============================================================================
