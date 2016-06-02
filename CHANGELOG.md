@@ -1,3 +1,8 @@
+#### v1.2.0 `June 2, 2016`
+- **[FEATURE]** adds bootstrap slider template, js and styles (#4) ([4d4ad7d](https://github.com/t3kit/felayout_t3kit/commit/4d4ad7d))
+- **[FIX]** fix mobile menu on resizing event (Podio bug17) ([07c74a7](https://github.com/t3kit/felayout_t3kit/commit/07c74a7))
+- **[FIX]** fix header-top in mobile (podio bug20) ([ef7e8c6](https://github.com/t3kit/felayout_t3kit/commit/ef7e8c6))
+
 #### v1.1.1 `May 13, 2016`
 - **[FIX]** fix parallax + bg video parallax ([bf4e520](https://github.com/t3kit/felayout_t3kit/commit/bf4e520))
 
