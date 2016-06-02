@@ -504,9 +504,7 @@
   height: 100%;
 }
 .header-top-wrp {
-  background: #fff;
   position: relative;
-  z-index: 5000;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 50px;
@@ -515,6 +513,7 @@
 .header-top {
   background: #fff;
   position: fixed;
+  z-index: 5001;
   margin: 0 auto;
   max-width: 1280px;
   font-size: 12px;
@@ -805,10 +804,13 @@
   visibility: visible;
   transition: opacity .3s 0s,visibility 0s 0s;
 }
-.mobile-menu-opened,
-.mobile-menu-opened body {
-  overflow: hidden;
-  height: 100%;
+@media (max-width: 991px) {
+  .mobile-menu-opened,
+  .mobile-menu-opened body {
+    overflow: hidden;
+    height: 100%;
+    background: #fff;
+  }
 }
 .main-navigation {
   position: fixed;
@@ -821,14 +823,20 @@
   max-height: 100%;
   min-height: 0;
 }
-.mobile-menu-opened .main-navigation {
-  position: absolute;
-  top: 49px;
-  left: 0;
-  right: 0;
-  -webkit-overflow-scrolling: touch;
-  -webkit-backface-visibility: hidden;
-  overflow-y: scroll;
+@media (max-width: 991px) {
+  .mobile-menu-opened .main-navigation {
+    position: absolute;
+    top: 49px;
+    left: 0;
+    right: 0;
+    -webkit-overflow-scrolling: touch;
+    -webkit-backface-visibility: hidden;
+    overflow-y: scroll;
+  }
+  .mobile-menu-opened .main-navigation__items-wrp {
+    padding-bottom: 150px!important;
+    overflow-y: auto;
+  }
 }
 .main-navigation a {
   -webkit-font-smoothing: antialiased;
@@ -839,10 +847,6 @@
 .main-navigation__items-wrp {
   -webkit-overflow-scrolling: touch;
   display: none;
-}
-.mobile-menu-opened .main-navigation__items-wrp {
-  padding-bottom: 150px!important;
-  overflow-y: auto;
 }
 .main-navigation__items-list {
   list-style: none;
@@ -945,12 +949,14 @@
   transition: transform 0.2s linear, opacity 0.2s linear, visibility 0.2s linear, max-height 0.2s linear;
   transition: transform 0.2s linear, opacity 0.2s linear, visibility 0.2s linear, max-height 0.2s linear, -webkit-transform 0.2s linear;
 }
-._open-mobile-dropdown .main-navigation__sub-item-list {
-  -webkit-transform: scale(1, 1);
-  transform: scale(1, 1);
-  opacity: 1;
-  visibility: visible;
-  max-height: 100%;
+@media (max-width: 991px) {
+  ._open-mobile-dropdown .main-navigation__sub-item-list {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+    opacity: 1;
+    visibility: visible;
+    max-height: 100%;
+  }
 }
 .main-navigation__sub-item-link {
   padding: 10px 14px;
