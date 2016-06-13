@@ -1741,6 +1741,12 @@
     padding-bottom: @header-top-height;
     border-bottom: 1px solid @header-border-color;
 }
+@media (min-width: 992px) {
+    .header-top-wrp{
+        z-index: 5000;
+        background: @header-top-bg-color;
+    }
+}
 
 .header-top{
     background: @header-top-bg-color;
@@ -3111,12 +3117,16 @@
     .footer__bottom {
         text-align: left;
     }
+    .footer__bottom-copyright {
+        padding-left: 0;
+    }
     .footer__bottom-copyright > p{
         margin: 0;
     }
     .footer__bottom-nav{
         padding-top: 12px;
         border-top: 1px solid lighten(@footer-background, 20%);
+        padding-right: 0;
     }
     .footer__bottom-nav .ce-menu{
         text-align: right;
@@ -4363,7 +4373,9 @@
     display: inline-block;
     color: @breadcrumbs-link-color;
 }
-
+.breadcrumbs__list-item .icon-t3-home {
+    padding-right: 4px;
+}
 .breadcrumbs__list-link{
     color: @breadcrumbs-link-color;
 }
@@ -4387,8 +4399,6 @@
 }
 // =========================================================
 // =========================================================
-
-
 
 // =========================================================
 // === Sub Navigation ======================================
