@@ -1,3 +1,10 @@
+#### v1.2.1 `June 13, 2016`
+- **[FIX]** Use tab to navigate slider ([140ae6d](https://github.com/t3kit/felayout_t3kit/commit/140ae6d))
+- **[FIX]** Disabled parallax in IE since scrolling looks jerky ([d18825e](https://github.com/t3kit/felayout_t3kit/commit/d18825e))
+- **[FIX]** align copyright message ([35dd5d0](https://github.com/t3kit/felayout_t3kit/commit/35dd5d0))
+- **[FIX]** sync breadcrumb template with TYPO3 breadcrumbs ([054a82a](https://github.com/t3kit/felayout_t3kit/commit/054a82a))
+- **[FIX]** header-top css fixes (for mobile) ([bd8cb25](https://github.com/t3kit/felayout_t3kit/commit/bd8cb25))
+
 #### v1.2.0 `June 2, 2016`
 - **[FEATURE]** adds bootstrap slider template, js and styles (#4) ([4d4ad7d](https://github.com/t3kit/felayout_t3kit/commit/4d4ad7d))
 - **[FIX]** fix mobile menu on resizing event (Podio bug17) ([07c74a7](https://github.com/t3kit/felayout_t3kit/commit/07c74a7))
