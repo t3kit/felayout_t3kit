@@ -1,7 +1,7 @@
 // =================================
 // Global variables (jshint):
 
-    /*global*/
+    /*global touchSupport*/
 // =================================
 
 jQuery(function($) {
@@ -65,6 +65,12 @@ jQuery(function($) {
 jQuery(function($) {
     var navbar = $('.js__main-navigation');
     var offsetTop = navbar.offset().top;
+    $(window).on('orientationchange',function() {
+        if ($(window).width() > 992 && touchSupport) {
+            var navbarPos = navbar.css('position');
+            offsetTop = $('header').height() - (navbarPos === 'fixed' ? 0 : navbar.outerHeight());
+        }
+    });
     $(window).on('load scroll', function() {
         var scrollPos = $(window).scrollTop();
         if (scrollPos > offsetTop) {
