@@ -24,6 +24,12 @@
             var focusIndex = $(e.target).parents('.swiper-slide').index();
             //Reset scrollLeft set by browser on focus
             swiper.container.scrollLeft(0);
+
+            // IE fix
+            setTimeout(function() {
+                swiper.container.scrollLeft(0);
+            }, 0);
+
             //Slide to focused slide
             swiper.slideTo(focusIndex);
         });
