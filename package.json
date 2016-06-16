@@ -6,6 +6,7 @@
   "repository": "t3kit/felayout_t3kit",
   "devDependencies": {
     "autoprefixer": "6.3.1",
+    "chalk": "1.1.3",
     "grunt": "0.4.5",
     "grunt-assemble": "0.4.0",
     "grunt-build-control": "0.6.2",

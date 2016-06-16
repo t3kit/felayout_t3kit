@@ -1,3 +1,5 @@
+const chalk = require('chalk');
+
 function isMaster(err, stdout, stderr, cb) {
     if (err) {
         cb(err);
@@ -9,8 +11,9 @@ function isMaster(err, stdout, stderr, cb) {
         cb();
         return;
     } else {
-        console.log('You are not at master brunch!');
-        console.log('Please switch to master branch and start script again.');
+        console.log(chalk.red('Error!'));
+        console.log(chalk.red('You are not at master brunch!'));
+        console.log(chalk.yellow('Please switch to master branch and start script again.'));
         cb();
         process.exit();
     }
@@ -27,9 +30,9 @@ function isUpdated(err, stdout, stderr, cb) {
         cb();
         return;
     } else {
-        console.log('Error!');
-        console.log('Your local master branch is not synchronized with remote master.');
-        console.log('Please push you changes to remote repo (git push), and start script again.');
+        console.log(chalk.red('Error!'));
+        console.log(chalk.red('Your local master branch is not synchronized with remote master.'));
+        console.log(chalk.yellow('Please push you changes to remote repo ') + chalk.blue('[git push]') + chalk.yellow(', and start script again.'));
         cb();
         process.exit();
     }
