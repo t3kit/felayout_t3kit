@@ -69,6 +69,7 @@ pushSite:
 # Provide all Front-End service files plus CSS styling for CMS needs, copy it to separate branch "css" and push it to remote git server.
 # ==================================
 pushCss:
+    - 'checkMaster' #task helper
     #Dev
     - 'dev' #task helper
     #Postcss autoprefixer
@@ -84,6 +85,7 @@ pushCss:
 # Provide all Front-End service files plus LESS styling for CMS needs, copy it to separate branch "less" and push it to remote git server.
 # ==================================
 pushLess:
+    - 'checkMaster' #task helper
     #Dev
     - 'dev' #task helper
     #Less
@@ -137,6 +139,13 @@ pushLessBranch:
     # Push to remote server with creating new branch [less]
     - 'buildcontrol:less'
     - 'notify:less'
+
+# check is local master branch synced with remote master
+checkMaster:
+    # check Is Master
+    - 'shell:isMaster'
+    # check is Updated
+    - 'shell:isUpdated'
 
 # ==================================
 # ==================================
