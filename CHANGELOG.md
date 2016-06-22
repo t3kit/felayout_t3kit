@@ -1,3 +1,15 @@
+
+#### v1.3.0 `June 22, 2016`
+- **[FIX]** modify colors (add variables) for search suggest dropdown ([df1fec0](https://github.com/t3kit/felayout_t3kit/commit/df1fec0))
+- **[FIX]** search box in main menu on tablets under nav arrows (z-index) ([f5e8e43](https://github.com/t3kit/felayout_t3kit/commit/f5e8e43))
+- **[CHORE]** add colors for error messages (add chalk plugin) ([485f5d9](https://github.com/t3kit/felayout_t3kit/commit/485f5d9))
+- **[CHORE]** check if local master branch synced with remote, before push to less/css branches ([f48b1c3](https://github.com/t3kit/felayout_t3kit/commit/f48b1c3))
+- **[CHORE]** add new plugin to run shell commands ([9df1d9b](https://github.com/t3kit/felayout_t3kit/commit/9df1d9b))
+- **[FIX]** IE fix, background-image instead of parallax ([b5a4a49](https://github.com/t3kit/felayout_t3kit/commit/b5a4a49))
+- **[FIX]** IE fix, Use tab to navigate slider ([900f2e0](https://github.com/t3kit/felayout_t3kit/commit/900f2e0))
+- **[FIX]** main navigation in iPad landscape-view (Podio bug #25) ([49a506e](https://github.com/t3kit/felayout_t3kit/commit/49a506e))
+
+***
 #### v1.2.1 `June 13, 2016`
 - **[FIX]** Use tab to navigate slider ([140ae6d](https://github.com/t3kit/felayout_t3kit/commit/140ae6d))
 - **[FIX]** Disabled parallax in IE since scrolling looks jerky ([d18825e](https://github.com/t3kit/felayout_t3kit/commit/d18825e))
