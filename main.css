@@ -1308,7 +1308,7 @@
   top: 0;
   left: auto;
   right: 0;
-  z-index: 3;
+  z-index: 3000;
 }
 @media (min-width: 768px) {
   .main-navigation__search-box {
@@ -2224,6 +2224,18 @@ div.awesomplete > ul > li[aria-selected="true"]:hover {
 div.awesomplete > ul > li:hover {
   background: #e6e6e6;
   color: inherit;
+}
+div.awesomplete mark {
+  background: #bfdde9;
+}
+div.awesomplete li:hover mark {
+  background: #bfdde9;
+}
+div.awesomplete li[aria-selected="true"] mark {
+  background: #89c1d6;
+}
+div.awesomplete li[aria-selected="true"] mark {
+  background: #89c1d6;
 }
 .ce-menu {
   list-style: none;
