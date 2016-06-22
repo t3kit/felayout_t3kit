@@ -3,7 +3,7 @@
 // =================================
 // Global variables (jshint):
 
-    /*global*/
+    /*global touchSupport*/
 // =================================
 
 jQuery(function($) {
@@ -67,6 +67,12 @@ jQuery(function($) {
 jQuery(function($) {
     var navbar = $('.js__main-navigation');
     var offsetTop = navbar.offset().top;
+    $(window).on('orientationchange',function() {
+        if ($(window).width() > 992 && touchSupport) {
+            var navbarPos = navbar.css('position');
+            offsetTop = $('header').height() - (navbarPos === 'fixed' ? 0 : navbar.outerHeight());
+        }
+    });
     $(window).on('load scroll', function() {
         var scrollPos = $(window).scrollTop();
         if (scrollPos > offsetTop) {
@@ -143,6 +149,12 @@ jQuery(function($) {
             var focusIndex = $(e.target).parents('.swiper-slide').index();
             //Reset scrollLeft set by browser on focus
             swiper.container.scrollLeft(0);
+
+            // IE fix
+            setTimeout(function() {
+                swiper.container.scrollLeft(0);
+            }, 0);
+
             //Slide to focused slide
             swiper.slideTo(focusIndex);
         });
