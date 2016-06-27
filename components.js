@@ -5834,3 +5834,315 @@ $.fn.simpleLightbox = function( options )
 }());
 
 //==============================================================================
+
+
+// Typekit loader
+//==============================================================================
+/** @license MIT License (c) Heyday Digital */
+
+/**
+ * An extremely minimal asynchronous JavaScript loader
+ *
+ * Licensed under the MIT License at:
+ * http://heyday.mit-license.org/
+ *
+ * @version 0.1.2
+ */
+
+/*jshint browser:true, laxbreak:true */
+( function( define ) {
+define( function() {
+
+	/**
+	 * Load JavaScript file
+	 * @param  {String} url     Url to load
+	 * @param  {Function} [always] On success or error callback
+	 * @param  {Int} [timeout] A false value will disable this feature
+	 */
+	return function( url, always, timeout ) {
+		var el = document.createElement( 'script' ),
+			first_script = document.getElementsByTagName( 'script' )[ 0 ],
+			_timeout, addEventCallback, finished;
+
+		/**
+		 * Bind to or unbind from onload and on error events
+		 * @param {Function|Null} cb Callback
+		 */
+		addEventCallback = function( cb ) {
+			el.onload = el.onerror = el.onreadystatechange = cb;
+		};
+
+		/**
+		 * Cleanup and unbind events
+		 */
+		finished = function() {
+			addEventCallback( null );
+			clearTimeout( _timeout );
+			always();
+		};
+
+		/**
+		 * Set url of script to load
+		 */
+		el.src = url;
+
+		if ( always ) {
+
+			/**
+			 * Set timeout if value is set
+			 */
+			if ( timeout ) {
+				_timeout = setTimeout( finished, timeout );
+			}
+
+			/**
+			 * Bind to success/error events
+			 */
+			addEventCallback( function() {
+				var rs = this.readyState;
+
+				// Check for funky IE readyStates
+				if ( !rs || rs === 'complete' || rs === 'loaded' ) { finished(); }
+			} );
+
+		}
+
+		/**
+		 * Insert script into DOM, starts download
+		 */
+		first_script.parentNode.insertBefore( el, first_script );
+	};
+} );
+} )( typeof define == 'function'
+	? define
+	: function( factory ) { this.asyncLoad = factory(); }
+	// Boilerplate for AMD, and browser global
+);
+
+/** @license MIT License (c) Heyday Digital */
+
+/**
+ * An extremely minimal DOM element class manipulator
+ *
+ * Licensed under the MIT License at:
+ * http://heyday.mit-license.org/
+ *
+ * @version 0.1.4
+ */
+
+/*jshint laxbreak:true, expr:true */
+( function( define ) {
+define( function() {
+
+	var DOMClass, wrap, trim, EMPTY = ' ';
+
+	/**
+	 * Wrap string in whitespace
+	 * @private
+	 * @param  {String} str String to be wrapped
+	 * @return {String}
+	 */
+	wrap = function( str ) {
+		return EMPTY + str + EMPTY;
+	};
+
+	/**
+	 * Trim additional white space off the start and end of a string
+	 * @private
+	 * @param  {String} str String to be trimmed
+	 * @return {String}
+	 */
+	trim = function( str ) {
+		return !str ? '' : str.toString().replace( /^\s+|\s+$/g, '' );
+	};
+
+
+	/**
+	 * Constructor for the dom-class manipulator
+	 * @class DOMClass
+	 *
+	 * @constructor
+	 * @param {HTMLElement} el Dom node to perform class manipulations on
+	 */
+	DOMClass = function( el ) {
+		this.e = el;
+	};
+
+	DOMClass.prototype = {
+
+		/**
+		 * Check if HTMLElement has a specific class
+		 * @param  {String}  str String to be searched for in className
+		 * @return {Boolean}
+		 */
+		has: function( str ) {
+			return ( wrap( this.get() ) ).indexOf( wrap( str ) ) > -1;
+		},
+
+		/**
+		 * Get className value for HTMLElement
+		 * @return {String}
+		 */
+		get: function() {
+			return trim( this.e.className );
+		},
+
+		/**
+		 * Add className to HTMLElement if not already added
+		 * @param {String} str class to be added
+		 * @chainable
+		 */
+		add: function( str ) {
+			if ( !this.has( str ) ) {
+				this.e.className += EMPTY + str;
+			}
+			return this;
+		},
+
+		/**
+		 * Remove className from HTMLElement
+		 * @param  {String} str String to be removed
+		 * @chainable
+		 */
+		remove: function( str ) {
+			this.e.className = trim( wrap( this.get() ).replace( wrap( str ), EMPTY ) );
+			return this;
+		}
+	};
+
+	/**
+	 * Create new className manipulator wrapping a HTMLElement
+	 * @param  {HTMLElement} el Element to wrap
+	 * @return {DOMClass}    DOMClass instance
+	 */
+	return function( el ) {
+		return new DOMClass( el );
+	};
+} );
+} )( typeof define === 'function' && define.amd
+		? define
+		: function( factory ) { typeof exports === 'object' ? module.exports = factory() : this.domClass = factory(); }
+			// Boilerplate for AMD, CommonJS and browser global
+);
+/** @license MIT License (c) Heyday Digital */
+
+/**
+ * An asynchronous typekit loader with smarts
+ *
+ * Licensed under the MIT License at:
+ * http://heyday.mit-license.org/
+ *
+ * @version 0.1.2
+ */
+
+/*jshint browser:true, laxbreak:true */
+( function( define ) {
+define( [ 'async-load', 'dom-class' ], function( load, domClass ) {
+
+	var messages, head, finished, typekitLoad;
+
+	/**
+	 * Classes to be added to the document element
+	 * @type {Array}
+	 */
+	messages = [ 'wf-loading', 'wf-firstload', 'wf-inactive' ];
+
+	/**
+	 * Dom class manipulator wrapping the document element
+	 * @type {DOMClass}
+	 */
+	head = domClass( document.documentElement );
+
+	/**
+	 * Clean up loading states on both success and failure
+	 */
+	finished = function() {
+		typekitLoad._loading -= 1;
+		typekitLoad._first = false;
+		head.remove( messages[ 1 ] );
+		if ( !typekitLoad._loading ) { head.remove( messages[ 0 ] ); }
+	};
+
+	/**
+	 * Download and initialise a typekit font(s) based on a typekit id
+	 * @param  {String} typekit_id Id of typekit font set to initialise
+	 * @param {Function} [success] Success callback
+	 * @param {Function} [error] Error callback
+	 */
+	typekitLoad = function( typekit_id, success, error ) {
+		var onSuccess, onError;
+		typekitLoad._loading += 1;
+		head.add( messages[ 0 ] );
+		if ( typekitLoad._first ) { head.add( messages[ 1 ] ); }
+
+
+		/**
+		 * On success state, cleanup
+		 */
+		onSuccess = function() {
+			finished();
+
+			// Break try catch scope so it doesn't suppress errors
+			if ( success ) { setTimeout( success, 0 ); }
+		};
+
+		/**
+		 * On errored state, cleanup and set error class
+		 */
+		onError = function() {
+			finished();
+			head.add( messages[ 2 ] );
+			if ( error ) { setTimeout( error, 0 ); }
+		};
+
+		/**
+		 * Initialize loading of JS file, wait for callback
+		 */
+		load(
+			'//use.typekit.com/' + typekit_id + '.js',
+			function() {
+				try {
+					// Call typekits global load function
+					// Will throw if not loaded
+					window.Typekit.load( {
+						active: onSuccess,
+						inactive: onError
+					} );
+				} catch( e ) {
+					onError();
+				}
+			},
+			typekitLoad.timeout
+		);
+	};
+
+	/**
+	 * Sets whether this is the first load,
+	 * is reset to false at the end of each load
+	 * @type {Boolean}
+	 * @private
+	 */
+	typekitLoad._first = true;
+
+	/**
+	 * Integer which holds the current number of loading id's
+	 * @type {Int}
+	 * @private
+	 */
+	typekitLoad._loading = 0;
+
+	/**
+	 * Timeout value, after this period an id is set to inactive
+	 * @type {Int} Timeout in milliseconds
+	 */
+	typekitLoad.timeout = 2000;
+
+	return typekitLoad;
+} );
+} )( typeof define == 'function'
+	? define
+	: function( deps, factory ) { this.typekitLoad = factory( this.asyncLoad, this.domClass ); }
+	// Boilerplate for AMD, and browser global
+);
+
+//==============================================================================

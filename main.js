@@ -310,6 +310,7 @@ var mainSearchInputList = {};
 
 
 // ########## general.js ###########
+/*global typekitLoad*/
 
 (function($) {
     'use strict';
@@ -325,6 +326,10 @@ var mainSearchInputList = {};
             captionsData: 'caption',
             captionPosition: 'outside',
             heightRatio: 0.6
+        });
+
+        typekitLoad('hbd7mci',function() {
+            console.log('Typekit has downloaded and initialised successfully');
         });
     });
 
