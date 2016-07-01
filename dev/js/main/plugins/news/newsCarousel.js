@@ -13,7 +13,6 @@
             paginationClickable: true,
             slidesPerView: 4,
             preloadImages: false,
-            roundLengths: true,
             spaceBetween: 30,
 
             // Responsive breakpoints
