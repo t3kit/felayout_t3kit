@@ -869,11 +869,11 @@
 @hr-border:                   @gray-lighter;
 
 // Primary color
-@main-color:                    #3594cb;//#288FB4; //#288FB4
+@main-color:                    #288FB4; //#288FB4
 
 // BODY
 @main-body-bg:                  #fff;
-@main-text-color:               #6b6b6d;//#555;
+@main-text-color:               #555;
 @border-color:                  #eee;
 
 
@@ -883,11 +883,11 @@
 
 
 // HEADER
-@header-top-height:             40px;
+@header-top-height:             50px;
 @header-top-bg-color:           @main-body-bg;
 @header-top-color:              fade(@main-text-color, 50%);
 
-@header-middle-height:          100px;
+@header-middle-height:          130px;
 @header-middle-bg-color:        @main-body-bg;
 @header-border-color:           @border-color;
 
@@ -898,14 +898,14 @@
 
 
 // Logo
-@logo-top:                      35px;
-@logo-left:                     15px;
-@logo-width:                    265px;
+@logo-top:                      30px;
+@logo-left:                     40px;
+@logo-width:                    120px;
 
 
 // Navigation
-@nav-height:                    58px;
-@nav-link-color:                #53545a;//@main-text-color;
+@nav-height:                    64px;
+@nav-link-color:                @main-text-color;
 @nav-link-hover-color:          @nav-link-color;
 @nav-link-active-color:         @main-color;
 @nav-link-active-hover-color:   @nav-link-active-color;
@@ -913,15 +913,15 @@
 
 @nav-link-arrow-color:          fade(@main-text-color, 50%);
 
-@nav-background-color:          lighten(@main-color, 45%);//@main-body-bg;
+@nav-background-color:          @main-body-bg;
 
 @nav-search-btn-color:          fade(@main-text-color, 50%);
 
-@mobile-nav-toggle-btn:         left;
+@mobile-nav-toggle-btn:        left;
 
 // Social icons
-@social-icons-bg-color:         #9acae5;//lighten(@main-text-color, 30%);
-@social-icons-hover-color:      #fff;//lighten(@main-color, 15%);
+@social-icons-bg-color:         lighten(@main-text-color, 30%);
+@social-icons-hover-color:      lighten(@main-color, 15%);
 
 // Breadcrumbs
 @breadcrumbs-background:        @main-body-bg;
@@ -945,8 +945,8 @@
 
 
 // FOOTER
-@footer-background:             @main-color; //#1D556F;
-@footer-color:                  #fff; //#eee;
+@footer-background:             #1D556F; //#1D556F;
+@footer-color:                  #eee; //#eee;
 @footer-link-color:             @footer-color;
 @footer-link-hover-color:       @main-link-hover-color;
 
@@ -961,7 +961,7 @@
 @link-hover-decoration:         none; //underline
 
 // Font variables
-@font-family-sans-serif:        'franklin-gothic-urw',sans-serif;// Roboto, Helvetica, Arial, sans-serif;
+@font-family-sans-serif:        Roboto, Helvetica, Arial, sans-serif;
 @font-family-serif:             Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:         Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:              @font-family-sans-serif;
@@ -984,7 +984,7 @@
 @headings-font-family:          inherit;
 @headings-font-weight:          500;
 @headings-line-height:          1.1;
-@headings-color:                #53545a;//inherit;
+@headings-color:                inherit;
 
 
 //== Buttons BOOTSTRAP
