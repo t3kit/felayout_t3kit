@@ -95,6 +95,9 @@ jQuery(function($) {
         e.preventDefault();
         $(this).toggleClass('_search-close-btn');
         $mainNavigationSearchBox.toggleClass('_search-box-visible');
+        if ($mainNavigationSearchBox.hasClass('_search-box-visible')) {
+            $mainNavigationSearchBox.find('input[type="search"]').focus();
+        }
         $mainNavigationSearchBoxOverlay.toggleClass('_search-box-overlay-visible');
     });
     $mainNavigationSearchBoxOverlay.on('click', function() {
