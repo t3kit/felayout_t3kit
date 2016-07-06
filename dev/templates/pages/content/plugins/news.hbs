@@ -12,45 +12,10 @@ externalLink: false #just add link (http://link.com) instead of "false" to use t
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            {{> subNavigation}}
 
-            <div id="c81">
-                <h3>News date menu</h3>
-                <div class="news">
-                    <div class="news-menu-view">
-                        <ul>
-                            <li> 2015
-                                <ul>
-                                    <li class="item itemactive"> <a href="content/plugins/news/list/date/2015/10/">October 2015</a> (17 entries) </li>
-                                    <li class="item"> <a href="content/plugins/news/list/date/2015/09/">September 2015</a> (1 entry) </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div id="c82">
-                <h3>News category menu</h3>
-                <div class="news">
-                    <ul class="news-tags">
-                        <li> <a title="Tag Ipsum" href="content/plugins/news/list/tag/tag-ipsum/">Tag Ipsum</a> </li>
-                        <li> <a title="Tag Lorem" href="content/plugins/news/list/tag/tag-lorem/">Tag Lorem</a> </li>
-                        <li> <a title="11111" href="content/plugins/news/list/tag/11111/">11111</a> </li>
-                        <li> <a title="22222" href="content/plugins/news/list/tag/22222/">22222</a> </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="c83">
-                <h3>Category list</h3>
-                <div class="news">
-                    <div class="news-catecories">
-                        <ul>
-                            <li> <a class="active" title="Technology" href="content/plugins/news/list/category/technology/">Technology</a> </li>
-                            <li> <a title="Research" href="content/plugins/news/list/category/research/">Research</a> </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            {{> newsArchive}}
+            {{> newsTags}}
+            {{> newsCategories}}
 
         </div>
         <div class="col-md-9">

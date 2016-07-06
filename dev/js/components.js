@@ -8,7 +8,7 @@
 
 // Jquery dot dot dot
 //==============================================================================
-// @import '../bower_components/jQuery.dotdotdot/src/js/jquery.dotdotdot.js';
+ @import '../bower_components/jQuery.dotdotdot/src/js/jquery.dotdotdot.js';
 //==============================================================================
 
 

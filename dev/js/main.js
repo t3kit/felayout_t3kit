@@ -13,3 +13,4 @@
 @import 'main/suggest.js';
 
 @import 'main/general.js';
+@import 'main/news.js';
