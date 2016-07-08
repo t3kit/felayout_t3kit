@@ -97,6 +97,9 @@ jQuery(function($) {
         e.preventDefault();
         $(this).toggleClass('_search-close-btn');
         $mainNavigationSearchBox.toggleClass('_search-box-visible');
+        if ($mainNavigationSearchBox.hasClass('_search-box-visible')) {
+            $mainNavigationSearchBox.find('input[type="search"]').focus();
+        }
         $mainNavigationSearchBoxOverlay.toggleClass('_search-box-overlay-visible');
     });
     $mainNavigationSearchBoxOverlay.on('click', function() {
@@ -233,6 +236,69 @@ jQuery(function($) {
     });
 
 })(jQuery);
+
+
+// plugins
+(function($) {
+    'use strict';
+
+    // document load event
+    $(document).ready(function() {
+
+        // initialize swiper when document ready
+        // http://idangero.us/swiper/api/
+        $('.js__news-carousel').swiper({
+            nextButton: '.js__news-carousel__btn-next',
+            prevButton: '.js__news-carousel__btn-prev',
+            pagination: '.js__news-carousel__pagination',
+            paginationClickable: true,
+            slidesPerView: 4,
+            preloadImages: false,
+            spaceBetween: 30,
+
+            // Responsive breakpoints
+            breakpoints: {
+
+                // when window width is <= 480px
+                500: {
+                    slidesPerView: 1
+                },
+                // when window width is <= 768px
+                767: {
+                    slidesPerView: 2
+                },
+                // when window width is <= 992px
+                991: {
+                    slidesPerView: 3
+                },
+                // when window width is <= 992px
+                1199: {
+                    slidesPerView: 4
+                }
+            }
+        });
+    });
+
+})(jQuery);
+
+// news Timeline
+$('.js__news-timeline__item').on('click', function(e) {
+     if ($(this).hasClass('collapsed')){
+         e.preventDefault();
+         $(this).removeClass('collapsed');
+         $(this).closest('.js__news-timeline__item-wrp').find('.js__news-timeline__date').addClass('open');
+     }
+ });
+
+// news Cards
+$('.js__news-cards__dotdotdot').dotdotdot({
+    watch: 'window'
+});
+
+// news Simple list
+$('.js__news-simple-list__dotdotdot').dotdotdot({
+    watch: 'window'
+});
 
 
 /*global tx_solr_suggestUrl*/
