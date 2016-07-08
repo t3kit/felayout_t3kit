@@ -1,4 +1,16 @@
 
+#### v1.4.0 `July 8, 2016`
+- **[FIX]** alignment of image in news single view (Podio bug_22) ([7cfec8c](https://github.com/t3kit/felayout_t3kit/commit/7cfec8c))
+- **[FIX]** related items position in News (Podio bug_23) ([24d475b](https://github.com/t3kit/felayout_t3kit/commit/24d475b))
+- **[FEATURE]** add new list template - NewsTimeline ([447e78c](https://github.com/t3kit/felayout_t3kit/commit/447e78c))
+- **[FEATURE]** add new list templates for news plugin, (cards, simple list) ([dc71101](https://github.com/t3kit/felayout_t3kit/commit/dc71101))
+- **[DOC]** add license file (Podio feature_24) ([d7cc020](https://github.com/t3kit/felayout_t3kit/commit/d7cc020))
+- **[FIX]** add lightbox class for news detail page ([f67322e](https://github.com/t3kit/felayout_t3kit/commit/f67322e))
+- **[FEATURE]** add news-carousel template for NEWS extension ([c020008](https://github.com/t3kit/felayout_t3kit/commit/c020008))
+- **[FEATURE]** After clicking on mainNavigationSearchBtn, mainNavigationSearchBox is focused ([51e8bad](https://github.com/t3kit/felayout_t3kit/commit/51e8bad))
+
+***
+
 #### v1.3.0 `June 22, 2016`
 - **[FIX]** modify colors (add variables) for search suggest dropdown ([df1fec0](https://github.com/t3kit/felayout_t3kit/commit/df1fec0))
 - **[FIX]** search box in main menu on tablets under nav arrows (z-index) ([f5e8e43](https://github.com/t3kit/felayout_t3kit/commit/f5e8e43))
