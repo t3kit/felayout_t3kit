@@ -4,6 +4,10 @@
   "description": "Front-End layout for t3kit project.",
   "license": "MIT",
   "repository": "t3kit/felayout_t3kit",
+  "scripts": {
+    "check": "grunt check",
+    "gruntDefault": "grunt dev"
+  },
   "devDependencies": {
     "autoprefixer": "6.3.7",
     "chalk": "1.1.3",
