@@ -1,7 +1,7 @@
 // =================================
 // Global variables (jshint):
 
-    /*global touchSupport*/
+/*global touchSupport*/
 // =================================
 
 jQuery(function($) {
