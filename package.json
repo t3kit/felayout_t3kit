@@ -6,7 +6,8 @@
   "repository": "t3kit/felayout_t3kit",
   "scripts": {
     "check": "grunt check",
-    "gruntDefault": "grunt dev"
+    "gruntDefault": "grunt dev",
+    "bower": "bower install"
   },
   "devDependencies": {
     "autoprefixer": "6.3.7",
