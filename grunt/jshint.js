@@ -1,7 +1,7 @@
 module.exports = {
     options: {
         jshintrc: '.jshintrc',
-        force: true,
+        // force: true,
         reporter: require('jshint-stylish')
     },
     mainJs: {
