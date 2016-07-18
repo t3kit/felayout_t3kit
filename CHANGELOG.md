@@ -1,4 +1,16 @@
 
+#### v1.5.0 `July 18, 2016`
+- **[DOC]** add CONTRIBUTING.md file ([cb4fa7b](https://github.com/t3kit/felayout_t3kit/commit/cb4fa7b))
+- **[UPDATE]** update Bower dependencies ([5b4616e](https://github.com/t3kit/felayout_t3kit/commit/5b4616e))
+- **[DOC]** add Contributing link to README ([0e327da](https://github.com/t3kit/felayout_t3kit/commit/0e327da))
+- **[TEST]** install bower dep for Travis CI tool ([20c0ff6](https://github.com/t3kit/felayout_t3kit/commit/20c0ff6))
+- **[TEST]** add tests, add Travis CI integration ([d0dbcdd](https://github.com/t3kit/felayout_t3kit/commit/d0dbcdd))
+- **[STYLE]** change code formatting ([92e644c](https://github.com/t3kit/felayout_t3kit/commit/92e644c))
+- **[UPDATE]** package devDependencies ([76614e1](https://github.com/t3kit/felayout_t3kit/commit/76614e1))
+- **[UPDATE]** update node.js (>=6.0.0) and npm (>=3.9.0) dependencies ([64e7406](https://github.com/t3kit/felayout_t3kit/commit/64e7406))
+
+***
+
 #### v1.4.0 `July 8, 2016`
 - **[FIX]** alignment of image in news single view (Podio bug_22) ([7cfec8c](https://github.com/t3kit/felayout_t3kit/commit/7cfec8c))
 - **[FIX]** related items position in News (Podio bug_23) ([24d475b](https://github.com/t3kit/felayout_t3kit/commit/24d475b))
