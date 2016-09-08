@@ -68,21 +68,24 @@ jQuery(function($) {
 // ====== class fo fixed main navigation bar   =======
 jQuery(function($) {
     var navbar = $('.js__main-navigation');
-    var offsetTop = navbar.offset().top;
-    $(window).on('orientationchange',function() {
-        if ($(window).width() > 992 && touchSupport) {
-            var navbarPos = navbar.css('position');
-            offsetTop = $('header').height() - (navbarPos === 'fixed' ? 0 : navbar.outerHeight());
-        }
-    });
-    $(window).on('load scroll', function() {
-        var scrollPos = $(window).scrollTop();
-        if (scrollPos > offsetTop) {
-            $('body:not(.main-navigation-fixed)').addClass('main-navigation-fixed');
-        } else {
-            $('body.main-navigation-fixed').removeClass('main-navigation-fixed');
-        }
-    });
+
+    if (navbar.length) {
+        var offsetTop = navbar.offset().top;
+        $(window).on('orientationchange',function() {
+            if ($(window).width() > 992 && touchSupport) {
+                var navbarPos = navbar.css('position');
+                offsetTop = $('header').height() - (navbarPos === 'fixed' ? 0 : navbar.outerHeight());
+            }
+        });
+        $(window).on('load scroll', function() {
+            var scrollPos = $(window).scrollTop();
+            if (scrollPos > offsetTop) {
+                $('body:not(.main-navigation-fixed)').addClass('main-navigation-fixed');
+            } else {
+                $('body.main-navigation-fixed').removeClass('main-navigation-fixed');
+            }
+        });
+    }
 });
 
 jQuery(function($) {
