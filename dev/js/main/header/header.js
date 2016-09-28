@@ -13,6 +13,14 @@ jQuery(function($) {
     var $openSubMenuLink = $('.js__main-navigation__open-sub-menu-link');
     var $mainNavigationItemsList = $mainNavigation.find('.js__main-navigation__items-list').children('li');
 
+    //var $mainNavigationItemsListSub = ('.main-navigation__item._sub');
+    var $dropdownMenuWithColumns = $('.js__dropdown-menu-with-columns .js__main-navigation__item._sub');
+    if (!touchSupport) {
+        $dropdownMenuWithColumns.hover(function() {
+            $(this).toggleClass('open');
+        });
+    }
+
     // Cleanup function to clean unneeded classes
     var cleanup = function cleanup() {
         if ($mainNavigationItemsList.hasClass('_open-mobile-dropdown')) {
@@ -39,11 +47,11 @@ jQuery(function($) {
         e.preventDefault();
         // if (touchSupport && $(window).width() > 992) {
         if ($(window).width() > 992) {
-            $mainNavigationItemsList.not($(this).parent()).removeClass('_open-tablet-dropdown');
-            $(this).parent('.main-navigation__item').toggleClass('_open-tablet-dropdown');
+            $mainNavigationItemsList.not($(this).parents()).removeClass('_open-tablet-dropdown');
+            $(this).parents('.main-navigation__item').toggleClass('_open-tablet-dropdown');
         }
         if ($(window).width() < 992) {
-            $(this).parent('.main-navigation__item').toggleClass('_open-mobile-dropdown');
+            $(this).parents('.main-navigation__item').toggleClass('_open-mobile-dropdown');
         }
     });
 
