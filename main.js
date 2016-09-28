@@ -4,6 +4,8 @@
 // Global variables (jshint):
 
 /*global touchSupport*/
+/*global isAndroid*/
+///*global isIOS*/
 // =================================
 
 jQuery(function($) {
@@ -12,6 +14,14 @@ jQuery(function($) {
     var $mainNavigation = $('.js__main-navigation');
     var $openSubMenuLink = $('.js__main-navigation__open-sub-menu-link');
     var $mainNavigationItemsList = $mainNavigation.find('.js__main-navigation__items-list').children('li');
+
+    //var $mainNavigationItemsListSub = ('.main-navigation__item._sub');
+    var $dropdownMenuWithColumns = $('.js__dropdown-menu-with-columns .js__main-navigation__item._sub');
+    if (!touchSupport) {
+        $dropdownMenuWithColumns.hover(function() {
+            $(this).toggleClass('open');
+        });
+    }
 
     // Cleanup function to clean unneeded classes
     var cleanup = function cleanup() {
@@ -24,11 +34,13 @@ jQuery(function($) {
         if ($html.hasClass('mobile-menu-opened')) {
             $html.removeClass('mobile-menu-opened');
         }
-        if ($(window).width() < 992 && !$html.hasClass('mobile-menu-opened')) {
+
+        if (isAndroid && screen.width < 992 && !$html.hasClass('mobile-menu-opened')) {
+            $('.js__navigation__items-wrp').hide();
+        } else if (!isAndroid /* or with 'isIOS' variable instead of '!isAndroid' */ && $(window).width() < 992 && !$html.hasClass('mobile-menu-opened')) {
             $('.js__navigation__items-wrp').hide();
         } else {
             $('.js__navigation__items-wrp').show();
-
         }
     };
 
@@ -37,11 +49,11 @@ jQuery(function($) {
         e.preventDefault();
         // if (touchSupport && $(window).width() > 992) {
         if ($(window).width() > 992) {
-            $mainNavigationItemsList.not($(this).parent()).removeClass('_open-tablet-dropdown');
-            $(this).parent('.main-navigation__item').toggleClass('_open-tablet-dropdown');
+            $mainNavigationItemsList.not($(this).parents()).removeClass('_open-tablet-dropdown');
+            $(this).parents('.main-navigation__item').toggleClass('_open-tablet-dropdown');
         }
         if ($(window).width() < 992) {
-            $(this).parent('.main-navigation__item').toggleClass('_open-mobile-dropdown');
+            $(this).parents('.main-navigation__item').toggleClass('_open-mobile-dropdown');
         }
     });
 
