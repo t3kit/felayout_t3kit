@@ -5038,6 +5038,38 @@
 }
 
 
+// modifiers
+// =========================================================
+// === Block link ==========================================
+// =========================================================
+.block-link a[class*="__link"],
+.block-link a[class*="__img-link"] {
+	position: relative;
+	z-index: 1;
+}
+.block-link a[class*="__img-link"] {
+	display: block;
+}
+.block-link__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 0;
+    text-indent: -9999px;
+    z-index: 0;
+}
+.block-link:hover .block-link__background {
+    @media (min-width: 1200px) {
+        background-color: fade(#fff, 10%);
+    }
+}
+
+// =========================================================
+// =========================================================
+
+
 // print styles
 // =========================================================
 // Print styles. ===========================================
