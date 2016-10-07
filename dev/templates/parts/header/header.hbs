@@ -82,14 +82,18 @@
             </div>
         {{/is}}
         {{#is this.showHeaderMiddleSearch "true"}}
-            <form action="/solr.html" accept-charset="utf-8">
-                <div class="header-middle__search-wrp" >
-                    <div class="header-middle__search-box" >
-                        <input class="header-middle__search-input" data-search="searchSuggest" placeholder="Search..." type="search">
-                        <button class="header-middle__search-submit" type="submit" value="Search"><span class="icons icon-t3-search"></span></button>
-                    </div>
+            <div class="tx-solr">
+                <div class="tx-solr-searchbox">
+                    <form action="/solr.html" accept-charset="utf-8">
+                        <div class="header-middle__search-wrp" >
+                            <div class="header-middle__search-box" >
+                                <input class="header-middle__search-input" data-search="searchSuggest" placeholder="Search..." type="search">
+                                <button class="header-middle__search-submit" type="submit" value="Search"><span class="icons icon-t3-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         {{/is}}
     </div>
 </div>
