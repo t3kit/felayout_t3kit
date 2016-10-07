@@ -5,11 +5,9 @@
     margin: 40px 0;
     text-align: center;
 }
-
 .big-icon-text-btn__p {
     margin-bottom: 18px;
 }
-
 .big-icon-text-btn__icon {
     padding: 30px;
     background: @main-color;
@@ -20,6 +18,22 @@
     font-size: 46px;
     display: inline-block;
 }
-
+.big-icon-text-btn__link {
+    position: relative;
+    z-index: 1;
+}
+.big-icon-text-btn__whole-area-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 0;
+    text-indent: -9999px;
+    z-index: 0;
+}
+.big-icon-text-btn._whole-area-link:hover .big-icon-text-btn__whole-area-link {
+    background-color: fade(#fff, 10%);
+}
 // =========================================================
 // =========================================================

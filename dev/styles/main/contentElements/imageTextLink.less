@@ -4,6 +4,27 @@
 .img-text-link {
     margin: 40px 0;
 }
-
+.img-text-link__img-link {
+	position: relative;
+	display: block;
+	z-index: 1;
+}
+.img-text-link__link {
+	position: relative;
+	z-index: 1;
+}
+.img-text-link__whole-area-link {
+	position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 0;
+    text-indent: -9999px;
+    z-index: 0;
+}
+.img-text-link._whole-area-link:hover .img-text-link__whole-area-link {
+    background-color: fade(#fff, 10%);
+}
 // =========================================================
 // =========================================================

@@ -1,4 +1,4 @@
-<div class="big-icon-text-btn">
+<div class="big-icon-text-btn{{#if this.wholeAreaLink}} _whole-area-link{{/if}}">
     {{#if this.bigTopIcon}}
         <span class="big-icon-text-btn__icon icons icon-{{bigTopIcon}}"></span>
     {{/if}}
@@ -10,5 +10,8 @@
     {{/if}}
     {{#if this.buttonName}}
         <a class="big-icon-text-btn__link {{#if this.btnAsLink}}{{else}}btn btn-default {{/if}}" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}">{{buttonName}}</a>
+    {{/if}}
+    {{#if this.wholeAreaLink}}
+        <a class="big-icon-text-btn__whole-area-link" title="{{buttonName}}" href="{{#if this.wholeAreaLink}}{{wholeAreaLink}}{{else}}#{{/if}}">{{buttonName}}</a>
     {{/if}}
 </div>
