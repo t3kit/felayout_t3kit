@@ -56,6 +56,7 @@
             }
             // IE version
             var uA = window.navigator.userAgent;
+        
             var msie = uA.indexOf('MSIE ');
             var trident = uA.indexOf('Trident/');
             var ie;
@@ -79,6 +80,42 @@
             } else{
                 document.documentElement.className += (' ' + (ie + ' ' + 'IE'));
             };
+        
+            var isIOS = false;
+            function detectIOS() {
+                var iDevices = [
+                    'iPad Simulator',
+                    'iPhone Simulator',
+                    'iPod Simulator',
+                    'iPad',
+                    'iPhone',
+                    'iPod'
+                ];
+        
+                if (!!navigator.platform) {
+                    while(iDevices.length) {
+                        if (navigator.platform === iDevices.pop()) {
+                            isIOS = true;
+                            // In case if should be in DOM
+                            // for now can be omitted - no styles by default attached to this class name ' iOS'
+                            document.documentElement.className += " iOS";
+                        }
+                    }
+                }
+            }
+            detectIOS();
+        
+            var isAndroid = false;
+            var android = uA.indexOf('Android ');
+            function detectAndroid() {
+                if (android > 0) {
+                    isAndroid = true;
+                    // In case if should be in DOM
+                    // for now can be omitted - no styles by default attached to this class name ' android'
+                    document.documentElement.className += " android";
+                }
+            }
+            detectAndroid();
         </script>
     </head>
 <body>
@@ -144,16 +181,21 @@
             </a>
         </div>
 
-            <form action="/solr.html" accept-charset="utf-8">
-                <div class="header-middle__search-wrp" >
-                    <div class="header-middle__search-box" >
-                        <input class="header-middle__search-input" data-search="searchSuggest" placeholder="Search..." type="search">
-                        <button class="header-middle__search-submit" type="submit" value="Search"><span class="icons icon-t3-search"></span></button>
-                    </div>
+            <div class="tx-solr">
+                <div class="tx-solr-searchbox">
+                    <form action="/solr.html" accept-charset="utf-8">
+                        <div class="header-middle__search-wrp" >
+                            <div class="header-middle__search-box" >
+                                <input class="header-middle__search-input" data-search="searchSuggest" placeholder="Search..." type="search">
+                                <button class="header-middle__search-submit" type="submit" value="Search"><span class="icons icon-t3-search"></span></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
     </div>
 </div>
+
 
 
 <nav class="main-navigation js__main-navigation">
@@ -692,8 +734,8 @@ _active"><a class="main-navigation__sub-item-link" href="contentElements.html">C
             <div class="row">
                 <div class="col-md-6 footer__about">
                     <h4>About t3kit</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis no strud exercitation ullamco laboris nisi ut.</p>
-                    <a href="">Read more about us</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiumdod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad <a href="minim-veniam">minim veniam</a>, quis no strud exercitation ullamco laboris nisi ut.</p>
+                    <a href="#about-us">Read more about us</a>
                 </div>
                 <div class="col-md-6 footer__contact">
                     <h4>Contact us</h4>
@@ -711,7 +753,7 @@ _active"><a class="main-navigation__sub-item-link" href="contentElements.html">C
                                 <li>
                                 <p><span class="icons icon-t3-mobile"></span><span>CALL US ON</span> <a href="tel:+46-40-617-1230">tel:+46 (40) 617-1230</a></p>
                                 </li>
-                                <li><p><span class="icons icon-t3-mail"></span><span>EMAIL US AT</span> <a href="#">info@info.se</a></p>
+                                <li><p><span class="icons icon-t3-mail"></span><span>EMAIL US AT</span> <a href="mailto:info@info.se">info@info.se</a></p>
                                 </li>
                             </ul>
                         </div>
