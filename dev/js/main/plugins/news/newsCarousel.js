@@ -6,9 +6,10 @@
 
         // initialize swiper when document ready
         // http://idangero.us/swiper/api/
-        $('.js__news-carousel').swiper({
-            nextButton: '.js__news-carousel__btn-next',
-            prevButton: '.js__news-carousel__btn-prev',
+        $('.js__news-carousel').each(function(){
+         $(this).swiper({
+            nextButton: $(this).parent().find('.js__news-carousel__btn-next'),
+            prevButton: $(this).parent().find('.js__news-carousel__btn-prev'),
             pagination: '.js__news-carousel__pagination',
             paginationClickable: true,
             slidesPerView: 4,
@@ -35,6 +36,7 @@
                     slidesPerView: 4
                 }
             }
+          });
         });
     });
 
