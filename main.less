@@ -4401,6 +4401,9 @@
 // =========================================================
 // === Icon text btn ======================================+
 // =========================================================
+.icon-text-btn {
+    margin: 40px 0;
+}
 .icon-text-btn__icon {
     padding: 10px;
     background: @main-color;
@@ -4408,9 +4411,6 @@
     margin-right: 10px;
     margin-bottom: 4px;
     display: inline-block;
-}
-.icon-text-btn {
-    margin: 40px 0;
 }
 .icon-text-btn__p {
     margin-bottom: 18px;
@@ -4429,7 +4429,7 @@
     text-indent: -9999px;
     z-index: 0;
 }
-.icon-text-btn__icon._whole-area-link:hover .icon-text-btn__whole-area-link {
+.icon-text-btn._whole-area-link:hover .icon-text-btn__whole-area-link {
     background-color: fade(#fff, 10%);
 }
 // =========================================================
@@ -5093,76 +5093,112 @@
 // =========================================================
 
 @media print {
+    // a[href]:after {
+    //     content: none;
+    // }
+    .header-middle-wrp {
+        height: auto;
+    }
     .header-middle__logo {
-        a,
-        a:visited {
-            text-decoration: none;
-        }
-
+        // a,
+        // a:visited {
+        //     text-decoration: none;
+        // }
         a[href]:after {
-            content: "";
+            content: none;
         }
     }
-    .icons{
+    p a {
+        text-decoration: underline !important;
+    }
+    a[href^="#"],
+    a[href^="javascript:"],
+    .icons,
+    .header-top-wrp,
+    .header-middle .tx-solr,
+    .header-middle .social-icons,
+    .main-navigation,
+    .sub-navigation,
+    .logo-carousel,
+    .footer__map,
+    .footer__subscribe,
+    .footer__quick-links,
+    .footer .social-icons,
+    .footer__bottom-nav,
+    .tx-pxa-newsletter-subscription,
+    .tabbable a,
+    .img-slider__caption-link,
+    .big-icon-text-btn__link,
+    .img-text-link__link,
+    .icon-text-btn__link,
+    .breadcrumbs,
+    .news-tags,
+    .news .page-navigation,
+    .news-simple-list__img-wrap,
+    .news-simple-list__more-link,
+    div[id^='jarallax-container'] {
         display: none;
     }
-    .header-top-wrp{
-        display: none;
-    }
-    .header-middle .tx-solr {
-        display: none;
-    }
-    .header-middle .social-icons {
-        display: none;
-    }
-    .main-navigation{
-        display: none;
+    .img-text-link__img-link:after,
+    .quote p:before,
+    .news-list-category:before,
+    .news-carousel__img-wrap a:after,
+    .news-article-header a:after,
+    a[href^="tel:"]:after,
+    a[href^="mailto:"]:after,
+    .quote__footer-link:after {
+        content: none !important;
     }
     .img-slider {
+        max-width: 100%;
+        height: auto;
         margin: 0;
         padding: 0;
-        height: auto;
     }
     .img-slider__caption {
         position: relative;
         width: 100%;
+    }
+    .img-slider__caption-p {
         padding: 0;
     }
-    .img-text-link img{
+    .img-text-link {
+        clear: both;
+    }
+    .img-text-link img {
         width: 240px;
+
+        @media (min-width: 520px) {
+            float: left;
+            margin-right: 15px;
+        }
+    }
+    .divider {
+        height: 0;
+        border-top: 1px solid #eeeeee;
     }
     .quote {
-        border: none;
         border: 1px solid #999;
-        padding: 20px;
-        padding-left: 0;
-        padding-top: 0;
+        padding: 0;
     }
-    .quote p:before {
-        display: none;
+    .quote__body-p {
+        padding: 15px;
+        margin-bottom: 0;
     }
-    .logo-carousel{
-        display: none;
+    .quote__footer {
+        padding: 0 15px;
+        margin-bottom: 15px;
     }
-    .footer__map{
-        display: none;
+    .news-carousel__item-info {
+        position: relative;
+        padding: 0;
     }
-    .footer__subscribe {
-        display: none;
+    .news-carousel__media-preview {
+        min-height: auto;
     }
-    .tx-pxa-newsletter-subscription {
-        display: none;
+    .parallax-video {
+        height: auto !important;
     }
-    .footer .social-icons {
-        display: none;
-    }
-    .sub-navigation {
-        display: none;
-    }
-    .tabbable a{
-        display: none;
-    }
-
 }
 
 // =========================================================
