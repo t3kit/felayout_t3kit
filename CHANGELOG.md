@@ -1,4 +1,18 @@
 
+#### v1.6.0 `October 18, 2016`
+- **[STYLE]** fix js formatting ([c8b9a24](https://github.com/t3kit/felayout_t3kit/commit/c8b9a24))
+- **[FIX]** multiple carousels (swiper) (Podio bug_42) (#17) ([2ccb31f](https://github.com/t3kit/felayout_t3kit/commit/2ccb31f))
+- **[FEATURE]** Whole area link (Podio Feature_45) (#28) ([a90ea64](https://github.com/t3kit/felayout_t3kit/commit/a90ea64))
+- **[FIX]** Print styles (Podio bug_54) (#27) ([605a83e](https://github.com/t3kit/felayout_t3kit/commit/605a83e))
+- **[FIX]** wrong class for pagination in solr (Podio bug_45) (#23) ([e22a7dc](https://github.com/t3kit/felayout_t3kit/commit/e22a7dc))
+- **[FEATURE]** DropdownMenu with columns ([5bd09fc](https://github.com/t3kit/felayout_t3kit/commit/5bd09fc))
+- **[FIX]** use search-button variable also in header top (Podio bug_26) ([8ad431a](https://github.com/t3kit/felayout_t3kit/commit/8ad431a))
+- **[REFACTOR]** Bug 13; Site without main navigation ([a512ef4](https://github.com/t3kit/felayout_t3kit/commit/a512ef4))
+- **[FIX]** Main navigation disappears after change of screen rotation (Podio bug_33) (#11) ([dae92a7](https://github.com/t3kit/felayout_t3kit/commit/dae92a7))
+- **[FEATURE]** Android/iOS detection (#10) ([d4ad9b6](https://github.com/t3kit/felayout_t3kit/commit/d4ad9b6))
+
+***
+
 #### v1.5.0 `July 18, 2016`
 - **[DOC]** add CONTRIBUTING.md file ([cb4fa7b](https://github.com/t3kit/felayout_t3kit/commit/cb4fa7b))
 - **[UPDATE]** update Bower dependencies ([5b4616e](https://github.com/t3kit/felayout_t3kit/commit/5b4616e))
