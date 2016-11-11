@@ -5093,9 +5093,6 @@
 // =========================================================
 
 @media print {
-    // a[href]:after {
-    //     content: none;
-    // }
     .header-middle-wrp {
         height: auto;
     }
@@ -5110,6 +5107,14 @@
     }
     p a {
         text-decoration: underline !important;
+    }
+    .swiper-container-android .swiper-slide,
+    .swiper-wrapper {
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        -moz-transform: translate3d(0, 0, 0) !important;
+        -o-transform: translate(0, 0) !important;
+        -ms-transform: translate3d(0, 0, 0) !important;
+        transform: translate3d(0, 0, 0) !important;
     }
     a[href^="#"],
     a[href^="javascript:"],
@@ -5158,6 +5163,10 @@
     .img-slider__caption {
         position: relative;
         width: 100%;
+
+        @media (max-width: 700px) {
+            max-width: 580px;
+        }
     }
     .img-slider__caption-p {
         padding: 0;
@@ -5309,6 +5318,26 @@
 .ce-gallery figcaption {
     color: fade(@main-text-color, 50%);
     font-size: 13px;
+}
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+
+
+
+// =============================================================================
+// ======== Additional styling for Fluid Styled Content extension, fix IE  =====
+// =============================================================================
+.IE {
+    .ce-gallery,
+    .ce-gallery .ce-outer,
+    .ce-gallery .ce-inner,
+    .ce-gallery .ce-column {
+        max-width: 100%;
+    }
+    .ce-gallery figure,
+    .ce-gallery figcaption {
+        display: block;
+    }
 }
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
