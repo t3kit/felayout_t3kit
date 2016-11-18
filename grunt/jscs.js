@@ -1,7 +1,6 @@
 module.exports = {
     options: {
-        config: '.jscsrc',
-        // force: true
+        config: './node_modules/developer_resources/felayout/.jscsrc'
     },
     mainJs: {
         src: ['<%= dev %>/js/main/**/*.js']

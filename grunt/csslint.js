@@ -1,6 +1,6 @@
 module.exports = {
     options: {
-        csslintrc: '.csslintrc'
+        csslintrc: './node_modules/developer_resources/felayout/.csslintrc'
     },
     lint: {
         options: {

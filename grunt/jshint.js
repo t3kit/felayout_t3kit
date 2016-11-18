@@ -1,7 +1,6 @@
 module.exports = {
     options: {
-        jshintrc: '.jshintrc',
-        // force: true,
+        jshintrc: './node_modules/developer_resources/felayout/.jshintrc',
         reporter: require('jshint-stylish')
     },
     mainJs: {
