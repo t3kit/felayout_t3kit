@@ -413,7 +413,6 @@
 @media (max-width: 991px) {
     .mobile-menu-opened, .mobile-menu-opened body {
         overflow: hidden;
-        height: 100%;
         background: @nav-background-color;
     }
 }
@@ -441,13 +440,14 @@
 // }
 @media (max-width: 991px) {
     .mobile-menu-opened .main-navigation {
-         position: absolute;
-         top: @header-top-height - 1px;
-         left: 0;
-         right: 0;
-         -webkit-overflow-scrolling: touch;
-         -webkit-backface-visibility: hidden;
-         overflow-y: scroll;
+        position: fixed;
+        top: @header-top-height - 1px;
+        left: 0;
+        right: 0;
+        -webkit-overflow-scrolling: touch;
+        -webkit-backface-visibility: hidden;
+        overflow-y: scroll;
+        height: 100%;
     }
     .mobile-menu-opened .main-navigation__items-wrp{
         padding-bottom: 150px!important;
