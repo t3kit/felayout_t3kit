@@ -2140,7 +2140,6 @@
 @media (max-width: 991px) {
     .mobile-menu-opened, .mobile-menu-opened body {
         overflow: hidden;
-        height: 100%;
         background: @nav-background-color;
     }
 }
@@ -2168,13 +2167,14 @@
 // }
 @media (max-width: 991px) {
     .mobile-menu-opened .main-navigation {
-         position: absolute;
-         top: @header-top-height - 1px;
-         left: 0;
-         right: 0;
-         -webkit-overflow-scrolling: touch;
-         -webkit-backface-visibility: hidden;
-         overflow-y: scroll;
+        position: fixed;
+        top: @header-top-height - 1px;
+        left: 0;
+        right: 0;
+        -webkit-overflow-scrolling: touch;
+        -webkit-backface-visibility: hidden;
+        overflow-y: scroll;
+        height: 100%;
     }
     .mobile-menu-opened .main-navigation__items-wrp{
         padding-bottom: 150px!important;
@@ -5093,9 +5093,6 @@
 // =========================================================
 
 @media print {
-    // a[href]:after {
-    //     content: none;
-    // }
     .header-middle-wrp {
         height: auto;
     }
@@ -5110,6 +5107,14 @@
     }
     p a {
         text-decoration: underline !important;
+    }
+    .swiper-container-android .swiper-slide,
+    .swiper-wrapper {
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        -moz-transform: translate3d(0, 0, 0) !important;
+        -o-transform: translate(0, 0) !important;
+        -ms-transform: translate3d(0, 0, 0) !important;
+        transform: translate3d(0, 0, 0) !important;
     }
     a[href^="#"],
     a[href^="javascript:"],
@@ -5158,6 +5163,10 @@
     .img-slider__caption {
         position: relative;
         width: 100%;
+
+        @media (max-width: 700px) {
+            max-width: 580px;
+        }
     }
     .img-slider__caption-p {
         padding: 0;
@@ -5312,7 +5321,6 @@
 }
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
-
 
 
 // =================================
