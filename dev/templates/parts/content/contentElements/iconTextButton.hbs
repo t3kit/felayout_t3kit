@@ -1,15 +1,25 @@
-<div class="icon-text-btn{{#if this.wholeAreaLink}} _whole-area-link{{/if}}">
-    <h3 class="icon-text-btn__header">
-        <span class="icon-text-btn__icon icons icon-{{headerLeftIcon}}"></span>
-        {{header}}
-    </h3>
-    {{#if this.text}}
-        <p class="icon-text-btn__p">{{text}}</p>
-    {{/if}}
-    {{#if this.buttonName}}
-        <a class="icon-text-btn__link {{#if this.btnAsLink}}{{else}}btn btn-default {{/if}}" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}">{{buttonName}}</a>
-    {{/if}}
-    {{#if this.wholeAreaLink}}
-        <a class="icon-text-btn__whole-area-link" title="{{buttonName}}" href="{{#if this.wholeAreaLink}}{{wholeAreaLink}}{{else}}#{{/if}}">{{buttonName}}</a>
-    {{/if}}
+{{!-- iconTextButton settings:
+        disableWholeAreaLink = true/false (by deafalt false);
+        header = "" (set element heading);
+        text = "" (set text content to element);
+        btnAsLink = true/false (by deafalt false);
+        buttonLink = "" (set href to the element);
+        buttonName = "" (set button or link name);
+--}}
+<div class="icon-text-btn__wrp">
+    <div class="icon-text-btn{{#if this.disableWholeAreaLink}}{{else}} _whole-area-link{{/if}}">
+        <h3 class="icon-text-btn__header">
+            <span class="icon-text-btn__icon icons icon-{{headerLeftIcon}}"></span>
+            {{header}}
+        </h3>
+        {{#if this.text}}
+            <p class="icon-text-btn__p">{{text}}</p>
+        {{/if}}
+        {{#if this.buttonName}}
+            <a class="icon-text-btn__link {{#if this.btnAsLink}}{{else}}btn btn-default {{/if}}" title="{{buttonName}}" href="{{#if this.buttonLink}}{{buttonLink}}{{else}}#{{/if}}">{{buttonName}}</a>
+        {{/if}}
+        {{#if this.disableWholeAreaLink}}{{else}}
+            <span class="icon-text-btn__sham-link {{#if this.btnAsLink}}{{else}}btn btn-default {{/if}}">{{buttonName}}</span>
+        {{/if}}
+    </div>
 </div>

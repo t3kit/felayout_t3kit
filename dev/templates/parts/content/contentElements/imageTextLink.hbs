@@ -1,23 +1,35 @@
-<div class="img-text-link{{#if this.wholeAreaLink}} _whole-area-link{{/if}}">
-    {{#if this.imgSrc}}
-        {{#if this.imgLink}}
-            <a class="img-text-link__img-link" title="{{imgLink}}" href="{{imgLink}}">
+{{!-- imageTextLink settings:
+        disableWholeAreaLink = true/false (by deafalt false);
+        imgSrc = "" (set 'src' for image);
+        imgLink = "" (set link to the image);
+        header = "" (set element heading);
+        text = "" (set text content to element);
+        linkAsBtn = true/false (by deafalt false);
+        link = "" (set href to the element);
+        linkName = "" (set button or link name);
+--}}
+<div class="img-text-link__wrp">
+    <div class="img-text-link{{#if this.disableWholeAreaLink}}{{else}} _whole-area-link{{/if}}">
+        {{#if this.imgSrc}}
+            {{#if this.imgLink}}
+                <a class="img-text-link__img-link" title="{{imgLink}}" href="{{imgLink}}">
+                    <img class="img-text-link__img img-responsive" src="{{imgSrc}}" alt="foto">
+                </a>
+            {{else}}
                 <img class="img-text-link__img img-responsive" src="{{imgSrc}}" alt="foto">
-            </a>
-        {{else}}
-            <img class="img-text-link__img img-responsive" src="{{imgSrc}}" alt="foto">
+            {{/if}}
         {{/if}}
-    {{/if}}
-    {{#if this.header}}
-        <h3 class="img-text-link__header">{{header}}</h3>
-    {{/if}}
-    {{#if this.text}}
-        <p class="img-text-link__p">{{text}}</p>
-    {{/if}}
-    {{#if this.linkName}}
-        <a class="img-text-link__link {{#if this.linkAsBtn}}btn btn-default {{/if}}" title="{{linkName}}" href="{{#if this.link}}{{link}}{{else}}#{{/if}}">{{linkName}}</a>
-    {{/if}}
-    {{#if this.wholeAreaLink}}
-        <a class="img-text-link__whole-area-link" title="{{buttonName}}" href="{{#if this.wholeAreaLink}}{{wholeAreaLink}}{{else}}#{{/if}}">{{linkName}}</a>
-    {{/if}}
+        {{#if this.header}}
+            <h3 class="img-text-link__header">{{header}}</h3>
+        {{/if}}
+        {{#if this.text}}
+            <p class="img-text-link__p">{{text}}</p>
+        {{/if}}
+        {{#if this.linkName}}
+            <a class="img-text-link__link {{#if this.linkAsBtn}}btn btn-default {{/if}}" title="{{linkName}}" href="{{#if this.link}}{{link}}{{else}}#{{/if}}">{{linkName}}</a>
+        {{/if}}
+        {{#if this.disableWholeAreaLink}}{{else}}
+            <span class="img-text-link__sham-link {{#if this.linkAsBtn}}btn btn-default {{/if}}">{{linkName}}</span>
+        {{/if}}
+    </div>
 </div>
