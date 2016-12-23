@@ -3171,6 +3171,7 @@
 // =================================
 .footer__subscribe .alert{
     width: 66%;
+    clear: both;
 }
 
 .footer__subscribe .form-control {
@@ -4101,6 +4102,11 @@
 .search-result-pagination {
     margin-top: 20px;
 }
+
+.search-result-pagination:last-child {
+    margin-bottom: 20px;
+}
+
 .search-result-pagination .btn-default {
     background: darken(@main-body-bg, 10%);
     color: @main-text-color;
@@ -4361,6 +4367,12 @@
 // =========================================================
 // === Big icon text btn ===================================
 // =========================================================
+.big-icon-text-btn__wrp{
+    position: relative;
+    overflow: auto;
+    padding: 0 15px;
+    margin: 0 -15px;
+}
 .big-icon-text-btn {
     margin: 40px 0;
     text-align: center;
@@ -4382,17 +4394,24 @@
     position: relative;
     z-index: 1;
 }
-.big-icon-text-btn__whole-area-link {
+.big-icon-text-btn._whole-area-link .big-icon-text-btn__link{
+    text-indent: -9999px;
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     font-size: 0;
-    text-indent: -9999px;
-    z-index: 0;
+    background: transparent;
+    border: none;
 }
-.big-icon-text-btn._whole-area-link:hover .big-icon-text-btn__whole-area-link {
+.big-icon-text-btn__sham-link{
+    color: @main-link-color;
+}
+.big-icon-text-btn__sham-link.btn{
+    color: @main-text-color;
+}
+.big-icon-text-btn._whole-area-link:hover .big-icon-text-btn__link {
     background-color: fade(#fff, 10%);
 }
 // =========================================================
@@ -4401,6 +4420,12 @@
 // =========================================================
 // === Icon text btn ======================================+
 // =========================================================
+.icon-text-btn__wrp{
+    position: relative;
+    overflow: auto;
+    padding: 0 15px;
+    margin: 0 -15px;
+}
 .icon-text-btn {
     margin: 40px 0;
 }
@@ -4417,19 +4442,25 @@
 }
 .icon-text-btn__link {
 	position: relative;
-    z-index: 1;
 }
-.icon-text-btn__whole-area-link {
+.icon-text-btn._whole-area-link .icon-text-btn__link{
 	position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     font-size: 0;
+    background: transparent;
+    border: none;
     text-indent: -9999px;
-    z-index: 0;
 }
-.icon-text-btn._whole-area-link:hover .icon-text-btn__whole-area-link {
+.icon-text-btn__sham-link{
+    color: @main-link-color;
+}
+.icon-text-btn__sham-link.btn{
+    color: @main-text-color;
+}
+.icon-text-btn._whole-area-link:hover .icon-text-btn__link {
     background-color: fade(#fff, 10%);
 }
 // =========================================================
@@ -4438,6 +4469,12 @@
 // =========================================================
 // === Image text link =====================================
 // =========================================================
+.img-text-link__wrp{
+    position: relative;
+    overflow: auto;
+    padding: 0 15px;
+    margin: 0 -15px;
+}
 .img-text-link {
     margin: 40px 0;
 }
@@ -4450,17 +4487,24 @@
 	position: relative;
 	z-index: 1;
 }
-.img-text-link__whole-area-link {
+.img-text-link._whole-area-link .img-text-link__link {
 	position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     font-size: 0;
+    background: transparent;
+    border: none;
     text-indent: -9999px;
-    z-index: 0;
 }
-.img-text-link._whole-area-link:hover .img-text-link__whole-area-link {
+.img-text-link__sham-link{
+    color: @main-link-color;
+}
+.img-text-link__sham-link.btn{
+    color: @main-text-color;
+}
+.img-text-link._whole-area-link:hover .img-text-link__link {
     background-color: fade(#fff, 10%);
 }
 // =========================================================
@@ -4919,6 +4963,33 @@
     &.focus {
         color: @main-text-color;
     }
+}
+
+.inverse .icon-text-btn__sham-link{
+    color: tint(@main-color, 90%);
+    text-decoration: underline;
+}
+
+.inverse .icon-text-btn__sham-link.btn{
+    color: @main-text-color;
+}
+
+.inverse .img-text-link__sham-link{
+    color: tint(@main-color, 90%);
+    text-decoration: underline;
+}
+
+.inverse .img-text-link__sham-link.btn{
+    color: @main-text-color;
+}
+
+.inverse .big-icon-text-btn__sham-link{
+    color: tint(@main-color, 90%);
+    text-decoration: underline;
+}
+
+.inverse .big-icon-text-btn__sham-link.btn{
+    color: @main-text-color;
 }
 
 
