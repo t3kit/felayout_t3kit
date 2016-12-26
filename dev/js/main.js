@@ -7,6 +7,7 @@
 @import 'main/contentElements/carousel.js';
 @import 'main/contentElements/parallax.js';
 @import 'main/contentElements/sliderContainer.js';
+@import 'main/contentElements/imageTextLink.js';
 
 // plugins
 @import 'main/plugins/news/newsCarousel.js';
