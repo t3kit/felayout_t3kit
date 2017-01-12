@@ -25,6 +25,7 @@
 @header-middle-search-height:   44px;
 @header-middle-search-btn-bg:   lighten(@main-text-color, 30%);
 @header-middle-search-btn-hover:lighten(@main-color, 15%);
+@search-text-color: @main-text-color;
 
 
 // Logo
@@ -162,3 +163,28 @@
 //== Pills
 @nav-pills-active-link-hover-bg:            @main-color;
 @nav-pills-active-link-hover-color:         #fff;
+
+
+.input-placeholder-color(@color) {
+	&::placeholder {
+		color: @color;
+		opacity: .6;
+	}
+	&::-webkit-input-placeholder
+	{
+		color: @color;
+		opacity: .6;
+	}
+	&::-moz-placeholder {
+		color: @color;
+		opacity: .6;
+	}
+	&:-ms-input-placeholder {
+		color: @color;
+		opacity: .6;
+	}
+	&:-moz-placeholder {
+		color: @color;
+		opacity: .6;
+	}
+}
