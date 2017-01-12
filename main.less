@@ -1080,11 +1080,12 @@
 @header-middle-search-height:   44px;
 @header-middle-search-btn-bg:   lighten(@main-text-color, 30%);
 @header-middle-search-btn-hover:lighten(@main-color, 15%);
+@search-text-color: @main-text-color;
 
 
 // Logo
 @logo-top:                      30px;
-@logo-left:                     40px;
+@logo-left:                     10px;
 @logo-width:                    120px;
 
 
@@ -1217,6 +1218,31 @@
 //== Pills
 @nav-pills-active-link-hover-bg:            @main-color;
 @nav-pills-active-link-hover-color:         #fff;
+
+
+.input-placeholder-color(@color) {
+	&::placeholder {
+		color: @color;
+		opacity: .6;
+	}
+	&::-webkit-input-placeholder
+	{
+		color: @color;
+		opacity: .6;
+	}
+	&::-moz-placeholder {
+		color: @color;
+		opacity: .6;
+	}
+	&:-ms-input-placeholder {
+		color: @color;
+		opacity: .6;
+	}
+	&:-moz-placeholder {
+		color: @color;
+		opacity: .6;
+	}
+}
 
 
 // ICONS
@@ -4213,6 +4239,11 @@
 #tx-solr-search-functions .label-default{
     background: darken(@main-body-bg, 10%);
     color: @main-text-color;
+}
+
+.awesomplete input{
+    color: @search-text-color;
+    .input-placeholder-color(@search-text-color);
 }
 
 // ==============================================
