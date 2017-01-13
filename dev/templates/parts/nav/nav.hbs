@@ -43,12 +43,12 @@
                         {{~/is~}}
                         <a href="{{basename}}.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-sub-menu-link">Open</a>
 
-                        <ul class="main-navigation__sub-item-list">
+                        <ul class="main-navigation__sub-item-list {{#is ../../this.navThirdLevel 'true' }} second-navigation-level {{/is}} ">
 
                             {{!build sub menu level 2}}
                             {{!grunt/helpers/helper-submenu.js}}
                             {{~#subMenu ../../pages 2~}}
-                                <li class="main-navigation__sub-item {{#if this.isCurrentPage}} _active{{/if}}
+                                <li class="main-navigation__sub-item {{#if this.isCurrentPage}} _active{{/if}} {{#is ../../../this.navThirdLevel 'true' }}_sub {{/is}}
                                 {{!add "active" class if some of children also active}}
                                 {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
                                 {{~#ifChildrensActive_addClass ../../../pages ~}}
@@ -58,6 +58,30 @@
                                         <a class="main-navigation__sub-item-link" href="{{basename}}.html">{{data.title}}</a>
                                     {{~else~}}
                                         <a class="main-navigation__sub-item-link" href="{{data.externalLink}}">{{data.title}}</a>
+                                    {{~/is~}}
+
+                                    {{!@TODO need some more conditions here to check for subpages}}
+                                    {{#is ../../../this.navThirdLevel 'true' }}
+                                        <a href="{{basename}}.html" class="main-navigation__open-sub-menu-link js__main-navigation__open-third-menu-link">Open</a>
+
+                                        <ul class="main-navigation__sub-item-list third-navigation-level">
+                                            {{!build sub menu level 3}}
+                                            {{!grunt/helpers/helper-submenu.js}}
+                                            {{~#subMenu ../../../../pages 3~}}
+                                                <li class="main-navigation__sub-item {{#if this.isCurrentPage}} _active{{/if}}
+                                                    {{!add "active" class if some of children also active}}
+                                                    {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
+                                                    {{~#ifChildrensActive_addClass ../../../../../pages ~}}
+                                                            _active
+                                                        {{~/ifChildrensActive_addClass~}}">
+                                                    {{~#is data.externalLink false~}}
+                                                        <a class="main-navigation__sub-item-link" href="{{basename}}.html">{{data.title}}</a>
+                                                        {{~else~}}
+                                                        <a class="main-navigation__sub-item-link" href="{{data.externalLink}}">{{data.title}}</a>
+                                                    {{~/is~}}
+                                                </li>
+                                            {{~/subMenu~}}
+                                        </ul>
                                     {{~/is~}}
                                 </li>
                             {{~/subMenu~}}
