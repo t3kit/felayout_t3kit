@@ -48,48 +48,9 @@
                                                     {{!build sub menu level 5}}
                                                     {{!grunt/helpers/helper-submenu.js}}
                                                     {{~#subMenu ../../../pages 5~}}
-                                                        <a  href="{{basename}}.html" class="sub-navigation__link _sub-level-5 {{#if this.isCurrentPage}} _active _curent {{/if}}
-                                                        {{!add "active" class if some of children also active}}
-                                                        {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
-                                                        {{~#ifChildrensActive_addClass ../../../../pages ~}}
-                                                        _active _open
-                                                        {{~/ifChildrensActive_addClass~}}">
+                                                        <a  href="{{basename}}.html" class="sub-navigation__link _sub-level-5 {{#if this.isCurrentPage}} _active _curent{{/if}}">
                                                             {{data.title}}
                                                         </a>
-
-                                                        <ul class="sub-navigation__item-list _sub-list-level-6">
-                                                            {{!build sub menu level 6}}
-                                                            {{!grunt/helpers/helper-submenu.js}}
-                                                            {{~#subMenu ../../../../pages 6~}}
-                                                                <li class="sub-navigation__item">
-                                                                    <a  href="{{basename}}.html" class="sub-navigation__link _sub-level-6 {{#if this.isCurrentPage}} _active _curent {{/if}}
-                                                                    {{!add "active" class if some of children also active}}
-                                                                    {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
-                                                                    {{~#ifChildrensActive_addClass ../../../../../pages ~}}
-                                                                    _active _open
-                                                                    {{~/ifChildrensActive_addClass~}}">
-                                                                        {{data.title}}
-                                                                    </a>
-
-                                                                    <ul class="sub-navigation__item-list _sub-list-level-7">
-                                                                        {{!build sub menu level 7}}
-                                                                        {{!grunt/helpers/helper-submenu.js}}
-                                                                        {{~#subMenu ../../../../../pages 7~}}
-                                                                            <li class="sub-navigation__item">
-                                                                                <a  href="{{basename}}.html" class="sub-navigation__link _sub-level-7 {{#if this.isCurrentPage}} _active _curent {{/if}}
-                                                                                {{!add "active" class if some of children also active}}
-                                                                                {{! grunt/helpers/helper-ifChildrensActive_addClass.js}}
-                                                                                {{~#ifChildrensActive_addClass ../../../../../../pages ~}}
-                                                                                _active _open
-                                                                                {{~/ifChildrensActive_addClass~}}">
-                                                                                    {{data.title}}
-                                                                                </a>
-                                                                            </li>
-                                                                        {{~/subMenu~}}
-                                                                    </ul>
-                                                                </li>
-                                                            {{~/subMenu~}}
-                                                        </ul>
                                                     {{~/subMenu~}}
                                                 </li>
                                             </ul>
