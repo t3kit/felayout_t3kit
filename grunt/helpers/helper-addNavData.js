@@ -32,6 +32,19 @@ module.exports.register = function(Handlebars)  {
                 collection[i].parent2 = collectionParentsArr[collectionMenuLevels - 1];
                 collection[i].parent3 = collectionParentsArr[collectionMenuLevels];
                 collection[i].parent4 = collectionParentsArr[collectionMenuLevels + 1];
+            } else if (collectionMenuLevels === 6) {
+                collection[i].parent1 = collectionParentsArr[collectionMenuLevels - 3];
+                collection[i].parent2 = collectionParentsArr[collectionMenuLevels - 2];
+                collection[i].parent3 = collectionParentsArr[collectionMenuLevels - 1];
+                collection[i].parent4 = collectionParentsArr[collectionMenuLevels];
+                collection[i].parent5 = collectionParentsArr[collectionMenuLevels + 1];
+            } else if (collectionMenuLevels === 7) {
+                collection[i].parent1 = collectionParentsArr[collectionMenuLevels - 4];
+                collection[i].parent2 = collectionParentsArr[collectionMenuLevels - 3];
+                collection[i].parent3 = collectionParentsArr[collectionMenuLevels - 2];
+                collection[i].parent4 = collectionParentsArr[collectionMenuLevels - 1];
+                collection[i].parent5 = collectionParentsArr[collectionMenuLevels];
+                collection[i].parent6 = collectionParentsArr[collectionMenuLevels + 1];
             }
         }
 
@@ -73,6 +86,19 @@ module.exports.register = function(Handlebars)  {
             this.page.parent2 = parentsArr[menuLevels - 1];
             this.page.parent3 = parentsArr[menuLevels];
             this.page.parent4 = parentsArr[menuLevels + 1];
+        } else if (menuLevels === 6) {
+            this.page.parent1 = parentsArr[menuLevels - 3];
+            this.page.parent2 = parentsArr[menuLevels - 2];
+            this.page.parent3 = parentsArr[menuLevels - 1];
+            this.page.parent4 = parentsArr[menuLevels];
+            this.page.parent5 = parentsArr[menuLevels + 1];
+        } else if (menuLevels === 7) {
+            this.page.parent1 = parentsArr[menuLevels - 4];
+            this.page.parent2 = parentsArr[menuLevels - 3];
+            this.page.parent3 = parentsArr[menuLevels - 2];
+            this.page.parent4 = parentsArr[menuLevels - 1];
+            this.page.parent5 = parentsArr[menuLevels];
+            this.page.parent6 = parentsArr[menuLevels + 1];
         }
     });
 };
