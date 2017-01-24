@@ -1,4 +1,29 @@
 
+#### v1.7.0 `January 24, 2017`
+- **[FIX]** remove css lint grunt check, fix CI tests ([9dce917](https://github.com/t3kit/felayout_t3kit/commit/9dce917))
+- **[FIX]** Double news pagination Github Issue_93, Aligning tags while text is short fix #67 (#74) ([da1722f](https://github.com/t3kit/felayout_t3kit/commit/da1722f))
+- **[FEATURE]** Added 6-7 levels for submenu (Podio feature_28) (#72) ([a68b48b](https://github.com/t3kit/felayout_t3kit/commit/a68b48b))
+- **[FEATURE]** Add third menu-level for main navigation ([ea0a18c](https://github.com/t3kit/felayout_t3kit/commit/ea0a18c))
+- **[FEATURE]** add new element Simple accordion (Podio feature_34) (#66) ([fc2413f](https://github.com/t3kit/felayout_t3kit/commit/fc2413f))
+- **[TASK]** change logo-left var ([e5f4558](https://github.com/t3kit/felayout_t3kit/commit/e5f4558))
+- **[FEATURE]** add styles for customizing search-text (Podio feature_32) (#64) ([eb929f6](https://github.com/t3kit/felayout_t3kit/commit/eb929f6))
+- **[FIX]** add styles for responsive video (Podio bug_60) (#61) ([b7202b1](https://github.com/t3kit/felayout_t3kit/commit/b7202b1))
+- **[FEATURE]** slider element, add styles for caption alignment (Podio feature_63) (#60) ([17ec194](https://github.com/t3kit/felayout_t3kit/commit/17ec194))
+- **[BUGFIX]** fix image scale on ie11, (Podio bug_47) (#59) ([6edc013](https://github.com/t3kit/felayout_t3kit/commit/6edc013))
+- **[FEATURE]** imageTextLink, add 9 hover effects (animatons) (#57) ([ff927d8](https://github.com/t3kit/felayout_t3kit/commit/ff927d8))
+- **[BUGFIX]** Fixed menu looks buggy when scrolling (Podio bug_25) (#52) ([813ceb4](https://github.com/t3kit/felayout_t3kit/commit/813ceb4))
+- **[FIX]** newsCarousel, fix validation issue (<p> inside of <span> tag)  (#58) ([c6234f4](https://github.com/t3kit/felayout_t3kit/commit/c6234f4))
+- **[FIX]** wholeAreaLink, add underline to sham link (#56) ([4495164](https://github.com/t3kit/felayout_t3kit/commit/4495164))
+- **[FIX]** newsletter subscription error message (Podio bug_31) (#53) ([447f78f](https://github.com/t3kit/felayout_t3kit/commit/447f78f))
+- **[BUGFIX]** no space between pagination and footer on search page (Podio bug_35) (#54) ([eea0fea](https://github.com/t3kit/felayout_t3kit/commit/eea0fea))
+- **[FEATURE]** add new grid element 'slider container' (Podio Feature_61) (#38) ([aa965cc](https://github.com/t3kit/felayout_t3kit/commit/aa965cc))
+- **[FIX]** Strange image cropping in IE (Podio bug47); Print styles for Swiper (#34) ([dca83ea](https://github.com/t3kit/felayout_t3kit/commit/dca83ea))
+- **[FIX]** fix for making the page not scroll to top when opening the menu in mobile/tab view (Podio bug_71) (#45) ([da4dfbe](https://github.com/t3kit/felayout_t3kit/commit/da4dfbe))
+- **[FEATURE]** Make the slider autoslide (Podio Feature_41) (#30) ([6444b79](https://github.com/t3kit/felayout_t3kit/commit/6444b79))
+- **[TASK]** update favicons ([e4263c5](https://github.com/t3kit/felayout_t3kit/commit/e4263c5))
+
+***
+
 #### v1.6.0 `October 18, 2016`
 - **[STYLE]** fix js formatting ([c8b9a24](https://github.com/t3kit/felayout_t3kit/commit/c8b9a24))
 - **[FIX]** multiple carousels (swiper) (Podio bug_42) (#17) ([2ccb31f](https://github.com/t3kit/felayout_t3kit/commit/2ccb31f))
