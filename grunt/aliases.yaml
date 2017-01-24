@@ -107,7 +107,7 @@ check:
     - 'jshint:mainJs'
     - 'jscs:mainJs'
     #CSS
-    - 'csslint'
+    # - 'csslint'
     #HTML
     - 'htmlhint'
 

@@ -2,8 +2,6 @@
 // Global variables (jshint):
 
 /*global touchSupport*/
-/*global isAndroid*/
-///*global isIOS*/
 // =================================
 
 jQuery(function($) {
