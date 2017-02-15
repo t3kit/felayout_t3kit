@@ -545,9 +545,7 @@ var mainSearchInputList = {};
 
     // document load event
     $(document).ready(function() {
-        if (!touchSupport && $(window).width() >= 992) {
-            searchSuggestFn();
-        }
+        searchSuggestFn();
     });
 
 })(jQuery);
