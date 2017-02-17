@@ -286,6 +286,44 @@ jQuery(function($) {
 
 })(jQuery);
 
+(function($) {
+    'use strict';
+
+    // document load event
+    $(document).ready(function() {
+
+        var $paragraph = $('.js__img-text-link');
+
+        $paragraph.dotdotdot({
+            height: 40
+        });
+
+    });
+
+})(jQuery);
+
+(function($) {
+    'use strict';
+
+    // document load event
+    $(document).ready(function() {
+        var $frame = $('.js__hero-image');
+        var $slider = $('.slider-container');
+        $frame.each(function() {
+            var self = $(this);
+            if (!self.parents('.swiper-wrapper').length) {
+                self.addClass('_animated');
+            }
+        });
+        $slider.each(function() {
+            if ($(this).find($frame).length){
+                $(this).addClass('_full-width');
+            }
+        });
+    });
+
+})(jQuery);
+ 
 /* global Swiper*/
 (function($) {
     'use strict';
@@ -395,22 +433,6 @@ jQuery(function($) {
             });
         });
     });
-})(jQuery);
-
-(function($) {
-    'use strict';
-
-    // document load event
-    $(document).ready(function() {
-
-        var $paragraph = $('.js__img-text-link');
-
-        $paragraph.dotdotdot({
-            height: 40
-        });
-
-    });
-
 })(jQuery);
 
 
@@ -545,7 +567,9 @@ var mainSearchInputList = {};
 
     // document load event
     $(document).ready(function() {
-        searchSuggestFn();
+        if (!touchSupport && $(window).width() >= 992) {
+            searchSuggestFn();
+        }
     });
 
 })(jQuery);
