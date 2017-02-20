@@ -1,4 +1,10 @@
 
+#### v1.8.0 `February 20, 2017`
+- **[FEATURE]** New content element Hero Image (#79) ([f25c0bc](https://github.com/t3kit/felayout_t3kit/commit/f25c0bc))
+- **[FIX]** main menu dropdown columns , fix arrow position (#81) ([ec66ec6](https://github.com/t3kit/felayout_t3kit/commit/ec66ec6))
+
+***
+
 #### v1.7.0 `January 24, 2017`
 - **[FIX]** remove css lint grunt check, fix CI tests ([9dce917](https://github.com/t3kit/felayout_t3kit/commit/9dce917))
 - **[FIX]** Double news pagination Github Issue_93, Aligning tags while text is short fix #67 (#74) ([da1722f](https://github.com/t3kit/felayout_t3kit/commit/da1722f))
