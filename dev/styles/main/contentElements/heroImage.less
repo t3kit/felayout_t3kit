@@ -21,11 +21,23 @@
 .hero-image__caption-wrp._center-align .hero-image__caption{
 	margin: auto;
 }
+.hero-image__caption-wrp._center-align._bottom-align .hero-image__caption{
+	left: 0;
+	right: 0;
+}
 .hero-image__caption-wrp._right-align{
 	text-align: right;
 }
 .hero-image__caption-wrp._right-align .hero-image__caption{
 	float: right;
+}
+.hero-image__caption-wrp._right-align._bottom-align .hero-image__caption{
+	right: 0;
+}
+.hero-image__caption-wrp._bottom-align .hero-image__caption{
+	position: absolute;
+	bottom: 0;
+	float: none;
 }
 .hero-image__caption{
 	padding: 20px 60px;
@@ -36,9 +48,16 @@
 	color: @main-body-bg;
 	text-decoration: underline;
 }
+@media(max-width: 991px) {
+
+}
 @media(min-width: 992px){
 	.hero-image__caption{
 		max-width: 70%;
+	}
+	.hero-image__caption-wrp._center-align._bottom-align .hero-image__caption{
+		left: 50%;
+		transform: translate3d(-50%, 0, 0);
 	}
 }
 .slider-container{
