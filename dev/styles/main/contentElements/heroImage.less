@@ -2,7 +2,8 @@
 // HERO IMAGE ----------------------------------//
 //--------------------------------------------------//
 .hero-image{
-	overflow: auto;
+	position: relative;
+	overflow: hidden;
 	background-position: 50% 50%;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -12,49 +13,77 @@
 .hero-image__caption-wrp._left-align{
 	text-align: left;
 }
-.hero-image__caption-wrp._left-align .hero-image__caption{
+.hero-image__caption-wrp._left-align._vertical-top-align .hero-image__caption{
 	float: left;
+}
+.hero-image__caption-wrp._left-align._vertical-center-align .hero-image__caption{
+	left: 0;
+}
+.hero-image__caption-wrp._left-align._vertical-bottom-align .hero-image__caption{
+	left: 0;
 }
 .hero-image__caption-wrp._center-align{
 	text-align: center;
 }
-.hero-image__caption-wrp._center-align .hero-image__caption{
-	margin: auto;
-}
-.hero-image__caption-wrp._center-align._bottom-align .hero-image__caption{
-	left: 0;
-	right: 0;
+.hero-image__caption-wrp._center-align._vertical-top-align .hero-image__caption{
+	margin-left: auto;
+	margin-right: auto;
 }
 .hero-image__caption-wrp._right-align{
 	text-align: right;
 }
-.hero-image__caption-wrp._right-align .hero-image__caption{
+.hero-image__caption-wrp._right-align._vertical-top-align .hero-image__caption{
 	float: right;
 }
-.hero-image__caption-wrp._right-align._bottom-align .hero-image__caption{
+.hero-image__caption-wrp._right-align._vertical-center-align .hero-image__caption{
 	right: 0;
 }
-.hero-image__caption-wrp._bottom-align .hero-image__caption{
-	position: absolute;
-	bottom: 0;
-	float: none;
+.hero-image__caption-wrp._right-align._vertical-bottom-align .hero-image__caption{
+	right: 0;
 }
 .hero-image__caption{
 	padding: 20px 60px;
 	color: @main-body-bg;
-	overflow: hidden;
+	// overflow: hidden;
+	max-height: 100%;
+}
+.hero-image__caption-wrp._vertical-center-align .hero-image__caption{
+	position: absolute;
+	top: 50%;
+	transform: translate3D(0, -50%, 0);
+}
+.hero-image__caption-wrp._vertical-bottom-align .hero-image__caption{
+	position: absolute;
+	bottom: 0;
 }
 .hero-image__caption-link a:not(.btn){
 	color: @main-body-bg;
 	text-decoration: underline;
 }
+@media(max-width: 991px) {
+	.hero-image__caption{
+		max-width: 100%;
+	}
+	.hero-image__caption-wrp._center-align._vertical-center-align .hero-image__caption{
+		left: 0;
+		right: 0;
+	}
+	.hero-image__caption-wrp._center-align._vertical-bottom-align .hero-image__caption{
+		left: 0;
+		right: 0;
+	}
+}
 @media(min-width: 992px){
 	.hero-image__caption{
 		max-width: 70%;
 	}
-	.hero-image__caption-wrp._center-align._bottom-align .hero-image__caption{
-		left: 50%;
-		transform: translate3d(-50%, 0, 0);
+	.hero-image__caption-wrp._center-align._vertical-center-align .hero-image__caption{
+		left: 15%;
+		right: 15%;
+	}
+	.hero-image__caption-wrp._center-align._vertical-bottom-align .hero-image__caption{
+		left: 15%;
+		right: 15%;
 	}
 }
 .slider-container{
